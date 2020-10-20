@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>duenio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-2222
+  <label>Nombre</label>
+  <input type="text" id="nombre" [(ngModel)]="nombre"><br><br>
+  <label>Apellido</label>
+  <input type="text" id="apellido" [(ngModel)]="apellido"><br><br>
+  <label>DNI</label>
+  <input type="text" id="dni" [(ngModel)]="dni"><br><br>
+  <label>CUIL</label>
+  <input type="text" id="cuil" [(ngModel)]="cuil"><br><br>
+  <label>Tipo</label>
+  <label><input type="radio" name="TipoPerfil" value="Duenio" checked>Dueño</label>
+  <label><input type="radio" name="TipoPerfil" value="Supervisor">Supervisor</label><br><br>
+  <label>Foto</label>
+  <button id="btnSubirFoto" (click)="SubirFoto()">Subir Foto</button><br><br>
+
+  <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR</button>
+
 </ion-content>
