@@ -1,0 +1,131 @@
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Staatliches&display=swap);
+
+#super{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    background-color: white;
+    background-image: url("../assets/splash/fondo.jpg");
+    background-size: 100% 100%;
+
+    #splash{
+        display: flex;
+        margin: 50px auto;
+        /*align-items: center;
+        justify-content: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;*/
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+        .hijo{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            flex-grow: 1;
+            flex: 1 1 auto;
+        }
+        
+        .cuerpo{
+            margin: calc(100% / 2) auto;
+            animation: 1s 2s linear fadeIn;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }.espa1{
+            margin: auto;
+            position: absolute;
+            top: calc(100% - 110%); 
+            bottom: 0; left: 0; right: 0;
+            animation: 2s ease rotateAndTranslate1;
+            animation-fill-mode: forwards;
+        }.espa2{
+            margin: auto;
+            position: absolute;
+            top: calc(100% - 110%); 
+            bottom: 0; left: 0; right: 0;
+            animation: 2s ease rotateAndTranslate2;
+            animation-fill-mode: forwards;
+        }
+
+        .titulo{
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            font-size: 90px;
+            color: white;
+            font-family: 'Pacifico', cursive;
+            animation: 1s 2s linear fadeIn;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }.nombres{
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            font-size: 40px;
+            font-family: 'Staatliches', cursive;
+            opacity: 0;
+        }.a{
+            animation: 2s 0s ease translate;
+            animation-fill-mode: forwards;
+        }.b{
+            animation: 2s 2s ease translate;
+            animation-fill-mode: forwards;
+        }.c{
+            animation: 2s 4s ease translate;
+            animation-fill-mode: forwards;
+        }
+    }
+}  
+
+@keyframes fadeIn {
+  
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes translate {
+    0%{
+        opacity: 1;
+        -webkit-transform: translate3d(-1000%,0,0);
+    }
+    40%{
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+    }80%{
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+    }
+    100%{
+        -webkit-transform: translate3d(1000%,0,0);
+    }
+}
+
+@keyframes rotateAndTranslate1{
+
+    0%{
+        transform: translateY(-100px) rotate(0deg);
+    }
+    70%{
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(-45deg);
+    }
+}
+@keyframes rotateAndTranslate2{
+
+    0%{
+        transform: translateY(-100px) rotate(0deg);
+    }
+    70%{
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(45deg);
+    }
+}
