@@ -18,7 +18,9 @@ export class DuenioPage implements OnInit {
   public foto;
   public error;
 
-  constructor(private camara:Camera) { }
+  constructor(private camara:Camera) {
+    this.error = "sin error";
+   }
 
   ngOnInit() {
   }
