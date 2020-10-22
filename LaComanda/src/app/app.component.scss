@@ -9,17 +9,13 @@
     bottom: 0;
     z-index: 9999;
     display: flex;
-    background-color: white;
+    background-color: rgb(1, 170, 251);
     background-image: url("../assets/splash/fondo.jpg");
     background-size: 100% 100%;
 
     #splash{
         display: flex;
         margin: 50px auto;
-        /*align-items: center;
-        justify-content: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;*/
         flex-direction: column;
         flex-wrap: wrap;
         align-content: center;
