@@ -36,6 +36,9 @@ export class DuenioPage implements OnInit {
     .then(imageData => {
         this.foto = `data:image/jpeg;base64,${imageData}`;
         this.GuardarPerfil();
+    })
+    .catch((response) => {
+      this.error = String(response);
     });
   }
 
