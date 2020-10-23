@@ -5,5 +5,58 @@
 </ion-header>
 
 <ion-content>
+  <form autocomplete="off" [formGroup]="forma" (ngSubmit)="logUser()">
+    <div class="form-group row">
+      <label>Correo</label>
+      <div>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          formControlName="email"
+          [class.is-invalid]="correoNoValido"
+        />
+        <small *ngIf="correoNoValido" class="text-danger">
+          Ingrese correo
+        </small>
+      </div>
+    </div>
 
+    <div>
+      <label>Contraseña</label>
+      <div>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          formControlName="pass"
+          [class.is-invalid]="passNoValido"
+        />
+        <small *ngIf="passNoValido" class="text-danger">
+          Ingrese contraseña</small
+        >
+      </div>
+    </div>
+
+    <div>
+      <button type="submit">Guardar</button>
+    </div>
+  </form>
+  <div>
+    <button (click)="logPerfil('supervisor')">Supervisor</button>
+    <button (click)="logPerfil('empleado')">Empleado</button>
+    <button (click)="logPerfil('cliente')">Cliente</button>
+    <button (click)="logPerfil('dueño')">Dueño</button>
+  </div>
+
+
+  <hr />
+
+  <pre>
+    Estado: {{forma.valid}}
+    <br>
+    Status: {{forma.status}}
+  </pre>
+
+  {{forma.value | json}}
+
+ 
 </ion-content>
