@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>mesa</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding class="fondo">
+  <form [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
+    <ion-list>
+      <img [src]="viewPic" width="300">
+      <br>
+      <ion-item class="input">
+        <ion-label position="floating">Número de mesa</ion-label>
+        <ion-input formControlName="number" inputmode="number"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="input">
+        <ion-label position="floating">Cantidad comensales</ion-label>
+        <ion-input formControlName="people" type="number"></ion-input>
+      </ion-item>
 
-<ion-content>
-
+      <ion-list>
+        <ion-radio-group formControlName="type" (ionChange)="radioGroup($event)">
+          <ion-list-header>
+            <ion-label>Tipo</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Basico</ion-label>
+            <ion-radio slot="start" value="basic"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Familiar</ion-label>
+            <ion-radio slot="start" value="family"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Personas con discapacidad</ion-label>
+            <ion-radio slot="start" value="disabilities"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>VIP</ion-label>
+            <ion-radio slot="start" value="vip"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <br>
+      <ion-button (click)="onTakePicture">Subir Foto</ion-button><br><br>
+      <ion-button [disabled]="!tableForm.valid" type="submit">Aceptar</ion-button>
+      <ion-button routerLink="/home" type="submit">Cancelar</ion-button>
+      <br><br>
+    </ion-list>
+  </form>
 </ion-content>

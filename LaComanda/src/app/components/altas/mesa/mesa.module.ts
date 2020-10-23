@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MesaPageRoutingModule } from './mesa-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { MesaPage } from './mesa.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { MesaPage } from './mesa.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MesaPageRoutingModule
+    MesaPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [MesaPage]
 })

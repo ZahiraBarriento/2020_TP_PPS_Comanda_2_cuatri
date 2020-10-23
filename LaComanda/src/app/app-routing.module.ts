@@ -32,10 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/altas/producto/producto.module').then( m => m.ProductoPageModule)
   },
   {
-    path: 'spinner',
-    loadChildren: () => import('./components/spinner/spinner.module').then( m => m.SpinnerPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },

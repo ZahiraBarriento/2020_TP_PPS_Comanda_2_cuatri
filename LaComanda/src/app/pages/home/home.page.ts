@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,9 +6,14 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor(private navCtrl:NavController) {}
+  constructor(
+    private navCtrl:NavController) {}
+
+  ngOnInit(): void {
+    
+  }
 
   Alta(opc){
     switch(opc){
