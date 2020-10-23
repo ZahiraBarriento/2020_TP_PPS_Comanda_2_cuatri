@@ -15,7 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +31,7 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
     SplashScreen,
     Camera,
     AndroidFullScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

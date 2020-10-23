@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
 
   SignIn(){
     this.auth.login(this.credencial).then( (res) => {
+      this.router.navigate(['/home']);
       /* console.log(res);    */
     }).catch( error => {
       this.showMessage(error);
