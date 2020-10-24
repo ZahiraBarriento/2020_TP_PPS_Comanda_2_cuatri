@@ -1,7 +1,9 @@
 <ion-content padding class="fondo">
   <form [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
     <ion-list>
-      <img [src]="viewPic" width="300">
+      <p align="center">
+        <img [src]="viewPic" width="300">
+      </p>
       <br>
       <ion-item class="input">
         <ion-label position="floating">Número de mesa</ion-label>
@@ -19,7 +21,7 @@
             <ion-label>Tipo</ion-label>
           </ion-list-header>
           <ion-item>
-            <ion-label>Basico</ion-label>
+            <ion-label>Básico</ion-label>
             <ion-radio slot="start" value="basic"></ion-radio>
           </ion-item>
           <ion-item>
@@ -37,7 +39,10 @@
         </ion-radio-group>
       </ion-list>
       <br>
-      <ion-button (click)="onTakePicture">Subir Foto</ion-button><br><br>
+      <ion-button (click)="onTakePicture()">Subir Foto</ion-button><br><br>
+      
+      <app-qr></app-qr>
+      
       <ion-button [disabled]="!tableForm.valid" type="submit">Aceptar</ion-button>
       <ion-button routerLink="/home" type="submit">Cancelar</ion-button>
       <br><br>

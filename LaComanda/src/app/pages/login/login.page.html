@@ -6,7 +6,7 @@
 
 <ion-content>
   <form autocomplete="off" [formGroup]="forma" (ngSubmit)="logUser()">
-    <div class="form-group row">
+    <div>
       <label>Correo</label>
       <div>
         <input
@@ -31,8 +31,8 @@
           [class.is-invalid]="passNoValido"
         />
         <small *ngIf="passNoValido" class="text-danger">
-          Ingrese contraseña</small
-        >
+          Ingrese contraseña
+        </small>
       </div>
     </div>
 
@@ -47,7 +47,6 @@
     <button (click)="logPerfil('dueño')">Dueño</button>
   </div>
 
-
   <hr />
 
   <pre>
@@ -57,6 +56,4 @@
   </pre>
 
   {{forma.value | json}}
-
- 
 </ion-content>
