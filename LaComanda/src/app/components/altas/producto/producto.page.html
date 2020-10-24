@@ -5,5 +5,35 @@
 </ion-header>
 
 <ion-content>
+  <div class="contenido">
+    <div class="formulario">
+      <form [formGroup]="forma" (ngSubmit)="altaProducto()">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" />
 
+        <label>Descripcion </label>
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          formControlName="descripcion"
+        ></textarea>
+
+        <label>Tiempo Elaboracion</label>
+        <input type="text" formControlName="timeElaboracion" />
+        <label>Precio</label>
+        <input type="text" formControlName="precio" />
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+
+    <pre>
+    Estado: {{forma.valid}}
+    <br>
+    Status: {{forma.status}}
+  </pre>
+
+    {{forma.value | json}}
+  </div>
 </ion-content>

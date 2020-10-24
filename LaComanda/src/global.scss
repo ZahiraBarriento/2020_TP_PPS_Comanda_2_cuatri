@@ -49,3 +49,22 @@
 /*@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }*/
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+
+
+//Paginas Productos, Empleados provisorio (JUANKA)
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black; 
+}
+
+.formulario{
+    display: block;
+    width: 50%;
+    height: 50%;
+    
+  
+}

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
+import { Observable } from 'rxjs';
+ 
 
 
 @Injectable({
@@ -8,7 +10,7 @@ import { User } from 'firebase';
 })
 export class AuthService {
 
-  user: User;
+   user: User;
 
   constructor(private auth: AngularFireAuth ) {
     this.auth.authState.subscribe( (resp) => {

@@ -5,5 +5,36 @@
 </ion-header>
 
 <ion-content>
+  <div class="contenido">
 
+    <div class="formulario">
+    <form [formGroup]="forma" (ngSubmit)="altaEmpleado()">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" />
+      <label>Apellido </label>
+      <input type="text" formControlName="apellido" />
+      <label>DNI</label>
+      <input type="text" formControlName="dni" />
+      <label>CUIL</label>
+      <input type="text" formControlName="cuil" />
+      <select name="perfil" formControlName="perfil">
+        <option value="1">Mozo</option>
+        <option value="2">Cocinero</option>
+        <option value="3">Bartender</option>
+      </select>
+      <button type="submit">Registrar</button>
+    </form>
+
+  </div>
+  
+
+  <pre>
+    Estado: {{forma.valid}}
+    <br>
+    Status: {{forma.status}}
+  </pre>
+
+  {{forma.value | json}}
+
+</div>
 </ion-content>
