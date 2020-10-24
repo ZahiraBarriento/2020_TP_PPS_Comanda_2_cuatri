@@ -13,25 +13,46 @@
 <h3 style="text-align: center;">:gem: Semana del 17/10 al 23/10</h3>
 <p>
 - Hablar sobre la organización y división de tareas<br>
-- Realizar la logica de todas las altas<br>
+- Realizar la lógica de todas las altas, el diseño más adelante se hará<br>
   
 :star2: <strong>Zahira Barriento</strong><br>
 - Splash e icono: Terminado 21/10 :heavy_check_mark:<br>
 - Alta mesas<br>
 - Spinner: Terminado 22/10 :heavy_check_mark:<br>
+- Creación de servicio para uso de Firebase<br>
+- Componente QR<br>
 
 :star2: <strong>Lucas Marino</strong><br>
 - Alta dueño/supervisor<br>
-- Alta clientes <br>
+- Alta clientes<br>
+- Clase usuario<br>
 
 :star2: <strong>Juan Bugallo</strong><br>
 - Alta empleados<br>
 - Alta productos<br>
-- Login : Terminado 22/10 :heavy_check_mark:<br><br>
+- Login : Terminado 22/10 :heavy_check_mark:<br>
+- Creación de guards<br>
+- Creación de servicio autenticación<br>
 
-<strong>Imagenes/videos de lo que se estuvo realizando</strong><br>
+<strong>Imágenes/videos de lo que se estuvo realizando</strong>
 
-<h4>Splash</h4>
-<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/splash-video.mp4">
-<h4>Spinner</h4>
-<h4>Icono</h4>
+<table>
+  <thead>
+    <th>Splash</th>
+    <th>Spinner</th>
+    <th>Icono</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/splash-video.gif"><img           src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/splash-video.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/spinner-video.gif"><img           src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/spinner-video.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/resources/icon.png"><img                     src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/resources/icon.png" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
