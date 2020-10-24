@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FirestoreService } from '../../../services/firestore.service';
+  import { from } from 'rxjs';
 
 @Component({
   selector: 'app-mesa',
@@ -13,6 +15,7 @@ export class MesaPage implements OnInit {
 
   image: string;
   viewPic: string = "../../../../assets/image/default.jpg";
+  test : string = "funciono";
 
   //#region Get
   get number() {
@@ -20,7 +23,7 @@ export class MesaPage implements OnInit {
   }
 
   get people() {
-    return this.tableForm.get('people')
+    return this.tableForm.get('people');
   }
 
   get type() {
@@ -33,7 +36,10 @@ export class MesaPage implements OnInit {
     public router: Router,
     public alertController: AlertController,
     public formBuilder: FormBuilder,
-    private camera: Camera) { }
+    private camera: Camera,
+    private firestroge : FirestoreService) { 
+
+    }
   //#endregion
 
   //#region ngOnInit
@@ -66,7 +72,9 @@ export class MesaPage implements OnInit {
 
   onTakePicture(){
     const options: CameraOptions = {
-      quality: 50,
+      quality: 30,
+      targetWidth: 500,
+      targetHeight: 500,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -78,6 +86,10 @@ export class MesaPage implements OnInit {
     }, (err) => {
      console.log(err)
     });
+  }
+
+  onScanQR(){
+    
   }
 
   /*radioGroup(value) {
