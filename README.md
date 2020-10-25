@@ -13,11 +13,11 @@
 <h3 style="text-align: center;">:gem: Semana del 17/10 al 23/10</h3>
 <p>
 - Hablar sobre la organización y división de tareas<br>
-- Realizar la lógica de todas las altas, el diseño más adelante se hará<br>
+- Realizar la lógica de todas las altas sin base de datos, el diseño más adelante se hará<br>
   
 :star2: <strong>Zahira Barriento</strong><br>
 - Splash e icono: Terminado 21/10 :heavy_check_mark:<br>
-- Alta mesas<br>
+- Alta mesas Terminado 23/10 :heavy_check_mark:<br>
 - Spinner: Terminado 22/10 :heavy_check_mark:<br>
 - Creación de servicio para uso de Firebase<br>
 - Componente QR<br>
@@ -56,3 +56,21 @@
     </tr>
   </tbody>
 </table>
+
+<h3 style="text-align: center;">:gem: Semana del 24/10 al 06/11</h3>
+<p>
+- Charlar sobre como va a estar conformada la base de datos<br>
+- Terminar con las altas<br>
+  
+:star2: <strong>Zahira Barriento</strong><br>
+- Alta mesas<br>
+- Pedir mesa QR<br>
+
+:star2: <strong>Lucas Marino</strong><br>
+- Alta dueño/supervisor<br>
+- Alta clientes<br>
+
+:star2: <strong>Juan Bugallo</strong><br>
+- Alta empleados<br>
+- Alta productos<br>
+
