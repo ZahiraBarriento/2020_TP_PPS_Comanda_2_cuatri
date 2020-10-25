@@ -1,21 +1,33 @@
 <ion-content>
-  <label>Nombre</label>
-  <input type="text" id="nombre" [(ngModel)]="nombre"><br><br>
-  <label>Apellido</label>
-  <input type="text" id="apellido" [(ngModel)]="apellido"><br><br>
-  <label>DNI</label>
-  <input type="text" id="dni" [(ngModel)]="dni"><br><br>
-  <label>CUIL</label>
-  <input type="text" id="cuil" [(ngModel)]="cuil"><br><br>
-  <label>Tipo</label>
-  <label><input type="radio" name="TipoPerfil" value="Duenio" checked>Dueño</label>
-  <label><input type="radio" name="TipoPerfil" value="Supervisor">Supervisor</label><br><br>
-  <label>Foto</label>
-  <button id="btnSubirFoto" (click)="SubirFoto()">Subir Foto</button><br><br>
+  <div id="Fondo"></div>
 
-  <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR</button>
-<br>
-  {{error}}
-  <br>
+  <div id="VntPrincipal">
+    <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR DNI</button><br><br>
+    <label>Nombre</label><br>
+    <input class="inputText" type="text" id="nombre" [(ngModel)]="nombre"><br><br>
+    <label>Apellido</label><br>
+    <input class="inputText" type="text" id="apellido" [(ngModel)]="apellido"><br><br>
+    <label>Correo electrónico</label><br>
+    <input class="inputText" type="text" id="mail" [(ngModel)]="mail"><br><br>
+    <label>Contraseña</label><br>
+    <input class="inputText" type="password" id="clave" [(ngModel)]="clave"><br><br>
+    <label>DNI</label><br>
+    <input class="inputText" type="text" id="dni" [(ngModel)]="dni"><br><br>
+    <label>CUIL</label><br>
+    <input class="inputText" type="text" id="cuil" [(ngModel)]="cuil"><br><br>
+    <label>Tipo</label><br>
+    <input class="inputRadio" type="radio" name="TipoPerfil" value="Duenio" checked><label style="margin-left: 10px;">Dueño</label><br>
+    <input class="inputRadio" type="radio" style="size: 10px;" name="TipoPerfil" value="Supervisor"><label style="margin-left: 10px;">Supervisor</label><br><br>
+
+    <button id="btnSubirFoto" (click)="SubirFoto()">Subir Foto</button><br>
+    <br>
+    {{error}}
+    <br>
+    
+    <button id="btnCancelar" (click)="Cancelar()">Cancelar</button>
+    <button id="btnGuardar" (click)="GuardarPerfil()">Guardar</button><br>
+  </div>
+  <button id="btnError" disabled hidden>{{error}}</button>
+  
 
 </ion-content>
