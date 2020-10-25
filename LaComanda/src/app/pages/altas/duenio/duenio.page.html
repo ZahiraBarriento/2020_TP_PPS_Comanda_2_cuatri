@@ -8,7 +8,7 @@
     <label>Apellido</label><br>
     <input class="inputText" type="text" id="apellido" [(ngModel)]="apellido"><br><br>
     <label>Correo electrónico</label><br>
-    <input class="inputText" type="text" id="mail" [(ngModel)]="mail"><br><br>
+    <input class="inputText" type="text" id="mail" [(ngModel)]="correo"><br><br>
     <label>Contraseña</label><br>
     <input class="inputText" type="password" id="clave" [(ngModel)]="clave"><br><br>
     <label>DNI</label><br>
@@ -16,10 +16,11 @@
     <label>CUIL</label><br>
     <input class="inputText" type="text" id="cuil" [(ngModel)]="cuil"><br><br>
     <label>Tipo</label><br>
-    <input class="inputRadio" type="radio" name="TipoPerfil" value="Duenio" checked><label style="margin-left: 10px;">Dueño</label><br>
-    <input class="inputRadio" type="radio" style="size: 10px;" name="TipoPerfil" value="Supervisor"><label style="margin-left: 10px;">Supervisor</label><br><br>
+    <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="1"><label style="margin-left: 10px;">Dueño</label><br>
+    <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="2"><label style="margin-left: 10px;">Supervisor</label><br><br>
 
-    <button id="btnSubirFoto" (click)="SubirFoto()">Subir Foto</button><br>
+    <button id="btnSubirFoto" (click)="SubirFoto()" [hidden]="yaSubioFoto">Cargar foto</button>
+    <button id="btnSubirFoto2" [hidden]="!yaSubioFoto" disabled>Foto cargada</button><br>
     <br>
     {{error}}
     <br>

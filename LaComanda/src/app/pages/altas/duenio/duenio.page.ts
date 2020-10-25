@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NavController } from '@ionic/angular';
+import { FirestoreService } from '../../../services/firestore.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-duenio',
@@ -21,18 +23,22 @@ export class DuenioPage implements OnInit {
   public correoInvalido;
   public clave;
   public claveInvalida;
+  public perfil;
+  public yaSubioFoto;
   public error;
 
-  constructor(private camara:Camera, private navCtrl:NavController) {
+  constructor(private camara:Camera, private navCtrl:NavController, private firestore:FirestoreService, private auth:AuthService) {
     this.error = "sin error";
     var jsonDNI = this.GetJsonFromQrDni("0053232@MARINO@LUCAS@M@39465462@B@26/02/1996@11/01/2018@201");
-    console.log(jsonDNI);
+    this.perfil = 1;
+    this.yaSubioFoto = false;
    }
 
   ngOnInit() {
   }
 
   SubirFoto(){
+    
     let options: CameraOptions = {
       destinationType: this.camara.DestinationType.DATA_URL,
       targetWidth: 500,
@@ -42,6 +48,7 @@ export class DuenioPage implements OnInit {
     this.camara.getPicture(options)
     .then(imageData => {
         this.foto = `data:image/jpeg;base64,${imageData}`;
+        this.yaSubioFoto = true;
     })
     .catch((response) => {
       this.error = String(response);
@@ -50,7 +57,21 @@ export class DuenioPage implements OnInit {
 
   GuardarPerfil(){
     if (this.ValidoTodo()){
-      //guardar en base de datos
+      this.auth.register(this.correo, this.correo).then(res =>{
+        var json = {
+          "id": res.user.uid,
+          "nombre": this.nombre,
+          "apellido": this.apellido,
+          "correo": this.correo,
+          "clave": this.clave,
+          "dni": this.dni,
+          "cuil": this.cuil,
+          "foto": this.foto,
+          "actived": true,
+          "perfil": this.perfil == 1 ? "Dueño" : "Supervisor"
+        };
+        this.firestore.addData("usuarios", json);
+      });
     }
     else{
       this.MostrarError();
@@ -58,8 +79,7 @@ export class DuenioPage implements OnInit {
   }
 
   EscanearQR(){
-    //if (usuarioLogueado == dueño/supervisor)
-    //else mostrarError
+   
   }
 
   MostrarError(){
@@ -131,7 +151,8 @@ export class DuenioPage implements OnInit {
   }
 
   ValidarCorreo(){
-    var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    console.log(this.correo);
     this.correoInvalido = !regex.test(this.correo);
   }
   

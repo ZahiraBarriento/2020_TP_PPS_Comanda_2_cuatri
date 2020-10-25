@@ -38,12 +38,22 @@ label{
 }
 
 .inputRadio{
-    margin-left: 5px;
+    margin-left: 4px;
 }
 
 #btnSubirFoto{
     color:  black;
     background-color: rgb(36, 143, 230);
+    width: 60%;
+    height: 35px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#btnSubirFoto2{
+    color:  black;
+    background-color: rgb(93, 221, 19);
     width: 60%;
     height: 35px;
     font-size: 24px;
