@@ -1,40 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>empleado</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="contenido">
 
     <div class="formulario">
+
     <form [formGroup]="forma" (ngSubmit)="altaEmpleado()">
-      <label>Nombre</label>
-      <input type="text" formControlName="nombre" />
-      <label>Apellido </label>
-      <input type="text" formControlName="apellido" />
-      <label>DNI</label>
-      <input type="text" formControlName="dni" />
-      <label>CUIL</label>
-      <input type="text" formControlName="cuil" />
-      <select name="perfil" formControlName="perfil">
-        <option value="1">Mozo</option>
+
+      <button class="btn qr" (click)="EscanearQR()" [disabled]="forma.get('cuil').value">Escanear QR DNI</button><br><br>
+
+      <label>Nombre</label> 
+      <input type="text" class="inputText"  formControlName="nombre" />
+
+      <label>Apellido </label> 
+      <input type="text" class="inputText" formControlName="apellido" />
+    
+      <label>Correo </label> 
+      <input type="text" class="inputText" formControlName="correo" />
+
+      <label>Contraseña </label> 
+      <input type="password" class="inputText" formControlName="pass" />
+
+      <label>DNI</label> 
+      <input type="text" class="inputText" formControlName="dni" />
+
+      <label>CUIL</label> 
+      <input type="text" class="inputText" formControlName="cuil" />
+
+      <label>Categoria</label> 
+      <select name="perfil" class="inputSelect" formControlName="perfil">
+        <option value="" disabled="disabled" selected>Seleccione tipo de empleado</option>
+        <option value="1" selected>Mozo</option>
         <option value="2">Cocinero</option>
         <option value="3">Bartender</option>
-      </select>
-      <button type="submit">Registrar</button>
+      </select><br>
+
+      <button class="btn foto found" (click)="cargarFoto()" [class.noFound]="foto" >Foto</button>
+      <button class="btn"  type="submit" [disabled]="forma.invalid || !foto">Guardar</button>
+      <button class="btn" (click)="cancelar()" >Cancelar</button>
     </form>
 
   </div>
   
 
-  <pre>
+ <!--  <pre>
     Estado: {{forma.valid}}
     <br>
     Status: {{forma.status}}
   </pre>
 
-  {{forma.value | json}}
+  {{forma.value | json}} -->
 
 </div>
 </ion-content>

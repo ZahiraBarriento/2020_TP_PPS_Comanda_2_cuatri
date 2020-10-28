@@ -1,39 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>producto</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="contenido">
     <div class="formulario">
       <form [formGroup]="forma" (ngSubmit)="altaProducto()">
         <label>Nombre</label>
-        <input type="text" formControlName="nombre" />
+        <input type="text" class="inputText" formControlName="nombre" />
 
         <label>Descripcion </label>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          formControlName="descripcion"
-        ></textarea>
+        <textarea class="textTarea" rows="4" cols="50" formControlName="descripcion"></textarea>
 
         <label>Tiempo Elaboracion</label>
-        <input type="text" formControlName="timeElaboracion" />
+        <input type="text" class="inputText" formControlName="timeElaboracion" />
         <label>Precio</label>
-        <input type="text" formControlName="precio" />
-        <button type="submit">Registrar</button>
+        <input type="text" class="inputText" formControlName="precio" />
+
+ 
+        <div class="contenUpload">
+        <button *ngFor="let img of imageUpload; index as i" (click)="asignarImg(i)" class="btn upload" [class.isEmpty]="!img" >
+
+          <div *ngIf="img else unFound" >
+            <img [src]="img"  alt="">
+          </div>  
+
+          <ng-template #unFound>
+            <img [src]="imageEmpty"  alt="">
+          </ng-template>
+        
+          
+          
+           
+        </button>
+      </div>
+       <!--  -->
+       <button type="submit" class="btn submit" [disabled]="forma.invalid" >Guardar</button>
       </form>
+      
+
+  
     </div>
 
-    <pre>
+    <!-- <pre>
     Estado: {{forma.valid}}
     <br>
     Status: {{forma.status}}
   </pre>
 
-    {{forma.value | json}}
+    {{forma.value | json}} -->
   </div>
 </ion-content>
+
+
+
+
+

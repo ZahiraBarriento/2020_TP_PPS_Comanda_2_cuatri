@@ -1,9 +1,12 @@
 export interface UsuarioInterface {
     id: string;
-    name: string;
+    nombre: string;
     apellido: string;
     dni: string;
+    cuil: string;
     foto: string;
-    nombre: string;
     perfil: number;
+    email: string;
+    pass: string;
+    activated?: boolean;
 }
