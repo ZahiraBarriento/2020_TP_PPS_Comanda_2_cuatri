@@ -13,6 +13,12 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 
+//Juanka
+tareasPendientes.ts
+src/assets/image/comida2.jpg
+src/assets/image/comida1.jpg
+src/assets/image/comida3.jpg
+
 *.log
 log.txt
 npm-debug.log*

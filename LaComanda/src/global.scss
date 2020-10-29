@@ -25,6 +25,11 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+html{
+    font-size: 62.5%;  
+}
+
 /*Spinner*/
 .my-custom-class{
     --background: none;
@@ -54,17 +59,3 @@
 
 
 //Paginas Productos, Empleados provisorio (JUANKA)
-.contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black; 
-}
-
-.formulario{
-    display: block;
-    width: 50%;
-    height: 50%;
-    
-  
-}

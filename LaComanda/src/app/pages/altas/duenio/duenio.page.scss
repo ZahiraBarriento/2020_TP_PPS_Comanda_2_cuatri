@@ -1,0 +1,111 @@
+#VntPrincipal{
+    position: fixed; 
+    top: 3%;
+    left: 5%;   
+    height: 100%;
+    width: 85%;
+    z-index: 2;
+    opacity: 1;
+}
+
+#Fondo{
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background: url("../../environments/spinner.png");
+    opacity: 0.3;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    z-index: 1;
+}
+
+label{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.inputText{
+    color: black;
+    background-color: white;
+    height: 30px;
+    width: 100%;
+    border-radius: 8px;
+    border: solid 1px rgb(50, 228, 235);
+}
+
+.inputRadio{
+    margin-left: 4px;
+}
+
+#btnSubirFoto{
+    color:  black;
+    background-color: rgb(36, 143, 230);
+    width: 60%;
+    height: 35px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#btnSubirFoto2{
+    color:  black;
+    background-color: rgb(93, 221, 19);
+    width: 60%;
+    height: 35px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#btnEscanearQR{
+    color:  black;
+    background-color: rgb(93, 221, 19);
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#btnError{
+    top: 90%;
+    margin-left: 7.5%;
+    position: fixed;
+    width: 82.5%;
+    height: 6%;
+    background-color: red;
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+    animation-name: aparecer;
+    animation-duration: 2s;
+}
+
+#btnCancelar{
+    width: 45%;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: red;
+}
+
+#btnGuardar{
+    margin-left: 10%;
+    width: 45%;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: rgb(93, 221, 19);
+}
+
+@keyframes aparecer{
+    0%{opacity: 0;}
+    90%{opacity: 1;}
+}
