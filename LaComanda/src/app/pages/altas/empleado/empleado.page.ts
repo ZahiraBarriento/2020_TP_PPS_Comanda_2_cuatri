@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { User } from 'firebase';
 import { Usuario } from 'src/app/classes/usuario.class';
-import { UsuarioInterface } from 'src/app/interfaces/usuario.interface';
+import { UsuarioInterface } from '../../../models/usuario.interface';
 import { perfil } from 'src/app/perfil';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
