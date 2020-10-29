@@ -1,4 +1,4 @@
-import { UsuarioInterface } from '../interfaces/usuario.interface';
+import { UsuarioInterface } from '../models/usuario.interface';
 
 export class Usuario implements UsuarioInterface{
 
