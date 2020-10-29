@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-interface Qr
-{
-  code : string
-  status : string
-}
-
 @Injectable({
   providedIn: 'root'
 })

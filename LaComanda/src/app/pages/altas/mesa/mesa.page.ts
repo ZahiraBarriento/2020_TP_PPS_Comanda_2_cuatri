@@ -16,6 +16,7 @@ export class MesaPage implements OnInit {
   image: string;
   viewPic: string = "../../../../assets/image/default.jpg";
   test : string = "funciono";
+  datosQr : any; //tengo el qr de la mesa
 
   //#region Get
   get number() {
@@ -38,7 +39,6 @@ export class MesaPage implements OnInit {
     public formBuilder: FormBuilder,
     private camera: Camera,
     private firestroge : FirestoreService) { 
-
     }
   //#endregion
 

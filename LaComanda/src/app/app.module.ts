@@ -16,6 +16,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    NgxQRCodeModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule],
   providers: [

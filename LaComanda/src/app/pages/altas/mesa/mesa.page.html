@@ -41,7 +41,8 @@
       <br>
       <ion-button (click)="onTakePicture()">Subir Foto</ion-button><br><br>
       
-      <app-qr></app-qr>
+      <app-qr (qrData)="datosQr = $event"></app-qr>
+      <label>{{datosQr}}</label><br>
       
       <ion-button [disabled]="!tableForm.valid" type="submit">Aceptar</ion-button>
       <ion-button routerLink="/home" type="submit">Cancelar</ion-button>
