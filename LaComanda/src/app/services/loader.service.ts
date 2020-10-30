@@ -15,7 +15,7 @@ export class LoaderService {
         translucent: true,
         message: '<img class="spinner" src="../../../assets/spinner.png">',
         cssClass: 'my-custom-class',
-        duration: 2000
+        duration: 1500
       });
       await loading.present();
     }

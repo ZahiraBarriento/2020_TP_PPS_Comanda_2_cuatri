@@ -1,52 +1,77 @@
-<ion-content padding class="fondo">
-  <form [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
-    <ion-list>
-      <p align="center">
-        <img [src]="viewPic" width="300">
-      </p>
-      <br>
-      <ion-item class="input">
-        <ion-label position="floating">Número de mesa</ion-label>
-        <ion-input formControlName="number" inputmode="number"></ion-input>
-      </ion-item>
-      <br>
-      <ion-item class="input">
-        <ion-label position="floating">Cantidad comensales</ion-label>
-        <ion-input formControlName="people" type="number"></ion-input>
-      </ion-item>
-
+<ion-content>
+  <ion-grid [fixed]="true">
+    <form class="form" [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
       <ion-list>
-        <ion-radio-group formControlName="type" (ionChange)="radioGroup($event)">
-          <ion-list-header>
-            <ion-label>Tipo</ion-label>
-          </ion-list-header>
-          <ion-item>
-            <ion-label>Básico</ion-label>
-            <ion-radio slot="start" value="basic"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Familiar</ion-label>
-            <ion-radio slot="start" value="family"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Personas con discapacidad</ion-label>
-            <ion-radio slot="start" value="disabilities"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>VIP</ion-label>
-            <ion-radio slot="start" value="vip"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <img class="img" [src]="viewPic">
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Número de mesa</ion-label>
+              <ion-input formControlName="number" type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Cantidad de comensales</ion-label>
+              <ion-input formControlName="people" type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-list  class="radio">
+              <ion-radio-group formControlName="type">
+                <ion-list-header class="radio">
+                  <ion-label>Tipo</ion-label>
+                </ion-list-header>
+                <ion-item class="radio">
+                  <ion-label>Básico</ion-label>
+                  <ion-radio slot="start" value="basic"></ion-radio>
+                </ion-item>
+                <ion-item class="radio">
+                  <ion-label>Familiar</ion-label>
+                  <ion-radio slot="start" value="family"></ion-radio>
+                </ion-item>
+                <ion-item class="radio">
+                  <ion-label>Personas con discapacidad</ion-label>
+                  <ion-radio slot="start" value="disabilities"></ion-radio>
+                </ion-item>
+                <ion-item class="radio">
+                  <ion-label>VIP</ion-label>
+                  <ion-radio slot="start" value="vip"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <ion-button (click)="onTakePicture()">Subir Foto</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <p align="center">
+              <ion-button [disabled]="!tableForm.valid" type="submit">Aceptar</ion-button>
+            </p>
+          </ion-col>
+          <ion-col size="6">
+            <p align="center">
+              <ion-button (click)="onBack()" type="button">Cancelar</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
       </ion-list>
-      <br>
-      <ion-button (click)="onTakePicture()">Subir Foto</ion-button><br><br>
-      
-      <app-qr (qrData)="datosQr = $event"></app-qr>
-      <label>{{datosQr}}</label><br>
-      
-      <ion-button [disabled]="!tableForm.valid" type="submit">Aceptar</ion-button>
-      <ion-button routerLink="/home" type="submit">Cancelar</ion-button>
-      <br><br>
-    </ion-list>
-  </form>
+    </form>
+  </ion-grid>
 </ion-content>

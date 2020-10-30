@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { FirestoreService } from '../services/firestore.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -9,11 +9,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class QrService {
 
   qr: any = [];
+  private options: BarcodeScannerOptions = {
+    formats: "PDF_417,QR_CODE"
+  };
 
   constructor(
     private barcodeScanner: BarcodeScanner,
     private firestorage: FirestoreService,
-    private bd: AngularFirestore) { }
+    private bd: AngularFirestore) { 
+    }
 
   ngOnInit() {
     this.getQrAll();
@@ -30,18 +34,21 @@ export class QrService {
   }
 
   async onCreateQR(code : any) {
-    await this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, code)
+    await this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, code).then(encodedData =>{
+      code = encodedData;
+    })
   }
 
   //SOLO VERIFICA QUE EL QR EXISTA EN LA BASE DE DATOS 
   onScanQR() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      this.qr.forEach(element => {
+    this.barcodeScanner.scan(this.options).then(barcodeData => {
+      console.log(barcodeData.text);
+      /*this.qr.forEach(element => {
         console.log(element.code)
         if (barcodeData.text == element.code) {//si el codigo que mando esta en la base todo joya
-          
+          //ver que onda
         }
-      });
+      });*/
     })
   }
 }
