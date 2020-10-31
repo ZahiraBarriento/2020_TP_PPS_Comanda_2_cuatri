@@ -1,38 +1,21 @@
 <ion-content>
   <form autocomplete="off" [formGroup]="forma" (ngSubmit)="logUser()">
-    <div>
-      <label>Correo</label>
-      <div>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          formControlName="email"
-          [class.is-invalid]="correoNoValido"
-        />
-        <small *ngIf="correoNoValido" class="text-danger">
-          Ingrese correo
-        </small>
-      </div>
-    </div>
+    <p align="center">
+      <img src="../../../assets/splash/cuerpo.png">
+    </p>
 
-    <div>
-      <label>Contraseña</label>
-      <div>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          formControlName="pass"
-          [class.is-invalid]="passNoValido"
-        />
-        <small *ngIf="passNoValido" class="text-danger">
-          Ingrese contraseña
-        </small>
-      </div>
-    </div>
-
-    <div>
-      <button type="submit">Guardar</button>
-    </div>
+    <ion-item class="input">
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item class="input">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="pass"></ion-input>
+    </ion-item>
+    <p align="center">
+      <ion-button expand="block" [disabled]="!forma.valid" type="submit">Iniciar Sesión</ion-button>
+    </p>
   </form>
   <div>
     <button (click)="logPerfil('supervisor')">Supervisor</button>

@@ -6,6 +6,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FirestoreService } from '../../../services/firestore.service';
 import { QrService } from '../../../services/qr.service';
 import { LoaderService } from '../../../services/loader.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mesa',
@@ -41,7 +42,8 @@ export class MesaPage implements OnInit {
     private camera: Camera,
     private firestroge: FirestoreService,
     private qr: QrService,
-    private loading : LoaderService) {
+    private loading : LoaderService,
+    public toastController: ToastController) {
   }
   //#endregion
 
@@ -68,7 +70,7 @@ export class MesaPage implements OnInit {
     ]],
     type: ['', [
       Validators.required
-    ]]
+    ]],
   });
   //#endregion
 
@@ -87,15 +89,15 @@ export class MesaPage implements OnInit {
         if (element.number != json.number) { //valido que la mesa no este cargada
           this.qr.onCreateQR('mesa_' + this.number.value); //creo el qr y guardo en celular
           this.firestroge.addData('mesa', json); //guardo los datos en la base
-          this.router.navigate(['/home']);//mandamos a home
+          this.router.navigate(['/home']);//mandamos al home
         } else {
-          //falta mostrar alert
-          console.log(':(');
+          this.presentToast("¡El número de la mesa ya existe!", "danger");
+          //console.log(':(');
         }
       })
     } else {
-      //falta mostrar alert
-      console.log(':(');
+      this.presentToast("¡Falta subir una foto!", "danger");
+      //console.log(':(');
     }
   }
   //#endregion
@@ -126,5 +128,14 @@ export class MesaPage implements OnInit {
     setTimeout(() =>{
       this.router.navigate(['/home']);
     }, 1000)
+  }
+
+  async presentToast(mensaje:string, color: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000,
+      color: color
+    });
+    toast.present();
   }
 }
