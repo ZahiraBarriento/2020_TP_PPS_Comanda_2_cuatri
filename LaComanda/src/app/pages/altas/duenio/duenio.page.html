@@ -3,7 +3,7 @@
 
   <div id="VntPrincipal">
     <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR DNI</button><br><br>
-    <label>Nombre</label><br>
+    <!-- <label>Nombre</label><br>
     <input class="inputText" type="text" id="nombre" [(ngModel)]="nombre"><br><br>
     <label>Apellido</label><br>
     <input class="inputText" type="text" id="apellido" [(ngModel)]="apellido"><br><br>
@@ -14,7 +14,7 @@
     <label>DNI</label><br>
     <input class="inputText" type="text" id="dni" [(ngModel)]="dni"><br><br>
     <label>CUIL</label><br>
-    <input class="inputText" type="text" id="cuil" [(ngModel)]="cuil"><br><br>
+    <input class="inputText" type="text" id="cuil" [(ngModel)]="cuil"><br><br> -->
     <label>Tipo</label><br>
     <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="1"><label style="margin-left: 10px;">Dueño</label><br>
     <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="2"><label style="margin-left: 10px;">Supervisor</label><br><br>
@@ -22,8 +22,9 @@
     <button id="btnSubirFoto" (click)="SubirFoto()" [hidden]="yaSubioFoto">Cargar foto</button>
     <button id="btnSubirFoto2" [hidden]="!yaSubioFoto" disabled>Foto cargada</button><br>
     <br>
-    {{error}}
-    <br>
+    <h1>{{error}}</h1>
+    <h1>{{barcodeData}}</h1>
+    
     
     <button id="btnCancelar" (click)="Cancelar()">Cancelar</button>
     <button id="btnGuardar" (click)="GuardarPerfil()">Guardar</button><br>

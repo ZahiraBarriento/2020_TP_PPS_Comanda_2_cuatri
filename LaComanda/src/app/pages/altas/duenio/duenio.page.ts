@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NavController } from '@ionic/angular';
 import { FirestoreService } from '../../../services/firestore.service';
 import { AuthService } from '../../../services/auth.service';
+import { QrService } from '../../../services/qr.service';
 
 @Component({
   selector: 'app-duenio',
@@ -26,8 +27,9 @@ export class DuenioPage implements OnInit {
   public perfil;
   public yaSubioFoto;
   public error;
+  public barcodeData:any = "sin barcode";
 
-  constructor(private camara:Camera, private navCtrl:NavController, private firestore:FirestoreService, private auth:AuthService) {
+  constructor(private camara:Camera, private navCtrl:NavController, private firestore:FirestoreService, private auth:AuthService, private qr:QrService) {
     this.error = "sin error";
     var jsonDNI = this.GetJsonFromQrDni("0053232@MARINO@LUCAS@M@39465462@B@26/02/1996@11/01/2018@201");
     this.perfil = 1;
@@ -79,7 +81,9 @@ export class DuenioPage implements OnInit {
   }
 
   EscanearQR(){
-   
+   this.qr.getDatosDniQr()
+   .then((str) => this.barcodeData = str.toString())
+   .catch((err) => this.error = err.toString());
   }
 
   MostrarError(){
