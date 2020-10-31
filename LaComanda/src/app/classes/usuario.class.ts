@@ -1,6 +1,7 @@
-import { UsuarioInterface } from '../models/usuario.interface';
+import { UsuarioModel } from '../models/usuario.model';
 
-export class Usuario implements UsuarioInterface{
+
+export class Usuario implements UsuarioModel{
 
     id: string;
     nombre: string;
@@ -8,12 +9,25 @@ export class Usuario implements UsuarioInterface{
     dni: string;
     cuil: string;
     foto: string;
-    perfil: number;
+    perfil: Perfil;
     pass: string;
-    email: string;
-    activated: boolean;
+    correo: string;
+    activated = true;
 
     constructor(){
-        this.activated = true;
     }
+
 }
+
+export enum Perfil {
+    supervisor,
+    mozo,
+    cocinero,
+    bartender,
+    metre,
+    anonimo,
+    duenio,
+    repartidor,
+    cliente
+}
+
