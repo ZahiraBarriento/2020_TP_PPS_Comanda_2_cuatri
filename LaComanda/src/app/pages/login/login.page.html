@@ -11,20 +11,50 @@
     <br>
     <ion-item class="input">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" formControlName="pass"></ion-input>
-    </ion-item>
-    <p align="center">
-      <ion-button expand="block" [disabled]="!forma.valid" type="submit">Iniciar Sesión</ion-button>
-    </p>
-  </form>
-  <div>
-    <button (click)="logPerfil('supervisor')">Supervisor</button>
-    <button (click)="logPerfil('empleado')">Empleado</button>
-    <button (click)="logPerfil('cliente')">Cliente</button>
-    <button (click)="logPerfil('dueño')">Dueño</button>
-  </div>
+      <ion-input *ngIf="!showPasswordText"  type="password" formControlName="pass"></ion-input>
+      <ion-input *ngIf="showPasswordText"  type="text" formControlName="pass"></ion-input>
+      <button class="eye" slot="end" ion-button icon-only type="button" (click)="showPasswordText = !showPasswordText">
+        <ion-icon *ngIf="showPasswordText" name="eye-outline"> </ion-icon>
+        <ion-icon *ngIf="!showPasswordText" name="eye-off-outline"> </ion-icon>
+      </button>
+    </ion-item><br>
 
-  <hr />
+
+    <ion-button expand="block" [disabled]="!forma.valid" type="submit">Iniciar Sesión</ion-button><br>
+    <div class="center-separator">O</div><br>
+    <ion-button expand="block" type="submit">Registrarse</ion-button>
+  </form>
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button class="users" color="light">
+      <ion-icon name="person-circle-sharp" style="font-size: 100px; color: cornflowerblue;"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="buttom">
+      <ion-fab-button class="users" (click)="logPerfil('duenio')">
+        <label>Dueño</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('supervisor')">
+        <label>Supervisor</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('cocinero')">
+        <label>Cocinero</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('bartender')">
+        <label>Bartender</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('metre')">
+        <label>Metre</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('mozo')">
+        <label>Mozo</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('repartidor')">
+        <label>Repartidor</label>
+      </ion-fab-button>
+      <ion-fab-button class="users" (click)="logPerfil('anonimo')">
+        <label>Anonimo</label>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
   <pre>
     Estado: {{forma.valid}}
@@ -33,4 +63,12 @@
   </pre>
 
   {{forma.value | json}}
+
+  <ion-card>
+    <ion-card-content>
+      Nos interesa su privacidad, puede ingresar como "anónimo" solo con su  nombre sin necesidad de dar más datos.
+    <a (click)="openModal()">Ingresar como anónimo</a>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

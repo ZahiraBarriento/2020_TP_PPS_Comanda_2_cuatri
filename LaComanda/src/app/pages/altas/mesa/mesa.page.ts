@@ -15,7 +15,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class MesaPage implements OnInit {
 
-  image: string;
+  image;
   viewPic: string = "../../../../assets/image/default.jpg";
   photo: boolean = false;
   table: any = [];
@@ -77,7 +77,6 @@ export class MesaPage implements OnInit {
   //#region Submit
   onSubmitTable() {
     //console.log('entro')
-    if (this.photo) { //valido que haya foto
       var json = { //cargo los datos en un json para guardar en la BD
         number: this.number.value,
         type: this.type.value,
@@ -95,10 +94,6 @@ export class MesaPage implements OnInit {
           //console.log(':(');
         }
       })
-    } else {
-      this.presentToast("¡Falta subir una foto!", "danger");
-      //console.log(':(');
-    }
   }
   //#endregion
 
@@ -115,7 +110,7 @@ export class MesaPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
       this.image = `data:image/jpeg;base64,${imageData}`;
-      this.photo = true;
+      //this.photo = true;
       this.viewPic = this.image;
     }, (err) => {
       console.log(err)

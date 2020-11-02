@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
+import { promise } from 'protractor';
  
 
 
@@ -19,17 +20,9 @@ export class AuthService {
     });
   }
 
-   login(credencial){
+   public async login(credencial){
 
-     return this.auth.signInWithEmailAndPassword(credencial.email, credencial.pass).then( (res) => {
-      this.user = res.user;
-
-      if(credencial.displayName && credencial.photoURL && credencial.displayName !== '' && credencial.photoURL !== ''){
-        this.user.updateProfile({displayName: credencial.displayName, photoURL: credencial.photoURL});
-      }
-
-      console.log(this.user);
-     });
+     return await this.auth.signInWithEmailAndPassword(credencial.email, credencial.pass)
   }
 
   stateUsuario() {

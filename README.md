@@ -15,11 +15,9 @@
 - Hablar sobre la organización y división de tareas<br>
 - Realizar la lógica de todas las altas sin base de datos, el diseño más adelante se hará<br>
 - Carpera en Drive donde se tiene el seguimiento de las tereas relizadas<br>
-<strong><i>Imporante: Las tareas que no tienen fecha o no dicen (no terminadas) son aquellas que no fueron asignadas y se realizaron</i></strong>
+<strong><i>Imporante: Las tareas que no tienen fecha o no dicen (no terminadas) son aquellas que no fueron asignadas y se realizaron</i></strong><br>
 
-<p align="center">
-  <img> //poner imagen del excel drive
-</p>
+<br><img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/excel.png" width="500"> 
   
 :girl: <strong>Zahira Barriento</strong><br>
 - Splash e icono: Terminado 21/10 :heavy_check_mark:<br>
@@ -72,18 +70,39 @@
 - Cambio de componente qr por un servicio<br>
   
 :girl: <strong>Zahira Barriento</strong><br>
-- Diseño e incorporacion de QR en alta mesas: Terminado 30/10 :heavy_check_mark:<br>
+- Diseño e incorporación de QR en alta mesas: Terminado 30/10 :heavy_check_mark:<br>
 - Diseño del login <br>
 
 :boy: <strong>Lucas Marino</strong><br>
-- Alta dueño/supervisor (logica): Terminado 30/10 :heavy_check_mark:<br>
-- Alta clientes (logica): Terminado 30/10 :heavy_check_mark:<br>
+- Alta dueño/supervisor (lógica): Terminado 30/10 :heavy_check_mark:<br>
+- Alta clientes (lógica): Terminado 30/10 :heavy_check_mark:<br>
 
 :boy: <strong>Juan Bugallo</strong><br>
-- Alta empleados (logica): Terminado 30/10 :heavy_check_mark:<br>
-- Alta productos (logica): Terminado 30/10 :heavy_check_mark:<br>
-- Diagrama de caso de uso: //colocar link<br>
+- Alta empleados (lógica): Terminado 30/10 :heavy_check_mark:<br>
+- Alta productos (lógica): Terminado 30/10 :heavy_check_mark:<br>
+- <a href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/Diagrama%20casos%20de%20uso.pdf">Diagrama de uso</a><br>
 
-//poner latabla con videos
+<table>
+  <thead>
+    <th>Login</th>
+    <th>Alta Mesa</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="">
+	<img src="" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="">
+	<img src="" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
 
 

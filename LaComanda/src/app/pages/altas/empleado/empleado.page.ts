@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { User } from 'firebase';
 import { Usuario } from 'src/app/classes/usuario.class';
-import { UsuarioInterface } from '../../../models/usuario.interface';
 import { perfil } from 'src/app/models/perfil';
+import { UsuarioModel } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -87,8 +87,8 @@ export class EmpleadoPage implements OnInit {
     this.obtenerDatos();
 
 
-    this.auth.register(this.userInput.email, this.userInput.pass).then( res => {
-      const json: UsuarioInterface = {
+    this.auth.register(this.userInput.correo, this.userInput.pass).then( res => {
+      const json: UsuarioModel = {
         id: res.user.uid,
         nombre: this.userInput.nombre ,
         apellido: this.userInput.apellido,
@@ -97,7 +97,7 @@ export class EmpleadoPage implements OnInit {
         foto: this.foto,
         activated: this.userInput.activated,
         perfil: Number(this.userInput.perfil),
-        email: this.userInput.email,
+        correo: this.userInput.correo,
         pass: this.userInput.pass,
       };
 
@@ -124,7 +124,7 @@ export class EmpleadoPage implements OnInit {
   obtenerDatos(){
     this.userInput.nombre = this.forma.get('nombre').value;
     this.userInput.apellido = this.forma.get('apellido').value;
-    this.userInput.email = this.forma.get('correo').value;
+    this.userInput.correo = this.forma.get('correo').value;
     this.userInput.pass = this.forma.get('pass').value;
     this.userInput.dni = this.forma.get('dni').value;
     this.userInput.cuil = this.forma.get('cuil').value;
