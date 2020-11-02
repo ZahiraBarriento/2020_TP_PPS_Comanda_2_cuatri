@@ -1,0 +1,13 @@
+ion-toolbar {
+    display: flex;
+    flex-direction: row;
+}
+
+ion-title{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.start,.end{
+    font-size: 3rem;
+}
