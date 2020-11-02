@@ -6,6 +6,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FirestoreService } from '../../../services/firestore.service';
 import { QrService } from '../../../services/qr.service';
 import { LoaderService } from '../../../services/loader.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mesa',
@@ -14,7 +15,7 @@ import { LoaderService } from '../../../services/loader.service';
 })
 export class MesaPage implements OnInit {
 
-  image: string;
+  image;
   viewPic: string = "../../../../assets/image/default.jpg";
   photo: boolean = false;
   table: any = [];
@@ -41,7 +42,8 @@ export class MesaPage implements OnInit {
     private camera: Camera,
     private firestroge: FirestoreService,
     private qr: QrService,
-    private loading : LoaderService) {
+    private loading : LoaderService,
+    public toastController: ToastController) {
   }
   //#endregion
 
@@ -68,14 +70,13 @@ export class MesaPage implements OnInit {
     ]],
     type: ['', [
       Validators.required
-    ]]
+    ]],
   });
   //#endregion
 
   //#region Submit
   onSubmitTable() {
     //console.log('entro')
-    if (this.photo) { //valido que haya foto
       var json = { //cargo los datos en un json para guardar en la BD
         number: this.number.value,
         type: this.type.value,
@@ -87,16 +88,12 @@ export class MesaPage implements OnInit {
         if (element.number != json.number) { //valido que la mesa no este cargada
           this.qr.onCreateQR('mesa_' + this.number.value); //creo el qr y guardo en celular
           this.firestroge.addData('mesa', json); //guardo los datos en la base
-          this.router.navigate(['/home']);//mandamos a home
+          this.router.navigate(['/home']);//mandamos al home
         } else {
-          //falta mostrar alert
-          console.log(':(');
+          this.presentToast("¡El número de la mesa ya existe!", "danger");
+          //console.log(':(');
         }
       })
-    } else {
-      //falta mostrar alert
-      console.log(':(');
-    }
   }
   //#endregion
 
@@ -113,7 +110,7 @@ export class MesaPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
       this.image = `data:image/jpeg;base64,${imageData}`;
-      this.photo = true;
+      //this.photo = true;
       this.viewPic = this.image;
     }, (err) => {
       console.log(err)
@@ -126,5 +123,14 @@ export class MesaPage implements OnInit {
     setTimeout(() =>{
       this.router.navigate(['/home']);
     }, 1000)
+  }
+
+  async presentToast(mensaje:string, color: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000,
+      color: color
+    });
+    toast.present();
   }
 }

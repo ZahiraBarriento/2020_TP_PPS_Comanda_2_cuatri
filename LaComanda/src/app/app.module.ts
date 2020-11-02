@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { firebaseConfig } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -27,10 +28,16 @@ import { ComponentsModule } from './components/components.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     NgxQRCodeModule,
+<<<<<<< HEAD
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     ComponentsModule
   ],
+=======
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig), 
+    AngularFireAuthModule],
+>>>>>>> a7c682823c5d66ea443c6c8a91ad140b8b0cb936
   providers: [
     StatusBar,
     SplashScreen,
