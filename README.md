@@ -10,33 +10,44 @@
 :octocat: <a href="https://github.com/LuqiMarino">Marino Lucas</a> (Beta)<br>
 :octocat: <a href="https://github.com/juankamdq">Bugallo Juan Carlos</a> (Gama)</p><br>
 
+<h3 style="text-align: center;">:memo: Organización</h3>
+<p>El grupo se ha organizado de la siguiente manera en la cual todos los sábados se asignaran
+nuevas tareas a cada integrante, las cuales se tiene una semana para terminarlas. Llegado al caso que 
+la tarea que se correspondia no se ha terminado, debera finalizarlo para la siguiente semana informando como va su progreso.</p><br>
+
 <h3 style="text-align: center;">:calendar: Semana del 17/10 al 23/10</h3>
-<p>
-- Hablar sobre la organización y división de tareas<br>
-- Realizar la lógica de todas las altas sin base de datos, el diseño más adelante se hará<br>
-- Carpera en Drive donde se tiene el seguimiento de las tereas relizadas<br>
+<p> En la primera semana se habló sobre cómo va a ser la organización y la división de tareas. En esta ocasión se le dicho a 
+	cada integrante que debe realizar la lógica de dos o una alta, al que le corresponda una sola alta debe realizar el 
+	splash y el icono de la aplicación. Se armó una carpeta en Google Drive donde se tendrá de manera organizada las tareas 
+	a cumplir/cumplidas/faltantes. La lógicas de las altas a realizar seran sin base de datos.<br>
 <strong><i>Imporante: Las tareas que no tienen fecha o no dicen (no terminadas) son aquellas que no fueron asignadas y se realizaron</i></strong><br>
 
 <br><img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/excel.png" width="500"> 
   
 :girl: <strong>Zahira Barriento</strong><br>
-- Splash e icono: Terminado 21/10 :heavy_check_mark:<br>
-- Alta mesas Terminado 23/10 :heavy_check_mark:<br>
-- Spinner: Terminado 22/10 :heavy_check_mark:<br>
-- Creación de servicio para uso de Firebase<br>
-- Componente QR<br>
+- <strong>Alta mesas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se realizó la lógica de la mesa con validaciones de los campos, sin la creacion del código QR</i><br> 
+<i>&nbsp;• Finalización: 23/10</i><br><br> 
+- <strong>Splash e icono :heavy_check_mark:</strong></i><br> 
+<i>&nbsp;• Finalización: 21/10 </i><br><br> 
+- <strong>Spinner :heavy_check_mark:</strong></i><br>
+<i>&nbsp;• Finalización: 22/10 </i><br><br> 
+- <strong>Creación de servicio para uso de Firebase</strong><br><br>
+
 
 :boy: <strong>Lucas Marino</strong><br>
-- Alta dueño/supervisor (no terminada)<br>
-- Alta clientes (no terminada)<br>
-- Clase usuario<br>
+- <strong>Alta dueño/supervisor :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se realizó la lógica del fomulario dueño/supervisor con validaciones de los campos, sin lector del código QR</i><br>
+<i>&nbsp;• Finalización: 23/10</i><br><br>
+- <strong>Alta clientes (no terminada)</strong><br><br>
 
 :boy: <strong>Juan Bugallo</strong><br>
-- Alta empleados (no terminada)<br>
-- Alta productos (no terminada)<br>
-- Login : Terminado 22/10 :heavy_check_mark:<br>
-- Creación de guards<br>
-- Creación de servicio autenticación<br><br>
+- <strong>Alta empleados (no terminada)</strong><br><br>
+- <strong>Alta productos (no terminada)</strong><br>
+- <strong>Login :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se realizó la lógica del login con validaciones de los campos, los usuarios logeados son guardado en el localstorage</i><br> 
+<i>&nbsp;• Finalización: 22/10</i><br><br>
+- <strong>Creación de servicio autenticación</strong><br><br>
 
 <table>
   <thead>
@@ -47,12 +58,12 @@
   <tbody>
     <tr>
       <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/splash-video.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/splash-video.gif" alt="" width="200"></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/splash-video.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/splash-video.gif" alt="" width="200"></a>
       </td>
       <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/spinner-video.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/spinner-video.gif" alt="" width="200"></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/spinner-video.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/spinner-video.gif" alt="" width="200"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/resources/icon.png">
@@ -63,29 +74,35 @@
 </table>
 <br><br>
 <h3 style="text-align: center;">:calendar: Semana del 24/10 al 30/11</h3>
-<p>
-- Charlar sobre como va a estar conformada la base de datos<br>
-- Terminar con las altas<br>
-- Comenzar a hacer el diseño de la app<br>
-- Cambio de componente qr por un servicio<br>
+<p>Durante esta semana se habló sobre cómo va a estar conformada la base de datos, aunque con el 
+	tiempo se ira modificando se necesitaba una base, integrar base de datos a las altas y comenzar a 
+	realizar diseño. También comenzar a trabajar con el QR en todas las altas, creación y lectura. También se realizó un 
+	diagrama de uso para guiarse con los perfiles</p>
   
 :girl: <strong>Zahira Barriento</strong><br>
-- Diseño e incorporación de QR en alta mesas: Terminado 30/10 :heavy_check_mark:<br>
-- Diseño del login <br>
+- <strong>Diseño e incorporación de QR en alta mesas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se crea un QR con los datos ingresados en la alta de la mesa, se verifica que no se de de alta la misma mesa</i><br>
+<i>&nbsp;• Finalización: 30/10</i><br><br>
+- <strong>Diseño del login (no terminada)</strong><br>
 
 :boy: <strong>Lucas Marino</strong><br>
-- Alta dueño/supervisor (lógica): Terminado 30/10 :heavy_check_mark:<br>
-- Alta clientes (lógica): Terminado 30/10 :heavy_check_mark:<br>
+- <strong>Incorporación de QR dueño/supervisor (verificar)</strong> 
+<i>&nbsp;• Inconvenientes en la lectura del QR del dni, solo a un integrante le funciona y al resto no</i><br><br>
+- Terminar alta clientes :heavy_check_mark:<br>
+<i>&nbsp;• Se termino con el alta del cliente, sin lectura completa del QR</i><br>
+<i>&nbsp;• Finalización: 30/10</i><br><br>
 
 :boy: <strong>Juan Bugallo</strong><br>
-- Alta empleados (lógica): Terminado 30/10 :heavy_check_mark:<br>
-- Alta productos (lógica): Terminado 30/10 :heavy_check_mark:<br>
+- <strong>Terminar alta empleados :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se termino con el alta del cliente, validando campos</i><br>
+<i>&nbsp;• Finalización: 30/10</i><br><br>
+- <strong>Terminar alta productos (lógica): Terminado 30/10 :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se termino con el alta del productos, validando campos</i><br>
 - <a href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/Diagrama%20casos%20de%20uso.pdf">Diagrama de uso</a><br>
 
 <table>
   <thead>
-    <th>Login</th>
-    <th>Alta Mesa</th>
+    <th>Diseño alta Mesa</th>
   </thead>
   <tbody>
     <tr>
