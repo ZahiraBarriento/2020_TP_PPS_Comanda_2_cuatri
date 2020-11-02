@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   logOut(){
+    localStorage.removeItem('userCatch');
     this.auth.signOut();
   }
 
