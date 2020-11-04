@@ -4,7 +4,7 @@ import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
 import { promise } from 'protractor';
- 
+
 
 
 @Injectable({
@@ -12,17 +12,16 @@ import { promise } from 'protractor';
 })
 export class AuthService {
 
-   user: User;
+  user: User;
 
-  constructor(private auth: AngularFireAuth, private navCtrl:NavController ) {
-    this.auth.authState.subscribe( (resp) => {
+  constructor(private auth: AngularFireAuth, private navCtrl: NavController) {
+    this.auth.authState.subscribe((resp) => {
       this.user = resp;
     });
   }
 
-   public async login(credencial){
-
-     return await this.auth.signInWithEmailAndPassword(credencial.email, credencial.pass)
+  public async login(credencial) {
+    return await this.auth.signInWithEmailAndPassword(credencial.email, credencial.pass)
   }
 
   stateUsuario() {
@@ -34,8 +33,8 @@ export class AuthService {
   }
 
   public async signOut() {
-      this.auth.signOut();
-      this.navCtrl.navigateForward("home"); //probar esto
+    this.auth.signOut();
+    this.navCtrl.navigateForward("login"); //probar esto
   }
 
   public async register(mail, clave) {

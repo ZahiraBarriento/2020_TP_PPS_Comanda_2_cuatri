@@ -1,27 +1,34 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content{
+  --background: none;
+  background-size: 100% 100%;
+  background-image: url(../../../assets/splash/fondo.jpg);
+}
+.title{
+  font-size: 5.5vw;
+  font-family: BlackRoads;
+  color: black;
+}
+.text{
+  font-size: 4.5vw;
+  font-family: TCM;
+}
+.cliente{
+  width: 40vw;
+}
+ion-card{
+  margin: 15px auto !important;
+  width: 85%;
+}
+ion-card:active{
+  background-color:#aca8a8;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+@font-face{
+  font-family: TCM;
+  src: url(../../../assets/fonts/AnyConv.com__TCM_____.woff);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+@font-face{
+  font-family: BlackRoads;
+  src: url(../../../assets/fonts/AnyConv.com__FontsFree-Net-blackwoff2.woff);
 }

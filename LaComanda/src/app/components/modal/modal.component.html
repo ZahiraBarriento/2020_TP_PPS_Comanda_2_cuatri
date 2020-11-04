@@ -1,16 +1,18 @@
 <ion-content class="ion-padding">
-  <p>Pedimos solo su nombre y apellido para que podamos saber sus pedidos.</p>
-  <br><br><br>
   <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <br>
+    <p align="center">
+      <img class="img" [src]="viewPic">
+    </p>
+    <br>
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" formControlName="lastName"></ion-input>
-    </ion-item>
-      <ion-button [disabled]="!clientForm.valid" type="submit">Aceptar</ion-button>
+    <br>
+    <ion-button color="dark" (click)="onTakePicture()">Subir Foto</ion-button>
+    <br>
+      <ion-button color="dark" [disabled]="(!clientForm.valid || !image)" type="submit">Aceptar</ion-button>
   </form>
 </ion-content>
 <ion-footer>

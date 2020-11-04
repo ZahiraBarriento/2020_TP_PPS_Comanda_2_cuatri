@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MesaPageRoutingModule } from './mesa-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MesaPage } from './mesa.page';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { MesaPage } from './mesa.page';
     MesaPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [MesaPage]
+  declarations: [MesaPage, HeaderComponent]
 })
 export class MesaPageModule {}

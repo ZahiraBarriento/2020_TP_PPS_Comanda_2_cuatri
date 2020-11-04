@@ -55,7 +55,7 @@ export class QrService {
   getDatosDniQr(){
     return new Promise((resolve)=>{
       this.barcodeScanner.scan(this.options).then(barcodeData => {
-        resolve(barcodeData.text);
+        resolve(barcodeData);
       })
     })
   }

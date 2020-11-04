@@ -15,7 +15,7 @@ export const perfil = [
     {
         correo: 'anonimo@gmail.com',
         clave: '123456',
-        perfil: 'repartidor',
+        perfil: 'anonimo',
     },
     {
         correo: 'metre@gmail.com',

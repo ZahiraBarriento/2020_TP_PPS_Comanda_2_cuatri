@@ -1,3 +1,6 @@
+<ion-header>
+  <app-header title="ALTA MESA"></app-header>
+</ion-header>
 <ion-content>
   <ion-grid [fixed]="true">
     <form class="form" [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
@@ -60,14 +63,9 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="6">
+          <ion-col size="12">
             <p align="center">
               <ion-button [disabled]="(!tableForm.valid || !image)" type="submit">Aceptar</ion-button>
-            </p>
-          </ion-col>
-          <ion-col size="6">
-            <p align="center">
-              <ion-button (click)="onBack()" type="button">Cancelar</ion-button>
             </p>
           </ion-col>
         </ion-row>
