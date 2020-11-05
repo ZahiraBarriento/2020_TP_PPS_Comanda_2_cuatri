@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule
   ],
   declarations: [LoginPage, ModalComponent]
 })

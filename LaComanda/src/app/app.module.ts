@@ -21,6 +21,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { ComponentsModule } from './components/components.module';
  
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -36,9 +37,15 @@ import { ComponentsModule } from './components/components.module';
   ],
 =======
     ReactiveFormsModule,
+<<<<<<< HEAD
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule],
 >>>>>>> 4307d35f9d654ae41dc5604da00a8a8d5fa85da6
+=======
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    ComponentsModule],
+>>>>>>> aac1380... update
   providers: [
     StatusBar,
     SplashScreen,
