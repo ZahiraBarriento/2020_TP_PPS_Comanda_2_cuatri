@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../services/loader.service';
-import { url } from 'inspector';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-modal',
@@ -12,13 +12,12 @@ import { url } from 'inspector';
 })
 export class ModalComponent implements OnInit {
 
+  viewPic: string = "../../../../assets/image/default.jpg";
+  image;
+
    //#region Get
   get name() {
     return this.clientForm.get("name");
-  }
-
-  get lastName() {
-    return this.clientForm.get('lastName');
   }
   //#endregion
 
@@ -26,7 +25,8 @@ export class ModalComponent implements OnInit {
     private modalController : ModalController, 
     public formBuilder: FormBuilder,
     public router : Router,
-    public loading : LoaderService) { }
+    public loading : LoaderService,
+    private camera: Camera) { }
 
   ngOnInit() {
     
@@ -37,17 +37,13 @@ export class ModalComponent implements OnInit {
     name: ['', [
       Validators.required,
       Validators.pattern("^[a-zA-Z ]*$")
-    ]],
-    lastName: ['', [
-      Validators.required,
-      Validators.pattern("^[a-zA-Z ]*$")
     ]]
   });
   //#endregion
 
   onSubmit(){
-    var json = {name:this.name.value, lastName:this.lastName.value, perfil: 'anonimo'};
-    localStorage.setItem('userAnonimo', JSON.stringify(json));
+    var json = {name:this.name.value, foto:this.image, perfil: 'anonimo'};
+    localStorage.setItem('userCatch', JSON.stringify(json));
     this.loading.showLoader();
     setTimeout(() =>{
       this.router.navigate(['/home']);
@@ -59,5 +55,22 @@ export class ModalComponent implements OnInit {
     this.modalController.dismiss();
   }
 
+  onTakePicture() {
+    const options: CameraOptions = {
+      quality: 30,
+      targetWidth: 300,
+      targetHeight: 300,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    }
 
+    this.camera.getPicture(options).then((imageData) => {
+      this.image = `data:image/jpeg;base64,${imageData}`;
+      this.viewPic = this.image;
+    }, (err) => {
+      console.log(err)
+    });
+  }
 }

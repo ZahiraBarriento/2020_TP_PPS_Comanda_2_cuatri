@@ -1,23 +1,118 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-  </ion-toolbar>
+  <app-header title="INICIO"></app-header>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- CLIENTE O ANONIMO -->
+  <div *ngIf="(perfil == 'anonimo' || perfil == 'cliente')">
+    <ion-card>
+      <ion-card-content>
+        <p align="center" class="title">
+          BIENVENIDO A COMSERVY<br>
+          <img class="cliente" src="../../../assets/image/plato.png">
+        </p>
+        <p align="center" class="text">
+          Gracias por elegirnos una vez más.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="onScan()">
+      <ion-card-header>
+        <p align="center" class="title">
+          BUSCAR MESA<br><br>
+          <img class="cliente" src="../../../assets/image/qr-home.png" width="200">
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <p align="center" class="text">
+          Escanea el código QR de la entrada para anotarte en la lista de espera o busca tu mesa si ya tenias un
+          reserva.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="onReservation()">
+      <ion-card-header>
+        <p align="center" class="title">
+          RESERVA<br><br>
+          <img class="cliente" src="../../../assets/image/calendario.png" width="200">
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <p align="center" class="text">
+          Reserva una mesa. Recorda que debes estar registrado para poder realizar reservas.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="onReservation()">
+      <ion-card-header>
+        <p align="center" class="title">
+          MI PERFIL<br><br>
+          <img class="cliente" src="../../../assets/image/user.png" width="200">
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <!--<p align="center" class="text">
+          Reserva una mesa. Recorda que debes estar registrado para poder realizar reservas.
+        </p>-->
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-  <div id="container">
-    <strong>Luqi con q sin u</strong><br><br>
-    <strong>Sorry, me olvido</strong><br><br>
+  <!-- DUEÑO/SUPERVISOR -->
+  <div *ngIf="(perfil == 'duenio' || perfil == 'supervisor')">
+    <ion-card *ngIf="!showView" (click)="showView = !showView">
+      <ion-card-header>
+        <p align="center" class="title">
+          ALTAS<br><br>
+          <img class="cliente" src="../../../assets/image/mas.png">
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <p align="center" class="text">
+          Agrega nuevos dueños/supervisores, empleados o mesas.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="!showView">
+      <ion-card-header>
+        <p align="center" class="title">
+          APROBACIONES PENDIENTES<br><br>
+          <img class="cliente" src="../../../assets/image/user-add.png">
+        </p>
+      </ion-card-header>
+      <ion-card-content>
+        <p align="center" class="text">
+          Lista de clientes registrados sin ser aprobados.
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-    <button (click)="Alta(1)">Alta dueño/supervisor</button><br><br>
-    <button (click)="Alta(2)">Alta empleado</button><br><br>
-    <button (click)="Alta(3)">Alta cliente</button><br><br>
-    <button (click)="Alta(4)">Alta mesa</button><br><br>
-    <button (click)="Alta(5)">Alta producto</button><br><br>
+    <!-- VER COMO CAMBIAR ESTO -->
+    <div *ngIf="showView">
+      <ion-card>
+        <ion-card-header (click)="action('duenio')">
+          <p align="center" class="title">
+            ALTA DUEÑO/SUPERVISOR<br><br>
+            <img class="cliente" src="../../../assets/image/supervisor.png">
+          </p>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-card-header (click)="action('empleado')">
+          <p align="center" class="title">
+            ALTA EMPLEADO<br><br>
+            <img class="cliente" src="../../../assets/image/empleado.png">
+          </p>
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-card-header (click)="action('mesa')">
+          <p align="center" class="title">
+            ALTA MESA<br><br>
+            <img class="cliente" src="../../../assets/image/plato.png">
+          </p>
+        </ion-card-header>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

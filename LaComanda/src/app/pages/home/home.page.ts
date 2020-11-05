@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -8,31 +9,48 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
+  user;
+  showView : boolean;
+  perfil : string;
+
   constructor(
-    private navCtrl:NavController) {}
+    private navCtrl:NavController,
+    private router : Router) {
+      this.user = localStorage.getItem('userCatch');
+      this.user = JSON.parse(this.user)
+      this.perfil = this.user.perfil;
+      this.showView = false;
+    }
 
   ngOnInit(): void {
-    
   }
 
-  Alta(opc){
-    switch(opc){
-      case 1:
-        this.navCtrl.navigateForward('altas/duenio');
+  //#region CLIENTE/ANONIMO
+  onScan(){
+    //Implementar lista de espera
+  }
+
+  onReservation(){
+    if(this.perfil == 'anonimo'){
+
+    }
+    //Implementar reserva
+  }  
+  //#endregion
+
+  //#region DUEÑO/SUPERVISOR
+  action(param){
+    switch(param){
+      case 'mesa':
+        this.router.navigateByUrl('/altas/mesa');
         break;
-      case 2:
-        this.navCtrl.navigateForward('altas/empleado');
+      case 'empleado':
+        this.router.navigateByUrl('/altas/empleado');
         break;
-      case 3:
-        this.navCtrl.navigateForward('altas/cliente');
-        break;
-      case 4:
-        this.navCtrl.navigateForward('altas/mesa');
-        break;
-      case 5: 
-        this.navCtrl.navigateForward('altas/producto');
+      case 'duenio':
+        this.router.navigateByUrl('/altas/duenio');
         break;
     }
   }
-
+  //#endregion
 }
