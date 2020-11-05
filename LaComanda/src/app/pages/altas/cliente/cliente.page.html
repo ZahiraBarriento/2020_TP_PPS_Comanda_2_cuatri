@@ -1,15 +1,92 @@
 <ion-content>
-  <label>Nombre</label>
-  <input type="text" id="nombre" [(ngModel)]="nombre"><br><br>
-  <label>Apellido</label>
-  <input type="text" id="apellido" [(ngModel)]="apellido"><br><br>
-  <label>DNI</label>
-  <input type="text" id="dni" [(ngModel)]="dni"><br><br>
-  <label>Anonimato</label>
-  <input type="checkbox" id="anonimato"><br><br>
-  <label>Foto</label>
-  <button id="btnSubirFoto" (click)="SubirFoto()">Subir Foto</button><br><br>
+  <div id="VntPrincipal">
+  <ion-grid [fixed]="true">
+    <form class="form" [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
+      <ion-list>
 
-  <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR</button><br><br><br><br><br>
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <img class="img" [src]="viewPic">
+            </p>
+          </ion-col>
+        </ion-row>
 
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <ion-button (click)="EscanearQR()">Escanear QR</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+
+         <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="nombre" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Apellido</ion-label>
+              <ion-input formControlName="apellido" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input formControlName="correo" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Clave</ion-label>
+              <ion-input formControlName="clave" type="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">DNI</ion-label>
+              <ion-input formControlName="dni" type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <ion-button [disabled]="yaSubioFoto" (click)="SubirFoto()">Subir Foto</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>          
+          <ion-col size="6">
+            <p align="center">
+              <ion-button [disabled]="(!tableForm.valid || !image)" type="submit">Aceptar</ion-button>
+            </p>
+          </ion-col>
+          <ion-col size="6">
+            <p align="center">
+              <ion-button (click)="Cancelar()" type="button">Cancelar</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-grid>
+</div>
 </ion-content>

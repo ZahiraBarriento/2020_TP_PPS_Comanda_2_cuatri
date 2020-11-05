@@ -29,10 +29,16 @@ import { ComponentsModule } from './components/components.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     NgxQRCodeModule,
+<<<<<<< HEAD
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     ComponentsModule
   ],
+=======
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig), 
+    AngularFireAuthModule],
+>>>>>>> 4307d35f9d654ae41dc5604da00a8a8d5fa85da6
   providers: [
     StatusBar,
     SplashScreen,

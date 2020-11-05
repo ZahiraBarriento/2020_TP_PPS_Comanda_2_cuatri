@@ -17,13 +17,12 @@
         <ion-icon *ngIf="showPasswordText" name="eye-outline"> </ion-icon>
         <ion-icon *ngIf="!showPasswordText" name="eye-off-outline"> </ion-icon>
       </button>
-    </ion-item><br>
-
-
+    </ion-item><br><br>
     <ion-button expand="block" [disabled]="!forma.valid" type="submit">Iniciar Sesión</ion-button><br>
     <div class="center-separator">O</div><br>
     <ion-button expand="block" type="submit">Registrarse</ion-button>
   </form>
+
   <ion-fab vertical="top" horizontal="start" slot="fixed">
     <ion-fab-button class="users" color="light">
       <ion-icon name="person-circle-sharp" style="font-size: 100px; color: cornflowerblue;"></ion-icon>
@@ -56,11 +55,14 @@
     </ion-fab-list>
   </ion-fab>
 
+<<<<<<< HEAD
   <ion-card>
+=======
+  <ion-card class="anonimo">
+>>>>>>> 4307d35f9d654ae41dc5604da00a8a8d5fa85da6
     <ion-card-content>
       Nos interesa su privacidad, puede ingresar como "anónimo" solo con su  nombre sin necesidad de dar más datos.
     <a (click)="openModal()">Ingresar como anónimo</a>
     </ion-card-content>
   </ion-card>
-
 </ion-content>

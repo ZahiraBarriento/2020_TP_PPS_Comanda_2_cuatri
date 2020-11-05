@@ -1,19 +1,32 @@
+<<<<<<< HEAD
+=======
+<ion-header [translucent]="true">
+  <app-header title="INICIO"></app-header>
+</ion-header>
+>>>>>>> 4307d35f9d654ae41dc5604da00a8a8d5fa85da6
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Luqi con q sin u</strong><br><br>
-    <strong>Sorry, me olvido</strong><br><br>
-
-    <button (click)="Alta(1)">Alta dueño/supervisor</button><br><br>
-    <button (click)="Alta(2)">Alta empleado</button><br><br>
-    <button (click)="Alta(3)">Alta cliente</button><br><br>
-    <button (click)="Alta(4)">Alta mesa</button><br><br>
-    <button (click)="Alta(5)">Alta producto</button><br><br>
+  <div *ngFor="let card of cards">
+    <ion-card *ngIf="!showView">
+      <ion-card-content (click)="action(card.action)">
+        <p align="center" class="title">
+          {{card.title}}<br>
+          <img src="{{card.photo}}">
+        </p>
+        <p align="center" class="text">
+          {{card.message}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngFor="let card of alta">
+    <ion-card *ngIf="showView">
+      <ion-card-content (click)="page(card.action)">
+        <p align="center" class="title">
+          {{card.title}}<br>
+          <img src="{{card.photo}}">
+        </p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

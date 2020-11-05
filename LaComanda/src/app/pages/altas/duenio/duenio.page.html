@@ -1,35 +1,110 @@
 <ion-content>
-  <div id="Fondo"></div>
-
   <div id="VntPrincipal">
-    <button id="btnEscanearQR" (click)="EscanearQR()">Escanear QR DNI</button><br><br>
-    <!-- <label>Nombre</label><br>
-    <input class="inputText" type="text" id="nombre" [(ngModel)]="nombre"><br><br>
-    <label>Apellido</label><br>
-    <input class="inputText" type="text" id="apellido" [(ngModel)]="apellido"><br><br>
-    <label>Correo electrónico</label><br>
-    <input class="inputText" type="text" id="mail" [(ngModel)]="correo"><br><br>
-    <label>Contraseña</label><br>
-    <input class="inputText" type="password" id="clave" [(ngModel)]="clave"><br><br>
-    <label>DNI</label><br>
-    <input class="inputText" type="text" id="dni" [(ngModel)]="dni"><br><br>
-    <label>CUIL</label><br>
-    <input class="inputText" type="text" id="cuil" [(ngModel)]="cuil"><br><br> -->
-    <label>Tipo</label><br>
-    <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="1"><label style="margin-left: 10px;">Dueño</label><br>
-    <input class="inputRadio" type="radio" [(ngModel)]="perfil" [value]="2"><label style="margin-left: 10px;">Supervisor</label><br><br>
+  <ion-grid [fixed]="true">
+    <form class="form" [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
+      <ion-list>
 
-    <button id="btnSubirFoto" (click)="SubirFoto()" [hidden]="yaSubioFoto">Cargar foto</button>
-    <button id="btnSubirFoto2" [hidden]="!yaSubioFoto" disabled>Foto cargada</button><br>
-    <br>
-    <h1>{{error}}</h1>
-    <h1>{{barcodeData}}</h1>
-    
-    
-    <button id="btnCancelar" (click)="Cancelar()">Cancelar</button>
-    <button id="btnGuardar" (click)="GuardarPerfil()">Guardar</button><br>
-  </div>
-  <button id="btnError" disabled hidden>{{error}}</button>
-  
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <ion-button (click)="EscanearQR()" style="margin-bottom: 7%;">Escanear QR</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
 
+         <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="nombre" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Apellido</ion-label>
+              <ion-input formControlName="apellido" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input formControlName="correo" type="inputText"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">Clave</ion-label>
+              <ion-input formControlName="clave" type="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">DNI</ion-label>
+              <ion-input formControlName="dni" type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="input">
+              <ion-label position="floating">CUIL</ion-label>
+              <ion-input formControlName="cuil" type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-list  class="radio">
+              <ion-radio-group formControlName="type">
+                <ion-item class="radio" style="margin-bottom: 5px;">
+                  <ion-label>Dueño</ion-label>
+                  <ion-radio slot="start" value="duenio" ></ion-radio>
+                </ion-item>
+                <ion-item class="radio">
+                  <ion-label>Supervisor</ion-label>
+                  <ion-radio slot="start" value="supervisor"></ion-radio>
+                </ion-item>                
+              </ion-radio-group>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <ion-button [disabled]="yaSubioFoto" (click)="SubirFoto()">Subir Foto</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>          
+          <ion-col size="6">
+            <p align="center">
+              <ion-button [disabled]="(!tableForm.valid || !image)" type="submit">Aceptar</ion-button>
+            </p>
+          </ion-col>
+          <ion-col size="6">
+            <p align="center">
+              <ion-button (click)="Cancelar()" type="button">Cancelar</ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+  </ion-grid>
+</div>
 </ion-content>

@@ -4,10 +4,16 @@ ion-toolbar {
 }
 
 ion-title{
-    font-size: 2rem;
+    font-size: 4rem;
     text-align: center;
+    font-family: AnyConv;
 }
 
 .start,.end{
     font-size: 3rem;
+}
+
+@font-face{
+    font-family: AnyConv;
+    src: url(../../../assets/fonts/AnyConv.com__TCCEB.woff);
 }
