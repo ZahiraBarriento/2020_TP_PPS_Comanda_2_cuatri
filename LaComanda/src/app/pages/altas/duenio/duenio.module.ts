@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { DuenioPageRoutingModule } from './duenio-routing.module';
-
 import { DuenioPage } from './duenio.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { DuenioPage } from './duenio.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DuenioPageRoutingModule
+    DuenioPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DuenioPage]
 })

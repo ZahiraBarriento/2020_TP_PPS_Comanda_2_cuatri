@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { ClientePageRoutingModule } from './cliente-routing.module';
-
 import { ClientePage } from './cliente.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { ClientePage } from './cliente.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ClientePageRoutingModule
+    ClientePageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [ClientePage]
 })

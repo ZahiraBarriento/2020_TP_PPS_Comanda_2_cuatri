@@ -55,9 +55,34 @@ export class QrService {
   getDatosDniQr(){
     return new Promise((resolve)=>{
       this.barcodeScanner.scan(this.options).then(barcodeData => {
-        resolve(barcodeData.text);
+        var json = this.GetJsonFromBarcode(barcodeData)
+        resolve(json);
+        //Juanka cuando llames esta funcion usa this.qr.getDatosDniQr.then((json) => RellenarCampos(json))
+        //y cuando leas esto borralo 
+
+                        //          ***          
+                        //        *******      
+                        //      *********     
+                        //    /\* ### ### */\  
+                        //    |    @ / @    |  
+                        //    \/\    ^    /\/  
+                        //       \  ===  /     
+                        //         \_____/      
+                        //         _|_|_       
+                        //      *$$$$$$$$$*     
       })
     })
+  }
+
+  GetJsonFromBarcode(data){
+    var datos = data.split("@");
+    var nombre = datos[2].charAt(0).toUpperCase() + datos[2].slice(1).toLowerCase();
+    var apellido = datos[1].charAt(0).toUpperCase() + datos[1].slice(1).toLowerCase();
+    var cuil1 = datos[8].substring(0,2);
+    var cuil2 = datos[8].substring(3,1);
+    var cuil = cuil1 + datos[4] + cuil2;
+
+    return {"nombre":nombre, "apellido":apellido, "dni":datos[4], "cuil":cuil};
   }
   
 }

@@ -1,0 +1,39 @@
+ion-content{
+    --background: none;
+    background-size: 170%;
+    background-image: url(../../../../assets/image/fondo-cliente.png);
+}
+ion-button{
+    --background: none;
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    margin: auto;
+    color: black;
+    font-size: 3vw;
+}
+ion-grid{
+    --background: none;
+    --background: transparent;
+    width: 90%;
+}
+.input{
+    max-width: 90%;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ion-list{
+    background: transparent;
+}
+.img{
+    background: rgb(248, 173, 56);
+    padding:10px;
+    width: 90%;
+}
+.radio{
+    background: white;
+    border-radius: 10px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
