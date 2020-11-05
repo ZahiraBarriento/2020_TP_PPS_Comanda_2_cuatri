@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import { perfil } from 'src/app/models/perfil';
 import { ProductoInterface } from 'src/app/models/producto.interface';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -10,7 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   templateUrl: './producto.page.html',
   styleUrls: ['./producto.page.scss'],
 })
-export class ProductoPage  {
+export class ProductoPage implements OnInit {
 
   //#region Get Values Form
   get nombre(){
@@ -32,22 +34,35 @@ export class ProductoPage  {
 
   forma: FormGroup;
   imageEmpty = '../../../../assets/image/default.jpg';
-  imageUpload: Array<string> = new Array(3);
-  state = true;
+  title;
+  tipo;
+  imagen1;
+  imagen2;
+  imagen3;
+  userPerfil;
 
   constructor(private fb: FormBuilder,
               private camera: Camera,
               private fr: FirestoreService ) {
+    
+    
     this.generarForm();
-
-    /* //#region  BORRAR AL FINALIZAR PROYECTO
-    this.imageUpload[0] = '../../../../assets/image/comida1.jpg';
-    this.imageUpload[1] = '../../../../assets/image/comida2.jpg';
-    this.imageUpload[2] = '../../../../assets/image/comida3.jpg';
-    //#endregion */
+    this.userPerfil = JSON.parse(localStorage.getItem('userCatch'))['perfil'];
+    this.tipo = this.userPerfil == 'cocinero' ? 'plato' : this.userPerfil == 'bartender' ? 'bebida' : 'no permitida';
+    this.title = 'Alta ' + this.tipo;
+ 
+    
+    //#region  BORRAR AL FINALIZAR PROYECTO
+    /* this.imagen1 = '../../../../assets/image/anonymous.png';
+    this.imagen2 = '../../../../assets/image/anonymous.png';
+    this.imagen3 = '../../../../assets/image/anonymous.png';  */ 
+    //#endregion
 
     }
-    
+
+    ngOnInit(){
+      console.log(this.userPerfil);  
+    }
 
   generarForm(){
     this.forma = this.fb.group({
@@ -65,10 +80,12 @@ export class ProductoPage  {
       nombre: this.nombre,
       descripcion: this.descripcion,
       timeElaboracion: this.timeElaboracion,
+      tipo: this.tipo,
       precio: this.precio,
-      foto1: this.imageUpload[0],
-      foto2: this.imageUpload[1],
-      foto3: this.imageUpload[2]
+      foto1: this.imagen1,
+      foto2: this.imagen2,
+      foto3: this.imagen3,
+      activated: true,
     };
 
       this.fr.addData('productos', jsonProducto);
@@ -86,19 +103,20 @@ export class ProductoPage  {
 
      this.camera.getPicture(options)
     .then(imageData => {
-        this.imageUpload[index] = `data:image/jpeg;base64,${imageData}`;
-    });
+        /* this.imageUpload[index] = `data:image/jpeg;base64,${imageData}`; */
 
-     this.verificarImageEmpty();
+        if(index === 1){
+          this.imagen1 = `data:image/jpeg;base64,${imageData}`;
+        }
+        if(index === 2){
+          this.imagen2 = `data:image/jpeg;base64,${imageData}`;
+        }
+        if(index === 3){
+          this.imagen3 = `data:image/jpeg;base64,${imageData}`;
+        }
+    });
   }
 
-  verificarImageEmpty(){
-    let count = 0;
-
-    this.imageUpload.forEach(element => {
-      if (element) { count++; }
-    });
-    if(count === 3){ this.state = false;}
-  }
+  
 
 }

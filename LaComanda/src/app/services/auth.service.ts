@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { promise } from 'protractor';
  
 
@@ -14,7 +14,9 @@ export class AuthService {
 
    user: User;
 
-  constructor(private auth: AngularFireAuth, private navCtrl:NavController ) {
+  constructor(private auth: AngularFireAuth,
+              private navCtrl: NavController,
+              private toastCtrl: ToastController) {
     this.auth.authState.subscribe( (resp) => {
       this.user = resp;
     });
@@ -35,10 +37,11 @@ export class AuthService {
 
   public async signOut() {
       this.auth.signOut();
-      this.navCtrl.navigateForward("home"); //probar esto
+      this.navCtrl.navigateForward('/login'); 
   }
 
   public async register(mail, clave) {
     return this.auth.createUserWithEmailAndPassword(mail, clave);
   }
+  
 }

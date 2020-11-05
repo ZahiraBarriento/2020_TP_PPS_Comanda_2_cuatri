@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { User } from 'firebase';
+import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/classes/usuario.class';
-import { perfil } from 'src/app/models/perfil';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -17,14 +17,24 @@ export class EmpleadoPage implements OnInit {
 
   forma: FormGroup;
   userInput: Usuario = new Usuario();
-  foto;
+
+  // Aqui cargo los datos del qr
+  inputSetQr =  {
+    nombre : '',
+    apellido : '',
+    dni: '',
+  };
+
+  fotoCam;
 
   constructor(private auth: AuthService,
               private fb: FormBuilder,
               private camera: Camera,
-              private db: FirestoreService) {
+              private db: FirestoreService,
+              private qr: BarcodeScanner,
+              private toastCtrl: ToastController) {
 
-              this.foto = 'FOTO ficticia, se crea para desarrollo en pc, borrar instancia al finalizar proyecto';
+              this.fotoCam = 'FOTO ficticia, se crea para desarrollo en pc, borrar instancia al finalizar proyecto';
               this.generarForm();
               this.userInput = new Usuario();
   }
@@ -34,7 +44,7 @@ export class EmpleadoPage implements OnInit {
 
 
 
-//#region Verificacion isValid y carga
+//#region Verifica los input isValid o si tienen datos
 
   get nombreNoValido(){
     return this.forma.get('nombre').invalid && this.forma.get('nombre');
@@ -82,11 +92,12 @@ export class EmpleadoPage implements OnInit {
 
   //#endregion
 
+
+//#region  Guardo el usuario en la base de datos
+
   altaEmpleado(){
-    
+
     this.obtenerDatos();
-
-
     this.auth.register(this.userInput.correo, this.userInput.pass).then( res => {
       const json: UsuarioModel = {
         id: res.user.uid,
@@ -94,16 +105,28 @@ export class EmpleadoPage implements OnInit {
         apellido: this.userInput.apellido,
         dni: this.userInput.dni,
         cuil: this.userInput.cuil,
-        foto: this.foto,
+        foto: this.fotoCam,
         activated: this.userInput.activated,
-        perfil: Number(this.userInput.perfil),
+        perfil: this.userInput.perfil,
         correo: this.userInput.correo,
         pass: this.userInput.pass,
       };
-
       this.db.addData('usuarios', json);
+
+      this.showMessage(`Alta de ${json.nombre} ${json.nombre} como ${json.perfil} `, true);
+      this.forma.reset();
+    })
+     .catch( rej => {
+       if ( rej.code.toString() === 'auth/email-already-in-use'){
+
+        }
     });
   }
+
+//#endregion
+
+
+//#region --  Capturar Foto de la camara
 
 
   cargarFoto(){
@@ -115,12 +138,14 @@ export class EmpleadoPage implements OnInit {
     };
     this.camera.getPicture(options)
     .then(imageData => {
-        this.foto = `data:image/jpeg;base64,${imageData}`;
+        this.fotoCam = `data:image/jpeg;base64,${imageData}`;
     });
   }
 
+  //#endregion
 
-  //#region Get values Formulario
+
+//#region -- Obtener los valores del formulario
   obtenerDatos(){
     this.userInput.nombre = this.forma.get('nombre').value;
     this.userInput.apellido = this.forma.get('apellido').value;
@@ -132,4 +157,36 @@ export class EmpleadoPage implements OnInit {
 
   }
   //#endregion
+
+
+ //#region Escanea el Qr
+  escanearQR(){
+
+    const options = { prompt: 'Escaneá el DNI', formats: 'PDF_417' };
+
+    this.qr.scan(options).then(barcodeData => {
+
+    const dniDatos = barcodeData.text.split('@');
+
+    this.inputSetQr.apellido = dniDatos[1];
+    this.inputSetQr.nombre = dniDatos[2];
+    this.inputSetQr.dni = dniDatos[4];
+    }).catch(err => { });
+
+  }
+
+
+  async showMessage(text, estado) {
+
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'middle',
+     /* cssClass: estado ? 'toastSuccess' : 'toastWarning',   */
+    });
+
+    toast.present();
+  }
 }
+
+//#endregion

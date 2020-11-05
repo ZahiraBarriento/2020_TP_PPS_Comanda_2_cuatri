@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { EmpleadoPageRoutingModule } from './empleado-routing.module';
 
 import { EmpleadoPage } from './empleado.page';
+import { ComponentsModule } from 'src/app/components/components.module';
+
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { EmpleadoPage } from './empleado.page';
     FormsModule,
     IonicModule,
     EmpleadoPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule
   ],
   declarations: [EmpleadoPage]
 })

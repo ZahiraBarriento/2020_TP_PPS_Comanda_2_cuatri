@@ -3,6 +3,7 @@ export interface ProductoInterface {
     nombre: string;
     descripcion: string;
     precio: number;
+    tipo: string;
     timeElaboracion: number;
     foto1: string;
     foto2: string;

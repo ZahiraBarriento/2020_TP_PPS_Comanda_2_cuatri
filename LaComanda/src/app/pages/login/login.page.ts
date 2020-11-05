@@ -19,11 +19,11 @@ export class LoginPage implements OnInit {
   credencial = { email: '', pass: '', displayName: '', photoURL: '' };
 
   constructor(private fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router,
-    private toastCtrl: ToastController,
-    private userService: UsuarioService,
-    public modalController: ModalController) {
+              private auth: AuthService,
+              private router: Router,
+              private toastCtrl: ToastController,
+              private userService: UsuarioService,
+              public modalController: ModalController) {
 
     this.crearFormulario();
 
@@ -33,14 +33,14 @@ export class LoginPage implements OnInit {
 
     this.auth.login(this.credencial)
       .then(resAuth => {
-        // envio el uid del auth para comparar el id de db usuario. Si existe lo traigo y lo guardo en el local
+        // envio el uid del auth para comparar el id de db usuario. Si existe lo traigo
         this.userService.traerUsuario(resAuth.user.uid)
           .then(resDb => {
-            // Guardo en un local storage el usuario DB
+            // Guardo en un local storage el usuario de la Base de Datos
             localStorage.setItem('userCatch', JSON.stringify(resDb));
             this.router.navigateByUrl('home');
           });
-      })
+      });
   }
 
   ngOnInit() {
@@ -126,7 +126,7 @@ export class LoginPage implements OnInit {
   }
 
   async openModal(){
-    //console.log('entro')
+    // console.log('entro')
     const modal = await this.modalController.create({
       component: ModalComponent,
       cssClass: 'my-custom-modal-css'

@@ -1,58 +1,62 @@
+<app-header title="Alta Empleado"></app-header>
+
 <ion-content>
-  <div class="contenido">
 
-    <div class="formulario">
+    <form class="formulario" [formGroup]="forma" (ngSubmit)="altaEmpleado()">
 
-    <form [formGroup]="forma" (ngSubmit)="altaEmpleado()">
+    <div class="box-form">
+      <ion-button class="btn qr" (click)="escanearQR()" [disabled]="false">
+        Escanear QR DNI
+      </ion-button> 
 
-      <button class="btn qr" (click)="EscanearQR()" [disabled]="forma.get('cuil').value">Escanear QR DNI</button><br><br>
+      <ion-item class="item">
+      <ion-label class="label"  position="floating">Nombre</ion-label>
+      <ion-input type="text" class="input" [(ngModel)]="inputSetQr.nombre" formControlName="nombre"></ion-input>
+      </ion-item>
 
-      <label>Nombre</label> 
-      <input type="text" class="inputText"  formControlName="nombre" />
+      <ion-item class="item">
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" class="input" [(ngModel)]="inputSetQr.apellido" formControlName="apellido"></ion-input>
+      </ion-item>
 
-      <label>Apellido </label> 
-      <input type="text" class="inputText" formControlName="apellido" />
-    
-      <label>Correo </label> 
-      <input type="text" class="inputText" formControlName="correo" />
+      <ion-item class="item"> 
+      <ion-label position="floating">Correo</ion-label> 
+      <ion-input type="text" class="input" formControlName="correo"></ion-input>
+      </ion-item>
 
-      <label>Contraseña </label> 
-      <input type="password" class="inputText" formControlName="pass" />
+      <ion-item class="item"> 
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" class="input" formControlName="pass"></ion-input>
+      </ion-item>
+      
+      <ion-item class="item"> 
+      <ion-label position="floating">DNI</ion-label>
+      <ion-input type="text" class="input" [(ngModel)]="inputSetQr.dni" formControlName="dni"></ion-input>
+      </ion-item>
 
-      <label>DNI</label> 
-      <input type="text" class="inputText" formControlName="dni" />
 
-      <label>CUIL</label> 
-      <input type="text" class="inputText" formControlName="cuil" />
+      <ion-item class="item"> 
+      <ion-label class="label" position="floating">CUIL</ion-label>
+      <ion-input type="text" class="input" formControlName="cuil"></ion-input>
+      </ion-item>
 
-      <label>Categoria</label> 
-      <select name="perfil" class="inputSelect" formControlName="perfil">
-        <option value="" disabled="disabled" selected>Seleccione tipo de empleado</option>
-        <option value="1" selected>Mozo</option>
-        <option value="2">Cocinero</option>
-        <option value="3">Bartender</option>
-        <option value="4">Metre</option>
-        <option value="5">Anonimo</option>
-        <option value="6">Supervisor</option>
-        <option value="7">Duenio</option>
-        <option value="8">Repartidor</option>
-      </select><br>
 
-      <button class="btn foto found" (click)="cargarFoto()" [class.noFound]="foto" >Foto</button>
-      <button class="btn"  type="submit" [disabled]="forma.invalid || !foto">Guardar</button>
-      <button class="btn" (click)="cancelar()" >Cancelar</button>
+      <ion-item class="item"> 
+      <ion-label class="label" position="floating">Categoria</ion-label>
+      <ion-select class="select" name="perfil" class="inputSelect" formControlName="perfil">
+        <ion-select-option value="mozo" selected>Mozo</ion-select-option>
+        <ion-select-option value="cocinero">Cocinero</ion-select-option>
+        <ion-select-option value="bartender">Bartender</ion-select-option>
+        <ion-select-option value="metre">Metre</ion-select-option>
+        <ion-select-option value="repartidor">Repartidor</ion-select-option>
+      </ion-select> 
+      </ion-item>
+
+      <ion-button class="btn foto found" (click)="cargarFoto()" [class.noFound]="fotoCam" >Foto</ion-button>
+      <ion-button class="btn"  type="submit" [disabled]="forma.invalid || !fotoCam">Guardar</ion-button>
+
+    </div>
     </form>
 
-  </div>
-  
-
- <!--  <pre>
-    Estado: {{forma.valid}}
-    <br>
-    Status: {{forma.status}}
-  </pre>
-
-  {{forma.value | json}} -->
-
-</div>
 </ion-content>
+

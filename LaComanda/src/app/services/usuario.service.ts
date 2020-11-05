@@ -27,34 +27,24 @@ export class UsuarioService {
       if(snapshot){
         snapshot.forEach( doc => { 
 
-        if(doc.payload.doc.data()['id'] == uid) { 
-          this.user.id = doc.payload.doc.data()['id'];
-          this.user.nombre = doc.payload.doc.data()['nombre'];
-          this.user.apellido = doc.payload.doc.data()['apellido'];
-          this.user.dni = doc.payload.doc.data()['dni'];
-          this.user.cuil = doc.payload.doc.data()['cuil'];
-          this.user.foto = doc.payload.doc.data()['foto'];
-          this.user.perfil = doc.payload.doc.data()['perfil'];
-          this.user.correo = doc.payload.doc.data()['correo'];
+          if(doc.payload.doc.data()['id'] == uid) { 
+            this.user.id = doc.payload.doc.data()['id'];
+            this.user.nombre = doc.payload.doc.data()['nombre'];
+            this.user.apellido = doc.payload.doc.data()['apellido'];
+            this.user.dni = doc.payload.doc.data()['dni'];
+            this.user.cuil = doc.payload.doc.data()['cuil'];
+            this.user.foto = doc.payload.doc.data()['foto'];
+            this.user.perfil = doc.payload.doc.data()['perfil'];
+            this.user.correo = doc.payload.doc.data()['correo'];
 
-          console.log(`SE TRAER USUARIO ${this.user.nombre} ${this.user.perfil} desde usuario.service.ts`);
+            console.log(`SE TRAER USUARIO ${this.user.nombre} ${this.user.perfil} desde usuario.service.ts`);
 
-
-          if(this.user) {resolve(this.user)};
-        } 
-
-        
-        
+            if(this.user) {resolve(this.user)};
+          }
         });
-      }
-      else { this.showMessage('Error!! No se encuentra el documento Usuarios'); }
-      
-      
-
+      } else { this.showMessage('Error!! No se encuentra el documento Usuarios'); }
     });
-
-
-  })
+  });
   }
 
 

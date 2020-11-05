@@ -1,54 +1,75 @@
-<ion-content>
-  <div class="contenido">
-    <div class="formulario">
-      <form [formGroup]="forma" (ngSubmit)="altaProducto()">
-        <label>Nombre</label>
-        <input type="text" class="inputText" formControlName="nombre" />
+<app-header  [title]="title"></app-header>
 
-        <label>Descripcion </label>
-        <textarea class="textTarea" rows="4" cols="50" formControlName="descripcion"></textarea>
 
-        <label>Tiempo Elaboracion</label>
-        <input type="text" class="inputText" formControlName="timeElaboracion" />
-        <label>Precio</label>
-        <input type="text" class="inputText" formControlName="precio" />
+<ion-content *ngIf="userPerfil == 'cocinero' || userPerfil == 'bartender'" >
+ 
+      <form class="formulario" [formGroup]="forma" (ngSubmit)="altaProducto()">
+
+        <div class="box-form">
+          <ion-item class="item">
+            <ion-label class="label"  position="floating">Nombre</ion-label>
+            <ion-input type="text" class="input_text" formControlName="nombre"></ion-input>
+         </ion-item>
+
+          <ion-item class="item">
+            <ion-label class="label"  position="floating">Descripcion</ion-label>
+            <ion-textarea class="textTarea" rows="4" cols="50" formControlName="descripcion"></ion-textarea>
+          </ion-item>
+
+          <ion-item class="item">
+            <ion-label class="label"  position="floating">Tiempo Elaboracion</ion-label>
+            <ion-input type="text" class="input_text" formControlName="timeElaboracion" ></ion-input>
+          </ion-item>
+      
+          <ion-item class="item">
+            <ion-label class="label"  position="floating">Precio</ion-label>
+            <ion-input type="text" class="input_text" formControlName="precio"></ion-input>
+          </ion-item>
 
  
-        <div class="contenUpload">
-        <button *ngFor="let img of imageUpload; index as i" (click)="asignarImg(i)" class="btn upload" [class.isEmpty]="!img" >
+          <ion-item class="item"> 
+            <ion-label class="label" position="stacked" style="font-size: 2.10rem">Fotos</ion-label>
 
-          <div *ngIf="img else unFound" >
-            <img [src]="img"  alt="">
-          </div>  
 
-          <ng-template #unFound>
-            <img [src]="imageEmpty"  alt="">
-          </ng-template>
-        
-          
-          
-           
-        </button>
-      </div>
-       <!--  -->
-       <button type="submit" class="btn submit" [disabled]="forma.invalid" >Guardar</button>
-      </form>
-      
+            <div class="contenUpload">
 
+              <button (click)="asignarImg(1)" class="btn upload" [class.isEmpty]="!imagen1" >
+                <div *ngIf="imagen1 else unFound" >
+                  <img [src]="imagen1"  alt="">
+                </div>  
   
-    </div>
+                <ng-template #unFound>
+                  <img [src]="imageEmpty"  alt="">
+                </ng-template>
+              </button>
 
-    <!-- <pre>
-    Estado: {{forma.valid}}
-    <br>
-    Status: {{forma.status}}
-  </pre>
+              <button (click)="asignarImg(2)" class="btn upload" [class.isEmpty]="!imagen2" >
+                <div *ngIf="imagen2 else unFound" >
+                  <img [src]="imagen2"  alt="">
+                </div>  
 
-    {{forma.value | json}} -->
-  </div>
+                <ng-template #unFound>
+                  <img [src]="imageEmpty"  alt="">
+                </ng-template>
+              </button>
+
+              <button (click)="asignarImg(3)" class="btn upload" [class.isEmpty]="!imagen3" >
+                <div *ngIf="imagen3 else unFound" >
+                  <img [src]="imagen3"  alt="">
+              </div>  
+
+              <ng-template #unFound>
+                <img [src]="imageEmpty"  alt="">
+              </ng-template>
+              </button>
+
+            </div>
+
+          </ion-item>
+
+          <ion-button  type="submit" class="btn submit" [disabled]="(forma.invalid || !imagen1 || !imagen2 || !imagen3)" >Guardar</ion-button>
+      
+        </div>
+       </form>
 </ion-content>
-
-
-
-
 

@@ -1,87 +1,78 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-.contenido{
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    border: 1px solid black;
-    
+ion-content {
+    --background: none;
+    background-size: 100% 100%;
+    background-image: url(../../../../assets/image/fondo-alta.jpg);
 }
 
 .formulario{
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    height: 80%;
-    width: 90%;
-    top: 9rem;
-    
-}
-
-
-label, .inputText, .textTarea {
-     display: block;
-     width: 100%;
-     margin-top: .3rem;
-     
-}
-
-.textTarea{
-   resize: vertical;
-   max-height: 10rem;
-}
-
-label{
-    font-size: 2rem;
-}
-
-
-.inputText, .inputSelect, .textTarea{
-    border-radius: 1rem;
-    height: 3.5rem;
-    border: .1rem solid gray;
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
  
+} 
+
+.box-form{
+    width: 80%;
+    height: 90%;
+    background-image:none;
 }
 
+ .item{
+     margin-top: 1.5rem; 
+     border-radius: 2rem;
+ }
+ 
+ 
+ ion-button{
+    --background: none;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin: auto;
+    color: black;
+    font-size: 1.5rem;
+ }
 
+ ion-button:nth-of-type(2){
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+ }
 
-.btn{
-    display: inline;
-    background-color: rgb(0, 153, 255);
-    font-size: 2rem;
-    
-}
+ ion-button:nth-of-type(3){
+    margin-bottom: 2rem;
+ }
 
+ .label:nth-of-type(5){
+    font-size: 2.05rem;
+ }
+ 
 
-.submit{
-    width: 100%; 
-    height: 5rem;
+.contenUpload{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
     border-radius: .6rem;
+    border: 1px solid rgba(0, 0, 255, 0.5);
+    padding: 1rem 0;
 }
 
 .upload{
-    width: 27%;
-    margin: 1rem;
-    
+    margin: 0.5rem;
+    width: 33.33%;
 }
-
-
-.contenUpload{
-    margin: 1rem 0;
-    background-color: rgb(0, 238, 255);
-    border-radius: .6rem;
-}
-
-.btn:hover{
-    background-color: rgb(138, 208, 255);
-}
-
 
 .isEmpty{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.308);
+    width: 33.33%;
 }
  
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.submit{
+    margin-top: 1rem;
+}
