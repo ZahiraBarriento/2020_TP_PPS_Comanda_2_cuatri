@@ -1,12 +1,7 @@
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { UsuarioModel } from './usuario.model';
 
-export const perfil = [
-    {
-        correo: 'repartidor@gmail.com',
-        clave: '123456',
-        perfil: 'Repartidor',
-    },
+export const perfilJson = [
     {
         correo: 'duenio@gmail.com',
         clave: '123456',
@@ -16,6 +11,11 @@ export const perfil = [
         correo: 'anonimo@gmail.com',
         clave: '123456',
         perfil: 'anonimo',
+    },
+    {
+        correo: 'cliente@gmail.com',
+        clave: '123456',
+        perfil: 'cliente',
     },
     {
         correo: 'metre@gmail.com',
@@ -41,6 +41,16 @@ export const perfil = [
         correo: 'supervisor@gmail.com',
         clave: '123456',
         perfil: 'supervisor',
+    },
+    {
+        correo: 'repartidor@gmail.com',
+        clave: '123456',
+        perfil: 'repartidor',
     }
+];
 
-]
+export interface Perfil {
+    correo: string;
+    clave: string;
+    perfil: string;
+}

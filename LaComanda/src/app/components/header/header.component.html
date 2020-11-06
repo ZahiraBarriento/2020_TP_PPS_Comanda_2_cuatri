@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons  class="start" slot="start">
+    <ion-buttons  class="start" slot="start" (click)="verificar()">
       <ion-back-button *ngIf="!inshow"  defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>

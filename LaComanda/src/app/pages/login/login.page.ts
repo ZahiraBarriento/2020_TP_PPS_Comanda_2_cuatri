@@ -1,10 +1,10 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { perfil } from '../../models/perfil';
+import { Perfil, perfilJson } from '../../models/perfilJson';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 
@@ -13,10 +13,11 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   forma: FormGroup;
   credencial = { email: '', pass: '', displayName: '', photoURL: '' };
+  perfilJso: Perfil[];
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
@@ -26,25 +27,30 @@ export class LoginPage implements OnInit {
               public modalController: ModalController) {
 
     this.crearFormulario();
-
+    this.perfilJso = perfilJson;
   }
+
+  //#region Login
 
   async SignIn() {
 
     this.auth.login(this.credencial)
       .then(resAuth => {
         // envio el uid del auth para comparar el id de db usuario. Si existe lo traigo
-        this.userService.traerUsuario(resAuth.user.uid)
+        this.userService.traerUsuario(resAuth.user.uid, this.credencial.email)
           .then(resDb => {
             // Guardo en un local storage el usuario de la Base de Datos
             localStorage.setItem('userCatch', JSON.stringify(resDb));
             this.router.navigateByUrl('home');
           });
+      })
+      .catch( err => {
+        console.log("nose que pasa");
       });
   }
 
-  ngOnInit() {
-  }
+  //#endregion
+
 
   get correoNoValido() {
     return this.forma.get('email').invalid && this.forma.get('email');
@@ -54,6 +60,8 @@ export class LoginPage implements OnInit {
     return this.forma.get('pass').invalid && this.forma.get('pass');
   }
 
+  //#region Creacion del Formulario
+
   crearFormulario() {
     this.forma = this.fb.group({
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%a-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -61,68 +69,23 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //#endregion
+
   logPerfil(perfilTipo) {
 
-    switch (perfilTipo) {
-      case 'repartidor': {
-        this.credencial.email = perfil[0].correo;
-        this.credencial.pass = perfil[0].clave;
+    this.perfilJso.forEach( perfil => {
+
+      if (perfilTipo === perfil.perfil){
+        console.log(perfil);
+        this.credencial.email = perfil.correo;
+        this.credencial.pass = perfil.clave;
         this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
+        console.log('Credencial ' + this.credencial.email);
         this.SignIn();
 
-        console.log(this.credencial);
-        break;
+        return;
       }
-      case 'duenio': {
-        this.credencial.email = perfil[1].correo;
-        this.credencial.pass = perfil[1].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'anonimo': {
-        this.credencial.email = perfil[2].correo;
-        this.credencial.pass = perfil[2].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'metre': {
-        this.credencial.email = perfil[3].correo;
-        this.credencial.pass = perfil[3].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'bartender': {
-        this.credencial.email = perfil[4].correo;
-        this.credencial.pass = perfil[4].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'cocinero': {
-        this.credencial.email = perfil[5].correo;
-        this.credencial.pass = perfil[5].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'mozo': {
-        this.credencial.email = perfil[6].correo;
-        this.credencial.pass = perfil[6].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-      case 'supervisor': {
-        this.credencial.email = perfil[7].correo;
-        this.credencial.pass = perfil[7].clave;
-        this.credencial.photoURL = 'https://loremflickr.com/320/240/picture,face?random=2';
-        this.SignIn();
-        break;
-      }
-    }
+    });
   }
 
   async openModal(){
