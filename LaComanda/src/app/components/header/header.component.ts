@@ -8,10 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+
+  @Input() inshow: string;
   @Input() title: string;
+  
 
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) {
+ 
+  }
 
   logOut(){
     localStorage.removeItem('userCatch');
