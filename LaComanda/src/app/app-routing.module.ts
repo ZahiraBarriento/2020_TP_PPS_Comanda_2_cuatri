@@ -46,6 +46,18 @@ const routes: Routes = [
   {
     path: 'home/perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'supervisor',
+    loadChildren: () => import('./pages/encuestas/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
+  },
+  {
+    path: 'empleado',
+    loadChildren: () => import('./pages/encuestas/empleado/empleado.module').then( m => m.EmpleadoPageModule)
+  },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./pages/encuestas/cliente/cliente.module').then( m => m.ClientePageModule)
   }
 
 ];
