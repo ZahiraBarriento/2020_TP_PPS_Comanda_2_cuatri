@@ -1,10 +1,14 @@
-<app-header title="Alta Empleado"></app-header>
+<app-header title="ALTA EMPLEADO"></app-header>
 
 <ion-content>
 
     <form class="formulario" [formGroup]="forma" (ngSubmit)="altaEmpleado()">
+      
+      <div class="box-form">
+        <p align="center">
+          <img class="img" [src]="viewPic">
+        </p>
 
-    <div class="box-form">
       <ion-button class="btn qr" (click)="escanearQR()" [disabled]="false">
         Escanear QR DNI
       </ion-button> 
@@ -52,14 +56,11 @@
       </ion-select> 
       </ion-item>
 
-      <ion-button class="btn foto found" (click)="cargarFoto()" [class.noFound]="fotoCam" >Foto</ion-button>
-      <ion-button class="btn"  type="submit" [disabled]="forma.invalid || !fotoCam">Guardar</ion-button>
+      <ion-button class="btn foto found" (click)="cargarFoto()" [class.noFound]="fotoCam">Subir Foto</ion-button>
+      <br><br>
+      <ion-button class="btn"  type="submit" [disabled]="forma.invalid || !fotoCam">Aceptar</ion-button>
 
     </div>
     </form>
 
 </ion-content>
-<<<<<<< HEAD
-
-=======
->>>>>>> aac1380... update

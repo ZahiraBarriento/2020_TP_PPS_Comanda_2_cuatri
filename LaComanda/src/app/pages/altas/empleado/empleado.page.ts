@@ -17,6 +17,7 @@ export class EmpleadoPage implements OnInit {
 
   forma: FormGroup;
   userInput: Usuario = new Usuario();
+  viewPic: string = "../../../../assets/image/default.jpg";
 
   // Aqui cargo los datos del qr
   inputSetQr =  {

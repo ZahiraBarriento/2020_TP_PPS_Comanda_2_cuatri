@@ -14,8 +14,8 @@
       <ion-input *ngIf="!showPasswordText"  type="password" formControlName="pass"></ion-input>
       <ion-input *ngIf="showPasswordText"  type="text" formControlName="pass"></ion-input>
       <button class="eye" slot="end" ion-button icon-only type="button" (click)="showPasswordText = !showPasswordText">
-        <ion-icon *ngIf="showPasswordText" name="eye-outline"> </ion-icon>
-        <ion-icon *ngIf="!showPasswordText" name="eye-off-outline"> </ion-icon>
+        <ion-icon *ngIf="!showPasswordText" name="eye-outline"> </ion-icon>
+        <ion-icon *ngIf="showPasswordText" name="eye-off-outline"> </ion-icon>
       </button>
     </ion-item><br><br>
     <ion-button expand="block" [disabled]="!forma.valid" type="submit">Iniciar Sesión</ion-button><br>

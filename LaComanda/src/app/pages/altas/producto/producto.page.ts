@@ -47,8 +47,8 @@ export class ProductoPage implements OnInit {
     
     this.generarForm();
     this.userPerfil = JSON.parse(localStorage.getItem('userCatch'))['perfil'];
-    this.tipo = this.userPerfil == 'cocinero' ? 'plato' : this.userPerfil == 'bartender' ? 'bebida' : 'no permitida';
-    this.title = 'Alta ' + this.tipo;
+    this.tipo = this.userPerfil == 'cocinero' ? 'PLATO' : this.userPerfil == 'bartender' ? 'BEBIDA' : 'no permitida';
+    this.title = 'ALTA ' + this.tipo;
  
     
     //#region  BORRAR AL FINALIZAR PROYECTO

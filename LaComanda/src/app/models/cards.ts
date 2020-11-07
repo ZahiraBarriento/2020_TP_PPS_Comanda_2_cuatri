@@ -4,7 +4,7 @@ export const cards = [{
     cliente: [
         { title: 'BIENVENIDO A COMSERVY', photo: '../../../assets/image/plato.png', message: 'Gracias por elegirnos una vez más', action: '' },
         { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera o busca tu mesa si ya tenias una reserva.', action: 'qr' },
-        { title: 'TU MESA', photo: '', message: 'Escanea el código QR de tu mesa para acceder al menu.', action: 'mesa'},
+        { title: 'TU MESA', photo: '../../../assets/image/menu.png', message: 'Escanea el código QR de tu mesa para acceder al menu.', action: 'mesa'},
         { title: 'RESERVA', photo: '../../../assets/image/calendario.png', message: 'Reserva una mesa cuando quieras.', action: 'reserva' },
         { title: 'DELIVERY', photo: '../../../assets/image/delivery.png', message: 'Pedí tu comida de donde quieras que estes.', action: 'reserva' },
         { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Nos interesa tu opinion.', action: 'encuestaCliente' },
@@ -12,7 +12,7 @@ export const cards = [{
     ],
     anonimo: [
         { title: 'BIENVENIDO A COMSERVY', photo: '../../../assets/image/plato.png', message: 'Gracias por elegirnos una vez más', action: '' },
-        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera o busca tu mesa si ya tenias una reserva.', action: 'qr' }
+        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera.', action: 'qr' }
     ],
     duenio: [
         { title: 'ALTAS', photo: '../../../assets/image/add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas' },
@@ -22,10 +22,10 @@ export const cards = [{
         { title: 'MI PERFIL', photo: '../../../assets/image/supervisor.png', message: '', action: 'perfil' }
     ],
     supervisor: [
-        { title: 'ALTAS', photo: '../../../assets/image/mas.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas'  },
+        { title: 'ALTAS', photo: '../../../assets/image/add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas'  },
         { title: 'APROBACIONES PENDIENTES', photo: '../../../assets/image/user-add.png', message: 'Lista de clientes registrados sin ser aprobados.', action: 'checkReserva' },
         { title: 'RESERVAS', photo: '../../../assets/image/calendario.png', message: 'Confirma reservas hechas por los clientes.', action: 'checkReserva' },
-        { title: 'ENCUESTA', photo: '../../../assets/image/listaEspera.png', message: 'Selecciona un empleado o un cliente y llena un formulario con datos referentes a la persona.', action: 'encuestaSupervisor' },
+        { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Selecciona un empleado o un cliente y llena un formulario con datos referentes a la persona.', action: 'encuestaSupervisor' },
         { title: 'LISTA DE COMANDAS', photo: '../../../assets/image/comanda.png', message: 'Lista de todas las comandas realizadas.', action: 'listaComandas' },
         { title: 'MI PERFIL', photo: '../../../assets/image/supervisor.png', message: '', action: 'perfil' }
     ],
@@ -55,7 +55,7 @@ export const cards = [{
         { title: 'MI PERFIL', photo: '../../../assets/image/bartender.png', message: '', action: 'perfil' }
     ],
     altas: [
-        { title: 'ALTA DUEÑO/SUPERVISOR', photo: '../../../assets/image/supervisor.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altaSupervisor'  },
+        { title: 'ALTA DUEÑO/SUPERVISOR', photo: '../../../assets/image/supervisor-add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altaSupervisor'  },
         { title: 'ALTA EMPLEADO', photo: '../../../assets/image/empleado.png', message: 'Lista de clientes registrados sin ser aprobados.', action: 'altaEmpleado' },
         { title: 'ALTA MESA', photo: '../../../assets/image/plato.png', message: '', action: 'altaMesa' }
     ]
