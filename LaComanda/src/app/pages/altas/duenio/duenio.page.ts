@@ -15,8 +15,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./duenio.page.scss'],
 })
 export class DuenioPage implements OnInit {
+  viewPic: string = "../../../../assets/image/default.jpg";
   image;
-  yaSubioFoto = false;
 
     get nombre() {
       return this.tableForm.get("nombre").value;
@@ -59,7 +59,6 @@ export class DuenioPage implements OnInit {
   }
 
   ngOnInit() {    
-    this.yaSubioFoto = false;
   }
 
   tableForm = this.formBuilder.group({
@@ -101,7 +100,6 @@ export class DuenioPage implements OnInit {
     }
     this.camera.getPicture(options)
     .then(imageData => {
-        this.yaSubioFoto = true;
         this.image = `data:image/jpeg;base64,${imageData}`;
     });
   }

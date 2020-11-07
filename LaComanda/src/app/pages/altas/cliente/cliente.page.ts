@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoaderService } from '../../../services/loader.service';
 import { ToastController } from '@ionic/angular';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-cliente',
@@ -48,11 +49,12 @@ export class ClientePage implements OnInit {
     private qr: QrService,
     private loading : LoaderService,
     public toastController: ToastController,
-    private auth:AuthService) {
+    private auth:AuthService,
+    private userService:UsuarioService) {
   }
 
-  ngOnInit() {    
-    this.yaSubioFoto = false;
+  ngOnInit() {
+    this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
   }
 
   tableForm = this.formBuilder.group({

@@ -36,7 +36,6 @@ export class HomePage implements OnInit {
     this.info.forEach(element =>{
       if(element[perfil]){
         this.cards = element[perfil];
-        console.log(this.cards)
       }
     })
   }
@@ -65,6 +64,8 @@ export class HomePage implements OnInit {
       case 'reserva':
         //implementar reserva hecha por cliente
         break;
+      case 'encuestaCliente':
+        break;
 
       //DUEÑO/SUPERVISOR
       case 'altas':
@@ -80,6 +81,9 @@ export class HomePage implements OnInit {
       //METRE
       case 'listaEspera':
         //implementar lista con los clientes que esperar entrar y asignarle mesa
+        break;
+      case 'altaCliente':
+        this.router.navigateByUrl('/altas/cliente');
         break;
 
       //MOZO

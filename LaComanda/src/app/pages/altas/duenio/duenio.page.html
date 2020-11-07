@@ -1,13 +1,24 @@
+<ion-header [translucent]="true">
+  <app-header title="ALTA DUEÑO"></app-header>
+</ion-header>
+
 <ion-content>
   <div id="VntPrincipal">
   <ion-grid [fixed]="true">
     <form class="form" [formGroup]="tableForm" (ngSubmit)="onSubmitTable()">
       <ion-list>
+        <ion-row>
+          <ion-col size="12">
+            <p align="center">
+              <img class="img" [src]="viewPic">
+            </p>
+          </ion-col>
+        </ion-row>
 
         <ion-row>
           <ion-col size="12">
             <p align="center">
-              <ion-button (click)="EscanearQR()" style="margin-bottom: 7%;">Escanear QR</ion-button>
+              <ion-button (click)="EscanearQR()">Escanear QR</ion-button>
             </p>
           </ion-col>
         </ion-row>
@@ -33,7 +44,7 @@
         <ion-row>
           <ion-col size="12">
             <ion-item class="input">
-              <ion-label position="floating">Correo</ion-label>
+              <ion-label position="floating">Correo electrónico</ion-label>
               <ion-input formControlName="correo" type="inputText"></ion-input>
             </ion-item>
           </ion-col>
@@ -42,7 +53,7 @@
         <ion-row>
           <ion-col size="12">
             <ion-item class="input">
-              <ion-label position="floating">Clave</ion-label>
+              <ion-label position="floating">Contraseña</ion-label>
               <ion-input formControlName="clave" type="password"></ion-input>
             </ion-item>
           </ion-col>
@@ -86,7 +97,7 @@
         <ion-row>
           <ion-col size="12">
             <p align="center">
-              <ion-button [disabled]="yaSubioFoto" (click)="SubirFoto()">Subir Foto</ion-button>
+              <ion-button [disabled]="image" (click)="SubirFoto()">Subir Foto</ion-button>
             </p>
           </ion-col>
         </ion-row>

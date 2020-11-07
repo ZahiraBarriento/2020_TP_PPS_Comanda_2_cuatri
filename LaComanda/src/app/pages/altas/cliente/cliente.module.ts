@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientePageRoutingModule } from './cliente-routing.module';
 import { ClientePage } from './cliente.page';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { ClientePage } from './cliente.page';
     ClientePageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [ClientePage]
+  declarations: [ClientePage, HeaderComponent]
 })
 export class ClientePageModule {}

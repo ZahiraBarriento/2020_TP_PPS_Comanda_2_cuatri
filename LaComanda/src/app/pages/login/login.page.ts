@@ -126,7 +126,6 @@ export class LoginPage implements OnInit {
   }
 
   async openModal(){
-    // console.log('entro')
     const modal = await this.modalController.create({
       component: ModalComponent,
       cssClass: 'my-custom-modal-css'
@@ -148,6 +147,12 @@ export class LoginPage implements OnInit {
     });
 
     toast.present();
+  }
+
+  Registrarse(){
+    this.userService.mailFromLogin = this.forma.get('email').value;
+    this.userService.passFromLogin = this.forma.get('pass').value;
+    this.router.navigateByUrl('altas/cliente');
   }
 
 }

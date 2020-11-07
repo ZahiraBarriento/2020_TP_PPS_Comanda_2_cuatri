@@ -13,6 +13,8 @@ export class UsuarioService {
 
 
   user: UsuarioModel = new Usuario();
+  mailFromLogin = null;
+  passFromLogin = null;
 
   constructor(private fr: FirestoreService,
               private toastCtrl: ToastController) { }

@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>perfil</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+  <app-header title="MI PERFIL"></app-header>
 </ion-header>
 
 <ion-content>
+  <img [src]="image" alt="">
+  <h1>Nombre: </h1>
+  <h2>{{usuario.nombre}}</h2>
+  <h1>Apellido: </h1>
+  <h2>{{usuario.apellido}}</h2>
+  <h1>Correo electrónico: </h1>
+  <h2>{{usuario.correo}}</h2>
+  <h1>DNI: </h1>
+  <h2>{{usuario.dni}}</h2>
+  <h1>CUIL: </h1>
+  <h2>{{usuario.cuil}}</h2>
+  <h1>Tipo: </h1>
+  <h2>{{perfilStr}}</h2>
 
 </ion-content>

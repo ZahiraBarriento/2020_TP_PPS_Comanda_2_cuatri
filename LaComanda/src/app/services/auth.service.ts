@@ -34,7 +34,7 @@ export class AuthService {
 
   public async signOut() {
     this.auth.signOut();
-    this.navCtrl.navigateForward("login"); //probar esto
+    this.navCtrl.navigateForward("login");
   }
 
   public async register(mail, clave) {

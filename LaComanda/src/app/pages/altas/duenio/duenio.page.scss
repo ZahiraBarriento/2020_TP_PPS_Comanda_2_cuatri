@@ -1,7 +1,7 @@
 ion-content{
     --background: none;
-    background-size: 140%;
-    background-image: url(../../../../assets/image/fondo-duenio.png);
+    background-size: 100% 100%;
+    background-image: url(../../../../assets/image/fondo-alta.jpg);
 }
 ion-button{
     --background: none;
@@ -31,4 +31,9 @@ ion-list{
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+.img{
+    background: rgb(248, 173, 56);
+    padding:10px;
+    width: 90%;
 }

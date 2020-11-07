@@ -7,12 +7,12 @@ export const cards = [{
         { title: 'TU MESA', photo: '', message: 'Escanea el código QR de tu mesa para acceder al menu.', action: 'mesa'},
         { title: 'RESERVA', photo: '../../../assets/image/calendario.png', message: 'Reserva una mesa cuando quieras.', action: 'reserva' },
         { title: 'DELIVERY', photo: '../../../assets/image/delivery.png', message: 'Pedí tu comida de donde quieras que estes.', action: 'reserva' },
+        { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Nos interesa tu opinion.', action: 'encuestaCliente' },
         { title: 'MI PERFIL', photo: '../../../assets/image/user.png', message: '', action: 'perfil' }
     ],
     anonimo: [
         { title: 'BIENVENIDO A COMSERVY', photo: '../../../assets/image/plato.png', message: 'Gracias por elegirnos una vez más', action: '' },
-        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera o busca tu mesa si ya tenias una reserva.', action: 'qr' },
-        { title: 'MI PERFIL', photo: '../../../assets/image/user.png', message: '', action: 'perfil' }
+        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera o busca tu mesa si ya tenias una reserva.', action: 'qr' }
     ],
     duenio: [
         { title: 'ALTAS', photo: '../../../assets/image/add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas' },
@@ -30,7 +30,7 @@ export const cards = [{
         { title: 'MI PERFIL', photo: '../../../assets/image/supervisor.png', message: '', action: 'perfil' }
     ],
     metre: [
-        { title: 'ALTA CLIENTE', photo: '../../../assets/image/user-add.png', message: 'Agrega nuevos clientes al restaurante.', action: 'perfil' },
+        { title: 'ALTA CLIENTE', photo: '../../../assets/image/user-add.png', message: 'Agrega nuevos clientes al restaurante.', action: 'altaCliente' },
         { title: 'LISTA DE ESPERA', photo: '../../../assets/image/lista-espera.png', message: 'Acepta el ingreso de clientes al restaurante.', action: 'listaEspera' },
         { title: 'LISTA DE COMANDAS', photo: '../../../assets/image/comanda.png', message: 'Lista de todas las comandas realizadas.', action: 'listaComandas' },
         { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Dinos como fue entregado el espacio de trabajo.', action: 'encuestaEmpleado' },
