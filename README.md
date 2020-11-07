@@ -91,7 +91,7 @@ la tarea que se correspondia no se ha terminado, debera finalizarlo para la sigu
 :boy: <strong>Lucas Marino</strong><br>
 - <strong>Incorporación de QR dueño/supervisor (verificar)</strong><br> 
 <i>&nbsp;• Inconvenientes en la lectura del QR del dni, solo a un integrante le funciona y al resto no</i><br>
-- Terminar alta clientes :heavy_check_mark:<br>
+- <strong>Terminar alta clientes :heavy_check_mark:</strong><br>
 <i>&nbsp;• Se termino con el alta del cliente, sin lectura completa del QR</i><br>
 <i>&nbsp;• Finalización: 30/10</i><br><br>
 
@@ -130,15 +130,21 @@ los QR, le correponde uno a cada intengrante del grupo</p>
 :girl: <strong>Zahira Barriento</strong><br>
 - <strong> Terminar diseño del login :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 02/10</i><br>
-- <strong> QR mesa</strong><br><br>
+- <strong> Diseño home :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 05/10</i><br>
+- <strong> QR mesa (sin terminar)</strong><br><br>
 
 :boy: <strong>Lucas Marino</strong><br>
-- <strong> Diseño de altas correspondientes</strong><br><br>
+- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br><br>
+<i>&nbsp;• Finalización: 05/11</i><br>
+- <strong> QR ingreso (sin terminar)</strong><br><br>
 
 :boy: <strong>Juan Bugallo</strong><br>
-- <strong> Diseño de altas correspondientes</strong><br><br>
+- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br><br>
+<i>&nbsp;• Finalización: 02/10</i><br>
+- <strong> QR propina (sin terminar)</strong><br><br>
 
-<strong>Imagenes provisorias</strong>
+<strong>LOGIN</strong>
 <table>
   <thead>
     <th>Login clientes</th>
@@ -157,3 +163,63 @@ los QR, le correponde uno a cada intengrante del grupo</p>
     </tr>
   </tbody>
 </table>
+<br>
+<strong>HOME</strong>
+<table>
+  <thead>
+    <th>Anonimo</th>
+    <th>Bartender</th>
+    <th>Cliente</th>
+    <th>Cocinero</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <th>Dueño</th>
+    <th>Metre</th>
+    <th>Mozo</th>
+    <th>Supervisor</th>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-due%C3%B1o.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-due%C3%B1o.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-metre.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-metre.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-mozo.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-mozo.gif" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-supervisor.gif">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-supervisor.gif" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<strong>ALTAS</strong>
