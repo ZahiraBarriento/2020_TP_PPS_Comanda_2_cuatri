@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
 
   constructor(private router : Router) {
       this.user = localStorage.getItem('userCatch'); //obtengo user
-      this.user = JSON.parse(this.user); 
+      this.user = JSON.parse(this.user);
       this.showCard(this.user.perfil);
     }
 

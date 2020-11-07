@@ -2,7 +2,6 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import { perfil } from 'src/app/models/perfil';
 import { ProductoInterface } from 'src/app/models/producto.interface';
 import { FirestoreService } from 'src/app/services/firestore.service';
 

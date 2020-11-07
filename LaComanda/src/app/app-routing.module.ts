@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    /* canActivate: [NologinGuard] */
+    canActivate: [NologinGuard],
   },
   {
     path: '',
@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    /* canActivate: [AuthGuard] */
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
@@ -46,6 +46,18 @@ const routes: Routes = [
   {
     path: 'home/perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'supervisor',
+    loadChildren: () => import('./pages/encuestas/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
+  },
+  {
+    path: 'empleado',
+    loadChildren: () => import('./pages/encuestas/empleado/empleado.module').then( m => m.EmpleadoPageModule)
+  },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./pages/encuestas/cliente/cliente.module').then( m => m.ClientePageModule)
   }
 
 ];

@@ -1,0 +1,239 @@
+<app-header title="Encuesta"></app-header>
+
+<ion-content padding>
+  <div>
+    <ion-list-header> </ion-list-header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="lb"
+            >¿Del 1 al 10 que tan satisfecho esta con su puesto?</ion-label
+          >
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-range min="1" max="3" pin="true">
+              <ion-icon range-left name="sad"></ion-icon>
+              <ion-icon range-right name="happy"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="lb">¿Que herriamientas f?</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-input placeholder="Escriba su opinión" [(ngModel)]="dos">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="lb"
+            >Cree que su jefe recompensa su trabajo?</ion-label
+          >
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-list
+          radio-group
+          style="
+            margin: 0 30px 0 0;
+            width: 70%;
+            font-size: 150%;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          <ion-col col-6>
+            <ion-item>
+              <ion-label>Sí</ion-label>
+              <ion-radio value="si" checked></ion-radio>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-6>
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio value="no"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-list>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="lb"
+            >¿Que tan razonable son las desisiones tomadas por su
+            Jefe?</ion-label
+          >
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>Elija una opción</ion-label>
+            <ion-select>
+              <ion-option value="si">Sí</ion-option>
+              <ion-option value="no">No</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="lb"
+            >¿Que tanto tiempo se toma su Jefe en la toma de
+            decisiones?</ion-label
+          >
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label>Sí</ion-label>
+            <ion-checkbox (click)="pruebita()" value="si" checked
+              >Si</ion-checkbox
+            >
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-6>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-checkbox (click)="pruebitaDos()" value="no">No</ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <button
+            ion-button
+            outline
+            color="red"
+            style="
+              margin: 0 30px 0 0;
+              width: 70%;
+              font-size: 150%;
+              display: block;
+              margin: 0 auto;
+            "
+            (click)="SacarFoto()"
+          >
+            Tomar Foto
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <img [src]="foto" alt="" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12 style="padding-bottom: 50px">
+          <button
+            ion-button
+            color="red"
+            style="
+              margin: 0 30px 0 0;
+              width: 70%;
+              display: block;
+              margin: 0 auto;
+            "
+            (click)="enviarEncuesta()"
+          >
+            Enviar la encuesta
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="contenidoCharts" *ngIf="probabilidad">
+    <h1 class="realizarEncuesta">Resultados de las encuestas</h1>
+
+    <div class="pregunta1">
+      <h2 class="asd">Pregunta 1, ¿Cuán limpio es el lugar?</h2>
+
+      <div class="canvas">
+        <canvas
+          baseChart
+          class="altoCanvas"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+
+    <div class="pregunta4">
+      <h2 class="asd">Pregunta 4, ¿Le pagan bien?</h2>
+
+      <div class="canvas">
+        <canvas
+          baseChart
+          class="altoCanvas"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+
+    <div class="pregunta3">
+      <h2 class="asd">Pregunta 3, ¿Le tratan bien sus jefes?</h2>
+
+      <div class="canvas">
+        <canvas
+          baseChart
+          class="altoCanvas"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+    
+    <div class="pregunta5">
+      <h2 class="asd">Pregunta 5, ¿Dejaría de trabajar acá?</h2>
+
+      <div class="canvas">
+        <canvas
+          baseChart
+          class="altoCanvas"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+    <button
+      ion-button
+      color="red"
+      style="
+        margin: 0 30px 0 0;
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 80px;
+      "
+      (click)="Logout()"
+    >
+      Salir
+    </button>
+  </div>
+</ion-content>

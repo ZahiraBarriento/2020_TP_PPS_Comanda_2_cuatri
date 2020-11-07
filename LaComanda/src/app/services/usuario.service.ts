@@ -13,6 +13,7 @@ export class UsuarioService {
 
 
   user: UsuarioModel = new Usuario();
+  userCatch;
   mailFromLogin = null;
   passFromLogin = null;
 
@@ -20,16 +21,17 @@ export class UsuarioService {
               private toastCtrl: ToastController) { }
 
 
-  traerUsuario(uid: string) {
+  traerUsuario(uid: string, correo: string) {
 
     return new Promise( (resolve, reject) => { 
 
     this.fr.getDataAll('usuarios').subscribe( snapshot => {
+      let state = false;
 
       if(snapshot){
         snapshot.forEach( doc => { 
 
-          if(doc.payload.doc.data()['id'] == uid) { 
+          if(doc.payload.doc.data()['id'] == uid && doc.payload.doc.data()['correo'] == correo) { 
             this.user.id = doc.payload.doc.data()['id'];
             this.user.nombre = doc.payload.doc.data()['nombre'];
             this.user.apellido = doc.payload.doc.data()['apellido'];
@@ -41,9 +43,16 @@ export class UsuarioService {
 
             console.log(`SE TRAER USUARIO ${this.user.nombre} ${this.user.perfil} desde usuario.service.ts`);
 
-            if(this.user) {resolve(this.user)};
+            if(this.user) {
+              state = true;
+              resolve(this.user);
+            }
+
           }
+ 
         });
+
+        if(!state) { this.showMessage('Usuario y/o contraseña incorrecto'); }
       } else { this.showMessage('Error!! No se encuentra el documento Usuarios'); }
     });
   });
