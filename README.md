@@ -125,7 +125,8 @@ la tarea que se correspondia no se ha terminado, debera finalizarlo para la sigu
 <br><br>
 <h3 style="text-align: center;">:calendar: Semana del 31/10 al 06/11</h3>
 <p>Ya en esta semana los diseños de todas las altas tienen que estar relizados, se han divido a realizar
-los QR, le correponde uno a cada intengrante del grupo</p>
+los QR, le correponde uno a cada intengrante del grupo. El integrante Juan Bugallo comenzo con la lógica de su encuesta
+pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 
 :girl: <strong>Zahira Barriento</strong><br>
 - <strong> Terminar diseño del login :heavy_check_mark:</strong><br>
@@ -135,12 +136,12 @@ los QR, le correponde uno a cada intengrante del grupo</p>
 - <strong> QR mesa (sin terminar)</strong><br><br>
 
 :boy: <strong>Lucas Marino</strong><br>
-- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br><br>
+- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 05/11</i><br>
 - <strong> QR ingreso (sin terminar)</strong><br><br>
 
 :boy: <strong>Juan Bugallo</strong><br>
-- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br><br>
+- <strong> Diseño de altas correspondientes :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 02/10</i><br>
 - <strong> QR propina (sin terminar)</strong><br><br>
 
@@ -223,3 +224,49 @@ los QR, le correponde uno a cada intengrante del grupo</p>
 </table>
 <br>
 <strong>ALTAS</strong>
+<table>
+  <thead>
+    <th>Bebida</th>
+    <th>Cliente</th>
+    <th>Dueño</th>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-bebida.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-bebida.jpeg" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-cliente.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-cliente.jpeg" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-due%C3%B1o.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-due%C3%B1o.jpeg" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <th>Empleado</th>
+    <th>Mesa</th>
+    <th>Plato</th>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-empleado.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-empleado.jpeg" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-mesa.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-mesa.jpeg" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-plato.jpeg">
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-plato.jpeg" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
