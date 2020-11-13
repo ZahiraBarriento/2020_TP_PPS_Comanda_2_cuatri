@@ -41,6 +41,7 @@ export class UsuarioService {
             this.user.perfil = doc.payload.doc.data()['perfil'];
             this.user.correo = doc.payload.doc.data()['correo'];
             this.user.activated = doc.payload.doc.data()['activated'];
+            this.user.listaEspera = false;
 
             if(this.user) {
               state = true;

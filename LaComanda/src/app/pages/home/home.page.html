@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <app-header (state)="showView = $event" [inshow]="!showView"  title="INICIO" ></app-header>
 </ion-header>
-  
-
 <ion-content [fullscreen]="true">
   <div id="HomePrincipal">
     <div *ngFor="let card of cards">

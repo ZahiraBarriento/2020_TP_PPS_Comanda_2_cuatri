@@ -26,6 +26,7 @@ export class PerfilPage implements OnInit {
     this.usuario.dni = datos["dni"];
     this.usuario.cuil = datos["cuil"];
     this.usuario.foto = datos["foto"];
+    this.usuario.listaEspera = false;
 
     this.image = this.usuario.foto;
     this.usuario.perfil = datos["perfil"];
