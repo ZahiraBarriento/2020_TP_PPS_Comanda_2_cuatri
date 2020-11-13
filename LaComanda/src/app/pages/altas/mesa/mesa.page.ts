@@ -6,7 +6,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FirestoreService } from '../../../services/firestore.service';
 import { QrService } from '../../../services/qr.service';
 import { LoaderService } from '../../../services/loader.service';
-import { ToastController } from '@ionic/angular';
+import { FuctionsService } from '../../../services/fuctions.service';
 
 @Component({
   selector: 'app-mesa',
@@ -43,7 +43,7 @@ export class MesaPage implements OnInit {
     private firestroge: FirestoreService,
     private qr: QrService,
     private loading : LoaderService,
-    public toastController: ToastController) {
+    private alert : FuctionsService) {
   }
   //#endregion
 
@@ -82,7 +82,9 @@ export class MesaPage implements OnInit {
         type: this.type.value,
         capacity: this.people.value,
         photo: this.image,
-        qr: 'mesa_' + this.number.value
+        status: false,
+        qr: 'mesa_' + this.number.value,
+        client: '',
       }
       this.table.forEach((element: any) => {
         if (element.number != json.number) { //valido que la mesa no este cargada
@@ -90,7 +92,7 @@ export class MesaPage implements OnInit {
           this.firestroge.addData('mesa', json); //guardo los datos en la base
           this.router.navigate(['/home']);//mandamos al home
         } else {
-          this.presentToast("¡El número de la mesa ya existe!", "danger");
+          this.alert.presentToast("¡El número de la mesa ya existe!", "danger");
           //console.log(':(');
         }
       })
@@ -123,14 +125,5 @@ export class MesaPage implements OnInit {
     setTimeout(() =>{
       this.router.navigate(['/home']);
     }, 1000)
-  }
-
-  async presentToast(mensaje:string, color: string) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: 2000,
-      color: color
-    });
-    toast.present();
   }
 }

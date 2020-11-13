@@ -1,0 +1,15 @@
+ion-avatar{
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 100px !important;  
+    max-height: 100px !important;
+}
+h5{
+    font-size: 4vw;
+    font-family: TCM;
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(../../../assets/fonts/AnyConv.com__TCM_____.woff);
+}

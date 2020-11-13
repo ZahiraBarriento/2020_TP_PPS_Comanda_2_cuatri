@@ -3,18 +3,19 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="image" alt="">
-  <h1>Nombre: </h1>
-  <h2>{{usuario.nombre}}</h2>
-  <h1>Apellido: </h1>
-  <h2>{{usuario.apellido}}</h2>
-  <h1>Correo electrónico: </h1>
-  <h2>{{usuario.correo}}</h2>
-  <h1>DNI: </h1>
-  <h2>{{usuario.dni}}</h2>
-  <h1>CUIL: </h1>
-  <h2>{{usuario.cuil}}</h2>
-  <h1>Tipo: </h1>
-  <h2>{{perfilStr}}</h2>
-
+  <br><br>
+  <div class="circular--portrait">
+    <img [src]="image" alt="">
+  </div>
+  <br><br>
+  <ion-card>
+    <ion-card-content>
+      <h1><strong>Nombre: </strong>{{usuario.nombre}}</h1>
+      <h1><strong>Apellido: </strong>{{usuario.apellido}}</h1>
+      <h1><strong>Correo electrónico: </strong>{{usuario.correo}}</h1>
+      <h1><strong>DNI: </strong>{{usuario.dni}}</h1>
+      <h1><strong>CUIL: </strong>{{usuario.cuil}}</h1>
+      <h1><strong>Perfil: </strong>{{perfilStr}}</h1>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -5,8 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Perfil, perfilJson } from '../../models/perfilJson';
-import { ModalController } from '@ionic/angular';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { FuctionsService } from '../../services/fuctions.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginPage {
               private router: Router,
               private toastCtrl: ToastController,
               private userService: UsuarioService,
-              public modalController: ModalController) {
+              public modalController: FuctionsService) {
 
     this.crearFormulario();
     this.perfilJso = perfilJson;
@@ -88,12 +88,8 @@ export class LoginPage {
     });
   }
 
-  async openModal(){
-    const modal = await this.modalController.create({
-      component: ModalComponent,
-      cssClass: 'my-custom-modal-css'
-    });
-    return await modal.present();
+  async anonimo(){
+    this.modalController.openModal(ModalComponent);
   }
 
   logUser() {

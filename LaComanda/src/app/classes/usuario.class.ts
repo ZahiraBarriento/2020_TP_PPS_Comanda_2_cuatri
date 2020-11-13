@@ -13,6 +13,8 @@ export class Usuario implements UsuarioModel{
     pass: string;
     correo: string;
     activated = true;
+    listaEspera : boolean;
+
 
     constructor(){
     }

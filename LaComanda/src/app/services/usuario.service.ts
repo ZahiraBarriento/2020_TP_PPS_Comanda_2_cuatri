@@ -40,6 +40,7 @@ export class UsuarioService {
             this.user.foto = doc.payload.doc.data()['foto'];
             this.user.perfil = doc.payload.doc.data()['perfil'];
             this.user.correo = doc.payload.doc.data()['correo'];
+            this.user.listaEspera = false;
 
             console.log(`SE TRAER USUARIO ${this.user.nombre} ${this.user.perfil} desde usuario.service.ts`);
 

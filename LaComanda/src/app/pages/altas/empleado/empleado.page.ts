@@ -111,6 +111,7 @@ export class EmpleadoPage implements OnInit {
         perfil: this.userInput.perfil,
         correo: this.userInput.correo,
         pass: this.userInput.pass,
+        listaEspera: false,
       };
       this.db.addData('usuarios', json);
 

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
-import { element } from 'protractor';
 import { cards } from '../../models/cards';
+import { ModalController } from '@ionic/angular';
+import { ListaEsperaComponent } from 'src/app/components/lista-espera/lista-espera.component';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
   cards : any = [];
   alta : any = [];
 
-  constructor(private router : Router) {
+  constructor(private router : Router, private modalController: ModalController) {
       this.user = localStorage.getItem('userCatch'); //obtengo user
       this.user = JSON.parse(this.user);
       this.showCard(this.user.perfil);
@@ -80,7 +80,7 @@ export class HomePage implements OnInit {
 
       //METRE
       case 'listaEspera':
-        //implementar lista con los clientes que esperar entrar y asignarle mesa
+        this.router.navigateByUrl('/administrar');
         break;
       case 'altaCliente':
         this.router.navigateByUrl('/altas/cliente');
@@ -106,8 +106,17 @@ export class HomePage implements OnInit {
 
       //TODOS
       case 'perfil':
-        this.router.navigateByUrl('/home/perfil'); //hacer pagina
+        this.router.navigateByUrl('/home/perfil');
         break;
     }
+  }
+
+  //LO HAGO CON MODAL Y LUEGO ME FIJO COMO HACER 
+  async openModal(component){
+    const modal = await this.modalController.create({
+      component: component,
+      cssClass: 'modal-component'
+    });
+    return await modal.present();
   }
 }
