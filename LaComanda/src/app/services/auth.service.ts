@@ -13,6 +13,7 @@ import { promise } from 'protractor';
 export class AuthService {
 
   user: User;
+  esClienteActivado = true;
 
   constructor(private auth: AngularFireAuth, private navCtrl: NavController) {
     this.auth.authState.subscribe((resp) => {

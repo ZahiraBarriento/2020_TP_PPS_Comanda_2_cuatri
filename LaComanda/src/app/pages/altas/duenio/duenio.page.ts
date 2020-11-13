@@ -111,11 +111,11 @@ export class DuenioPage implements OnInit {
         "nombre": this.nombre,
         "apellido": this.apellido,
         "correo": this.correo,
-        "clave": this.clave,
+        "pass": this.clave,
         "dni": this.dni,
         "cuil": this.cuil,
         "foto": this.image,
-        "actived": true,
+        "activated": true,
         "perfil": this.type,
       };
       this.firestore.addData("usuarios", json);

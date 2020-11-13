@@ -4,27 +4,39 @@
   
 
 <ion-content [fullscreen]="true">
-  <div *ngFor="let card of cards">
-    <ion-card *ngIf="!showView">
-      <ion-card-content (click)="action(card.action)">
-        <p align="center" class="title">
-          {{card.title}}<br>
-          <img src="{{card.photo}}">
-        </p>
-        <p align="center" class="text">
-          {{card.message}}
-        </p>
-      </ion-card-content>
-    </ion-card>
+  <div id="HomePrincipal">
+    <div *ngFor="let card of cards">
+      <ion-card *ngIf="!showView">
+        <ion-card-content (click)="action(card.action)">
+          <p align="center" class="title">
+            {{card.title}}<br>
+            <img src="{{card.photo}}">
+          </p>
+          <p align="center" class="text">
+            {{card.message}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngFor="let card of alta">
+      <ion-card *ngIf="showView">
+        <ion-card-content (click)="page(card.action)">
+          <p align="center" class="title">
+            {{card.title}}<br>
+            <img src="{{card.photo}}">
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>  
+
+  <div class="listaEspera" [hidden]="!estoyListaEspera">
+      <h1 align="center" id="txtListaEspera">¿Cuantos van a disfrutar de nuestros platos?</h1>
+      <p align="center"><input id="numListaEspera" type="number" min="1" max="6" value="1"><br><br></p>
+      <button style="margin-left: 10px;">Cancelar</button>
+      <button align="right" style="margin-right: 10px;">Aceptar</button>
+    
   </div>
-  <div *ngFor="let card of alta">
-    <ion-card *ngIf="showView">
-      <ion-card-content (click)="page(card.action)">
-        <p align="center" class="title">
-          {{card.title}}<br>
-          <img src="{{card.photo}}">
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </div>
+
 </ion-content>
+

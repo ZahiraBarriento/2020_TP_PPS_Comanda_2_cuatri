@@ -39,9 +39,17 @@ export class LoginPage {
         // envio el uid del auth para comparar el id de db usuario. Si existe lo traigo
         this.userService.traerUsuario(resAuth.user.uid, this.credencial.email)
           .then(resDb => {
-            // Guardo en un local storage el usuario de la Base de Datos
-            localStorage.setItem('userCatch', JSON.stringify(resDb));
-            this.router.navigateByUrl('home');
+
+            if (resDb['activated']){
+              // Guardo en un local storage el usuario de la Base de Datos
+              localStorage.setItem('userCatch', JSON.stringify(resDb));
+              this.router.navigateByUrl('home');
+            }
+            else {
+              console.log("EL USUARIO NO ESTA ACTIVADO");
+              //MOSTRAR ERROR LUCAS
+            }
+            
           });
       })
       .catch( err => {
