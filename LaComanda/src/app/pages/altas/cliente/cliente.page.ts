@@ -55,6 +55,7 @@ export class ClientePage implements OnInit {
 
   ngOnInit() {
     this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
+    this.image = "prueba";
   }
 
   tableForm = this.formBuilder.group({
@@ -101,12 +102,14 @@ export class ClientePage implements OnInit {
         "nombre": this.nombre,
         "apellido": this.apellido,
         "correo": this.correo,
-        "clave": this.clave,
+        "pass": this.clave,
         "dni": this.dni,
         "foto": this.image,
-        "actived": true,
+        "perfil": "cliente",
+        "activated": false
       };
       this.firestore.addData("usuarios", json);
+      this.auth.esClienteActivado = false;
       this.VolverAtrasSpinner();
     });
   }
@@ -130,7 +133,7 @@ export class ClientePage implements OnInit {
     document.getElementById("VntPrincipal").style.opacity = "0.2";
     setTimeout(() =>{
       document.getElementById("VntPrincipal").style.opacity = "1";
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     }, 2000);
   }
 }

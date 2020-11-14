@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
-import { element } from 'protractor';
 import { cards } from '../../models/cards';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,19 +16,24 @@ export class HomePage implements OnInit {
   info = cards;
   cards : any = [];
   alta : any = [];
+  estoyListaEspera = false;
 
-  constructor(private router : Router) {
+  constructor(private router : Router, private modalController: ModalController) {
       this.user = localStorage.getItem('userCatch'); //obtengo user
       this.user = JSON.parse(this.user);
       this.showCard(this.user.perfil);
+      if (this.user != null)
+        this.showCard(this.user.perfil);
+      else 
+        this.router.navigate(['login']);
     }
 
   ngOnInit(): void {
     this.info.forEach(element =>{
       element.altas.map(item => {
         this.alta.push(item);
-      })
-    })
+      });
+    });
   }
 
   showCard(perfil){
@@ -59,7 +63,8 @@ export class HomePage implements OnInit {
     switch(param){
       //CLIENTE
       case 'qr':
-        //implementar qr para la lista de espera
+        document.getElementById("HomePrincipal").style.opacity = "0.4";
+        this.estoyListaEspera = true;
         break;
       case 'reserva':
         //implementar reserva hecha por cliente
@@ -71,8 +76,8 @@ export class HomePage implements OnInit {
       case 'altas':
         this.showView = true;
         break;
-      case 'checkReserva':
-        //implementar, creo que se hace una pag
+      case 'aprobarUsuario':
+        this.router.navigateByUrl('aprobar-usuario');
         break;
       case 'encuestaSupervisor':
         //implementar encuesta
@@ -80,7 +85,7 @@ export class HomePage implements OnInit {
 
       //METRE
       case 'listaEspera':
-        //implementar lista con los clientes que esperar entrar y asignarle mesa
+        this.router.navigateByUrl('/administrar');
         break;
       case 'altaCliente':
         this.router.navigateByUrl('/altas/cliente');
@@ -106,8 +111,17 @@ export class HomePage implements OnInit {
 
       //TODOS
       case 'perfil':
-        this.router.navigateByUrl('/home/perfil'); //hacer pagina
+        this.router.navigateByUrl('/home/perfil');
         break;
     }
+  }
+
+  //LO HAGO CON MODAL Y LUEGO ME FIJO COMO HACER 
+  async openModal(component){
+    const modal = await this.modalController.create({
+      component: component,
+      cssClass: 'modal-component'
+    });
+    return await modal.present();
   }
 }

@@ -1,0 +1,20 @@
+.avatar{
+    width: 100%;
+    height: 100%;
+}/*
+ion-content, ion-footer, ion-toolbar, ion-item, ion-list{
+    --background:none;
+    background-color:rgba(36, 150, 226, 0.8);
+}*/
+ion-button{
+    width: 100%;
+    color: black;
+}
+p{
+    font-size: 6vw;
+    font-family: TCM;
+}
+@font-face{
+    font-family: TCM;
+    src: url(../../../assets/fonts/AnyConv.com__TCM_____.woff);
+}

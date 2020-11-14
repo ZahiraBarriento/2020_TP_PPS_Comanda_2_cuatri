@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { PerfilPageRoutingModule } from './perfil-routing.module';
-import { PerfilPage } from './perfil.page';
+
+import { ConsultaPageRoutingModule } from './consulta-routing.module';
+
+import { ConsultaPage } from './consulta.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -11,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfilPageRoutingModule,
+    ConsultaPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [PerfilPage]
+  declarations: [ConsultaPage]
 })
-export class PerfilPageModule {}
+export class ConsultaPageModule {}

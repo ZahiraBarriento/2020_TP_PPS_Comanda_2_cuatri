@@ -60,10 +60,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/encuestas/cliente/cliente.module').then( m => m.ClientePageModule)
   },
   {
+<<<<<<< HEAD
     path: 'pedir-platos-bebidas',
     loadChildren: () => import('./pages/gestion/pedir-platos-bebidas/pedir-platos-bebidas.module').then( m => m.PedirPlatosBebidasPageModule)
+=======
+    path: 'administrar',
+    loadChildren: () => import('./pages/administrar/administrar.module').then( m => m.AdministrarPageModule)
+  },
+  {
+    path: 'consulta',
+    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule)
+>>>>>>> 15d179dce736d1341532ea36e43daa3951e2c70f
   }
-
 ];
 
 @NgModule({

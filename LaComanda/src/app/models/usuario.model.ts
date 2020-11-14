@@ -11,4 +11,5 @@ export interface UsuarioModel {
     correo: string;
     pass?: string;
     activated?: boolean;
+    listaEspera: boolean;
 }

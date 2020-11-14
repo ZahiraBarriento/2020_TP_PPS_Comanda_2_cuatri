@@ -11,9 +11,8 @@ export class NologinGuard implements CanActivate {
   
   constructor(private auth: AuthService, private router: Router){}
   canActivate() {
-
     return this.auth.stateUsuario().pipe(map(auth => { 
-      if (!auth) { this.router.navigateByUrl('/login'); return false; } else{ return true; }
+      if (!auth && this.auth.esClienteActivado) { this.router.navigateByUrl('/login'); return false; } else{ return true; }
     }));
   }
 }

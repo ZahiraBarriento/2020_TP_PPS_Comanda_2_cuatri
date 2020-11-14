@@ -4,6 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../services/loader.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FuctionsService } from '../../services/fuctions.service';
 
 @Component({
   selector: 'app-modal',
@@ -22,7 +23,7 @@ export class ModalComponent implements OnInit {
   //#endregion
 
   constructor(
-    private modalController : ModalController, 
+    private modalController : FuctionsService, 
     public formBuilder: FormBuilder,
     public router : Router,
     public loading : LoaderService,
@@ -47,12 +48,12 @@ export class ModalComponent implements OnInit {
     this.loading.showLoader();
     setTimeout(() =>{
       this.router.navigate(['/home']);
-      this.modalController.dismiss();
+      this.modalController.dismissModal();
     }, 1000)
   }
 
-  dismissModal(){
-    this.modalController.dismiss();
+  close(){
+    this.modalController.dismissModal();
   }
 
   onTakePicture() {

@@ -1,0 +1,14 @@
+<ion-content>
+  <ion-list *ngFor='let client of clients'>
+    <ion-item (click)="chooseTable(client)">
+      <ion-avatar slot="start">
+        <img src="{{client.foto}}">
+      </ion-avatar>
+      <ion-label>
+        <h5><strong>Nombre: </strong>{{client.nombre}}</h5>
+        <h5><strong>Apellido: </strong>{{client.apellido}}</h5>
+        <h5><strong>DNI: </strong>{{client.dni}}</h5>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
