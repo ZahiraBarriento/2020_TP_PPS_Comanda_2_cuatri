@@ -60,14 +60,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/encuestas/cliente/cliente.module').then( m => m.ClientePageModule)
   },
   {
-    path: 'aprobar-usuario',
-    loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
-  },  {
     path: 'administrar',
     loadChildren: () => import('./pages/administrar/administrar.module').then( m => m.AdministrarPageModule)
+  },
+  {
+    path: 'consulta',
+    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule)
   }
-
-
 ];
 
 @NgModule({

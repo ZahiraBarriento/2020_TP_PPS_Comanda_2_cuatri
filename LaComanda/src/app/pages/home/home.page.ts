@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cards } from '../../models/cards';
 import { ModalController } from '@ionic/angular';
-import { ListaEsperaComponent } from 'src/app/components/lista-espera/lista-espera.component';
 
 @Component({
   selector: 'app-home',
