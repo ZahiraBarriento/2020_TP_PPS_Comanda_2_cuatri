@@ -270,3 +270,24 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
     </tr>
   </tbody>
 </table>
+
+<br><br>
+<h3 style="text-align: center;">:calendar: Semana del 07/11 al 13/11</h3>
+<p>En esta semana la asignacion de tarea se realizo el día 09/11, se charlo sobre comenzar a hacer la funcionalidades de gestion de la aplicacion.</p>
+
+:girl: <strong>Zahira Barriento</strong><br>
+- <strong> Terminar QR mesa :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se realizo la asiganacion de mesa de los clientes que estan en la lista de espera, validando que no pueda tomar otro cliente una mesa asignada, y que un cliente no puedo tomar una mesa sin estar en la lista de espera</i><br>
+<i>&nbsp;• Finalización: 13/10</i><br>
+
+:boy: <strong>Lucas Marino</strong><br>
+- <strong> Realizar pre-registro clientes :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se verifica que el cliente no pueda acceder a la aplicacion sin ser aprobado anteriormente.</i><br>
+<i>&nbsp;• Finalización: 13/11</i><br>
+- <strong> QR ingreso :heavy_check_mark:</strong><br><br>
+<i>&nbsp;• Se coloca a los clientes en la lista de espera, no pueden tomar una mesa sin ser asignada anteriormente por el metre.</i><br>
+<i>&nbsp;• Finalización: 13/11</i><br>
+
+:boy: <strong>Juan Bugallo</strong><br>
+- <strong> Realizar pedido :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 13/11</i><br>
