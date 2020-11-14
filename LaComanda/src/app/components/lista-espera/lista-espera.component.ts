@@ -29,6 +29,8 @@ export class ListaEsperaComponent implements OnInit {
         this.allClients[count].uid = id;
         count++;
       })
+      this.clients = [];
+      
       this.allClients.forEach(element => {
         if (element.perfil == 'anonimo' || element.perfil == 'cliente') {
           if (element.listaEspera) {

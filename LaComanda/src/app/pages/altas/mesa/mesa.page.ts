@@ -1,11 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FirestoreService } from '../../../services/firestore.service';
 import { QrService } from '../../../services/qr.service';
-import { LoaderService } from '../../../services/loader.service';
 import { FuctionsService } from '../../../services/fuctions.service';
 
 @Component({
@@ -37,12 +35,10 @@ export class MesaPage implements OnInit {
   //#region Constructor
   constructor(
     public router: Router,
-    public alertController: AlertController,
     public formBuilder: FormBuilder,
     private camera: Camera,
     private firestroge: FirestoreService,
     private qr: QrService,
-    private loading : LoaderService,
     private alert : FuctionsService) {
   }
   //#endregion
@@ -76,6 +72,7 @@ export class MesaPage implements OnInit {
 
   //#region Submit
   onSubmitTable() {
+    var flag : boolean = false;
     //console.log('entro')
       var json = { //cargo los datos en un json para guardar en la BD
         number: this.number.value,
@@ -87,15 +84,18 @@ export class MesaPage implements OnInit {
         client: '',
       }
       this.table.forEach((element: any) => {
-        if (element.number != json.number) { //valido que la mesa no este cargada
-          this.qr.onCreateQR('mesa_' + this.number.value); //creo el qr y guardo en celular
-          this.firestroge.addData('mesa', json); //guardo los datos en la base
-          this.router.navigate(['/home']);//mandamos al home
-        } else {
-          this.alert.presentToast("¡El número de la mesa ya existe!", "danger");
-          //console.log(':(');
+        if (element.number == json.number) { //valido que la mesa no este cargada
+          flag = true;
         }
       })
+      if (!flag) { //valido que la mesa no este cargada
+        this.qr.onCreateQR('mesa_' + this.number.value); //creo el qr y guardo en celular
+        this.firestroge.addData('mesa', json); //guardo los datos en la base
+        this.router.navigate(['/home']);//mandamos al home
+      } else {
+        this.alert.presentToast("¡El número de la mesa ya existe!", "danger");
+        //console.log(':(');
+      }
   }
   //#endregion
 
@@ -112,18 +112,9 @@ export class MesaPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
       this.image = `data:image/jpeg;base64,${imageData}`;
-      //this.photo = true;
       this.viewPic = this.image;
     }, (err) => {
       console.log(err)
     });
-  }
-
-  onBack(){
-    //ver que el qr se sigue abriendo
-    this.loading.showLoader();
-    setTimeout(() =>{
-      this.router.navigate(['/home']);
-    }, 1000)
   }
 }

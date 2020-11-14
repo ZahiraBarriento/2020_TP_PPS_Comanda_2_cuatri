@@ -1,0 +1,123 @@
+  ion-content{
+    --background: transparent;
+    background-size: 100% 100%;
+    background-image: url(../../../../assets/image/fondo-alta.jpg);
+}   
+ 
+ ion-list-header,ion-item{
+    --background: transparent;
+ }
+
+ ion-list{
+     background-color: rgba(0, 0, 199, 0);
+ }
+
+.productoContenido{
+    display: grid;
+    width: 100vw;
+    grid-template-rows: 20% 40% 15% 25%;
+    grid-template-columns: 70% 30%;
+    grid-template-areas: 
+    "nombre imagen"
+    "descr imagen"
+    "precio imagen"
+    "cant cant";
+    grid-row-gap: .2rem;
+    grid-column-gap: 0.8rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.603);
+    border-radius: .4rem;
+}
+
+.platoNombre{
+   grid-area: nombre;
+   font-weight: bold;
+}
+
+.platoDesc{
+    grid-area: descr;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.platoImg{
+    grid-area: imagen;
+    width: 100%;
+    position: relative;
+    right: 1rem;
+}
+
+.platoPrecio{
+    grid-area: precio;
+    font-size: 1.3rem;
+    width: 50%;
+}
+
+.platoCant{
+    grid-area: cant;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    top: -1rem;
+     
+}
+
+.platoBoton{
+    border: 1px solid rgb(173, 173, 173);
+    width: 8rem;
+    padding: 0px;
+    height: 2.5rem;
+    border-radius: 2rem;
+    
+}
+
+.platoCant input{
+    background: transparent;
+    width: 50%;
+    height: 100%;
+    margin: 0rem;
+    border: 0rem;
+    text-align: center;
+    color: red;
+
+}
+
+ 
+.platoCant button{
+     background-color: transparent;
+     font-size: 1.5rem;
+     margin: 0rem;
+     width: 25%;
+     height: 100%;
+     border: 0rem;
+}
+
+.platoCant button:hover:active:focus {
+        border: none
+}
+
+.platoCant button:nth-of-type(2) {
+    color: red;
+}
+  
+.comprar{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    bottom: 0rem;
+    width: 100vw;
+}
+
+.comprar ion-button{
+    width: 80%;
+    margin-bottom: 0rem;
+}
+
+.tipo {
+    font-size: 2.5rem;
+}
+ 

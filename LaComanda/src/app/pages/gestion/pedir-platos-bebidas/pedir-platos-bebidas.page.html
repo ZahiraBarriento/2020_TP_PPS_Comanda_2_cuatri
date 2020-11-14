@@ -1,0 +1,64 @@
+<app-header title="Platos y Bebidas"></app-header>
+
+
+<!-- Inicio Menu -->
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-list-header class="tipo"> Comidas </ion-list-header>
+  </ion-list>
+  <ion-item-group *ngFor="let item of productos; let i = index">
+    <ion-item *ngIf="item.tipo == 'plato'">
+      <div class="productoContenido">
+        <ion-label class="platoNombre">{{item.nombre | titlecase}}</ion-label>
+        <ion-text class="platoDesc"> {{item.descripcion | titlecase}} </ion-text>
+        <ion-text class="platoPrecio">$ {{item.precio}} </ion-text>
+        <ion-img class="platoImg" [src]="item.foto1"> </ion-img>
+
+        
+        <div class="platoCant">
+          <div class="platoBoton">
+            <button (click)="descr(i,item)">-</button>
+            <input [id]="i" type="number" value="0" readonly disabled>
+            <button (click)="incr(i,item)">+</button>
+         </div>
+      </div>
+      </div>
+    </ion-item>
+  </ion-item-group>
+
+
+    
+  <ion-list>
+    <ion-list-header class="tipo"> Bebidas </ion-list-header>
+  </ion-list>
+  <ion-item-group *ngFor="let item of productos; let i = index">
+    <ion-item *ngIf="item.tipo == 'bebida'">
+      <div class="productoContenido">
+        <ion-label class="platoNombre">{{item.nombre | titlecase}}</ion-label>
+        <ion-text class="platoDesc"> {{item.descripcion | titlecase}} </ion-text>
+        <ion-text class="platoPrecio">$ {{item.precio}} </ion-text>
+        <ion-img class="platoImg" [src]="item.foto1"> </ion-img>
+
+        
+        <div class="platoCant">
+          <div class="platoBoton">
+            <button (click)="descr(i,item)">-</button>
+            <input [id]="i" type="number" value="0" readonly disabled>
+            <button (click)="incr(i,item)">+</button>
+         </div>
+      </div>
+      </div>
+    </ion-item> 
+  </ion-item-group> 
+  <br> <br> <br>
+  <div  class="comprar">
+    <ion-button (click)="confirmarPedido()">Aceptar pedido ( $ {{importeTotal}} )</ion-button>
+  </div>
+
+ 
+</ion-content>
+
+<!-- Fin Menu -->

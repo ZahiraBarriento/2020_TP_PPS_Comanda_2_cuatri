@@ -1,0 +1,37 @@
+ion-content{
+    background-size: cover;
+    background-position: center;
+    --background: none;
+    background-color: cornflowerblue;
+}
+
+.icon{
+    position: absolute;
+    margin-top: -2%;
+    font-size: 150%;
+    left: 1rem;
+}
+
+.enviar{
+    margin-top: 3%;
+    width: 20%;
+    height: 70%;
+}
+.enviar-icon{
+    font-size: 200%;
+}
+.message{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+.other{
+    background:white;
+}
+.my{
+    background: rgb(23, 168, 159);
+}
+ion-card{
+    margin-top: 10%;
+}
