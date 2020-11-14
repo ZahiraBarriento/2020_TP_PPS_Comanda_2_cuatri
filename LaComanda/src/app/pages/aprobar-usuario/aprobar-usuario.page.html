@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div align="center">
+  <div align="center" id="VntPrincipal">
 
     <div *ngFor="let user of usuariosPendientes" style="width: 90%;">
       <ion-card>
@@ -20,8 +20,12 @@
       </ion-card>
     </div>
 
-    <div *ngIf="noHayUsuariosPendientes">
-      <h1>NO TIENES USUARIOS PENDIENTES DE APROBACION</h1>
+    <div>
+      <h1 [hidden]="!mostrarSinUsuarios">NO TIENES USUARIOS PENDIENTES DE APROBACION</h1>
+    </div>
+
+    <div id="btnGuardar">
+      <ion-button [hidden]="!mostrarGuardar" (click)="Guardar()">Guardar cambios</ion-button>
     </div>
 
   </div>

@@ -14,10 +14,6 @@ export class FirestoreService {
     return this.db.collection(collection).snapshotChanges();
   }
 
-  public getDataAllLucas(collection:string){
-    return this.db.collection(collection).valueChanges();
-  }
-
   public addData(collection:string, json){
     this.db.collection(collection).add(json);
   }
