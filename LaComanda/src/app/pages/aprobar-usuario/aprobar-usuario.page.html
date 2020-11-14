@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <app-header title="PENDIENTES"></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div align="center">
+
+    <div *ngFor="let user of usuariosPendientes" style="width: 90%;">
+      <ion-card>
+        <ion-card-content>
+          <p align="center" class="dataUser">
+            Nombre: {{user.nombre}} <br> Apellido: {{user.apellido}}<br>Correo: {{user.correo}}<br>Dni: {{user.dni}} 
+          </p>
+          <div align="center">
+            <button class="btnHabilitar" (click)="HabilitarUser(user)" [hidden]="user.activated">Habilitar usuario</button>
+            <button class="btnDeshabilitar" (click)="DeshabilitarUser(user)" [hidden]="!user.activated">Cancelar</button>
+          </div>
+          
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngIf="noHayUsuariosPendientes">
+      <h1>NO TIENES USUARIOS PENDIENTES DE APROBACION</h1>
+    </div>
+
+  </div>
+
+</ion-content>
