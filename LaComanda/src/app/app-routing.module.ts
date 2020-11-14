@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'encuesta/cliente',
     loadChildren: () => import('./pages/encuestas/cliente/cliente.module').then( m => m.ClientePageModule)
+  },
+  {
+    path: 'pedir-platos-bebidas',
+    loadChildren: () => import('./pages/gestion/pedir-platos-bebidas/pedir-platos-bebidas.module').then( m => m.PedirPlatosBebidasPageModule)
   }
 
 ];

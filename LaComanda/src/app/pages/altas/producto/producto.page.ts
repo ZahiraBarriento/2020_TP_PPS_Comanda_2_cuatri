@@ -2,6 +2,7 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import { ToastController } from '@ionic/angular';
 import { ProductoInterface } from 'src/app/models/producto.interface';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -42,25 +43,19 @@ export class ProductoPage implements OnInit {
 
   constructor(private fb: FormBuilder,
               private camera: Camera,
-              private fr: FirestoreService ) {
+              private fr: FirestoreService,
+              private toastCtrl: ToastController ) {
     
     
     this.generarForm();
     this.userPerfil = JSON.parse(localStorage.getItem('userCatch'))['perfil'];
-    this.tipo = this.userPerfil == 'cocinero' ? 'PLATO' : this.userPerfil == 'bartender' ? 'BEBIDA' : 'no permitida';
+    this.tipo = this.userPerfil == 'cocinero' ? 'plato' : this.userPerfil == 'bartender' ? 'bebida' : 'no permitida';
     this.title = 'ALTA ' + this.tipo;
- 
-    
-    //#region  BORRAR AL FINALIZAR PROYECTO
-    /* this.imagen1 = '../../../../assets/image/anonymous.png';
-    this.imagen2 = '../../../../assets/image/anonymous.png';
-    this.imagen3 = '../../../../assets/image/anonymous.png';  */ 
-    //#endregion
 
     }
 
     ngOnInit(){
-      console.log(this.userPerfil);  
+      console.log(this.userPerfil);
     }
 
   generarForm(){
@@ -88,6 +83,9 @@ export class ProductoPage implements OnInit {
     };
 
       this.fr.addData('productos', jsonProducto);
+      this.showMessage(`Se ingresa ${this.nombre} como ${this.tipo}`);
+
+      this.resetearForm();
   }
 
 
@@ -116,6 +114,26 @@ export class ProductoPage implements OnInit {
     });
   }
 
-  
+  async showMessage(text) {
 
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'middle',
+    });
+
+    toast.present();
+  }
+
+
+  //#region Funcion reutilizable para resetear Formulario
+
+  resetearForm(){
+    this.forma.reset();
+    this.imagen1 = '../../../../assets/image/default.jpg';
+    this.imagen2 = '../../../../assets/image/default.jpg';
+    this.imagen3 = '../../../../assets/image/default.jpg';
+  }
+
+  //#endregion
 }
