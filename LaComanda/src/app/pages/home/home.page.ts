@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { QrService } from '../../services/qr.service';
 import { LoaderService } from '../../services/loader.service'
 import { ToastService } from '../../services/toast.service'
+import { FirestoreService } from '../../services/firestore.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,12 @@ export class HomePage implements OnInit {
   cards : any = [];
   alta : any = [];
 
-  constructor(private router : Router, private modalController: ModalController, private qr:QrService, private loader:LoaderService, private toast:ToastService) {
+  constructor(private router : Router, 
+    private modalController: ModalController, 
+    private qr:QrService, 
+    private loader:LoaderService, 
+    private toast:ToastService,
+    private db:FirestoreService) {
       this.user = localStorage.getItem('userCatch'); //obtengo user
       this.user = JSON.parse(this.user);
       this.showCard(this.user.perfil);
@@ -127,8 +133,10 @@ export class HomePage implements OnInit {
   }
 
   IngresoLocalQR(){
+    this.ActualizarClienteListaEspera();
     this.qr.onScanQR().then(() => {
       this.loader.showLoader();
+      this.ActualizarClienteListaEspera();
       setTimeout(() =>{
         this.toast.MostrarMensaje("Has ingresado al local, tan pronto como podamos te asignaremos una mesa!", false);
       }, 2000);
@@ -141,6 +149,28 @@ export class HomePage implements OnInit {
     });
   }
 
-}
+  ActualizarClienteListaEspera(){
+    var allUsers = new Array<any>();
+    
+    this.db.getDataAll('usuarios').subscribe((data) =>{
+      var count = 0;
+      if (count = 0){
+        allUsers.splice(0, allUsers.length);
+      }
+      data.map(item => {
+        const data = item.payload.doc.data();
+        const id = item.payload.doc.id;
+        allUsers.push(data);
+        allUsers[count].id = id;
+        count++;
+      });
 
+      allUsers.forEach(element => {
+        if (element["nombre"] == this.user["nombre"] && element["apellido"] == this.user["apellido"] && element["correo"] == this.user["correo"])
+           this.db.updateData('usuarios', element["id"], {listaEspera:true});
+        }
+    );
+  });
+}
+}
 
