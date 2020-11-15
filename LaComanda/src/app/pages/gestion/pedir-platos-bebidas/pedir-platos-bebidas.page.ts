@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { table } from 'console';
 
 import { Pedido } from 'src/app/classes/pedido.class';
+import { Producto } from 'src/app/classes/producto';
 
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { ProductoInterface } from 'src/app/models/producto.interface';
@@ -94,14 +94,13 @@ export class PedirPlatosBebidasPage implements OnInit {
 
     const pos = this.ordenPedido.indexOf(producto);
 
-    if (pos == -1){
+    if (pos === -1){
       producto.cantidad = 1;
       this.ordenPedido.push(producto);
     } else {
       this.ordenPedido[pos].cantidad += 1;
     }
-
-
+    console.log('Quito producto');
     console.log(this.ordenPedido);
   }
 
@@ -114,7 +113,7 @@ export class PedirPlatosBebidasPage implements OnInit {
       this.ordenPedido[pos].cantidad -= 1;
 
       // Si la cantidad del producto es 0 lo quito de la orden
-      if (this.ordenPedido[pos].cantidad == 0){
+      if (this.ordenPedido[pos].cantidad === 0){
         // Quito en una posicion dada
         this.ordenPedido.splice(pos, 1);
       }
@@ -127,81 +126,7 @@ export class PedirPlatosBebidasPage implements OnInit {
 
 confirmarPedido(){
 
-  let pedidoCocinero: PedidoInterface;
-  let pedidoBartender: PedidoInterface;
-
-  this.ordenPedido.forEach( producto => {
-
-    if (producto.tipo === 'plato') {
-
-      if ( !pedidoCocinero){
-        pedidoCocinero = new Pedido();
-        console.log('Coc vacio');
-      }
-
-      pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-      pedidoCocinero.importe = this.importeTotal;
-      pedidoCocinero.estado = 'aprobar';
-      pedidoCocinero.para = 'cocinero';
-      pedidoCocinero.productos.push(producto);
-    }
-    if (producto.tipo === 'bebida') {
-
-      if ( !pedidoBartender){
-        pedidoBartender = new Pedido();
-        console.log('Bar vacio');
-      }
-
-      pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-      pedidoBartender.importe = this.importeTotal;
-      pedidoBartender.estado = 'aprobar';
-      pedidoBartender.para = 'bartender';
-      pedidoBartender.productos.push(producto);
-
-    }
-  });
-
-  if ( pedidoCocinero){
-    this.pedidoFinal.push(pedidoCocinero);
-   }
-  if ( pedidoBartender){
-    this.pedidoFinal.push(pedidoBartender);
-  }
-  if ( this.pedidoFinal.length > 0) {
-
-    const json = {
-      nombre : '',
-      para : '',
-      estado : '',
-      importe : '',
-      producto: [] ,
-      };
-
-
-    this.pedidoFinal.forEach( item => {
-
-
-      json.nombre = item.cliente,
-      json.para = item.para,
-      json.estado = item.estado,
-      json.importe = item.importe.toString(),
-      item.productos.forEach(producto => {
-        json.producto.push(producto.nombre);
-      });
-
-      this.fr.addData('pedidos', json);
-    });
-
-    this.pedidoFinal = new Array() as PedidoInterface[];
-    this.importeTotal = 0;
-    // tslint:disable-next-line: forin
-
-    const input = document.getElementsByTagName('input');
-    for (let i = 0, max = input.length; i < max; i++) {
-      input[i].value = '0';
-      console.log(input[i]);
-    } 
-  }
+  console.log(this.ordenPedido);
 
 }
 
@@ -239,4 +164,6 @@ confirmarPedido(){
     alert.present();
 
 }
+
+
 }

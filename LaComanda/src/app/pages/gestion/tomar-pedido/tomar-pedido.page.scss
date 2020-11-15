@@ -1,0 +1,73 @@
+ion-content{
+    --background: transparent;
+    background-size: 100% 100%;
+    background-image: url(../../../../assets/image/fondo-alta.jpg);
+}   
+ 
+ ion-list-header,ion-item{
+    --background: transparent;
+ }
+
+ ion-list{
+     background-color: rgba(0, 0, 199, 0);
+ }
+
+.productoContenido{
+    display: grid;
+    width: 100vw;
+    grid-template-rows: 20% 40% 15% 25%;
+    grid-template-columns: 70% 30%;
+    grid-template-areas: 
+    "nombre imagen"
+    "descr imagen"
+    "precio imagen"
+    "cant cant";
+    grid-row-gap: .2rem;
+    grid-column-gap: 0.8rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.603);
+    border-radius: .4rem;
+}
+
+.platoNombre{
+   grid-area: nombre;
+   font-weight: bold;
+}
+
+.platoDesc{
+    grid-area: descr;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.platoImg{
+    grid-area: imagen;
+    width: 100%;
+    position: relative;
+    right: 1rem;
+}
+
+.platoPrecio{
+    grid-area: precio;
+    font-size: 1.3rem;
+    width: 50%;
+}
+
+  
+
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+.tipo {
+    font-size: 2.5rem;
+}
+ 
