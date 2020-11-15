@@ -12,7 +12,7 @@ import { ListaMesasComponent } from '../lista-mesas/lista-mesas.component';
 export class ListaEsperaComponent implements OnInit {
 
   clients: any = [];
-  showView: boolean = false;
+  showUser: boolean = true;
   allClients = [];
 
   constructor(
@@ -21,7 +21,10 @@ export class ListaEsperaComponent implements OnInit {
 
     //ARREGLAR CODIGO
   ngOnInit() {
-    
+    this.getClients();
+  }
+
+  getClients(){
     this.firestore.getDataAll('usuarios').subscribe(data => {
       var count = 0;
       if (count == 0)
@@ -42,8 +45,12 @@ export class ListaEsperaComponent implements OnInit {
           }
         }
       });
+
+      if(this.clients.length > 0)
+        this.showUser = true;
+      else
+        this.showUser = false;
     });
-    
   }
 
   resetClientes(){

@@ -61,7 +61,7 @@ const routes: Routes = [
   },
   {
     path: 'pedir-platos-bebidas',
-    loadChildren: () => import('./pages/gestion/pedir-platos-bebidas/pedir-platos-bebidas.module').then( m => m.PedirPlatosBebidasPageModule)
+    loadChildren: () => import('./components/gestion/pedir-platos-bebidas/pedir-platos-bebidas.module').then( m => m.PedirPlatosBebidasPageModule)
   },
   {
     path: 'administrar',

@@ -55,13 +55,22 @@ export class HomePage implements OnInit {
   page(pagina){
     switch(pagina){
       case 'altaSupervisor':
-        this.router.navigateByUrl('/altas/duenio');
+        this.loader.showLoader();
+        setTimeout(() =>{
+          this.router.navigateByUrl('/altas/duenio');
+        }, 1500)
         break;
       case 'altaEmpleado':
+        this.loader.showLoader();
+        setTimeout(() =>{
           this.router.navigateByUrl('/altas/empleado');
+        }, 1500)
           break;
       case 'altaMesa':
+        this.loader.showLoader();
+        setTimeout(() =>{
           this.router.navigateByUrl('/altas/mesa');
+        }, 1500)
           break;
     }
   }

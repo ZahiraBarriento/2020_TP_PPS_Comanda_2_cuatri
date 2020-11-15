@@ -33,6 +33,7 @@ html{
 /*Spinner*/
 .my-custom-class{
     --background: none;
+    background-color: rgb(0, 0, 0, 0.5);
     .spinner{
         -webkit-animation:spin 1.5s linear infinite;
         -moz-animation:spin 1.5s linear infinite;
