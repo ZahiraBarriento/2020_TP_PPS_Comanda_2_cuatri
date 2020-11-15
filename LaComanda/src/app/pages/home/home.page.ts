@@ -117,15 +117,6 @@ export class HomePage implements OnInit {
     }
   }
 
-  //LO HAGO CON MODAL Y LUEGO ME FIJO COMO HACER 
-  async openModal(component){
-    const modal = await this.modalController.create({
-      component: component,
-      cssClass: 'modal-component'
-    });
-    return await modal.present();
-  }
-
   IngresoLocalQR(){
     this.qr.onScanQR().then(() => {
       this.loader.showLoader();
