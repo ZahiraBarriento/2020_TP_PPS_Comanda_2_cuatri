@@ -1,14 +1,22 @@
 <ion-content>
-  <ion-list *ngFor='let client of clients'>
-    <ion-item (click)="chooseTable(client)">
-      <ion-avatar slot="start">
-        <img src="{{client.foto}}">
-      </ion-avatar>
-      <ion-label>
-        <h5><strong>Nombre: </strong>{{client.nombre}}</h5>
-        <h5><strong>Apellido: </strong>{{client.apellido}}</h5>
-        <h5><strong>DNI: </strong>{{client.dni}}</h5>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="showUser">
+    <ion-list *ngFor='let client of clients'>
+      <ion-item (click)="chooseTable(client)">
+        <ion-avatar slot="start">
+          <img src="{{client.foto}}">
+        </ion-avatar>
+        <ion-label>
+          <h5><strong>Nombre: </strong>{{client.nombre}}</h5>
+          <h5><strong>Apellido: </strong>{{client.apellido}}</h5>
+          <h5><strong>DNI: </strong>{{client.dni}}</h5>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="!showUser">
+    <p align="center" class="empty">
+      <img src="../../../assets/image/marca-agua.png" width="230"><br><br>
+      <strong>NO TIENES CLIENTES EN LA LISTA DE ESPERA</strong>
+    </p>
+  </div>
 </ion-content>

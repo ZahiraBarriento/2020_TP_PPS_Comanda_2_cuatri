@@ -61,6 +61,7 @@ const routes: Routes = [
   },
   {
     path: 'pedir-platos-bebidas',
+    // tslint:disable-next-line: max-line-length
     loadChildren: () => import('./pages/gestion/pedir-platos-bebidas/pedir-platos-bebidas.module').then( m => m.PedirPlatosBebidasPageModule)
   },
   {

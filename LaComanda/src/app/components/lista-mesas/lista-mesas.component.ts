@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AlertController, NavParams } from '@ionic/angular';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from '../../services/fuctions.service';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-lista-mesas',
@@ -19,8 +20,9 @@ export class ListaMesasComponent implements OnInit {
     private firestore : FirestoreService, 
     private modalController : FuctionsService,
     public navParams: NavParams,
-    private alertController: AlertController) {
-      this.client = navParams.get('client');//obtengo el usuario para asignar mesa
+    private alertController: AlertController,
+    private loader:LoaderService) {
+      this.client = navParams.get('data');//obtengo el usuario para asignar mesa
     }
 
   ngOnInit() {
@@ -60,10 +62,13 @@ export class ListaMesasComponent implements OnInit {
       message: message,
       buttons: [{
         text: 'OK',
-        handler : data => {
+        handler : () => {
           this.firestore.updateData('mesa', table.id, {status:true, client: this.client.id})
           this.firestore.updateData('usuarios', this.client.uid, {listaEspera:false});
-          this.close();
+          this.loader.showLoader();
+          setTimeout(() => {
+            this.close();  
+          }, 2000);          
         }
       },
       {

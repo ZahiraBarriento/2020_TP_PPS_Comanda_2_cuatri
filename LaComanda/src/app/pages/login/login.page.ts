@@ -97,7 +97,7 @@ export class LoginPage {
   }
 
   async anonimo(){
-    this.modalController.openModal(ModalComponent);
+    this.modalController.openModal(ModalComponent, 'my-custom-modal-css');
   }
 
   logUser() {

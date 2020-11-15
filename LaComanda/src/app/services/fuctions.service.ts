@@ -12,13 +12,13 @@ export class FuctionsService {
     ) { }
 
   //#region MODAL
-  async openModal(component, data?){
+  async openModal(component, css, params?){
     const modal = await this.modalController.create({
       component: component,
       componentProps: {
-        client : data
+        data : params
       },
-      cssClass: 'my-custom-modal-css'
+      cssClass: css
     });
     return await modal.present();
   }

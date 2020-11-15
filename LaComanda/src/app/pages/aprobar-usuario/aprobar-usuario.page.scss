@@ -1,0 +1,28 @@
+.dataUser{
+    font-size: 5vw;
+  font-family: BlackRoads;
+}
+
+.btnHabilitar{
+    width: 80%;
+    background-color: rgb(106, 255, 47);
+    font-weight: bold;
+    font-size: 6vw;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 12px;
+}
+
+.btnDeshabilitar{
+    width: 80%;
+    background-color: rgb(206, 38, 52);
+    font-weight: bold;
+    font-size: 6vw;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 12px;
+}
+
+#btnGuardar{
+    position: fixed;
+}

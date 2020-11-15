@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatConsultaComponent } from 'src/app/components/chat-consulta/chat-consulta.component';
 import { message } from '../../models/message';
 import { FirestoreService } from '../../services/firestore.service';
+import { FuctionsService } from '../../services/fuctions.service';
 
 @Component({
   selector: 'app-consulta',
@@ -9,37 +11,29 @@ import { FirestoreService } from '../../services/firestore.service';
 })
 export class ConsultaPage implements OnInit {
 
-  public msg: string;
-  public mensajes : any = [];
-  d: any = new Date();
-  day = this.d.getDate();
-  month = this.d.getMonth();
-  year = this.d.getFullYear();
-  fecha: string = this.day + '/' + this.month + '/' + this.year;
-  user;
+  public consultas : any = [];
 
-  constructor(private chatService: FirestoreService) { }
+  constructor(
+    private fb: FirestoreService,
+    private modalCtrl : FuctionsService) { }
 
   ngOnInit() {
-    this.user = localStorage.getItem('userCatch'); //obtengo user
+    this.fb.getDataQuery('chat').subscribe(info => {
+      this.consultas = info;
+    })
+    /*this.user = localStorage.getItem('userCatch'); //obtengo user
     this.user = JSON.parse(this.user);
 
     this.chatService.getDataAll('chat').subscribe(chat => {
       chat.map(msg => {
         this.mensajes = msg.payload.doc.data();
+        console.log(this.mensajes)
       })
-    })
+    })*/
   }
 
-  sendMessage() {
-      const message: message = {
-        content: this.msg,
-        date: this.fecha,
-        userName: this.user.nombre,
-        userLastName : this.user.apellido
-      }
-      this.chatService.sendMsgToDirebase(message, 'chat', 'Jgr0LhjhFdRj5RUzAteN');
-      this.msg = "";
+  openChat(chat){
+    this.modalCtrl.openModal(ChatConsultaComponent, 'common', chat);
   }
 
 }

@@ -3,6 +3,7 @@ import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from '../../services/fuctions.service';
 import { ListaMesasComponent } from '../lista-mesas/lista-mesas.component';
 
+
 @Component({
   selector: 'app-lista-espera',
   templateUrl: './lista-espera.component.html',
@@ -11,7 +12,7 @@ import { ListaMesasComponent } from '../lista-mesas/lista-mesas.component';
 export class ListaEsperaComponent implements OnInit {
 
   clients: any = [];
-  showView: boolean = false;
+  showUser: boolean = true;
   allClients = [];
 
   constructor(
@@ -20,17 +21,23 @@ export class ListaEsperaComponent implements OnInit {
 
     //ARREGLAR CODIGO
   ngOnInit() {
-    var count = 0;
+    this.getClients();
+  }
+
+  getClients(){
     this.firestore.getDataAll('usuarios').subscribe(data => {
+      var count = 0;
+      if (count == 0)
+        this.resetClientes();
+
       data.map(item => {
         const data = item.payload.doc.data();
         const id = item.payload.doc.id;
         this.allClients.push(data);
         this.allClients[count].uid = id;
         count++;
-      })
+      });
       this.clients = [];
-      
       this.allClients.forEach(element => {
         if (element.perfil == 'anonimo' || element.perfil == 'cliente') {
           if (element.listaEspera) {
@@ -38,10 +45,20 @@ export class ListaEsperaComponent implements OnInit {
           }
         }
       });
-    })
+
+      if(this.clients.length > 0)
+        this.showUser = true;
+      else
+        this.showUser = false;
+    });
+  }
+
+  resetClientes(){
+    this.clients.splice(0, this.clients.length);
+    this.allClients.splice(0, this.allClients.length);
   }
 
   chooseTable(client) {
-    this.modalController.openModal(ListaMesasComponent, client);
+    this.modalController.openModal(ListaMesasComponent, 'my-custom-modal-css', client);
   }
 }
