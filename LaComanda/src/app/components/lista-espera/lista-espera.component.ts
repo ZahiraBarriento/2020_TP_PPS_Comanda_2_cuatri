@@ -52,6 +52,6 @@ export class ListaEsperaComponent implements OnInit {
   }
 
   chooseTable(client) {
-    this.modalController.openModal(ListaMesasComponent, client);
+    this.modalController.openModal(ListaMesasComponent, 'my-custom-modal-css', client);
   }
 }

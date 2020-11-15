@@ -22,7 +22,7 @@ export class ListaMesasComponent implements OnInit {
     public navParams: NavParams,
     private alertController: AlertController,
     private loader:LoaderService) {
-      this.client = navParams.get('client');//obtengo el usuario para asignar mesa
+      this.client = navParams.get('data');//obtengo el usuario para asignar mesa
     }
 
   ngOnInit() {
