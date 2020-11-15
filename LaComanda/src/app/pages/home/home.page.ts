@@ -124,7 +124,6 @@ export class HomePage implements OnInit {
   }
 
   IngresoLocalQR(){
-    this.ActualizarClienteListaEspera();
     this.qr.onScanQR().then(() => {
       this.loader.showLoader();
       this.ActualizarClienteListaEspera();
