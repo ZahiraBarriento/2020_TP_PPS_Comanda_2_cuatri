@@ -33,29 +33,3 @@ ion-card:active{
   src: url(../../../assets/fonts/AnyConv.com__FontsFree-Net-blackwoff2.woff);
 }
 
-.listaEspera{
-  position: fixed;
-  top: 35%;
-  left: 7%;
-  width: 85%;
-  height: auto;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  border: 1px solid black;
-}
-
-#txtListaEspera{
-  color: #01bafa;
-  font-weight: bold;
-  font-size: 24px;
-}
-
-#numListaEspera{
-  left: 50%;
-  width: 100px;
-  height: 25px;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-}
-

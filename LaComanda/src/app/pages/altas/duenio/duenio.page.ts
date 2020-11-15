@@ -7,7 +7,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoaderService } from '../../../services/loader.service';
-import { ToastController } from '@ionic/angular';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-duenio',
@@ -54,7 +54,7 @@ export class DuenioPage implements OnInit {
     private firestore: FirestoreService,
     private qr: QrService,
     private loading : LoaderService,
-    public toastController: ToastController,
+    public toast: ToastService,
     private auth:AuthService) {
   }
 
@@ -124,8 +124,7 @@ export class DuenioPage implements OnInit {
   }
 
   EscanearQR(){
-   this.qr.getDatosDniQr()
-   .then((json) => this.RellenarCampos(json));
+   this.qr.getDatosDniQr().then((json) => this.RellenarCampos(json));
   }
 
   RellenarCampos(json){
@@ -142,6 +141,7 @@ export class DuenioPage implements OnInit {
     document.getElementById("VntPrincipal").style.opacity = "0.2";
     setTimeout(() =>{
       document.getElementById("VntPrincipal").style.opacity = "1";
+      this.toast.MostrarMensaje("Usuario dado de alta correctamente!", false);
       this.router.navigate(['/home']);
     }, 2000);
   }

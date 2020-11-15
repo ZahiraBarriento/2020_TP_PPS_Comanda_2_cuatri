@@ -10,8 +10,8 @@ import { unwatchFile } from 'fs';
   providedIn: 'root'
 })
 export class QrService {
-
-  qr: any = [];
+  pudoIngresarAlLocal = false;
+  qrMesas: any = [];
   private options: BarcodeScannerOptions = {
     formats: "PDF_417,QR_CODE"
   };
@@ -31,7 +31,7 @@ export class QrService {
     this.firestorage.getDataAll('mesa').subscribe(data => {
       data.map(item => {
         const data = item.payload.doc.data();
-        this.qr.push(data);
+        this.qrMesas.push(data);
       })
     });
   }
@@ -43,23 +43,33 @@ export class QrService {
   //
   onScanQR() {
     var client: any = localStorage.getItem('userCatch');
-    var flag: boolean = false;
+    var esQrMesa: boolean = false;
     client = JSON.parse(client);
 
-    this.barcodeScanner.scan(this.options).then(barcodeData => {
-      this.qr.forEach(element => {
-        if (barcodeData.text == element.qr) { //verifico si es algun qr de la base de mesa
-          flag = true;
+    return new Promise((resolve, reject) => {
+
+      this.barcodeScanner.scan(this.options).then(barcodeData => {
+        this.qrMesas.forEach(element => {
+          if (barcodeData.text == element.qr) { //verifico si es algun qr de la base de mesa
+            esQrMesa = true;
+          }
+        });
+  
+        if (barcodeData.text == 'ingreso') { //es qr de lista de espera
+          this.pudoIngresarAlLocal = true;   
+          resolve();       
+        } 
+  
+        else if (esQrMesa) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
+          resolve();
+        }
+  
+        else{ //qr no existe
+          reject("Error al escanear QR");
         }
       });
 
-      if (barcodeData.text == '') { //es qr de lista de espera
-        //hacer lo que haya que hacer
-      } else if (flag) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
-      }else{ //qr no existe
-
-      }
-    })
+    });
   }
 
   getDatosDniQr() {
