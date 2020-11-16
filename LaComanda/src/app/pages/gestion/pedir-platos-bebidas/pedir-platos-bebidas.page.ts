@@ -27,7 +27,7 @@ export class PedirPlatosBebidasPage implements OnInit {
   importeTotal = 0;
   productos: ProductoInterface[] = [];
   ordenPedido: ProductoInterface[] = [];
-  pedidoFinal: PedidoInterface[] = [];
+ 
 
   constructor(public alertController: AlertController,
               private router: Router,
@@ -44,7 +44,7 @@ export class PedirPlatosBebidasPage implements OnInit {
 
 
 
-//#region TraerProductos
+//#region TraerProductos. Funcion reutilizable
 
   traerPlatos(){
     this.prodService.traerPlatos()
@@ -61,6 +61,8 @@ export class PedirPlatosBebidasPage implements OnInit {
 
   descr(index, producto: ProductoInterface){
     const cantHtml = (document.getElementById(index) as HTMLInputElement);
+    
+
     let cantNum = Number(cantHtml.value);
 
     if (cantNum >= 1 && this.importeTotal > 0){
@@ -73,8 +75,9 @@ export class PedirPlatosBebidasPage implements OnInit {
 
   incr(index, producto: ProductoInterface){
     const cantHtml = (document.getElementById(index) as HTMLInputElement);
+    const platoCantHtml = (document.getElementById(`platoCant${index}`) as HTMLInputElement);
     let cantNum = Number(cantHtml.value);
-
+     
 
     if (cantNum >= 0 && cantNum < 10){
       cantNum++;
@@ -82,6 +85,15 @@ export class PedirPlatosBebidasPage implements OnInit {
       this.importeTotal = Number(producto.precio) + this.importeTotal;
       this.ingresarProducto(producto);
     }
+
+    if(cantNum > 0){
+      platoCantHtml.className =  'alert';
+    }
+    
+    if(cantNum == 0){
+      platoCantHtml.className =  'platoBoton';
+    }
+    
 
   }
 
@@ -100,7 +112,7 @@ export class PedirPlatosBebidasPage implements OnInit {
     } else {
       this.ordenPedido[pos].cantidad += 1;
     }
-    console.log('Quito producto');
+    console.log('Inserto producto: ');
     console.log(this.ordenPedido);
   }
 
@@ -118,6 +130,7 @@ export class PedirPlatosBebidasPage implements OnInit {
         this.ordenPedido.splice(pos, 1);
       }
      }
+     console.log('Quito producto: ');
      console.log(this.ordenPedido);
   }
 
@@ -129,41 +142,5 @@ confirmarPedido(){
   console.log(this.ordenPedido);
 
 }
-
-
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'Realizar',
-      header: 'Pedir Platos y Bebidas',
-      backdropDismiss: false,
-      message: 'Ingrese cantidad de comenzales',
-      inputs: [
-        {
-          name: 'cantC',
-          type: 'text',
-          placeholder: 'Ingrese aqui...',
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            this.router.navigateByUrl('/home');
-          }
-        }, {
-          text: 'Aceptar',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    alert.present();
-
-}
-
 
 }

@@ -18,8 +18,8 @@
         <ion-img class="platoImg" [src]="item.foto1"> </ion-img>
 
         
-        <div class="platoCant">
-          <div class="platoBoton">
+        <div  class="platoCant">
+          <div [id]="'platoCant'+i" class="platoBoton">
             <button (click)="descr(i,item)">-</button>
             <input [id]="i" type="number" value="0" readonly disabled>
             <button (click)="incr(i,item)">+</button>
@@ -44,7 +44,7 @@
 
         
         <div class="platoCant">
-          <div class="platoBoton">
+          <div [id]="'platoCant'+i" class="platoBoton">
             <button (click)="descr(i,item)">-</button>
             <input [id]="i" type="number" value="0" readonly disabled>
             <button (click)="incr(i,item)">+</button>
