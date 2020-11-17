@@ -22,8 +22,6 @@ export class PedidosService {
   ingresarPedido(ordenProductos: ProductoInterface[]) {
     return new Promise((resolve, reject) => {
 
-    if(this.usuario){
-
       let pedidoCocinero: PedidoInterface;
       let pedidoBartender: PedidoInterface;
       this.ordenCompra = [];
@@ -93,14 +91,13 @@ export class PedidosService {
           jsonOrden["estado"] = this.ordenCompra[i].estado;
           jsonOrden["actived"] = this.ordenCompra[i].actived;
 
-          this.fr.addData("pedidos", jsonOrden);
+          this.fr.addData("pedidos", jsonOrden); // !!!!!!!!!!!!! ACA FALTARIA UNA PROMESA PARA CONFIRMAR QUE SE CARGO AL FIRESTORE
+          resolve(true);
         }
       }
-    }
+     
 
-    else {
-      reject('Usuario no identificado');
-    }
+     
     });
   }
 }
