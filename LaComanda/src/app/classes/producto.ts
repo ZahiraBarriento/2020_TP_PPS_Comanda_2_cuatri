@@ -11,6 +11,7 @@ export class Producto implements ProductoInterface{
     public foto2: string;
     public foto3: string;
     public activated = true;
+    public cantidad: number;
     
     constructor(
     ){}

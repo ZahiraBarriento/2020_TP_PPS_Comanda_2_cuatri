@@ -1,4 +1,3 @@
-import { ProductosService } from '../services/coleccion/productos.service';
 import { ProductoInterface } from './producto.interface';
 
 export interface PedidoInterface{
@@ -9,6 +8,7 @@ export interface PedidoInterface{
     importe: number;
     estado: string;
     mesa?: number;
+    actived?: boolean;
 }
 
  

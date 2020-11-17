@@ -16,7 +16,11 @@ export class FirestoreService {
   }
 
   public addData(collection:string, json){
-    this.db.collection(collection).add(json);
+    
+     this.db.collection(collection).add(json);
+      
+
+    
   }
 
   public updateData(collection:string, idFire, json){

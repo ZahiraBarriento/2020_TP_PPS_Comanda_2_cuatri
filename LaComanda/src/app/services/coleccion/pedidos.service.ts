@@ -1,110 +1,104 @@
-import { Injectable } from '@angular/core';
-import { FirestoreService } from '../firestore.service';
+import { Injectable } from "@angular/core";
+import { FirestoreService } from "../firestore.service";
+import { Pedido } from "src/app/classes/pedido.class";
+
+import { PedidoInterface } from "src/app/models/pedido.interface";
+import { ProductoInterface } from "src/app/models/producto.interface";
+import { UsuarioModel } from "src/app/models/usuario.model";
+import { Usuario } from "src/app/classes/usuario.class";
+import { Producto } from "src/app/classes/producto";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PedidosService {
+  usuario: UsuarioModel = new Usuario();
+  ordenCompra: PedidoInterface[] = [];
 
-  constructor(private fr: FirestoreService) { }
-
-
-  /* ingresarPedido(){
-
-    let pedidoCocinero: PedidoInterface;
-  let pedidoBartender: PedidoInterface;
-
-  this.ordenPedido.forEach( producto => {
-
-    if (producto.tipo === 'plato') {
-
-      if ( !pedidoCocinero){
-        pedidoCocinero = new Pedido();
-        console.log('Coc vacio');
-      }
-
-      pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-      pedidoCocinero.importe = this.importeTotal;
-      pedidoCocinero.estado = 'aprobar';
-      pedidoCocinero.para = 'cocinero';
-      pedidoCocinero.productos.push(producto);
-    }
-    if (producto.tipo === 'bebida') {
-
-      if ( !pedidoBartender){
-        pedidoBartender = new Pedido();
-        console.log('Bar vacio');
-      }
-
-      pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-      pedidoBartender.importe = this.importeTotal;
-      pedidoBartender.estado = 'aprobar';
-      pedidoBartender.para = 'bartender';
-      pedidoBartender.productos.push(producto);
-
-    }
-  });
-
-  if (pedidoCocinero){
-    this.pedidoFinal.push(pedidoCocinero);
-   }
-  if (pedidoBartender){
-    this.pedidoFinal.push(pedidoBartender);
-  }
-  if (this.pedidoFinal.length > 0) {
-
-    const input = document.getElementsByTagName('input');
-    for (let i = 0, max = input.length; i < max; i++) {
-      input[i].value = '0';
-    }
+  constructor(private fr: FirestoreService) {
+    this.usuario = JSON.parse(localStorage.getItem("userCatch"));
   }
 
+  ingresarPedido(ordenProductos: ProductoInterface[]) {
+    return new Promise((resolve, reject) => {
 
-    let json : PedidoInterface  ;= {
-      nombre : '',
-      para : '',
-      estado : '',
-      importe : '',
-      producto: [],
-      mesa: 2, // VER DESPUES
-      };  
+      let pedidoCocinero: PedidoInterface;
+      let pedidoBartender: PedidoInterface;
+      this.ordenCompra = [];
+      let importeTotal = 0;
 
-    let prodJson: ProductoInterface;
+      ordenProductos.forEach((producto) => {
+        if (producto.tipo === "plato") {
+          if (!pedidoCocinero) {
+            pedidoCocinero = new Pedido();
+          }
 
-    this.pedidoFinal.forEach( item => {
-
-
-      json : {
-      nombre
-      json.cliente: item.cliente,
-      json.para = item.para,
-      json.estado = item.estado,
-      json.importe = item.importe.toString(),
-
-     },
-      item.productos.forEach(producto => {
-
-        prodJson = {},
-        prodJson = {
-        cantidad: producto.cantidad,
-        foto1: producto.foto1,
-        timeElaboracion: producto.timeElaboracion,
-        
+          pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
+          pedidoCocinero.importe = importeTotal += Number(producto.precio);
+          pedidoCocinero.estado = "pendiente";
+          pedidoCocinero.para = "cocinero";
+          pedidoCocinero.actived = true;
+          pedidoCocinero.productos.push(producto);
         }
-       
-        let nomPro = new Object();
-        nomPro[producto.nombre.toString()] = prodJson;
-        json.producto.push(nomPro);
-         
+        if (producto.tipo === "bebida") {
+          if (!pedidoBartender) {
+            pedidoBartender = new Pedido();
+          }
+
+          pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
+          pedidoCocinero.importe = importeTotal += Number(producto.precio);
+          pedidoBartender.estado = "pendiente";
+          pedidoBartender.para = "bartender";
+          pedidoCocinero.actived = true;
+          pedidoBartender.productos.push(producto);
+        }
       });
 
-      this.fr.addData('pedidos', json);
+      if (pedidoCocinero) {
+        this.ordenCompra.push(pedidoCocinero);
+      }
+      if (pedidoBartender) {
+        this.ordenCompra.push(pedidoBartender);
+      }
+      if (this.ordenCompra.length > 0) {
+        let productos: ProductoInterface[] = [];
+
+        let jsonOrden = new Object();
+
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.ordenCompra.length; i++) {
+          jsonOrden = {};
+
+          let total = 0;
+
+          jsonOrden["cliente"] = this.ordenCompra[i].cliente;
+          jsonOrden["para"] = this.ordenCompra[i].para;
+          productos = [];
+
+          this.ordenCompra[i].productos.forEach((producto) => {
+            let jsonProducto = new Object();
+            (jsonProducto["nombre"] = producto.nombre),
+              (jsonProducto["timeElavoracion"] = producto.timeElaboracion),
+              (jsonProducto["foto1"] = producto.foto1);
+            jsonProducto["cantidad"] = producto.cantidad;
+            jsonProducto["precio"] = producto.precio;
+            productos.push(jsonProducto);
+            total += Number(producto.precio) * producto.cantidad;
+          });
+
+          jsonOrden["productos"] = productos;
+          jsonOrden["importe"] = total;
+          jsonOrden["estado"] = this.ordenCompra[i].estado;
+          jsonOrden["actived"] = this.ordenCompra[i].actived;
+
+          this.fr.addData("pedidos", jsonOrden); // !!!!!!!!!!!!! ACA FALTARIA UNA PROMESA PARA CONFIRMAR QUE SE CARGO AL FIRESTORE
+          this.ordenCompra = [];
+          resolve(true);
+        }
+      }
+     
+
+     
     });
-
-    this.pedidoFinal = new Array() as PedidoInterface[];
-    this.importeTotal = 0;
- 
   }
- */
-
 }
