@@ -6,7 +6,7 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
 
 import { ProductosService } from 'src/app/services/coleccion/productos.service';
- 
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-pedir-platos-bebidas',
@@ -28,7 +28,8 @@ export class PedirPlatosBebidasPage implements OnInit {
 
   constructor(private prodService: ProductosService,
               private pedidoService: PedidosService,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastService) {
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.traerPlatos();
@@ -91,7 +92,6 @@ export class PedirPlatosBebidasPage implements OnInit {
   //#endregion
 
 
-
 //#region Ingresar y Quitar Orden de Pedido
   ingresarProducto(producto: ProductoInterface){
 
@@ -133,6 +133,9 @@ confirmarPedido(){
   this.pedidoService.ingresarPedido(this.ordenProductos)
     .then( res => {
          this.limpiarCantidad();
+         this.toast.MostrarMensaje('Pedido Cargado. Espere a que su pedido sea aprobado', false);
+         this.ordenProductos = [];
+         this.importeTotal = 0;
     });
 }
 

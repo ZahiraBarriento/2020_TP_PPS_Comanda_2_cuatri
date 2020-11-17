@@ -92,6 +92,7 @@ export class PedidosService {
           jsonOrden["actived"] = this.ordenCompra[i].actived;
 
           this.fr.addData("pedidos", jsonOrden); // !!!!!!!!!!!!! ACA FALTARIA UNA PROMESA PARA CONFIRMAR QUE SE CARGO AL FIRESTORE
+          this.ordenCompra = [];
           resolve(true);
         }
       }

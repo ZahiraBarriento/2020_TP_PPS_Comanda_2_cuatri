@@ -55,7 +55,7 @@
   </ion-item-group> 
   <br> <br> <br>
   <div  class="comprar">
-    <ion-button (click)="confirmarPedido()">Aceptar pedido ( $ {{importeTotal}} )</ion-button>
+    <ion-button [disabled]="importeTotal == 0" (click)="confirmarPedido()">Aceptar pedido ( $ {{importeTotal}} )</ion-button>
   </div>
 
  
