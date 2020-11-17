@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
 
 @Component({
   selector: 'app-tomar-pedido',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TomarPedidoPage implements OnInit {
 
-  constructor() { }
+  constructor(private pedido: PedidosService) { }
 
   ngOnInit() {
   }
 
+
+  llamar(){
+    /*  this.pedido.traerPedidos();   */
+  }
 }

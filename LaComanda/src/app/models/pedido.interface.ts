@@ -6,7 +6,8 @@ export interface PedidoInterface{
     para: string;
     productos?: ProductoInterface[];
     importe: number;
-    estado: string;
+    preparado: boolean;
+    entregado: boolean;
     mesa?: number;
     actived?: boolean;
 }

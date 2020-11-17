@@ -8,9 +8,17 @@ export class Pedido implements PedidoInterface{
     public para: string;
     public productos: ProductoInterface[] = [];
     public importe: number;
-    public estado: string;
+    public preparado: boolean;
+    public entregado: boolean;
     public actived = true;
 
-    constructor(){}
+    constructor(
+        id = '',
+        cliente = '',
+        para = '',
+        importe = '',
+        preparado = '',
+        entregad = '',
+    ){}
 }
  
