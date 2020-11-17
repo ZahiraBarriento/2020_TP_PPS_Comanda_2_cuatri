@@ -26,3 +26,16 @@
 #btnGuardar{
     position: fixed;
 }
+
+.empty{
+    font-size: 5vw;
+    color: rgb(0, 0, 0, 0.3);
+    font-family: TCM;
+    max-width: 70%;
+    margin: auto;
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(../../../assets/fonts/AnyConv.com__TCM_____.woff);
+}

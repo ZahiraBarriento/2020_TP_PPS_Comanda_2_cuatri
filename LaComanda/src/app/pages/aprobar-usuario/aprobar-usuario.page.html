@@ -20,9 +20,13 @@
       </ion-card>
     </div>
 
-    <div>
-      <h1 [hidden]="!mostrarSinUsuarios">NO TIENES USUARIOS PENDIENTES DE APROBACION</h1>
-    </div>
+    <div [hidden]="!mostrarSinUsuarios" class="empty">
+      <br><br>
+      <p align="center">
+        <img src="../../../assets/image/marca-agua.png" width="230"><br><br>
+        <strong>NO TIENES USUARIOS PENDIENTES DE APROBACION</strong>
+      </p>
+    </div>  
 
     <div id="btnGuardar">
       <ion-button [hidden]="!mostrarGuardar" (click)="Guardar()">Guardar cambios</ion-button>

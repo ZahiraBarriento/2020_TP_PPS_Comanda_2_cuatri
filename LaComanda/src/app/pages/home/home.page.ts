@@ -6,6 +6,7 @@ import { QrService } from '../../services/qr.service';
 import { LoaderService } from '../../services/loader.service'
 import { ToastService } from '../../services/toast.service'
 import { FirestoreService } from '../../services/firestore.service';
+import { FuctionsService } from 'src/app/services/fuctions.service';
 
 @Component({
   selector: 'app-home',
@@ -15,69 +16,70 @@ import { FirestoreService } from '../../services/firestore.service';
 export class HomePage implements OnInit {
 
   user;
-  showView : boolean; //se usa para mostrar altas
-  perfil : string;
+  showView: boolean; //se usa para mostrar altas
+  perfil: string;
   info = cards;
-  cards : any = [];
-  alta : any = [];
+  cards: any = [];
+  alta: any = [];
 
-  constructor(private router : Router, 
-    private modalController: ModalController, 
-    private qr:QrService, 
-    private loader:LoaderService, 
-    private toast:ToastService,
-    private db:FirestoreService) {
-      this.user = localStorage.getItem('userCatch'); //obtengo user
-      this.user = JSON.parse(this.user);
+  constructor(
+    private router: Router,
+    private qr: QrService,
+    private loader: LoaderService,
+    private toast: ToastService,
+    private db: FirestoreService,
+    private alert : FuctionsService) {
+    this.user = localStorage.getItem('userCatch'); //obtengo user
+    this.user = JSON.parse(this.user);
+    this.showCard(this.user.perfil);
+    if (this.user != null)
       this.showCard(this.user.perfil);
-      if (this.user != null)
-        this.showCard(this.user.perfil);
-      else 
-        this.router.navigate(['login']);
-    }
+    else
+      this.router.navigate(['login']);
+  }
 
   ngOnInit(): void {
-    this.info.forEach(element =>{
+    this.info.forEach(element => {
       element.altas.map(item => {
         this.alta.push(item);
       });
     });
   }
 
-  showCard(perfil){
-    this.info.forEach(element =>{
-      if(element[perfil]){
+  showCard(perfil) {
+    this.info.forEach(element => {
+      if (element[perfil]) {
         this.cards = element[perfil];
       }
     })
   }
 
-  page(pagina){
-    switch(pagina){
+  page(pagina) {
+    switch (pagina) {
       case 'altaSupervisor':
         this.loader.showLoader();
-        setTimeout(() =>{
+        setTimeout(() => {
           this.router.navigateByUrl('/altas/duenio');
         }, 1500)
         break;
       case 'altaEmpleado':
         this.loader.showLoader();
-        setTimeout(() =>{
+        setTimeout(() => {
           this.router.navigateByUrl('/altas/empleado');
         }, 1500)
-          break;
+        break;
       case 'altaMesa':
         this.loader.showLoader();
-        setTimeout(() =>{
+        setTimeout(() => {
           this.router.navigateByUrl('/altas/mesa');
         }, 1500)
-          break;
+        break;
     }
   }
 
 
-  action(param){
-    switch(param){
+  action(param) {
+    switch (param) {
       //CLIENTE
       case 'qr':
         this.IngresoLocalQR();
@@ -86,6 +88,9 @@ export class HomePage implements OnInit {
         //implementar reserva hecha por cliente
         break;
       case 'encuestaCliente':
+        break;
+      case 'mesa':
+        this.mesaCliente();
         break;
 
       //DUEÑO/SUPERVISOR
@@ -101,7 +106,7 @@ export class HomePage implements OnInit {
 
       //METRE
       case 'listaEspera':
-        this.router.navigateByUrl('/administrar');
+        this.router.navigateByUrl('/listado');
         break;
       case 'altaCliente':
         this.router.navigateByUrl('/altas/cliente');
@@ -132,12 +137,12 @@ export class HomePage implements OnInit {
     }
   }
 
-  IngresoLocalQR(){
+  IngresoLocalQR() {
     this.qr.onScanQR().then(() => {
       this.loader.showLoader();
       this.ActualizarClienteListaEspera();
-      setTimeout(() =>{
-        this.toast.MostrarMensaje("Has ingresado al local, tan pronto como podamos te asignaremos una mesa!", false);
+      setTimeout(() => {
+        this.toast.MostrarMensaje("Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!", false);
       }, 2000);
 
     }).catch(() => {
@@ -148,12 +153,12 @@ export class HomePage implements OnInit {
     });
   }
 
-  ActualizarClienteListaEspera(){
+  ActualizarClienteListaEspera() {
     var allUsers = new Array<any>();
-    
-    this.db.getDataAll('usuarios').subscribe((data) =>{
+
+    this.db.getDataAll('usuarios').subscribe((data) => {
       var count = 0;
-      if (count = 0){
+      if (count = 0) {
         allUsers.splice(0, allUsers.length);
       }
       data.map(item => {
@@ -166,10 +171,34 @@ export class HomePage implements OnInit {
 
       allUsers.forEach(element => {
         if (element["nombre"] == this.user["nombre"] && element["apellido"] == this.user["apellido"] && element["correo"] == this.user["correo"])
-           this.db.updateData('usuarios', element["id"], {listaEspera:true});
-        }
-    );
-  });
-}
+          this.db.updateData('usuarios', element["id"], { listaEspera: true });
+      }
+      );
+    });
+  }
+
+  mesaCliente(){
+    this.qr.onScanQR().then(() => {
+      this.loader.showLoader();
+      setTimeout(() => {
+        this.router.navigateByUrl('/administrar');
+      }, 1500);
+    }).catch((error) => {
+      switch(error){
+        case 'a':
+          this.alert.presentToast('¡El QR escaneado es incorrecto! Debe escanear el código de la mesa que se le ha asignado.', 'warning');
+        break;
+        case 'b':
+          this.alert.presentToast('¡Primero debe registrarse en la lista de espera!', 'danger');
+        break;
+        case 'c':
+          this.alert.presentToast('Aún no tienes mesa, ¡Tan pronto como podamos te asignaremos una mesa!', 'warning');
+        break;
+        default:
+          this.alert.presentToast('ERROR, el código QR es incorrecto.', 'danger');
+        break;
+      }
+    })
+  }
 }
 

@@ -12,7 +12,8 @@ export const cards = [{
     ],
     anonimo: [
         { title: 'BIENVENIDO A COMSERVY', photo: '../../../assets/image/plato.png', message: 'Gracias por elegirnos una vez más', action: '' },
-        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera.', action: 'qr' }
+        { title: 'BUSCAR MESA', photo: '../../../assets/image/qr-home.png', message: 'Escanea el código QR de la entrada para anotarte en la lista de espera.', action: 'qr' },
+        { title: 'TU MESA', photo: '../../../assets/image/menu.png', message: 'Escanea el código QR de tu mesa para acceder al menu.', action: 'mesa'}
     ],
     duenio: [
         { title: 'ALTAS', photo: '../../../assets/image/add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas' },

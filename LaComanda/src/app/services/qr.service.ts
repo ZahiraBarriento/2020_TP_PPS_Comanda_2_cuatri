@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { FirestoreService } from '../services/firestore.service';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { storage } from 'firebase';
 import { Router } from '@angular/router';
-import { unwatchFile } from 'fs';
+import { FuctionsService } from '../services/fuctions.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class QrService {
+export class QrService implements OnInit {
   pudoIngresarAlLocal = false;
   qrMesas: any = [];
   private options: BarcodeScannerOptions = {
@@ -19,7 +18,7 @@ export class QrService {
   constructor(
     private barcodeScanner: BarcodeScanner,
     private firestorage: FirestoreService,
-    private router: Router) {
+    private toast: FuctionsService) {
   }
 
   ngOnInit() {
@@ -42,16 +41,20 @@ export class QrService {
 
   //
   onScanQR() {
+    this.ngOnInit(); //no se orque no lo llama cuando inicia asi que llamo aca
     var client: any = localStorage.getItem('userCatch');
     var esQrMesa: boolean = false;
+    var mesa;
     client = JSON.parse(client);
 
+    console.log(this.qrMesas)
     return new Promise((resolve, reject) => {
 
       this.barcodeScanner.scan(this.options).then(barcodeData => {
         this.qrMesas.forEach(element => {
           if (barcodeData.text == element.qr) { //verifico si es algun qr de la base de mesa
             esQrMesa = true;
+            mesa = element;
           }
         });
   
@@ -61,11 +64,18 @@ export class QrService {
         } 
   
         else if (esQrMesa) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
-          resolve();
+          if(mesa.client == client.id){
+            localStorage.setItem('mesa', mesa);
+            resolve();
+          }else if(mesa.client != client.id){
+            reject("a"); //Mesa incorrecta
+          }else if(!this.pudoIngresarAlLocal){
+            reject("b"); //Sin registar
+          }
         }
   
         else{ //qr no existe
-          reject("Error al escanear QR");
+          reject("El código QR escaneado es incorrecto.");
         }
       });
 

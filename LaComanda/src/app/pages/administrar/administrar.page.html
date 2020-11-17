@@ -1,6 +1,47 @@
 <ion-header [translucent]="true">
-  <app-header title="LISTA DE ESPERA"></app-header>
+  <app-header title="MESA"></app-header>
 </ion-header>
 <ion-content>
-  <app-lista-espera></app-lista-espera>
+  <ion-item class="chat" button (click)="openChat()" lines="none">
+    <ion-icon class="img" slot="start" size="large" name="chatbubbles-outline"></ion-icon>
+    <ion-label class="ion-text-center">
+      Consultar al mozo
+    </ion-label>
+    <ion-icon class="img" slot="end" size="large" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+  <br><br>
+  <ion-label>
+    <p class="title" align="center"><strong>PLATOS</strong></p>
+  </ion-label>
+  <br>
+  <div size="5" class="slideProducts">
+  <ion-slides pager="true" [options]="slideOptsOne">
+    <ion-slide *ngFor="let plato of platos">
+      <img class="imgProdSlide" src="{{plato.foto1}}"/>
+    </ion-slide>
+  </ion-slides>
+</div>
+  <ion-label>
+    <p class="title" align="center"><strong>BEBIDAS</strong></p>
+  </ion-label>
+  <br>
+  <div size="5" class="slideProducts">
+  <ion-slides pager="true" [options]="slideOptsOne">
+    <ion-slide *ngFor="let bebida of bebidas">
+      <img class="imgProdSlide" src="{{bebida.foto1}}"/>
+    </ion-slide>
+  </ion-slides>
+</div>
+
+  <ion-label>
+    <p class="text" align="center">
+      ¡No dejes para mañana lo que puedes comer hoy!
+    </p>
+  </ion-label>
+  <ion-item class="chat" button (click)="pedirComanda()" lines="none">
+    <ion-label class="ion-text-center">
+      Pedir plato y/o bebida
+    </ion-label>
+    <ion-icon class="img" slot="end" size="large" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
 </ion-content>

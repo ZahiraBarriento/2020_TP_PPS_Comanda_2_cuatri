@@ -9,6 +9,8 @@ import { AdministrarPageRoutingModule } from './administrar-routing.module';
 import { AdministrarPage } from './administrar.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ListaEsperaComponent } from 'src/app/components/lista-espera/lista-espera.component';
+import { PedirPlatosBebidasPage } from '../gestion/pedir-platos-bebidas/pedir-platos-bebidas.page';
+import { TomarPedidoPage } from '../gestion/tomar-pedido/tomar-pedido.page';
 
 @NgModule({
   imports: [
@@ -18,6 +20,6 @@ import { ListaEsperaComponent } from 'src/app/components/lista-espera/lista-espe
     AdministrarPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [AdministrarPage]
+  declarations: [AdministrarPage, PedirPlatosBebidasPage, TomarPedidoPage]
 })
 export class AdministrarPageModule {}

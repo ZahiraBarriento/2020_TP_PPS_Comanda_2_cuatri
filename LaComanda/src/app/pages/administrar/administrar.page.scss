@@ -1,0 +1,56 @@
+ion-content{
+    --background: none;
+    background-size: 100% 100%;
+    background-image: url(../../../assets/splash/fondo.jpg);
+}
+
+.text{
+    font-size: 4.5vw;
+    font-family: TCM;
+    margin: auto;
+    color: black;
+}
+
+.chat{
+    margin: 15px;
+    border-radius: 10px;
+    --background: #f3f3f3;
+
+    .img{
+        margin: 10px 0px 13px 10px;
+    }
+    ion-label{
+        font-size: 5.5vw;
+        font-family: TCM;
+
+    }
+    ion-icon{
+        color: #3d40f8;
+    }
+
+}
+p{
+    font-size: 3vw;
+}
+.title{
+    font-size: 6vw;
+    font-family: TCM;
+    color: black;
+}
+
+.imgProdSlide{
+    overflow: hidden;
+    margin: 0 0 40px 0px;
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(../../../assets/fonts/AnyConv.com__TCM_____.woff);
+  }
