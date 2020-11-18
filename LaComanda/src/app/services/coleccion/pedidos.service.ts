@@ -36,6 +36,7 @@ export class PedidosService {
           pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
           pedidoCocinero.estado = 'informar';
+          pedidoCocinero.tipo = 'platos';
           pedidoCocinero.para = 'cocinero';
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
@@ -48,6 +49,7 @@ export class PedidosService {
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoBartender.importe = importeTotal += Number(producto.precio); 
           pedidoBartender.estado = 'informar';
+          pedidoBartender.tipo = 'bebidas';
           pedidoBartender.para = 'bartender';
           pedidoBartender.actived = true;
           pedidoBartender.productos.push(producto);
@@ -73,13 +75,13 @@ export class PedidosService {
 
           jsonOrden["cliente"] = this.ordenCompra[i].cliente;
           jsonOrden["para"] = this.ordenCompra[i].para;
+          jsonOrden["tipo"] = this.ordenCompra[i].tipo;
           productos = [];
 
           this.ordenCompra[i].productos.forEach((producto) => {
             let jsonProducto = new Object();
-            (jsonProducto["nombre"] = producto.nombre),
-              (jsonProducto["timeElavoracion"] = producto.timeElaboracion),
-              (jsonProducto["foto1"] = producto.foto1);
+            jsonProducto["nombre"] = producto.nombre,
+            jsonProducto["timeElavoracion"] = producto.timeElaboracion,
             jsonProducto["cantidad"] = producto.cantidad;
             jsonProducto["precio"] = producto.precio;
             productos.push(jsonProducto);

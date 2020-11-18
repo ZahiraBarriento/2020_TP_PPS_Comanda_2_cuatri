@@ -1,41 +1,64 @@
-<app-header title="Platos y Bebidas"></app-header>
+<app-header [title]="'Comanda ' + (usuario.perfil.toString() | titlecase)" style="font-size: 0.2rem;"></app-header>
 
 <!-- Inicio Menu -->
 
-<ion-content *ngIf="pedidos">
+<ion-content>
   <ion-list>
-    <ion-list-header class="tipo">Pendiente</ion-list-header>
+    <ion-list-header class="tipo">{{tarea}}</ion-list-header>
   </ion-list>
 
-  <div *ngFor="let item of pedidos">
-    <div *ngIf="item.para == usuario.perfil.toString()">
+  <div *ngFor="let pedido of pedidos">
+    <div *ngIf="pedido.estado == asignarTareas(pedido)">
       <ion-item-group>
         <ion-item>
           <div class="productoContenido">
-            <ion-label class="platoNombre"> </ion-label>
-            <ion-text class="platoDesc"> </ion-text>
-            <ion-text class="platoPrecio"> </ion-text>
-            <!--  <ion-img class="platoImg"  src="false"> </ion-img> -->
+            <ion-text>Mesa #</ion-text >
+            <ion-text>{{pedido.cliente | uppercase}}</ion-text >
+            <ion-text>{{pedido.tipo | uppercase}}</ion-text >
+            <div *ngFor="let prod of pedido.productos">        
+              <ion-text>. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text> X {{prod.cantidad}} un.</ion-text>
+            </div>
           </div>
         </ion-item>
       </ion-item-group>
     </div>
+
   </div>
+
+
+  <!-- VISTA MOZO: PEDIDOS PARA ENTREGAR-->
+
+
+  <div *ngIf="usuario.perfil.toString() == 'mozo'">
+
+  <ion-list >
+    <ion-list-header #var1 class="tipo">Entregar</ion-list-header>
+  </ion-list>
+
+
+  <div #var2 *ngFor="let pedido of pedidos">
+    <div *ngIf="pedido.estado == 'preparado'">
+      <ion-item-group>
+        <ion-item>
+          <div class="productoContenido">
+            <ion-text>Mesa #</ion-text >
+            <ion-text>{{pedido.cliente | uppercase}}</ion-text >
+            <ion-text>{{pedido.tipo | uppercase}}</ion-text >
+            <div *ngFor="let prod of pedido.productos">        
+              <ion-text>. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text> X {{prod.cantidad}} un.</ion-text>
+            </div>
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </div> 
+  </div>
+ 
+</div>
+  <!-- FIN VISTA MOZO: PEDIDOS PARA ENTREGAR -->
+
 </ion-content>
 
-<!-- Fin Menu -->
-
-<!-- <ion-list>
-  <ion-list-header class="tipo"> Delivery Pendientes </ion-list-header>
-</ion-list>
-<ion-item-group >
-  <ion-item  >
-    <div class="productoContenido">
-      <ion-label class="platoNombre"> </ion-label>
-      <ion-text class="platoDesc">  </ion-text>
-      <ion-text class="platoPrecio">  </ion-text>
-      <ion-img class="platoImg"  src=""> </ion-img>  
-      
-    </div>
-  </ion-item> 
-</ion-item-group> -->
+ 
+ 

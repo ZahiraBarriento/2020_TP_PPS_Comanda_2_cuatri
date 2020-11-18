@@ -6,6 +6,7 @@ export class Pedido implements PedidoInterface{
     public id: string;
     public cliente: string;
     public para: string;
+    public tipo: string;
     public productos: ProductoInterface[] = [];
     public importe: number;
     public estado: string;
