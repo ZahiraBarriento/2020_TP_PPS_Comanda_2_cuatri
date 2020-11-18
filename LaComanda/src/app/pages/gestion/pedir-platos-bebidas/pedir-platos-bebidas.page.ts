@@ -157,8 +157,8 @@ verificarAcceso( ...usuario ){
 //#region Funciones visuales
 
 limpiarCantidad(){
-  const input = document.getElementsByTagName('input');
-  for (let i = 0; i < input.length; i++){
+  let input = document.getElementsByTagName('input');
+  for (let i=0; i < input.length; i++){
     input.namedItem(`${i}`).value = '0';
   }
 }

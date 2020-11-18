@@ -13,24 +13,36 @@ import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
 export class TomarPedidoPage implements OnInit {
 
   usuario: UsuarioModel = new Usuario();
+  pedidos: PedidoInterface[];
+  tareas: string;
 
   constructor(private pedido: PedidosService,
               private router: Router) { 
+
+
     this.usuario = JSON.parse(localStorage.getItem('userCatch'));
+    console.log(typeof this.usuario.perfil);
     this.verificarAcceso('mozo', 'bartender', 'camarero')
-      .catch( rej =>)
+      .then( res => {
+        this.traerPedidos();
+      })
+      .catch( rej => rej && this.router.navigateByUrl('/home'));
+
+      // tslint:disable-next-line: no-trailing-whitespace
+
   }
 
   ngOnInit() {
   }
 
 
-  llamar(){
+  async traerPedidos(){
+   return await this.pedido.traerPedidos()
+      .then( res => {
+        this.pedidos = [];
+        this.pedidos = res as PedidoInterface[];
+      });
 
-     this.pedido.traerPedidos()
-      .then( res => console.log(res))
-    
-    /*  this.pedido.traerPedidos();    */ 
   }
 
 
@@ -41,6 +53,8 @@ export class TomarPedidoPage implements OnInit {
       usuariosAcces.forEach(us => {
         if(this.usuario.perfil != us) {
           reject(false);
+        }else{
+          resolve(true);
         }
       });
     });

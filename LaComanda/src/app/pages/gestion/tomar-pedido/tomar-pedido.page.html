@@ -1,45 +1,41 @@
 <app-header title="Platos y Bebidas"></app-header>
 
-
 <!-- Inicio Menu -->
 
-
-<ion-content>
-
+<ion-content *ngIf="pedidos">
   <ion-list>
-    <ion-list-header class="tipo"> Pedidos Pendientes </ion-list-header>
+    <ion-list-header class="tipo">Pendiente</ion-list-header>
   </ion-list>
-  <ion-item-group >
-    <ion-item  >
-      <div class="productoContenido">
-        <ion-label class="platoNombre"> </ion-label>
-        <ion-text class="platoDesc">  </ion-text>
-        <ion-text class="platoPrecio">  </ion-text>
-       <!--  <ion-img class="platoImg"  src="false"> </ion-img> -->
-        
-      </div>
-    </ion-item> 
-  </ion-item-group> 
 
-
-  <ion-list>
-    <ion-list-header class="tipo"> Delivery Pendientes </ion-list-header>
-  </ion-list>
-  <ion-item-group >
-    <ion-item  >
-      <div class="productoContenido">
-        <ion-label class="platoNombre"> </ion-label>
-        <ion-text class="platoDesc">  </ion-text>
-        <ion-text class="platoPrecio">  </ion-text>
-        <!-- <ion-img class="platoImg"  src=""> </ion-img> -->
-        
-      </div>
-    </ion-item> 
-  </ion-item-group>
-
-
-<button (click)="llamar()" ></button>
- 
+  <div *ngFor="let item of pedidos">
+    <div *ngIf="item.para == usuario.perfil.toString()">
+      <ion-item-group>
+        <ion-item>
+          <div class="productoContenido">
+            <ion-label class="platoNombre"> </ion-label>
+            <ion-text class="platoDesc"> </ion-text>
+            <ion-text class="platoPrecio"> </ion-text>
+            <!--  <ion-img class="platoImg"  src="false"> </ion-img> -->
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </div>
+  </div>
 </ion-content>
 
 <!-- Fin Menu -->
+
+<!-- <ion-list>
+  <ion-list-header class="tipo"> Delivery Pendientes </ion-list-header>
+</ion-list>
+<ion-item-group >
+  <ion-item  >
+    <div class="productoContenido">
+      <ion-label class="platoNombre"> </ion-label>
+      <ion-text class="platoDesc">  </ion-text>
+      <ion-text class="platoPrecio">  </ion-text>
+      <ion-img class="platoImg"  src=""> </ion-img>  
+      
+    </div>
+  </ion-item> 
+</ion-item-group> -->

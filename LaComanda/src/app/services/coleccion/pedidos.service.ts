@@ -40,16 +40,16 @@ export class PedidosService {
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
         }
-        if (producto.tipo === 'bebida') {
+        if (producto.tipo === "bebida") {
           if (!pedidoBartender) {
             pedidoBartender = new Pedido();
           }
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-          pedidoCocinero.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.estado = 'informar';
+          pedidoBartender.importe = importeTotal += Number(producto.precio); 
+          pedidoBartender.estado = 'informar';
           pedidoBartender.para = 'bartender';
-          pedidoCocinero.actived = true;
+          pedidoBartender.actived = true;
           pedidoBartender.productos.push(producto);
         }
       });
@@ -115,9 +115,9 @@ export class PedidosService {
              pedidos.push(pedido);
         });
 
-       pedidos.length > 0 ?? resolve(pedidos) : reject(undefined);
+        resolve(pedidos);
 
-      })
+      });
 
       
        

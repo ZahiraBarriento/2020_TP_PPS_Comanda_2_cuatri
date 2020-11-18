@@ -12,12 +12,13 @@ export class Pedido implements PedidoInterface{
     public actived = true;
     public mesa: number;
 
-    constructor(
-        id = '',
-        cliente = '',
-        para = '',
-        importe = 0,
-        estado = '',
-    ){}
+    constructor(){
+
+        this.id = '';
+        this.cliente = '';
+        this.para = '';
+        this.importe = 0;
+        this.estado = '';
+    }
 }
  
