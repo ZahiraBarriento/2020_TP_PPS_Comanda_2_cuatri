@@ -6,6 +6,7 @@ import { PedidoInterface } from "src/app/models/pedido.interface";
 import { ProductoInterface } from "src/app/models/producto.interface";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { Usuario } from "src/app/classes/usuario.class";
+import { table } from 'console';
 
 @Injectable({
   providedIn: "root",
@@ -34,8 +35,7 @@ export class PedidosService {
 
           pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.preparado = false;
-          pedidoCocinero.entregado = false;
+          pedidoCocinero.estado = 'informar';
           pedidoCocinero.para = 'cocinero';
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
@@ -47,8 +47,7 @@ export class PedidosService {
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.preparado = false;
-          pedidoCocinero.entregado = false;
+          pedidoCocinero.estado = 'informar';
           pedidoBartender.para = 'bartender';
           pedidoCocinero.actived = true;
           pedidoBartender.productos.push(producto);
@@ -89,8 +88,7 @@ export class PedidosService {
 
           jsonOrden["productos"] = productos;
           jsonOrden["importe"] = total;
-          jsonOrden["preparado"] = this.ordenCompra[i].preparado;
-          jsonOrden["entregado"] = this.ordenCompra[i].entregado;
+          jsonOrden["estado"] = this.ordenCompra[i].estado;
           jsonOrden["actived"] = this.ordenCompra[i].actived;
 
           this.fr.addData("pedidos", jsonOrden); // !!!!!!!!!!!!! ACA FALTARIA UNA PROMESA PARA CONFIRMAR QUE SE CARGO AL FIRESTORE
@@ -103,12 +101,27 @@ export class PedidosService {
     });
   }
 
-  traerPedidos(perfil: string, estado: boolean){
-      /* this.fr.getDataAll('pedidos').subscribe( doc => {
-        doc.forEach( pedido => {
+  traerPedidos(){
 
-          console.log(pedido.payload.doc.data());
+    return new Promise( (resolve, reject) => {
+
+      let pedidos: PedidoInterface[] = [];
+
+      this.fr.getDataAll('pedidos').subscribe(doc => {
+
+        doc.forEach( ped => {
+             let pedido: PedidoInterface = (ped.payload.doc.data() as PedidoInterface);
+             pedido.id = ped.payload.doc.id;
+             pedidos.push(pedido);
         });
-      }) */
+
+       pedidos.length > 0 ?? resolve(pedidos) : reject(undefined);
+
+      })
+
+      
+       
+    })
+     
   }
 }
