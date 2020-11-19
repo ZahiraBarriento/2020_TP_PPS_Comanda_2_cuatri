@@ -15,22 +15,22 @@ export class TomarPedidoPage implements OnInit {
 
   usuario: UsuarioModel = new Usuario();
   pedidos: PedidoInterface[];
-  estado: string;
-  tarea: string;
+  estado = '';
+  tarea = '';
 
   constructor(private pedido: PedidosService,
               private router: Router) { 
 
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
-    this.verificarAcceso('cocinero')
+    this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
         console.log('pasds');
         this.traerPedidos();
-        this.asignarTareas();
+        this.asignarTareas();  
         
       })
-      .catch( rej => rej && this.router.navigateByUrl('/home'));
+      /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
 
       // tslint:disable-next-line: no-trailing-whitespace
 
@@ -54,38 +54,56 @@ export class TomarPedidoPage implements OnInit {
     const usuariosAcces = [...usuario];
     return new Promise( (resolve, reject) => {
 
-      usuariosAcces.forEach(us => {
-        console.log(this.usuario.perfil);
-        if(this.usuario.perfil == us) {
+      for (let i = 0; i < usuariosAcces.length; i++){
+        if (usuariosAcces[i] === this.usuario.perfil.toString()){
           resolve(true);
+          console.log(usuariosAcces[i]);
+          i = usuariosAcces.length;
         }
-      });
+
+      }
     });
   }
 
 
   asignarTareas(pedido?: PedidoInterface){
       
+      this.estado = '';
+
       switch (this.usuario.perfil.toString()) {
+
+        //////////////// Mozo ///////////////////////////
       case 'mozo':
+      if(pedido){
         if(pedido.estado == 'informar'){
           this.estado = 'informar';
-          
+          return this.estado;
         }
-        this.tarea = 'LLevar comanda';
-        break;
+
+      }
+      this.tarea = 'Llevar comanda';
+      break;
+      //////////////// Bartender ///////////////////////////
       case 'bartender':
-        this.estado = 'prepararB';
-        this.tarea = 'Preparar';
+        if(pedido){
+          this.estado = 'prepararB'; 
+          return this.estado;
+        }
+        this.tarea = 'Tragos a preparar';
         break;
-      case 'cocinero':
-        this.estado = 'prepararC';
-        this.tarea = 'Preparar';
+        //////////////// Cocinero ///////////////////////////
+        case 'cocinero':
+
+        if(pedido){
+          this.estado = 'prepararC';
+          return this.estado;
+        }
+        this.tarea = 'Platos a Preparar';
         break;
-      default:
+        default:
         console.log('Error');
     }
 
-      return this.estado;
+      
   }
 }
