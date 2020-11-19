@@ -12,32 +12,61 @@ ion-content{
      background-color: rgba(0, 0, 199, 0);
  }
 
-.productoContenido{
-    display: grid;
-    width: 100vw;
-    margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.603);
+  
+
+ .tarea{
+     font-size: 2.5rem;
+ }
+ 
+
+ .pedidoContenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid rgb(89, 0, 255); */
+    width: 100%;
     border-radius: .4rem;
+    background-color: rgba(255, 255, 255, 0.603);
+    margin-top: 2rem;
+     
+}
+
+.mesa{
+    border-bottom: 1px solid rgb(89, 0, 255);
+    font-size: 2rem;
+}
+ 
+.cliente{
+    border-bottom: 1px solid rgb(89, 0, 255);
+    font-size: 2rem;
+}
+ 
+.tipo{
+    border-bottom: 1px solid rgb(89, 0, 255);
+    font-size: 1.7rem;
 }
 
 
- 
- 
+
+.productoCont, .productoText{
+    font-size: 1.7rem;
+}
+
+
+.botonNotificar{
+    position: absolute;
+    background-color: yellow;
+    box-shadow: 10px 5px 5px black;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    right: 2rem;
+    top: 1%;
+  
+}
 
   
 
 
  
- 
-
- 
- 
- 
- 
-
- 
-
-.tipo {
-    font-size: 2.5rem;
-}
  

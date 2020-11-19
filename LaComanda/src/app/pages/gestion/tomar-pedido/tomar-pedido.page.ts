@@ -27,12 +27,11 @@ export class TomarPedidoPage implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
-       
- 
         setInterval( () => {
            this.traerPedidos();
            this.asignarTareas();
-        }, 100);  
+           console.log('tocado');
+        }, 500);  
           
  
       })
@@ -45,6 +44,9 @@ export class TomarPedidoPage implements OnInit {
   ngOnInit() {
   }
 
+  click(){
+    console.log('No hago nada');
+  }
    
 
    traerPedidos(){
@@ -55,8 +57,6 @@ export class TomarPedidoPage implements OnInit {
         this.pedidos = res;
       });
   } 
-
- 
 
   verificarAcceso( ...usuario ){
     const usuariosAcces = [...usuario];

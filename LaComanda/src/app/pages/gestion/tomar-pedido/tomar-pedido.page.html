@@ -4,22 +4,24 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header class="tipo">{{tarea}}</ion-list-header>
+    <ion-list-header class="tarea">{{tarea}}</ion-list-header>
   </ion-list>
 
   <div *ngFor="let pedido of pedidos">
     <div *ngIf="pedido.estado == asignarTareas(pedido)">
       <ion-item-group>
         <ion-item>
-          <div class="productoContenido">
+          <div class="pedidoContenido">
+            <button class="bottonNotificar" (click)="click()" class="botonNotificar">+</button>
             <ion-text class="mesa">Mesa #</ion-text >
-            <ion-text class="cliente">{{pedido.cliente | uppercase}}</ion-text >
-            <ion-text class="tipo">{{pedido.tipo | uppercase}}</ion-text >
-            <div *ngFor="let prod of pedido.productos">        
-              <ion-text class="">. {{prod.nombre | titlecase}}</ion-text>
-              <ion-text> X {{prod.cantidad}} un.</ion-text>
+            <ion-text class="cliente">Cliente: {{pedido.cliente | uppercase}}</ion-text >
+            <ion-text class="tipo">Tipo: {{pedido.tipo | uppercase}}</ion-text >
+            <ion-text class="productoText">Productos;</ion-text >
+            <div class="productoCont" *ngFor="let prod of pedido.productos">        
+              <ion-text class="prod">. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text class="cant"> X {{prod.cantidad}} un.</ion-text>
             </div>
-            <button class="botonNotificar">+</button>
+           
           </div>
         </ion-item>
       </ion-item-group>
@@ -34,7 +36,7 @@
   <div *ngIf="usuario.perfil.toString() == 'mozo'">
 
   <ion-list >
-    <ion-list-header #var1 class="tipo">Entregar</ion-list-header>
+    <ion-list-header class="tarea">Entregar</ion-list-header>
   </ion-list>
 
 
@@ -42,13 +44,15 @@
     <div *ngIf="pedido.estado == 'preparado'">
       <ion-item-group>
         <ion-item>
-          <div class="productoContenido">
-            <ion-text>Mesa #</ion-text >
-            <ion-text>{{pedido.cliente | uppercase}}</ion-text >
-            <ion-text>{{pedido.tipo | uppercase}}</ion-text >
-            <div *ngFor="let prod of pedido.productos">        
-              <ion-text>. {{prod.nombre | titlecase}}</ion-text>
-              <ion-text> X {{prod.cantidad}} un.</ion-text>
+          <div class="pedidoContenido">
+            <button class="bottonNotificar" (click)="click()" class="botonNotificar">+</button>
+            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="cliente">Cliente: {{pedido.cliente | uppercase}}</ion-text >
+            <ion-text class="tipo">Tipo: {{pedido.tipo | uppercase}}</ion-text >
+            <ion-text class="productoText">Productos;</ion-text >
+            <div class="productoCont" *ngFor="let prod of pedido.productos">        
+              <ion-text class="prod">. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text class="cant"> X {{prod.cantidad}} un.</ion-text>
             </div>
           </div>
         </ion-item>
