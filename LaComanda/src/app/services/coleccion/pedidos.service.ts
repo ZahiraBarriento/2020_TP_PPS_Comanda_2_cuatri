@@ -119,7 +119,7 @@ export class PedidosService {
   }
 
 
-  notificarComand(pedido: PedidoInterface, json: object){
+  notificarComanda(pedido: PedidoInterface, json: object){
 
     return new Promise( (resolve, reject) => {
       console.log(json);

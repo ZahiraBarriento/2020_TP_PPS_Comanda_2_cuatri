@@ -20,7 +20,7 @@ export class TomarPedidoPage implements OnInit {
   pedidos: PedidoInterface[];
   estado = '';
   tarea = '';
-
+  mensaje = '';
   jsonAsignar = {
     estado: '',
   };
@@ -135,39 +135,49 @@ export class TomarPedidoPage implements OnInit {
     if (pedido.estado == 'informar'){
       if (pedido.para == 'cocina'){
         this.jsonAsignar.estado =  'prepararC';
+        this.mensaje = 'Cocina notificada con exito';
+
       }
       if (pedido.para == 'bartender'){
         this.jsonAsignar.estado =  'prepararB';
+        this.mensaje = 'Bartender notificado con exito';
       }
 
     }
     if (pedido.estado == 'preparado'){
       this.jsonAsignar.estado = 'entregado';
+      this.mensaje = `Pedido es entregado a la mesa ${pedido.mesa} con exito`;
     }
 
     break;
     //////////////// Bartender y Cocinero ///////////////////////////
     case 'bartender' || 'cocinero':
     this.jsonAsignar.estado = 'preparado';
-
+    this.mensaje = 'Pedido preparado. Mozo notificado';
     break;
     default:
     console.log('Error');
   }
 
+
+  
   }
 
   notificar(pedido: PedidoInterface){
-    this.asignarNotificacion(pedido);
 
-    this.pedido.notificarComand(pedido, this.jsonAsignar)
+    this.asignarNotificacion(pedido);
+     
+    setTimeout( () => {
+
+    this.pedido.notificarComanda(pedido, this.jsonAsignar)
       .then( res => {
         if (res){
-          if (pedido.tipo != 'preparado'){
-            this.toast.MostrarMensaje(`El area ${pedido.para} fue notificada`, false);
-          }
+              this.toast.MostrarMensaje(`${this.mensaje}`, false);
         }
       });
+
+    },1000);
+    
     }
 
 
