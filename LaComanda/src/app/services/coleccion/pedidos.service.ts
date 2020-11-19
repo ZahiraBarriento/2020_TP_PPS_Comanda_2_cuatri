@@ -7,6 +7,8 @@ import { ProductoInterface } from "src/app/models/producto.interface";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { Usuario } from "src/app/classes/usuario.class";
 import { table } from 'console';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: "root",
@@ -82,6 +84,7 @@ export class PedidosService {
             let jsonProducto = new Object();
             jsonProducto["nombre"] = producto.nombre,
             jsonProducto["timeElavoracion"] = producto.timeElaboracion,
+
             jsonProducto["cantidad"] = producto.cantidad;
             jsonProducto["precio"] = producto.precio;
             productos.push(jsonProducto);
@@ -108,18 +111,21 @@ export class PedidosService {
     return new Promise( (resolve, reject) => {
 
       let pedidos: PedidoInterface[] = [];
-
+       
+       
       this.fr.getDataAll('pedidos').subscribe(doc => {
 
+        pedidos = [];
         doc.forEach( ped => {
              let pedido: PedidoInterface = (ped.payload.doc.data() as PedidoInterface);
              pedido.id = ped.payload.doc.id;
              pedidos.push(pedido);
+             
         });
 
         resolve(pedidos);
 
-      });
+      }); 
 
       
        

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
  
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
@@ -17,7 +19,7 @@ export class TomarPedidoPage implements OnInit {
   pedidos: PedidoInterface[];
   estado = '';
   tarea = '';
-
+  public cont = 0;
   constructor(private pedido: PedidosService,
               private router: Router) { 
 
@@ -25,9 +27,13 @@ export class TomarPedidoPage implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
-
-          this.traerPedidos();
-          this.asignarTareas();
+       
+ 
+        setInterval( () => {
+           this.traerPedidos();
+           this.asignarTareas();
+        }, 100);  
+          
  
       })
       /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
@@ -39,14 +45,16 @@ export class TomarPedidoPage implements OnInit {
   ngOnInit() {
   }
 
-
-  async traerPedidos(){
    
-   return await this.pedido.traerPedidos()
+
+   traerPedidos(){
+   
+   this.pedido.traerPedidos()
       .then( (res: PedidoInterface[]) => {
+         
         this.pedidos = res;
       });
-  }
+  } 
 
  
 
