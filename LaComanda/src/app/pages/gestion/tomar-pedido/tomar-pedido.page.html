@@ -8,7 +8,7 @@
   </ion-list>
 
   <div *ngFor="let pedido of pedidos">
-    <div *ngIf="pedido.estado == asignarTareas(pedido)">
+    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado'">
       <ion-item-group>
         <ion-item>
           <div class="pedidoContenido">

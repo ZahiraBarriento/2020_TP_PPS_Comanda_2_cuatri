@@ -6,9 +6,9 @@ import { PedidoInterface } from "src/app/models/pedido.interface";
 import { ProductoInterface } from "src/app/models/producto.interface";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { Usuario } from "src/app/classes/usuario.class";
-import { table } from 'console';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { table } from "console";
+import { pipe } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -23,7 +23,6 @@ export class PedidosService {
 
   ingresarPedido(ordenProductos: ProductoInterface[]) {
     return new Promise((resolve, reject) => {
-
       let pedidoCocinero: PedidoInterface;
       let pedidoBartender: PedidoInterface;
       this.ordenCompra = [];
@@ -37,9 +36,9 @@ export class PedidosService {
 
           pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.estado = 'informar';
-          pedidoCocinero.tipo = 'platos';
-          pedidoCocinero.para = 'cocina';
+          pedidoCocinero.estado = "informar";
+          pedidoCocinero.tipo = "platos";
+          pedidoCocinero.para = "cocina";
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
         }
@@ -49,10 +48,10 @@ export class PedidosService {
           }
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
-          pedidoBartender.importe = importeTotal += Number(producto.precio); 
-          pedidoBartender.estado = 'informar';
-          pedidoBartender.tipo = 'bebidas';
-          pedidoBartender.para = 'bartender';
+          pedidoBartender.importe = importeTotal += Number(producto.precio);
+          pedidoBartender.estado = "informar";
+          pedidoBartender.tipo = "bebidas";
+          pedidoBartender.para = "bartender";
           pedidoBartender.actived = true;
           pedidoBartender.productos.push(producto);
         }
@@ -82,10 +81,9 @@ export class PedidosService {
 
           this.ordenCompra[i].productos.forEach((producto) => {
             let jsonProducto = new Object();
-            jsonProducto["nombre"] = producto.nombre,
-            jsonProducto["timeElavoracion"] = producto.timeElaboracion,
-
-            jsonProducto["cantidad"] = producto.cantidad;
+            (jsonProducto["nombre"] = producto.nombre),
+              (jsonProducto["timeElavoracion"] = producto.timeElaboracion),
+              (jsonProducto["cantidad"] = producto.cantidad);
             jsonProducto["precio"] = producto.precio;
             productos.push(jsonProducto);
             total += Number(producto.precio) * producto.cantidad;
@@ -100,34 +98,33 @@ export class PedidosService {
           resolve(true);
         }
       }
-     
-
-     
     });
   }
 
-  traerPedidos(){
-
-    return new Promise( (resolve, reject) => {
-
+  traerPedidos() {
+    return new Promise((resolve, reject) => {
       let pedidos: PedidoInterface[] = [];
-       
-       
-      this.fr.getDataAll('pedidos').subscribe(doc => {
 
+      this.fr.getDataAll("pedidos").subscribe((doc) => {
         pedidos = [];
-        doc.forEach( ped => {
-             let pedido: PedidoInterface = (ped.payload.doc.data() as PedidoInterface);
-             pedido.id = ped.payload.doc.id;
-             pedidos.push(pedido);
-             
+        doc.forEach((ped) => {
+          let pedido: PedidoInterface = ped.payload.doc.data() as PedidoInterface;
+          pedido.id = ped.payload.doc.id;
+          pedidos.push(pedido);
         });
 
         resolve(pedidos);
+      });
+    });
+  }
 
-      }); 
 
+  notificarComand(pedido: PedidoInterface, json: object){
+
+    return new Promise( (resolve, reject) => {
+      console.log(json);
+      this.fr.updateData('pedidos', pedido.id, json);
+      resolve(true);
     })
-     
   }
 }
