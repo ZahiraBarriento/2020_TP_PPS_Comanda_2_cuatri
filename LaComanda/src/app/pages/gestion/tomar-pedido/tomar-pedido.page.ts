@@ -30,7 +30,6 @@ export class TomarPedidoPage implements OnInit {
         setInterval( () => {
            this.traerPedidos();
            this.asignarTareas();
-           console.log('tocado');
         }, 500);  
           
  
