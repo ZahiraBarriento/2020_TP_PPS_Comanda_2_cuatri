@@ -39,7 +39,7 @@ export class PedidosService {
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
           pedidoCocinero.estado = 'informar';
           pedidoCocinero.tipo = 'platos';
-          pedidoCocinero.para = 'cocinero';
+          pedidoCocinero.para = 'cocina';
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
         }

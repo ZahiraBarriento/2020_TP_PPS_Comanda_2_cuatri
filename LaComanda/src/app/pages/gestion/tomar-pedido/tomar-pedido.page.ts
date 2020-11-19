@@ -44,9 +44,7 @@ export class TomarPedidoPage implements OnInit {
   ngOnInit() {
   }
 
-  click(){
-    console.log('No hago nada');
-  }
+  
    
 
    traerPedidos(){
@@ -113,5 +111,9 @@ export class TomarPedidoPage implements OnInit {
     }
 
       
+  }
+
+  notificar(pedido: PedidoInterface[]){
+    console.log(pedido);
   }
 }
