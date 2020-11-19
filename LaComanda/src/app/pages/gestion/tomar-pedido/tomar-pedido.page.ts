@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { rejects } from 'assert';
+ 
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
@@ -21,14 +21,14 @@ export class TomarPedidoPage implements OnInit {
   constructor(private pedido: PedidosService,
               private router: Router) { 
 
-
+          
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
-        console.log('pasds');
-        this.traerPedidos();
-        this.asignarTareas();  
-        
+
+          this.traerPedidos();
+          this.asignarTareas();
+ 
       })
       /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
 
@@ -41,14 +41,14 @@ export class TomarPedidoPage implements OnInit {
 
 
   async traerPedidos(){
+   
    return await this.pedido.traerPedidos()
-      .then( res => {
-        this.pedidos = [];
-        this.pedidos = res as PedidoInterface[];
+      .then( (res: PedidoInterface[]) => {
+        this.pedidos = res;
       });
-
   }
 
+ 
 
   verificarAcceso( ...usuario ){
     const usuariosAcces = [...usuario];
@@ -57,7 +57,7 @@ export class TomarPedidoPage implements OnInit {
       for (let i = 0; i < usuariosAcces.length; i++){
         if (usuariosAcces[i] === this.usuario.perfil.toString()){
           resolve(true);
-          console.log(usuariosAcces[i]);
+          console.log(`Bienvenido ${usuariosAcces[i]}`);
           i = usuariosAcces.length;
         }
 
@@ -75,7 +75,7 @@ export class TomarPedidoPage implements OnInit {
         //////////////// Mozo ///////////////////////////
       case 'mozo':
       if(pedido){
-        if(pedido.estado == 'informar'){
+        if(pedido.estado === 'informar'){
           this.estado = 'informar';
           return this.estado;
         }

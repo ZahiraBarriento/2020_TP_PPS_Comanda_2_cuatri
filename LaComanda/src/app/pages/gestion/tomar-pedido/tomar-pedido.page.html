@@ -12,13 +12,14 @@
       <ion-item-group>
         <ion-item>
           <div class="productoContenido">
-            <ion-text>Mesa #</ion-text >
-            <ion-text>{{pedido.cliente | uppercase}}</ion-text >
-            <ion-text>{{pedido.tipo | uppercase}}</ion-text >
+            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="cliente">{{pedido.cliente | uppercase}}</ion-text >
+            <ion-text class="tipo">{{pedido.tipo | uppercase}}</ion-text >
             <div *ngFor="let prod of pedido.productos">        
-              <ion-text>. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text class="">. {{prod.nombre | titlecase}}</ion-text>
               <ion-text> X {{prod.cantidad}} un.</ion-text>
             </div>
+            <button class="botonNotificar">+</button>
           </div>
         </ion-item>
       </ion-item-group>
