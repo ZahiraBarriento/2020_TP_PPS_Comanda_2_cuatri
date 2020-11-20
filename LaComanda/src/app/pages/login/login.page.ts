@@ -140,6 +140,12 @@ export class LoginPage {
           'success'
         );
         break;
+        case "anonimo":
+          this.modalController.presentToast(
+            `Gracias por elegirnos ${usuario.nombre.toUpperCase()} ${usuario.apellido.toUpperCase()}. Tiene permisos limitados Aguarde...`,
+            'success'
+          );
+          break;
       case "mozo":
         this.modalController.presentToast(msj, 'success');
         break;
