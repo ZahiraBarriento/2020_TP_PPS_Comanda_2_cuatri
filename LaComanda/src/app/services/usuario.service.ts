@@ -50,7 +50,6 @@ export class UsuarioService {
           }
  
         });
-
         if(!state) {this.toastCtrl.presentToast('Usuario y/o contraseña incorrecto', 'danger'); }
       } else { this.toastCtrl.presentToast('Error!! No se encuentra el documento Usuarios', 'danger'); }
     });
@@ -81,5 +80,7 @@ export class UsuarioService {
 
 
   }
- 
+
+
+   
 }

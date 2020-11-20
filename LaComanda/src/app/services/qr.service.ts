@@ -115,4 +115,21 @@ export class QrService implements OnInit {
     return { "nombre": nombre, "apellido": apellido, "dni": datos[4], "cuil": cuil };
   }
 
+
+  qrPropina(){
+    return new Promise( (resolve, reject) => {
+
+      this.barcodeScanner.scan(this.options)
+        .then(barcodeData => {
+          var json = this.GetJsonFromBarcode(barcodeData);
+          resolve(json);
+        })
+        .catch( err => {
+          reject(err);
+        });
+    });
+  }
+
+
+
 }

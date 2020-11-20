@@ -43,7 +43,7 @@ export class TomarPedidoPage implements OnInit {
       })
       .catch( rej => {
          console.log('Usuario no tiene Acceso. Sera redireccionado....');
-         router.navigateByUrl('/login');
+         this.router.navigateByUrl('/login');
       })
       /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
 
@@ -75,9 +75,10 @@ export class TomarPedidoPage implements OnInit {
         
         if (usuariosAcces[i] === this.usuario.perfil.toString()){
           access = true;
-        }
-        access ? resolve(access) : reject(access);
+        }      
       }
+
+      access ? resolve(access) : reject(access);
     });
   }
 

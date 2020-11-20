@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/classes/usuario.class';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { FuctionsService } from 'src/app/services/fuctions.service';
 
 @Component({
   selector: 'app-empleado',
@@ -17,6 +18,7 @@ export class EmpleadoPage implements OnInit {
 
   forma: FormGroup;
   userInput: Usuario = new Usuario();
+  usuario: UsuarioModel = new Usuario();
   viewPic: string = "../../../../assets/image/default.jpg";
 
   // Aqui cargo los datos del qr
@@ -33,11 +35,19 @@ export class EmpleadoPage implements OnInit {
               private camera: Camera,
               private db: FirestoreService,
               private qr: BarcodeScanner,
-              private toastCtrl: ToastController) {
-
-              this.fotoCam = 'FOTO ficticia, se crea para desarrollo en pc, borrar instancia al finalizar proyecto';
+              private toastCtrl: FuctionsService,
+              private router: Router) {
               this.generarForm();
-              this.userInput = new Usuario();
+            
+              this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
+              this.verificarAcceso('supervisor', 'duenio')
+                .then( res => {
+                  this.userInput = new Usuario();
+                })
+                .catch( rej => {
+                   console.log('Usuario no tiene Acceso. Sera redireccionado....');
+                   this.router.navigateByUrl('/login');
+                })
   }
 
   ngOnInit() {
@@ -115,7 +125,7 @@ export class EmpleadoPage implements OnInit {
       };
       this.db.addData('usuarios', json);
 
-      this.showMessage(`Alta de ${json.nombre} ${json.nombre} como ${json.perfil} `, true);
+      this.toastCtrl.presentToast(`Alta de ${json.nombre} ${json.nombre} como ${json.perfil} `, 'success');
       this.forma.reset();
     })
      .catch( rej => {
@@ -178,16 +188,20 @@ export class EmpleadoPage implements OnInit {
   }
 
 
-  async showMessage(text, estado) {
+  verificarAcceso( ...usuario ){
+    const usuariosAcces = [...usuario];
+    let access = false;
+    return new Promise( (resolve, reject) => {
 
-    const toast = await this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'middle',
-     /* cssClass: estado ? 'toastSuccess' : 'toastWarning',   */
+      for (let i = 0; i < usuariosAcces.length; i++){
+        
+        if (usuariosAcces[i] === this.usuario.perfil.toString()){
+          access = true;
+        }      
+      }
+
+      access ? resolve(access) : reject(access);
     });
-
-    toast.present();
   }
 }
 
