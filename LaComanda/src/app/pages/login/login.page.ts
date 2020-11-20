@@ -147,10 +147,6 @@ export class LoginPage {
        
 
 
-
-    })
-
-
   }
 
 }
