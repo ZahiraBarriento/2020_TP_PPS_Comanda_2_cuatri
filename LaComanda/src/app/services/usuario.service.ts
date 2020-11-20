@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
 import { Usuario } from '../classes/usuario.class';
 import { UsuarioModel } from '../models/usuario.model';
 import { FirestoreService } from './firestore.service';
+import { FuctionsService } from './fuctions.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UsuarioService {
   passFromLogin = null;
 
   constructor(private fr: FirestoreService,
-              private toastCtrl: ToastController) { }
+              private toastCtrl: FuctionsService) { }
 
 
   traerUsuario(uid: string, correo: string) {
@@ -51,8 +51,8 @@ export class UsuarioService {
  
         });
 
-        if(!state) { this.showMessage('Usuario y/o contraseña incorrecto'); }
-      } else { this.showMessage('Error!! No se encuentra el documento Usuarios'); }
+        if(!state) {this.toastCtrl.presentToast('Usuario y/o contraseña incorrecto', 'danger'); }
+      } else { this.toastCtrl.presentToast('Error!! No se encuentra el documento Usuarios', 'danger'); }
     });
   });
   }
@@ -80,17 +80,6 @@ export class UsuarioService {
     
 
 
-  }
-
-
-  async showMessage(text) {
-    const toast =  await this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'middle'
-    });
-
-    toast.present();
   }
  
 }
