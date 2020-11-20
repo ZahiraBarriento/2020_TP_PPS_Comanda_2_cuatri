@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SupervisorPageRoutingModule } from './supervisor-routing.module';
 
 import { SupervisorPage } from './supervisor.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SupervisorPageRoutingModule
+    SupervisorPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [SupervisorPage]
 })

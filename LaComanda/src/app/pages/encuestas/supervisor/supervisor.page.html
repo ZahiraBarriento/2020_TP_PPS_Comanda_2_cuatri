@@ -1,29 +1,37 @@
 <app-header title="Encuesta Supervisor"></app-header>
 
 <ion-content>
-
- <form [formGroup]="forma">
-  <ion-radio-group  formControlName="perfil" >
-    
-    <ion-label>Empleados</ion-label>
-    <ion-radio slot="start"  value="Empleados"> </ion-radio>
-    
-    <ion-label>Clientes</ion-label>
-    <ion-radio slot="start" value="Clientes"></ion-radio>
-    
-  </ion-radio-group>
-
-  <ion-item>
-    <ion-label> 
-    </ion-label>
-    <ion-select  interface="popover" [attr.disabled]="forma.get('perfil').invalid" formControlName="tipo">
-      <ion-select-option  value ="em" >em</ion-select-option>
-     
-    </ion-select>
-  </ion-item>
-
-</form>
-  <button (click)="verificar()" >Verificar</button>
  
+  <ion-list>
+    <ion-list-header class="perfil">Clientes</ion-list-header>
+  </ion-list>
+
+      <ion-item-group *ngFor="let usuario of usuarios; let i = index">
+        <ion-item *ngIf="usuario.perfil.toString() === 'cliente'">
+          <div class="encuestaContenido">
+            <button class="boton" (click)="encuesta()"></button>
+            <img class="foto"  [src]="'https://loremflickr.com/320/240?random='+i"/>
+            <ion-text class="nombre">{{ usuario.nombre | uppercase}} {{usuario.apellido | uppercase}}</ion-text >
+            <ion-text class="correo">{{ usuario.correo}}</ion-text >
+           
+          </div>
+        </ion-item>
+      </ion-item-group>
+   
+   <ion-list>
+    <ion-list-header class="perfil">Empleados</ion-list-header>
+  </ion-list>
+
+  <ion-item-group *ngFor="let usuario of usuarios; let i = index">
+    <ion-item *ngIf="usuario.perfil.toString() != 'cliente' && usuario.perfil.toString() != 'anonimo'">
+      <div class="encuestaContenido">
+        <button class="boton" (click)="encuesta()"></button>
+        <img class="foto"  [src]="'https://loremflickr.com/320/240?random='+i"/>
+        <ion-text class="nombre">{{ usuario.nombre | uppercase}} {{usuario.apellido | uppercase}}</ion-text >
+        <ion-text class="correo">{{ usuario.perfil | titlecase}}</ion-text >
+       
+      </div>
+    </ion-item>
+  </ion-item-group>
 
 </ion-content>

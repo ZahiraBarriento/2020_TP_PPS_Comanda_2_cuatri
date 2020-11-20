@@ -35,12 +35,15 @@ export class TomarPedidoPage implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
+        console.log('Usuario con Acceso.');
         setInterval( () => {
            this.traerPedidos();
            this.asignarTareas();
         }, 500);
-
-
+      })
+      .catch( rej => {
+         console.log('Usuario no tiene Acceso. Sera redireccionado....');
+         router.navigateByUrl('/login');
       })
       /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
 
@@ -65,15 +68,15 @@ export class TomarPedidoPage implements OnInit {
 
   verificarAcceso( ...usuario ){
     const usuariosAcces = [...usuario];
+    let access = false;
     return new Promise( (resolve, reject) => {
 
       for (let i = 0; i < usuariosAcces.length; i++){
+        
         if (usuariosAcces[i] === this.usuario.perfil.toString()){
-          resolve(true);
-          console.log(`Bienvenido ${usuariosAcces[i]}`);
-          i = usuariosAcces.length;
+          access = true;
         }
-
+        access ? resolve(access) : reject(access);
       }
     });
   }
@@ -166,7 +169,6 @@ export class TomarPedidoPage implements OnInit {
   notificar(pedido: PedidoInterface){
 
     this.asignarNotificacion(pedido);
-     
     setTimeout( () => {
 
     this.pedido.notificarComanda(pedido, this.jsonAsignar)

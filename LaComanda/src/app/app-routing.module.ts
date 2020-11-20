@@ -75,10 +75,15 @@ const routes: Routes = [
   {
     path: 'tomar-pedido',
     loadChildren: () => import('./pages/gestion/tomar-pedido/tomar-pedido.module').then( m => m.TomarPedidoPageModule)
-  },  {
+  },
+  {
     path: 'listado',
     loadChildren: () => import('./pages/listado/listado.module').then( m => m.ListadoPageModule)
-  }
+  },
+  {
+    path: 'aprobar-usuario',
+    loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
+}
 
 ];
 

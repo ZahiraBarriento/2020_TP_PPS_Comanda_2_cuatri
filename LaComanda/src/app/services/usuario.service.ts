@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { promise } from 'protractor';
-import { stringify } from 'querystring';
 import { Usuario } from '../classes/usuario.class';
 import { UsuarioModel } from '../models/usuario.model';
 import { FirestoreService } from './firestore.service';
@@ -13,6 +11,7 @@ export class UsuarioService {
 
 
   user: UsuarioModel = new Usuario();
+  usuarios: UsuarioModel[];
   userCatch;
   mailFromLogin = null;
   passFromLogin = null;
@@ -56,6 +55,31 @@ export class UsuarioService {
       } else { this.showMessage('Error!! No se encuentra el documento Usuarios'); }
     });
   });
+  }
+
+
+  traerUsuariosActivos(){
+
+    this.usuarios = [];
+
+    return new Promise ( (resolve, reject) => {
+      this.fr.getDataAll('usuarios').subscribe( doc => {
+
+        doc.map( (usuario) => {
+          if ((usuario.payload.doc.data() as UsuarioModel).activated) {
+            this.user = usuario.payload.doc.data() as UsuarioModel;
+            this.usuarios.push(this.user);
+          }
+        });
+      });
+
+      resolve(this.usuarios);
+
+
+    })
+    
+
+
   }
 
 

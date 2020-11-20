@@ -7,6 +7,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Perfil, perfilJson } from '../../models/perfilJson';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { FuctionsService } from '../../services/fuctions.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { UsuarioModel } from 'src/app/models/usuario.model';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +25,7 @@ export class LoginPage {
   constructor(private fb: FormBuilder,
               private auth: AuthService,
               private router: Router,
-              private toastCtrl: ToastController,
+              private toastService: ToastService,
               private userService: UsuarioService,
               public modalController: FuctionsService) {
 
@@ -38,10 +41,11 @@ export class LoginPage {
       .then(resAuth => {
         // envio el uid del auth para comparar el id de db usuario. Si existe lo traigo
         this.userService.traerUsuario(resAuth.user.uid, this.credencial.email)
-          .then(resDb => {
+          .then((resDb: UsuarioModel) => {
 
-            if (resDb['activated']){
+            if (resDb.activated){
               // Guardo en un local storage el usuario de la Base de Datos
+              this.mensajesAcceso(resDb);
               localStorage.setItem('userCatch', JSON.stringify(resDb));
               this.router.navigateByUrl('home');
             }
@@ -53,7 +57,14 @@ export class LoginPage {
           });
       })
       .catch( err => {
-        console.log("nose que pasa");
+        switch (err.code) {
+          case 'auth/invalid-email' || 'auth/user-not-found':
+            this.toastService.MostrarMensaje('Correo y/o contraseña incorrecta', false);
+            break;
+
+          default:
+            this.toastService.MostrarMensaje('Problemas tecnicos.. Error reportado', false);
+        }
       });
   }
 
@@ -106,20 +117,40 @@ export class LoginPage {
     this.SignIn();
   }
 
-  async showMessage(text) {
-    const toast = await this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'middle'
-    });
-
-    toast.present();
-  }
-
   Registrarse(){
     this.userService.mailFromLogin = this.forma.get('email').value;
     this.userService.passFromLogin = this.forma.get('pass').value;
     this.router.navigateByUrl('altas/cliente');
+  }
+
+
+  mensajesAcceso(usuario: UsuarioModel){
+
+
+        const msj = `Se ficha empleado ${usuario.nombre.toUpperCase()} ${usuario.apellido.toUpperCase()} con exito. Aguarde...`;
+        
+        switch (usuario.perfil.toString()) {
+          case ('mozo' || 'metre'):
+            this.toastService.MostrarMensaje(msj, false);
+            break;
+          case 'supervisor':
+            this.toastService.MostrarMensaje(`Bienvenido supervisor  ${usuario.nombre.toUpperCase()} ${usuario.apellido.toUpperCase()}. Aguarde...`, false);
+            break;
+          case 'duenio':
+              this.toastService.MostrarMensaje(`Bienvenido  ${usuario.nombre.toUpperCase()} ${usuario.apellido.toUpperCase()}. Se activan todos los Permisos. Aguarde...`, false);
+              break;
+          
+          default:
+            break;
+        }
+
+       
+
+
+
+    })
+
+
   }
 
 }
