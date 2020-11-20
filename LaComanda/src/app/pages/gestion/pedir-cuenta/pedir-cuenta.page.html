@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <app-header title="DETALLE CUENTA"></app-header>
+</ion-header>
+
+<ion-content>
+    <p align="center">
+      <label class="encabezado">Gracias una vez mas por elegirnos. Esperamos que hayas disfrutado de nuestros platos y nuestra atención, hasta la proxima!</label>
+    </p>
+  <ion-item-group *ngFor="let item of detallesCompletos">
+    <ion-item>      
+      <div class="detalleItems">
+        <ion-label class="detalleDesc">{{item.descripcion}} ({{item.precioUnitario}})</ion-label>
+        <ion-label class="detalleCant"> x {{item.cantidad}}u. </ion-label>
+        <p align="right">
+          <ion-label class="detalleImp">$ {{item.importe}} </ion-label>
+        </p>
+      </div>
+    </ion-item>
+
+  </ion-item-group>
+  <ion-item>
+    <div class="pie">
+    <ion-label>Total</ion-label>
+    <p align="right">
+      <ion-label>$ {{total}}</ion-label>
+    </p>
+  </div>
+  </ion-item>
+
+  <div class="btn" >
+    <ion-button [hidden]="yaPago" (click)="pagar()">Pagar</ion-button>
+  </div>
+</ion-content>

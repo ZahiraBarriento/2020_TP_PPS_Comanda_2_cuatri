@@ -75,10 +75,16 @@ const routes: Routes = [
   {
     path: 'tomar-pedido',
     loadChildren: () => import('./pages/gestion/tomar-pedido/tomar-pedido.module').then( m => m.TomarPedidoPageModule)
-  },  {
+  },
+  {
     path: 'listado',
     loadChildren: () => import('./pages/listado/listado.module').then( m => m.ListadoPageModule)
+  },
+  {
+    path: 'pedir-cuenta',
+    loadChildren: () => import('./pages/gestion/pedir-cuenta/pedir-cuenta.module').then( m => m.PedirCuentaPageModule)
   }
+  
 
 ];
 

@@ -46,4 +46,8 @@ export class AdministrarPage implements OnInit {
   pedirComanda(){
     this.router.navigateByUrl('pedir-platos-bebidas');
   }
+
+  pedirCuenta(){
+    this.router.navigateByUrl('pedir-cuenta');
+  }
 }

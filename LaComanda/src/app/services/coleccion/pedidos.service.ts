@@ -127,4 +127,58 @@ export class PedidosService {
       resolve(true);
     })
   }
+
+  detallePedidos(cliente:string):Promise<any>{
+    return new Promise((resolve) => {
+    //pedidos realizados con precio unitario y su respectivo importe
+    //grado de satisfaccion (propina)
+    // total a abonar
+    let todosLosPedidos: PedidoInterface[] = [];
+    let pedidosDelCliente: PedidoInterface[] = [];
+
+    
+      this.fr.getDataAll('pedidos').subscribe(doc => {
+        doc.forEach(ped => {
+          let pedido: PedidoInterface = (ped.payload.doc.data() as PedidoInterface);
+          pedido.id = ped.payload.doc.id;
+          todosLosPedidos.push(pedido);
+        });
+  
+        pedidosDelCliente = this.filtrarPedidosPorCliente(todosLosPedidos, cliente);
+  
+        var detalleCompleto = [];
+        //Armo el detalle
+        pedidosDelCliente.forEach(ped => {
+          
+          ped.productos.forEach(prod => {
+            var detalle = {'descripcion': "", 'cantidad': 0, 'precioUnitario': 0, 'importe': 0, 'satisf': 0, 'total': 0};
+  
+            detalle["descripcion"] = prod.nombre;
+            detalle["cantidad"] = prod.cantidad;
+            detalle["precioUnitario"] = prod.precio;
+            detalle["importe"] = prod.cantidad * prod.precio;
+            detalle["pedidoId"] = ped.id;
+            detalleCompleto.push(detalle);
+          });
+          
+        });
+        resolve(detalleCompleto);
+      });
+    });
+    
+  }
+
+  filtrarPedidosPorCliente(pedidos, cliente){
+    let pedidosDelCliente: PedidoInterface[] = [];
+
+    pedidos.forEach(ped => {
+      var pedAux = ped as PedidoInterface;
+      if (pedAux.cliente == cliente && pedAux.estado == "entregado" && pedAux.actived)
+        pedidosDelCliente.push(pedAux);
+    });
+    return pedidosDelCliente;
+  }
+
 }
+
+
