@@ -81,16 +81,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/listado/listado.module').then( m => m.ListadoPageModule)
   },
   {
-<<<<<<< HEAD
     path: 'aprobar-usuario',
     loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
-}
-=======
-    path: 'pedir-cuenta',
+  },
+  {
+  path: 'pedir-cuenta',
     loadChildren: () => import('./pages/gestion/pedir-cuenta/pedir-cuenta.module').then( m => m.PedirCuentaPageModule)
   }
-  
->>>>>>> a1075ecd72de5a3c55f0989fab3ee35d9e0946b2
 
 ];
 
