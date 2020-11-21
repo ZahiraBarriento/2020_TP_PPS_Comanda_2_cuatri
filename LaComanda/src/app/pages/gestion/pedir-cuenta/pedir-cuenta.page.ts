@@ -13,8 +13,8 @@ import { DetalleInterface } from 'src/app/models/detalle.interface';
   styleUrls: ['./pedir-cuenta.page.scss'],
 })
 export class PedirCuentaPage implements OnInit {
-  pedidosDelCliente:Array<DetalleInterface>;
-  pedidosEntregados:Array<DetalleInterface>;
+  pedidosDelCliente:Array<DetalleInterface> = [];
+  pedidosEntregados:Array<DetalleInterface> = [];
   pedidosNoEntregados:Array<DetalleInterface>;
   total = 0;
   yaPago = false;
@@ -28,8 +28,8 @@ export class PedirCuentaPage implements OnInit {
     private qr:QrService) { }
 
   ngOnInit() {
-    this.qr.qrPropina().then((json) => {
-      this.propina = json["desc"];
+    //this.qr.qrPropina().then((json) => {
+      this.propina = 20;
       var user = JSON.parse(localStorage.getItem('userCatch'));
       var cliente = user["nombre"] + " " + user["apellido"];
       this.pedidosService.detallePedidos(cliente).then((pedidos) => {        
@@ -37,7 +37,7 @@ export class PedirCuentaPage implements OnInit {
         this.filtrarPorEntregado();
         this.calcularTotal();
       });
-    });    
+    //});    
   }
 
   filtrarPorEntregado(){

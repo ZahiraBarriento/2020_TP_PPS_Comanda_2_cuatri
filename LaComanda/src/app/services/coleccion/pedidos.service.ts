@@ -150,12 +150,12 @@ export class PedidosService {
 
         pedidosDelCliente = this.filtrarPedidosPorCliente(todosLosPedidos, cliente);
 
-        let detalleCompleto = new Array<DetalleInterface>();
+        let detalleCompleto: DetalleInterface[] = [];
         // Armo el detalle
         pedidosDelCliente.forEach(ped => {
 
           ped.productos.forEach(prod => {
-            let detalle:DetalleInterface;
+            let detalle = new Object() as DetalleInterface;
 
             detalle.descripcion = prod.nombre;
             detalle.cantidad = prod.cantidad;
