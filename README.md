@@ -300,15 +300,16 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 <p>Se actualizaron funcionalidades. Se realizo reuniones en meet </p>
 
 :girl: <strong>Zahira Barriento</strong><br>
-- <strong> Mensajes entre usuarios :heavy_check_mark:</strong><br>
+- <strong> Consulta al mozo :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 20/11</i><br>
-- <strong> Mejoras en las asignaciones y reservas de mesas :heavy_check_mark:</strong><br>
+- <strong> Mejoras en las asignaciones de mesas :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 20/11</i><br>
 
 :boy: <strong>Lucas Marino</strong><br>
 - <strong> Cierre pedido :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 20/11</i><br>
-- <strong> QR ingreso (sin terminar)</strong><br><br>
+- <strong> QR ingreso :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br><br>
 
 :boy: <strong>Juan Bugallo</strong><br>
 - <strong> Pedir platos y comidas :heavy_check_mark:</strong><br>
@@ -318,3 +319,31 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 - <strong> Qr propina:heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 19/11</i><br>
 
+<table>
+  <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg">
+	<img src="" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif">
+	<img src="" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif">
+	<img src="" alt="" width="200"></a>
+      </td>
+      <td>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif">
+	<img src="" alt="" width="200"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
