@@ -124,12 +124,13 @@ export class QrService implements OnInit {
         .then(barcodeData => {
           const result = barcodeData.text as string;
           const canceled = barcodeData.cancelled;
+
+          
           let jsonTips = {
             tipo : 'Sin propina',
             desc: 0,
           };
-          
-
+      
           if(result.length > 0){
 
 

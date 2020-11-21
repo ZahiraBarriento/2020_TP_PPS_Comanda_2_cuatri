@@ -1,15 +1,12 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { ToastController } from "@ionic/angular";
 import { AuthService } from "src/app/services/auth.service";
 import { UsuarioService } from "src/app/services/usuario.service";
 import { Perfil, perfilJson } from "../../models/perfilJson";
 import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
-import { ToastService } from "src/app/services/toast.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
-import { TitleCasePipe } from "@angular/common";
 
 @Component({
   selector: "app-login",
