@@ -7,11 +7,8 @@ import { Perfil, perfilJson } from "../../models/perfilJson";
 import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
-<<<<<<< HEAD
-=======
 import { TitleCasePipe } from "@angular/common";
 import { LoaderService } from 'src/app/services/loader.service';
->>>>>>> f918beae8e7454cb5ceeffd46126ff275458312b
 
 @Component({
   selector: "app-login",
@@ -26,7 +23,6 @@ export class LoginPage {
   constructor(private fb: FormBuilder,
               private auth: AuthService,
               private router: Router,
-              private toastCtrl: ToastController,
               private userService: UsuarioService,
               public modalController: FuctionsService,
               private loader : LoaderService) {

@@ -38,8 +38,10 @@ ion-list-header,ion-item,ion-list{
 }
 
 .foto{
+    object-fit: cover;
     grid-area: foto;
-    border-radius: 100%;
+    border-radius: 60%;
+  /*   border-radius: 100%; */
     width: 80%;
 }
 

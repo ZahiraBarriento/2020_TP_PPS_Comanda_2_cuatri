@@ -35,7 +35,7 @@ export class TomarPedidoPage implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
       .then( res => {
-        console.log('Usuario con Acceso.');
+        console.log('Usuario con Acceso.' + this.usuario.perfil);
         setInterval( () => {
            this.traerPedidos();
            this.asignarTareas();
@@ -155,7 +155,8 @@ export class TomarPedidoPage implements OnInit {
 
     break;
     //////////////// Bartender y Cocinero ///////////////////////////
-    case 'bartender' || 'cocinero':
+    case 'bartender':
+    case 'cocinero':
     this.jsonAsignar.estado = 'preparado';
     this.mensaje = 'Pedido preparado. Mozo notificado';
     break;

@@ -40,7 +40,7 @@ export class PedirCuentaPage implements OnInit {
     this.detallesCompletos.forEach(detalle => {
       this.total += detalle["importe"];
     });
-    this.total = this.total / (100 / this.propina);
+    this.total += this.total / (100 / this.propina);
   }
 
   pagar(){
