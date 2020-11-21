@@ -122,7 +122,6 @@ export class PedidosService {
   notificarComanda(pedido: PedidoInterface, json: object){
 
     return new Promise( (resolve, reject) => {
-      console.log(json);
       this.fr.updateData('pedidos', pedido.id, json);
       resolve(true);
     })

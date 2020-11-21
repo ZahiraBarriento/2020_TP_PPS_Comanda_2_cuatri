@@ -81,13 +81,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/listado/listado.module').then( m => m.ListadoPageModule)
   },
   {
-    path: 'pedir-cuenta',
+    path: 'aprobar-usuario',
+    loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
+  },
+  {
+  path: 'pedir-cuenta',
     loadChildren: () => import('./pages/gestion/pedir-cuenta/pedir-cuenta.module').then( m => m.PedirCuentaPageModule)
   },
   {
     path: 'aprobar-usuario',
     loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
   }
+
 ];
 
 @NgModule({

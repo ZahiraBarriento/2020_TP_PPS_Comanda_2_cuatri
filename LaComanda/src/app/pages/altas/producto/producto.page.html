@@ -1,7 +1,7 @@
 <app-header  [title]="title"></app-header>
 
 
-<ion-content *ngIf="userPerfil == 'cocinero' || userPerfil == 'bartender'" >
+<ion-content *ngIf="userPerfil.perfil.toString() == 'cocinero' || userPerfil.perfil.toString() == 'bartender'" >
  
       <form class="formulario" [formGroup]="forma" (ngSubmit)="altaProducto()">
 

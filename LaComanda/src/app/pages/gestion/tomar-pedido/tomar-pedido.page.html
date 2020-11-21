@@ -7,6 +7,7 @@
     <ion-list-header class="tarea">{{tarea}}</ion-list-header>
   </ion-list>
 
+   
   <div *ngFor="let pedido of pedidos">
     <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado'">
       <ion-item-group>
@@ -19,13 +20,11 @@
             <div class="productoCont" *ngFor="let prod of pedido.productos">        
               <ion-text class="prod">. {{prod.nombre | titlecase}}</ion-text>
               <ion-text class="cant"> X {{prod.cantidad}} un.</ion-text>
-            </div>
-           
+            </div>         
           </div>
         </ion-item>
       </ion-item-group>
     </div>
-
   </div>
 
 
