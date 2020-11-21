@@ -7,6 +7,11 @@ import { Perfil, perfilJson } from "../../models/perfilJson";
 import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
+<<<<<<< HEAD
+=======
+import { TitleCasePipe } from "@angular/common";
+import { LoaderService } from 'src/app/services/loader.service';
+>>>>>>> f918beae8e7454cb5ceeffd46126ff275458312b
 
 @Component({
   selector: "app-login",
@@ -18,13 +23,14 @@ export class LoginPage {
   credencial = { email: "", pass: "", displayName: "", photoURL: "" };
   perfilJso: Perfil[];
 
-  constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router,
-    private userService: UsuarioService,
-    public modalController: FuctionsService
-  ) {
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router,
+              private toastCtrl: ToastController,
+              private userService: UsuarioService,
+              public modalController: FuctionsService,
+              private loader : LoaderService) {
+
     this.crearFormulario();
     this.perfilJso = perfilJson;
   }
@@ -40,6 +46,11 @@ export class LoginPage {
           .traerUsuario(resAuth.user.uid, this.credencial.email)
           .then((resDb: UsuarioModel) => {
             if (resDb.activated) {
+              localStorage.setItem('userCatch', JSON.stringify(resDb));
+              this.loader.showLoader();
+                setTimeout(() => {
+                  this.router.navigateByUrl('home');
+                }, 1500);
               // Guardo en un local storage el usuario de la Base de Datos
               this.mensajesAcceso(resDb);
               localStorage.setItem("userCatch", JSON.stringify(resDb));

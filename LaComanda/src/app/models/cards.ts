@@ -38,9 +38,9 @@ export const cards = [{
         { title: 'MI PERFIL', photo: '../../../assets/image/bartender.png', message: '', action: 'perfil' }
     ],
     mozo: [
-        { title: 'COMANDAS', photo: '../../../assets/image/plato.png', message: 'Realiza o confirma nuevas comandas.', action: 'confirmarPedido' },
         { title: 'LISTA DE COMANDAS', photo: '../../../assets/image/comanda.png', message: 'Lista de todas las comandas realizadas.', action: 'listaComandas' },
         { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Dinos como fue entregado el espacio de trabajo.', action: 'encuestaEmpleado' },
+        { title: 'CONSULTAS', photo: '../../../assets/image/consulta.png', message: 'Responde las consultas hechas por los clientes', action: 'consultas' },
         { title: 'MI PERFIL', photo: '../../../assets/image/bartender.png', message: '', action: 'perfil' }
     ],
     cocinero: [
