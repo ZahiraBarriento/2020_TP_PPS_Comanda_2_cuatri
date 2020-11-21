@@ -28,8 +28,8 @@ export class PedirCuentaPage implements OnInit {
     private qr:QrService) { }
 
   ngOnInit() {
-    //this.qr.qrPropina().then((json) => {
-      this.propina = 20;
+    this.qr.qrPropina().then((json) => {
+      this.propina = json["desc"];
       var user = JSON.parse(localStorage.getItem('userCatch'));
       var cliente = user["nombre"] + " " + user["apellido"];
       this.pedidosService.detallePedidos(cliente).then((pedidos) => {        
@@ -37,7 +37,7 @@ export class PedirCuentaPage implements OnInit {
         this.filtrarPorEntregado();
         this.calcularTotal();
       });
-    //});    
+    });    
   }
 
   filtrarPorEntregado(){
