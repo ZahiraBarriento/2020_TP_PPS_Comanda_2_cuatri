@@ -3,19 +3,18 @@
       <ion-button slot="start" fill="clear" (click)="onClose()">
         <ion-icon name="close"></ion-icon>
       </ion-button>
-    <ion-title align="center">{{table.table}}</ion-title>
+    <ion-title align="center">MESA {{table.number}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let mensaje of mensajes.messages">
-      <ion-col size="7" *ngIf="mensaje.userName !== user.nombre" class="message other">
-        <b style="color:  rgb(27, 194, 183);">{{mensaje.userName}} {{mensaje.userLastName}}</b>
-        <br>{{mensaje.content}}<br>
+    <ion-row *ngFor="let mensaje of chat.messages">
+      <ion-col size="7" *ngIf="mensaje.user == 'mozo'" class="message other">
+        MOZO<br>{{mensaje.content}}<br>
         <small style="color: grey;">{{mensaje.date}}</small>
       </ion-col>
 
-      <ion-col offset="5" size="7" *ngIf="mensaje.user == user.nombre" class="message my">
+      <ion-col offset="5" size="7" *ngIf="mensaje.user != 'mozo'" class="message my">
         {{mensaje.content}}<br>
         <small style="color: white; float: right;">{{mensaje.date}}</small>
       </ion-col>
