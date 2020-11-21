@@ -19,7 +19,6 @@ export const cards = [{
         { title: 'ALTAS', photo: '../../../assets/image/add.png', message: 'Agrega nuevos dueños/supervisores, empleados o mesas.', action: 'altas' },
         { title: 'APROBACIONES PENDIENTES', photo: '../../../assets/image/user-add.png', message: 'Lista de clientes registrados sin ser aprobados.', action: 'aprobarUsuario' },
         { title: 'RESERVAS', photo: '../../../assets/image/calendario.png', message: 'Confirma reservas hechas por los clientes.', action: 'checkReserva' },
-        { title: 'LISTA DE COMANDAS', photo: '../../../assets/image/comanda.png', message: 'Lista de todas las comandas realizadas.', action: 'listaComandas' },
         { title: 'MI PERFIL', photo: '../../../assets/image/supervisor.png', message: '', action: 'perfil' }
     ],
     supervisor: [
