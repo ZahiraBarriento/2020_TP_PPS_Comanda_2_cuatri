@@ -8,6 +8,7 @@ import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { TitleCasePipe } from "@angular/common";
+import { ToastService } from '../../services/toast.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginPage {
               private router: Router,
               private userService: UsuarioService,
               public modalController: FuctionsService,
-              private loader : LoaderService) {
+              private loader: LoaderService,
+              private toast:ToastService) {
 
     this.crearFormulario();
     this.perfilJso = perfilJson;
@@ -50,25 +52,19 @@ export class LoginPage {
                 this.router.navigateByUrl("home");
               }, 1500);
             } else {
-              console.log("EL USUARIO NO ESTA ACTIVADO");
-              //MOSTRAR ERROR LUCAS
+              this.toast.MostrarMensaje("El cliente aún no ha sido activado!", true);
             }
           });
       })
       .catch((err) => {
         switch (err.code) {
-          case "auth/invalid-email" || "auth/user-not-found":
-            this.modalController.presentToast(
-              "Correo y/o contraseña incorrecta",
-              'danger'
-            );
+          case "auth/invalid-email":
+          case "auth/user-not-found":
+            this.toast.MostrarMensaje("Correo y/o contraseña incorrecta", true);            
             break;
 
           default:
-            this.modalController.presentToast(
-              "Problemas tecnicos.. Error reportado",
-              'danger'
-            );
+            this.toast.MostrarMensaje("Problemas tecnicos.. Error reportado", true);
         }
       });
   }

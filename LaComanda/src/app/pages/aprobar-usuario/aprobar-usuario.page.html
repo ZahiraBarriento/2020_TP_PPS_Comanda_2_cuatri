@@ -12,8 +12,8 @@
             Nombre: {{user.nombre}} <br> Apellido: {{user.apellido}}<br>Correo: {{user.correo}}<br>Dni: {{user.dni}} 
           </p>
           <div align="center">
-            <button class="btnHabilitar" (click)="HabilitarUser(user)" [hidden]="user.activated">Habilitar usuario</button>
-            <button class="btnDeshabilitar" (click)="DeshabilitarUser(user)" [hidden]="!user.activated">Cancelar</button>
+            <button class="btnHabilitar" (click)="HabilitarUser(user)" [hidden]="user.activated">Usuario a agregar</button>
+            <button class="btnDeshabilitar" (click)="DeshabilitarUser(user)" [hidden]="!user.activated">Usuario a borrar</button>
           </div>
           
         </ion-card-content>
