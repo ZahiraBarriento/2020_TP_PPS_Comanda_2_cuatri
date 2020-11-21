@@ -4,12 +4,8 @@
 <ion-content>
   <ion-list *ngFor="let chat of consultas">
     <ion-item (click)="openChat(chat)">
-      <ion-avatar slot="start">
-        <ion-img src="{{chat.img}}"></ion-img>
-      </ion-avatar>
       <ion-label>
-        <h2><strong>{{chat.lastName}} {{chat.name}}</strong></h2>
-        <p>Cliente de la {{chat.table}}</p>
+        <p>MESA {{chat.number}}</p>
       </ion-label>
     </ion-item>
   </ion-list>

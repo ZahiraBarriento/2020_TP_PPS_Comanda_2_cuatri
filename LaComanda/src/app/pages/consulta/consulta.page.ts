@@ -20,16 +20,8 @@ export class ConsultaPage implements OnInit {
   ngOnInit() {
     this.fb.getDataQuery('chat').subscribe(info => {
       this.consultas = info;
+      console.log(this.consultas)
     })
-    /*this.user = localStorage.getItem('userCatch'); //obtengo user
-    this.user = JSON.parse(this.user);
-
-    this.chatService.getDataAll('chat').subscribe(chat => {
-      chat.map(msg => {
-        this.mensajes = msg.payload.doc.data();
-        console.log(this.mensajes)
-      })
-    })*/
   }
 
   openChat(chat){

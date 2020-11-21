@@ -7,6 +7,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ListaMesasComponent } from './lista-mesas/lista-mesas.component';
 import { ListaEsperaComponent } from './lista-espera/lista-espera.component';
 import { ChatConsultaComponent } from './chat-consulta/chat-consulta.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ChatConsultaComponent } from './chat-consulta/chat-consulta.component';
   exports: [HeaderComponent, ListaEsperaComponent,ChatConsultaComponent],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }

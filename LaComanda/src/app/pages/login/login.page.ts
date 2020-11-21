@@ -42,15 +42,13 @@ export class LoginPage {
           .traerUsuario(resAuth.user.uid, this.credencial.email)
           .then((resDb: UsuarioModel) => {
             if (resDb.activated) {
-              localStorage.setItem('userCatch', JSON.stringify(resDb));
-              this.loader.showLoader();
-                setTimeout(() => {
-                  this.router.navigateByUrl('home');
-                }, 1500);
               // Guardo en un local storage el usuario de la Base de Datos
               this.mensajesAcceso(resDb);
               localStorage.setItem("userCatch", JSON.stringify(resDb));
-              this.router.navigateByUrl("home");
+              this.loader.showLoader();
+              setTimeout(() => {
+                this.router.navigateByUrl("home");
+              }, 1500);
             } else {
               console.log("EL USUARIO NO ESTA ACTIVADO");
               //MOSTRAR ERROR LUCAS

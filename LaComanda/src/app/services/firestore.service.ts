@@ -16,11 +16,7 @@ export class FirestoreService {
   }
 
   public addData(collection:string, json){
-    
-     this.db.collection(collection).add(json);
-      
-
-    
+    this.db.collection(collection).add(json);
   }
 
   public updateData(collection:string, idFire, json){
@@ -32,7 +28,7 @@ export class FirestoreService {
     return this.db.collection(collection).snapshotChanges().pipe(map(rooms => {
       return rooms.map(item =>{
         const data : any = item.payload.doc.data();
-        data.id = item.payload.doc.id;
+        data.cliente = item.payload.doc.id;
         return data;
       })
     }))
@@ -46,6 +42,10 @@ export class FirestoreService {
     this.db.collection(chat_id).doc(id).update({
       messages : firestore.FieldValue.arrayUnion(message)
     })
+  }
+
+  public addDataId(collection:string, json, id){
+    this.db.collection(collection).doc(id).set(json);
   }
 
   delateMsg(){
