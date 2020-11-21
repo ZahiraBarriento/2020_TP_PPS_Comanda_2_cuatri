@@ -316,5 +316,5 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 - <strong> Tomar Pedido :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 19/11</i><br>
 - <strong> Qr propina:heavy_check_mark:</strong><br>
-<i>&nbsp;• Finalización: 17/11</i><br>
+<i>&nbsp;• Finalización: 19/11</i><br>
 
