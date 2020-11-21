@@ -35,6 +35,8 @@ export class ChatConsultaComponent implements OnInit {
 
   ngOnInit() {
     this.table = this.navParams.get('data');
+    console.log(this.table)
+    console.log(this.table)
     this.user = JSON.parse(localStorage.getItem('userCatch')); //obtengo user
 
     this.chatService.getDataChat(this.table.cliente).subscribe(item => {
@@ -49,7 +51,7 @@ export class ChatConsultaComponent implements OnInit {
         date: this.fecha,
         user: this.user.perfil
       }
-      this.chatService.sendMsgToDirebase(message, 'chat', this.user.id);
+      this.chatService.sendMsgToDirebase(message, 'chat', this.table.cliente);
       this.msg = "";
   }
 

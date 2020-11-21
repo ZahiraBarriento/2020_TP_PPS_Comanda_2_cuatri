@@ -20,7 +20,6 @@ export class ConsultaPage implements OnInit {
   ngOnInit() {
     this.fb.getDataQuery('chat').subscribe(info => {
       this.consultas = info;
-      console.log(this.consultas)
     })
   }
 

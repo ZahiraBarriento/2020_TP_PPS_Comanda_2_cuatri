@@ -62,7 +62,8 @@ export class AdministrarPage implements OnInit {
   consultaUsuario() {
     var json = {
       number: this.table.number,
-      messages: ''
+      messages: '',
+      id : this.user.id
     }
 
     this.traerConsultas().then((res: boolean) => {
