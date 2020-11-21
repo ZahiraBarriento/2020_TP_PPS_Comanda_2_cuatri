@@ -178,8 +178,7 @@ export class TomarPedidoPage implements OnInit {
               this.toast.MostrarMensaje(`${this.mensaje}`, false);
         }
       });
-
-    },1000);
+    }, 1000);
     
     }
 

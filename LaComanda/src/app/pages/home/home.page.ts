@@ -85,9 +85,13 @@ export class HomePage implements OnInit {
         this.IngresoLocalQR();
         break;
       case 'reserva':
-        //implementar reserva hecha por cliente
+        //implementar
         break;
       case 'encuestaCliente':
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('encuesta/cliente');
+        }, 1500);
         break;
       case 'mesa':
         this.mesaCliente();
@@ -98,10 +102,16 @@ export class HomePage implements OnInit {
         this.showView = true;
         break;
       case 'aprobarUsuario':
-        this.router.navigateByUrl('aprobar-usuario');
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('aprobar-usuario');
+        }, 1500);
         break;
       case 'encuestaSupervisor':
-        //implementar encuesta
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('encuesta/supervisor');
+        }, 1500);
         break;
 
       //METRE
@@ -113,8 +123,11 @@ export class HomePage implements OnInit {
         break;
 
       //MOZO
-      case 'confirmarPedido':
-        //implementar una lista de los pedido realizdos para confirmar
+      case 'consultas':
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('/consulta');
+        }, 1500);
         break;
 
       //COCINERO
@@ -122,17 +135,26 @@ export class HomePage implements OnInit {
         this.router.navigateByUrl('/altas/producto');
         break;
       case 'listaComandas':
-        //implementar listado de los pedidos realizados, en cocinero es disitinto igual que bartender (preguntar)
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('/tomar-pedido');
+        }, 1500);
         break;
 
       //EMPLADOS TODOS
       case 'encuestaEmpleado':
-        //implementar encuesta de empleados
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('encuesta/empleado');
+        }, 1500);
         break;
 
       //TODOS
       case 'perfil':
-        this.router.navigateByUrl('/home/perfil');
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('/home/perfil');
+        }, 1500);
         break;
     }
   }
@@ -143,13 +165,13 @@ export class HomePage implements OnInit {
       this.ActualizarClienteListaEspera();
       setTimeout(() => {
         this.toast.MostrarMensaje("Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!", false);
-      }, 2000);
+      }, 1500);
 
     }).catch(() => {
       this.loader.showLoader();
       setTimeout(() => {
         this.toast.MostrarMensaje("Ha ocurrido un error al ingresar al local", true);
-      }, 2000);
+      }, 1500);
     });
   }
 
@@ -183,6 +205,7 @@ export class HomePage implements OnInit {
       setTimeout(() => {
         this.router.navigateByUrl('/administrar');
       }, 1500);
+      
     }).catch((error) => {
       switch(error){
         case 'a':
@@ -190,9 +213,6 @@ export class HomePage implements OnInit {
         break;
         case 'b':
           this.alert.presentToast('¡Primero debe registrarse en la lista de espera!', 'danger');
-        break;
-        case 'c':
-          this.alert.presentToast('Aún no tienes mesa, ¡Tan pronto como podamos te asignaremos una mesa!', 'warning');
         break;
         default:
           this.alert.presentToast('ERROR, el código QR es incorrecto.', 'danger');

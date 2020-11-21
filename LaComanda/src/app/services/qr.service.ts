@@ -47,7 +47,6 @@ export class QrService implements OnInit {
     var mesa;
     client = JSON.parse(client);
 
-    console.log(this.qrMesas)
     return new Promise((resolve, reject) => {
 
       this.barcodeScanner.scan(this.options).then(barcodeData => {
@@ -65,7 +64,7 @@ export class QrService implements OnInit {
   
         else if (esQrMesa) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
           if(mesa.client == client.id){
-            localStorage.setItem('mesa', mesa);
+            localStorage.setItem('tableCurrent', JSON.stringify(mesa));
             resolve();
           }else if(mesa.client != client.id){
             reject('a'); //Mesa incorrecta
@@ -124,12 +123,13 @@ export class QrService implements OnInit {
         .then(barcodeData => {
           const result = barcodeData.text as string;
           const canceled = barcodeData.cancelled;
+
+          
           let jsonTips = {
             tipo : 'Sin propina',
             desc: 0,
           };
-          
-
+      
           if(result.length > 0){
 
 
