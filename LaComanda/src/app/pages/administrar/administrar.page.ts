@@ -15,11 +15,15 @@ export class AdministrarPage implements OnInit {
   todo : any = [];
   bebidas : any = [];
   platos : any = [];
+  table : any;
 
   constructor(
     private modalCtrl : FuctionsService,
     private afs : FirestoreService,
-    private router : Router) { }
+    private router : Router) { 
+      this.table = localStorage.getItem('tableCurrent');
+      this.table = JSON.parse(this.table);
+    }
 
   ngOnInit() {
     this.afs.getDataAll('productos').subscribe(element => {
@@ -36,18 +40,17 @@ export class AdministrarPage implements OnInit {
         }
       });
     })
-
   }
 
   openChat(){
-    this.modalCtrl.openModal(ChatConsultaComponent, 'common');
+    this.modalCtrl.openModal(ChatConsultaComponent, 'common', this.table);
   }
 
   pedirComanda(){
-    this.router.navigateByUrl('pedir-platos-bebidas');
+    this.router.navigateByUrl('/pedir-platos-bebidas');
   }
 
   pedirCuenta(){
-    this.router.navigateByUrl('pedir-cuenta');
+    this.router.navigateByUrl('/pedir-cuenta');
   }
 }

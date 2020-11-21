@@ -83,9 +83,11 @@ const routes: Routes = [
   {
     path: 'pedir-cuenta',
     loadChildren: () => import('./pages/gestion/pedir-cuenta/pedir-cuenta.module').then( m => m.PedirCuentaPageModule)
+  },
+  {
+    path: 'aprobar-usuario',
+    loadChildren: () => import('./pages/aprobar-usuario/aprobar-usuario.module').then( m => m.AprobarUsuarioPageModule)
   }
-  
-
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Perfil, perfilJson } from '../../models/perfilJson';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { FuctionsService } from '../../services/fuctions.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginPage {
               private router: Router,
               private toastCtrl: ToastController,
               private userService: UsuarioService,
-              public modalController: FuctionsService) {
+              public modalController: FuctionsService,
+              private loader : LoaderService) {
 
     this.crearFormulario();
     this.perfilJso = perfilJson;
@@ -41,9 +43,12 @@ export class LoginPage {
           .then(resDb => {
 
             if (resDb['activated']){
-              // Guardo en un local storage el usuario de la Base de Datos
               localStorage.setItem('userCatch', JSON.stringify(resDb));
-              this.router.navigateByUrl('home');
+              this.loader.showLoader();
+                setTimeout(() => {
+                  this.router.navigateByUrl('home');
+                }, 1500);
+              // Guardo en un local storage el usuario de la Base de Datos
             }
             else {
               console.log("EL USUARIO NO ESTA ACTIVADO");
