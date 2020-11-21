@@ -294,3 +294,27 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 <i>&nbsp;• Finalización: 12/11</i><br>
 - <strong> Encuesta supeevisor :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 13/11</i><br>
+
+<br><br>
+<h3 style="text-align: center;">:calendar: Semana del 13/11 al 21/11</h3>
+<p>Se actualizaron funcionalidades. Se realizo reuniones en meet </p>
+
+:girl: <strong>Zahira Barriento</strong><br>
+- <strong> Mensajes entre usuarios :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+- <strong> Mejoras en las asignaciones y reservas de mesas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+
+:boy: <strong>Lucas Marino</strong><br>
+- <strong> Cierre pedido :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+- <strong> QR ingreso (sin terminar)</strong><br><br>
+
+:boy: <strong>Juan Bugallo</strong><br>
+- <strong> Pedir platos y comidas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 17/11</i><br>
+- <strong> Tomar Pedido :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 19/11</i><br>
+- <strong> Qr propina:heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 17/11</i><br>
+
