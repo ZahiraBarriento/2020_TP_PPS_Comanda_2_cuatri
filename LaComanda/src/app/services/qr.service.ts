@@ -131,8 +131,6 @@ export class QrService implements OnInit {
           };
       
           if(result.length > 0){
-
-
           switch (result) {
               case 'Excelente':
                 jsonTips.desc = 20;

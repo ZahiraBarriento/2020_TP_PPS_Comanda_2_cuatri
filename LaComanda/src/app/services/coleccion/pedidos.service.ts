@@ -52,7 +52,7 @@ export class PedidosService {
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoBartender.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.mesa = this.mesa.number;
+          pedidoBartender.mesa = this.mesa.number;
           pedidoBartender.estado = 'informar';
           pedidoBartender.tipo = 'bebidas';
           pedidoBartender.para = 'bartender';
