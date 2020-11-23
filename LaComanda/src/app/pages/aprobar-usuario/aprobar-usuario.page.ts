@@ -54,17 +54,21 @@ export class AprobarUsuarioPage implements OnInit {
 
   HabilitarUser(user:Usuario){
     user.activated = true;
+    console.log(user.activated);
   }
 
-  DehabilitarUser(user:Usuario){
-    user.activated = true;
+  DeshabilitarUser(user:Usuario){
+    user.activated = false;
+    console.log(user.activated);
   }
 
   Guardar(){    
     for(var i=0;i<this.usuariosPendientes.length;i++){
       var userModificar:Usuario = this.usuariosPendientes[i];
-      var json = {'activated': true};
-      this.db.updateData('usuarios', userModificar.id, json);
+      if (userModificar.activated)
+        this.db.updateData('usuarios', userModificar.id, {'activated': true});
+      else
+        this.db.deleteDocument('usuarios', userModificar.id);      
     }
     this.VolverAtrasSpinner();
   }

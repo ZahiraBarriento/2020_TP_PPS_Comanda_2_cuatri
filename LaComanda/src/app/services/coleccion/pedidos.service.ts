@@ -4,6 +4,7 @@ import { Pedido } from 'src/app/classes/pedido.class';
 
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { ProductoInterface } from 'src/app/models/producto.interface';
+import { DetalleInterface } from 'src/app/models/detalle.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { Usuario } from 'src/app/classes/usuario.class';
 
@@ -149,18 +150,19 @@ export class PedidosService {
 
         pedidosDelCliente = this.filtrarPedidosPorCliente(todosLosPedidos, cliente);
 
-        let detalleCompleto = [];
+        let detalleCompleto: DetalleInterface[] = [];
         // Armo el detalle
         pedidosDelCliente.forEach(ped => {
 
           ped.productos.forEach(prod => {
-            let detalle = {descripcion: '', cantidad: 0, precioUnitario: 0, importe: 0, satisf: 0, total: 0};
+            let detalle = new Object() as DetalleInterface;
 
-            detalle['descripcion'] = prod.nombre;
-            detalle['cantidad'] = prod.cantidad;
-            detalle['precioUnitario'] = prod.precio;
-            detalle['importe'] = prod.cantidad * prod.precio;
-            detalle['pedidoId'] = ped.id;
+            detalle.descripcion = prod.nombre;
+            detalle.cantidad = prod.cantidad;
+            detalle.precioUnitario = prod.precio;
+            detalle.importe = prod.cantidad * prod.precio;
+            detalle.pedidoId = ped.id;
+            detalle.estado = ped.estado;
             detalleCompleto.push(detalle);
           });
 
@@ -176,7 +178,7 @@ export class PedidosService {
 
     pedidos.forEach(ped => {
       let pedAux = ped as PedidoInterface;
-      if (pedAux.cliente == cliente && pedAux.estado == 'entregado' && pedAux.actived) {
+      if (pedAux.cliente == cliente && pedAux.actived) {
         pedidosDelCliente.push(pedAux);
       }
     });

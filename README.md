@@ -155,11 +155,11 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
     <tr>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/login.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/login.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/login.jpeg" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/anonimo.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/anonimo.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/anonimo.jpeg" alt="" width="150"></a>
       </td>
     </tr>
   </tbody>
@@ -172,56 +172,34 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
     <th>Bartender</th>
     <th>Cliente</th>
     <th>Cocinero</th>
+    <th>Dueño</th>
   </thead>
   <tbody>
     <tr>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-anonimo.jpeg" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-bartender.gif" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cliente.gif" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-cocinero.gif" alt="" width="150"></a>
       </td>
-    </tr>
-  </tbody>
-</table>
-<table>
-  <thead>
-    <th>Dueño</th>
-    <th>Metre</th>
-    <th>Mozo</th>
-    <th>Supervisor</th>
-  </thead>
-  <tbody>
-    <tr>
-    <td>
+	<td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-due%C3%B1o.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-due%C3%B1o.gif" alt="" width="200"></a>
-      </td>
-      <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-metre.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-metre.gif" alt="" width="200"></a>
-      </td>
-      <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-mozo.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-mozo.gif" alt="" width="200"></a>
-      </td>
-      <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-supervisor.gif">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-supervisor.gif" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/home-due%C3%B1o.gif" alt="" width="150"></a>
       </td>
     </tr>
   </tbody>
 </table>
+
 <br>
 <strong>ALTAS</strong>
 <table>
@@ -229,43 +207,25 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
     <th>Bebida</th>
     <th>Cliente</th>
     <th>Dueño</th>
+	  <th>Empleado</th>
   </thead>
   <tbody>
     <tr>
     <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-bebida.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-bebida.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-bebida.jpeg" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-cliente.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-cliente.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-cliente.jpeg" alt="" width="150"></a>
       </td>
       <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-due%C3%B1o.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-due%C3%B1o.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-due%C3%B1o.jpeg" alt="" width="150"></a>
       </td>
-    </tr>
-  </tbody>
-</table>
-<table>
-  <thead>
-    <th>Empleado</th>
-    <th>Mesa</th>
-    <th>Plato</th>
-  </thead>
-  <tbody>
-    <tr>
-    <td>
+      <td>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-empleado.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-empleado.jpeg" alt="" width="200"></a>
-      </td>
-      <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-mesa.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-mesa.jpeg" alt="" width="200"></a>
-      </td>
-      <td>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-plato.jpeg">
-	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-plato.jpeg" alt="" width="200"></a>
+	<img src="https://github.com/ZahiraBarriento/2020_TP_PPS_Comanda_2_cuatri/blob/main/LaComanda/src/assets/git/alta-empleado.jpeg" alt="" width="150"></a>
       </td>
     </tr>
   </tbody>
@@ -294,3 +254,28 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 <i>&nbsp;• Finalización: 12/11</i><br>
 - <strong> Encuesta supeevisor :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 13/11</i><br>
+
+<br><br>
+<h3 style="text-align: center;">:calendar: Semana del 13/11 al 21/11</h3>
+<p>Se actualizaron funcionalidades. Se realizo reuniones en meet </p>
+
+:girl: <strong>Zahira Barriento</strong><br>
+- <strong> Consulta al mozo :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+- <strong> Mejoras en las asignaciones de mesas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+
+:boy: <strong>Lucas Marino</strong><br>
+- <strong> Cierre pedido :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br>
+- <strong> QR ingreso :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 20/11</i><br><br>
+
+:boy: <strong>Juan Bugallo</strong><br>
+- <strong> Pedir platos y comidas :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 17/11</i><br>
+- <strong> Tomar Pedido :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 19/11</i><br>
+- <strong> Qr propina:heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 19/11</i><br>
+
