@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
+import { PushNotificationService } from './services/push-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,12 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private androidFullScreen: AndroidFullScreen
+    private androidFullScreen: AndroidFullScreen,
+    private pushNotification: PushNotificationService
   ) {
     this.initializeApp();
     this.fullScreen();
+    this.pushNotification.initNotification();
   }
 
   initializeApp() {

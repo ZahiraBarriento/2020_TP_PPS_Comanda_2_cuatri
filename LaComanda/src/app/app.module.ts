@@ -18,7 +18,9 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
-import { ComponentsModule } from './components/components.module';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { PushNotificationService } from './services/push-notification.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +39,8 @@ import { ComponentsModule } from './components/components.module';
     Camera,
     AndroidFullScreen,
     BarcodeScanner,
+    OneSignal,
+    PushNotificationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
