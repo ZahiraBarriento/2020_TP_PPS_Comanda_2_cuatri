@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   user: User;
   esClienteActivado = true;
 
-  constructor(private auth: AngularFireAuth, private navCtrl: NavController) {
+  constructor(private auth: AngularFireAuth, private router: Router) {
     this.auth.authState.subscribe((resp) => {
       this.user = resp;
     });
@@ -30,8 +31,9 @@ export class AuthService {
   }
 
   public async signOut() {
-    this.auth.signOut();
-    this.navCtrl.navigateForward("login");
+    this.auth.signOut().then(() =>{
+      this.router.navigate(['/login']);
+    })
   }
 
   public async register(mail, clave) {

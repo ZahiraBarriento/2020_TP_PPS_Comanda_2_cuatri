@@ -14,7 +14,7 @@ import { FuctionsService } from '../../services/fuctions.service';
 export class ModalComponent implements OnInit {
 
   viewPic: string = "../../../../assets/image/default.jpg";
-  image;
+  image : string = 'asd';
 
    //#region Get
   get name() {
