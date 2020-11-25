@@ -48,7 +48,7 @@ export class FirestoreService {
     this.db.collection(collection).doc(id).set(json);
   }
 
-  delateMsg(){
+  deleteMsg(){
     //implementar esto para cuando se vaya en cliente
   }
 }

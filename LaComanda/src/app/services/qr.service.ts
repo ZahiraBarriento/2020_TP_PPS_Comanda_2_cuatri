@@ -66,6 +66,8 @@ export class QrService implements OnInit {
           if(mesa.client == client.id){
             localStorage.setItem('tableCurrent', JSON.stringify(mesa));
             resolve();
+          }else if(mesa.client == ''){
+            reject('c');
           }else if(mesa.client != client.id){
             reject('a'); //Mesa incorrecta
           }else if(!this.pudoIngresarAlLocal){

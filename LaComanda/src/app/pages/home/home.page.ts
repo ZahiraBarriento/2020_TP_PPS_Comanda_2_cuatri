@@ -214,6 +214,9 @@ export class HomePage implements OnInit {
         case 'b':
           this.alert.presentToast('¡Primero debe registrarse en la lista de espera!', 'danger');
         break;
+        case 'b':
+          this.alert.presentToast('Nuestros empleados estan trabajando para asignarle una mesa, aguarde y tan pronto como podamos tendra su mesa.', 'warning');
+        break;
         default:
           this.alert.presentToast('ERROR, el código QR es incorrecto.', 'danger');
         break;
