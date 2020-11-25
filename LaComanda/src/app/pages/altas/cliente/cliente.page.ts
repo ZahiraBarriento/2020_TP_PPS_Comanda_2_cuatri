@@ -105,7 +105,8 @@ export class ClientePage implements OnInit {
         "dni": this.dni,
         "foto": this.image,
         "perfil": "cliente",
-        "activated": false
+        "activated": false,
+        "listaEspera" : false
       };
       this.firestore.addData("usuarios", json);
       this.auth.esClienteActivado = false;

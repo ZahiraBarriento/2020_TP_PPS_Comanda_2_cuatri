@@ -28,7 +28,7 @@ export class HomePage implements OnInit {
     private loader: LoaderService,
     private toast: ToastService,
     private db: FirestoreService,
-    private alert : FuctionsService) {
+    private alert: FuctionsService) {
     this.user = localStorage.getItem('userCatch'); //obtengo user
     this.user = JSON.parse(this.user);
     this.showCard(this.user.perfil);
@@ -178,48 +178,53 @@ export class HomePage implements OnInit {
   ActualizarClienteListaEspera() {
     var allUsers = new Array<any>();
 
-    this.db.getDataAll('usuarios').subscribe((data) => {
-      var count = 0;
-      if (count = 0) {
-        allUsers.splice(0, allUsers.length);
-      }
-      data.map(item => {
-        const data = item.payload.doc.data();
-        const id = item.payload.doc.id;
-        allUsers.push(data);
-        allUsers[count].id = id;
-        count++;
+    if(this.user.perfil == 'anonimo'){
+      this.user.listaEspera = true;
+      localStorage.setItem('userCatch', JSON.stringify(this.user));
+    }else{
+      this.db.getDataAll('usuarios').subscribe((data) => {
+        var count = 0;
+        if (count = 0) {
+          allUsers.splice(0, allUsers.length);
+        }
+        data.map(item => {
+          const data = item.payload.doc.data();
+          const id = item.payload.doc.id;
+          allUsers.push(data);
+          allUsers[count].id = id;
+          count++;
+        });
+  
+        allUsers.forEach(element => {
+          if (element["nombre"] == this.user["nombre"] && element["apellido"] == this.user["apellido"] && element["correo"] == this.user["correo"])
+            this.db.updateData('usuarios', element["id"], { listaEspera: true });
+        }
+        );
       });
-
-      allUsers.forEach(element => {
-        if (element["nombre"] == this.user["nombre"] && element["apellido"] == this.user["apellido"] && element["correo"] == this.user["correo"])
-          this.db.updateData('usuarios', element["id"], { listaEspera: true });
-      }
-      );
-    });
+    }
   }
 
-  mesaCliente(){
+  mesaCliente() {
     this.qr.onScanQR().then(() => {
       this.loader.showLoader();
       setTimeout(() => {
         this.router.navigateByUrl('/administrar');
       }, 1500);
-      
+
     }).catch((error) => {
-      switch(error){
+      switch (error) {
         case 'a':
           this.alert.presentToast('¡El QR escaneado es incorrecto! Debe escanear el código de la mesa que se le ha asignado.', 'warning');
-        break;
+          break;
         case 'b':
           this.alert.presentToast('¡Primero debe registrarse en la lista de espera!', 'danger');
-        break;
+          break;
         case 'b':
           this.alert.presentToast('Nuestros empleados estan trabajando para asignarle una mesa, aguarde y tan pronto como podamos tendra su mesa.', 'warning');
-        break;
+          break;
         default:
           this.alert.presentToast('ERROR, el código QR es incorrecto.', 'danger');
-        break;
+          break;
       }
     })
   }

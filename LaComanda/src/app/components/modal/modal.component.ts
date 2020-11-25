@@ -43,7 +43,13 @@ export class ModalComponent implements OnInit {
   //#endregion
 
   onSubmit(){
-    var json = {name:this.name.value, foto:this.image, perfil: 'anonimo'};
+    var json = {
+      name:this.name.value, 
+      foto:this.image, 
+      perfil: 'anonimo', 
+      listaEspera: false
+    };
+
     localStorage.setItem('userCatch', JSON.stringify(json));
     this.loading.showLoader();
     setTimeout(() =>{
