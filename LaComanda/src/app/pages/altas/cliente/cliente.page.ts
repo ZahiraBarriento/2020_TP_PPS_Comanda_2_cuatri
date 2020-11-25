@@ -7,7 +7,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoaderService } from '../../../services/loader.service';
-import { ToastController } from '@ionic/angular';
+import { ToastService } from '../../../services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -48,14 +48,13 @@ export class ClientePage implements OnInit {
     private firestore: FirestoreService,
     private qr: QrService,
     private loading : LoaderService,
-    public toastController: ToastController,
+    public toast: ToastService,
     private auth:AuthService,
     private userService:UsuarioService) {
   }
 
   ngOnInit() {
     this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
-    this.image = "prueba";
   }
 
   tableForm = this.formBuilder.group({
@@ -129,11 +128,16 @@ export class ClientePage implements OnInit {
   }
 
   VolverAtrasSpinner(){
+    var soyMetre = localStorage.getItem('userCatch') != null;
     this.loading.showLoader();
     document.getElementById("VntPrincipal").style.opacity = "0.2";
     setTimeout(() =>{
+      this.toast.MostrarMensaje("Cliente registrado con exito, espere a que un encargado lo habilite", false);
       document.getElementById("VntPrincipal").style.opacity = "1";
-      this.router.navigate(['/login']);
+      if (soyMetre)
+        this.router.navigate(['/home']);
+      else
+        this.router.navigate(['/login']);
     }, 2000);
   }
 }

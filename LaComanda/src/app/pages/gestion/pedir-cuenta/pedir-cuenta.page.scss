@@ -1,10 +1,18 @@
 .encabezado{
     font-size: 22px;
+    font-family: TCM;
+    max-width: 70%;
+    color: gray;
 }
 
 .pie{
     font-size: 32px;
     width: 100%;
+    font-family: BlackRoads;
+}
+
+.total{
+    color: lightseagreen;
 }
 
 .detalleItems{
@@ -13,15 +21,18 @@
 }
 .detalleDesc{
     font-size: 18px;
+    font-family: BlackRoads;
 }
 
 .detalleCant{
     font-size: 18px;
+    font-family: BlackRoads;
 }
 
 .detalleImp{
     font-size: 22px;
     left: 100%;
+    font-family: BlackRoads;
 }
 
 .btn{
@@ -31,4 +42,14 @@
     z-index: 100;
     bottom: 0rem;
     width: 100vw;
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(../../../../assets/fonts/AnyConv.com__TCM_____.woff);
+}
+
+@font-face{
+    font-family: BlackRoads;
+    src: url(../../../../assets/fonts/AnyConv.com__FontsFree-Net-blackwoff2.woff);
 }

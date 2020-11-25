@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
-import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
-import { promise } from 'protractor';
-
-
 
 @Injectable({
   providedIn: 'root'

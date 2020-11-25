@@ -26,19 +26,23 @@
     grid-column-gap: 0.8rem;
     margin-bottom: 1rem;
     margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.603);
+    background-color: rgba(255, 255, 255);
     border-radius: .4rem;
+    padding: 10px;
 }
 
 .platoNombre{
+    font-family: TCM;
    grid-area: nombre;
    font-weight: bold;
+   font-size: 2rem;
 }
 
 .platoDesc{
+    font-family: TCM;
     grid-area: descr;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .platoImg{
@@ -46,11 +50,13 @@
     width: 100%;
     position: relative;
     right: 1rem;
+    object-fit: cover;
 }
 
 .platoPrecio{
+    font-family: BlackRoads;
     grid-area: precio;
-    font-size: 1.3rem;
+    font-size: 2rem;
     width: 50%;
 }
 
@@ -118,7 +124,8 @@
 }
 
 .tipo {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-family: BlackRoads;
 }
  
 .contPush {
@@ -127,4 +134,14 @@
     padding: 0px;
     height: 2.5rem;
     border-radius: 2rem;
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(../../../../assets/fonts/AnyConv.com__TCM_____.woff);
+}
+
+@font-face{
+    font-family: BlackRoads;
+    src: url(../../../../assets/fonts/AnyConv.com__FontsFree-Net-blackwoff2.woff);
 }

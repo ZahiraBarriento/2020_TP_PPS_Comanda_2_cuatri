@@ -8,6 +8,7 @@ import { ListaMesasComponent } from './lista-mesas/lista-mesas.component';
 import { ListaEsperaComponent } from './lista-espera/lista-espera.component';
 import { ChatConsultaComponent } from './chat-consulta/chat-consulta.component';
 import { FormsModule } from '@angular/forms';
+import { ListaJuegosComponent } from './lista-juegos/lista-juegos.component';
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent, 
     ListaMesasComponent,
     ListaEsperaComponent,
-    ChatConsultaComponent
+    ChatConsultaComponent,
+    ListaJuegosComponent
   ],
-  exports: [HeaderComponent, ListaEsperaComponent,ChatConsultaComponent],
+  exports: [HeaderComponent, ListaEsperaComponent,ChatConsultaComponent, ListaJuegosComponent],
   imports: [
     CommonModule,
     IonicModule,

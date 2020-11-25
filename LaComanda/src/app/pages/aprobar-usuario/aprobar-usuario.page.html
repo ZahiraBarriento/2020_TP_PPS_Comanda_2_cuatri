@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <app-header title="PENDIENTES"></app-header>
+  <app-header title="CLIENTES PENDIENTES"></app-header>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -9,13 +9,15 @@
       <ion-card>
         <ion-card-content>
           <p align="center" class="dataUser">
-            Nombre: {{user.nombre}} <br> Apellido: {{user.apellido}}<br>Correo: {{user.correo}}<br>Dni: {{user.dni}} 
+            Nombre: {{user.nombre}} <br> Apellido: {{user.apellido}}<br>Correo: {{user.correo}}<br>DNI: {{user.dni}}
           </p>
           <div align="center">
-            <button class="btnHabilitar" (click)="HabilitarUser(user)" [hidden]="user.activated">Habilitar usuario</button>
-            <button class="btnDeshabilitar" (click)="DeshabilitarUser(user)" [hidden]="!user.activated">Cancelar</button>
+            <ion-button class="btnHabilitar" (click)="HabilitarUser(user)" [hidden]="user.activated">Aceptar
+              usuario</ion-button>
+            <ion-button class="btnDeshabilitar" (click)="DeshabilitarUser(user)" [hidden]="!user.activated">Rechazar
+              usuario</ion-button>
           </div>
-          
+
         </ion-card-content>
       </ion-card>
     </div>
@@ -26,12 +28,13 @@
         <img src="../../../assets/image/marca-agua.png" width="230"><br><br>
         <strong>NO TIENES USUARIOS PENDIENTES DE APROBACION</strong>
       </p>
-    </div>  
-
-    <div id="btnGuardar">
-      <ion-button [hidden]="!mostrarGuardar" (click)="Guardar()">Guardar cambios</ion-button>
     </div>
 
   </div>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="dark" [hidden]="!mostrarGuardar" (click)="Guardar()">Guardar cambios</ion-button>
+  </ion-toolbar>
+</ion-footer>

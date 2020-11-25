@@ -3,11 +3,18 @@
 </ion-header>
 <ion-content class="ion-padding">
   <ion-list *ngFor='let table of tables'>
-    <ion-item (click)="chooseTable(table)">
+    <ion-item *ngIf="!emptyTable" (click)="chooseTable(table)">
       <ion-label>
         <h5><strong>Número: </strong>{{table.number}}</h5>
         <h5><strong>Tipo: </strong>{{table.type}}</h5>
         <h5><strong>Capacidad de comensales: </strong>{{table.capacity}}</h5>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="emptyTable">
+      <ion-label>
+        <h5>
+          <strong>NO HAY MESAS DISPONIBLES</strong>
+        </h5>
       </ion-label>
     </ion-item>
   </ion-list>

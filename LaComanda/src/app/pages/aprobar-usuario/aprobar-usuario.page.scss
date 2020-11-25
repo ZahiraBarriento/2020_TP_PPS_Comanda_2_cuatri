@@ -1,25 +1,29 @@
 .dataUser{
     font-size: 5vw;
-  font-family: BlackRoads;
+    font-family: TCM;
 }
 
 .btnHabilitar{
+    --background: none;
     width: 80%;
-    background-color: rgb(106, 255, 47);
-    font-weight: bold;
-    font-size: 6vw;
-    height: 40px;
+    background-color: #d9534f;    
+    font-size: 4vw;
+    height: auto;
     margin-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 12px;
 }
 
 .btnDeshabilitar{
+    --background: none;
     width: 80%;
-    background-color: rgb(206, 38, 52);
-    font-weight: bold;
-    font-size: 6vw;
-    height: 40px;
+    background-color: #5cb85c;
+    font-size: 4vw;
+    height: auto;
     margin-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 12px;
 }
 

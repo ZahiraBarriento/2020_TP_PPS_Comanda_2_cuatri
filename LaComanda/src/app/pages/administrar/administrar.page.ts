@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { resolve } from 'dns';
 import { ChatConsultaComponent } from 'src/app/components/chat-consulta/chat-consulta.component';
+import { ListaJuegosComponent } from 'src/app/components/lista-juegos/lista-juegos.component';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 import { UsuarioModel } from '../../models/usuario.model';
@@ -57,6 +57,10 @@ export class AdministrarPage implements OnInit {
 
   pedirCuenta() {
     this.router.navigateByUrl('/pedir-cuenta');
+  }
+
+  juegos(){
+    this.modalCtrl.openModal(ListaJuegosComponent, 'common', this.table);
   }
 
   consultaUsuario() {

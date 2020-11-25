@@ -7,7 +7,6 @@ import { Perfil, perfilJson } from "../../models/perfilJson";
 import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
-import { TitleCasePipe } from "@angular/common";
 import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
@@ -25,7 +24,8 @@ export class LoginPage {
               private router: Router,
               private userService: UsuarioService,
               public modalController: FuctionsService,
-              private loader : LoaderService) {
+              private loader: LoaderService,
+              private toast:FuctionsService) {
 
     this.crearFormulario();
     this.perfilJso = perfilJson;
@@ -50,25 +50,21 @@ export class LoginPage {
                 this.router.navigateByUrl("home");
               }, 1500);
             } else {
-              console.log("EL USUARIO NO ESTA ACTIVADO");
-              //MOSTRAR ERROR LUCAS
+              this.toast.presentToast("El cliente aún no ha sido activado!", 'warning');
             }
           });
       })
       .catch((err) => {
         switch (err.code) {
-          case "auth/invalid-email" || "auth/user-not-found":
-            this.modalController.presentToast(
-              "Correo y/o contraseña incorrecta",
-              'danger'
-            );
+          case "auth/invalid-email":
+            this.toast.presentToast("Correo incorrecta", 'danger');            
+            break;
+          case "auth/user-not-found":
+            this.toast.presentToast("Correo y/o contraseña incorrecta", 'danger');            
             break;
 
           default:
-            this.modalController.presentToast(
-              "Problemas tecnicos.. Error reportado",
-              'danger'
-            );
+            this.toast.presentToast("Ha ocurrido un problema, vuelva a intentar mas tarde.", 'danger');
         }
       });
   }
@@ -127,8 +123,6 @@ export class LoginPage {
   }
 
   Registrarse() {
-    this.userService.mailFromLogin = this.forma.get("email").value;
-    this.userService.passFromLogin = this.forma.get("pass").value;
     this.router.navigateByUrl("altas/cliente");
   }
 

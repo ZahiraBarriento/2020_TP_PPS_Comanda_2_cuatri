@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/classes/usuario.class';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-aprobar-usuario',
@@ -16,7 +17,8 @@ export class AprobarUsuarioPage implements OnInit {
 
   constructor(private router:Router,
     private db:FirestoreService,
-    private loader:LoaderService) { }
+    private loader:LoaderService,
+    private email : EmailService) { }
 
   ngOnInit() {
     this.mostrarSinUsuarios = false;
@@ -54,17 +56,24 @@ export class AprobarUsuarioPage implements OnInit {
 
   HabilitarUser(user:Usuario){
     user.activated = true;
+    console.log(user.activated);
   }
 
-  DehabilitarUser(user:Usuario){
-    user.activated = true;
+  DeshabilitarUser(user:Usuario){
+    user.activated = false;
+    console.log(user.activated);
   }
 
   Guardar(){    
     for(var i=0;i<this.usuariosPendientes.length;i++){
       var userModificar:Usuario = this.usuariosPendientes[i];
-      var json = {'activated': true};
-      this.db.updateData('usuarios', userModificar.id, json);
+      if (userModificar.activated){
+        this.db.updateData('usuarios', userModificar.id, {'activated': true});
+        this.email.sendEMail(userModificar.correo);
+      }
+      else{
+        this.db.deleteDocument('usuarios', userModificar.id);      
+      }
     }
     this.VolverAtrasSpinner();
   }

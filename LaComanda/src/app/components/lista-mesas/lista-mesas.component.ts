@@ -15,6 +15,7 @@ export class ListaMesasComponent implements OnInit {
   tables : any = [];
   data : any;
   client; 
+  emptyTable : boolean;
 
   constructor(
     private firestore : FirestoreService, 
@@ -43,6 +44,13 @@ export class ListaMesasComponent implements OnInit {
           this.tables.push(element);
         }
       });
+
+      if(this.tables.length > 0)
+        this.emptyTable = false;
+      else
+        this.emptyTable = true;
+
+      console.log(this.emptyTable)
     });
   }
 

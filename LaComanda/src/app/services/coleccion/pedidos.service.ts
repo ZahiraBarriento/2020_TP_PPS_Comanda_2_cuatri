@@ -20,7 +20,7 @@ export class PedidosService {
     this.usuario = JSON.parse(localStorage.getItem('userCatch'));
     this.mesa = JSON.parse(localStorage.getItem('tableCurrent'));
     console.log(this.mesa);
-    console.log(`Mesa n ${this.mesa}`);
+    console.log(`Mesa n ${this.mesa.number}`);
   }
 
   ingresarPedido(ordenProductos: ProductoInterface[]) {
@@ -52,7 +52,7 @@ export class PedidosService {
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoBartender.importe = importeTotal += Number(producto.precio);
-          pedidoCocinero.mesa = this.mesa.number;
+          pedidoBartender.mesa = this.mesa.number;
           pedidoBartender.estado = 'informar';
           pedidoBartender.tipo = 'bebidas';
           pedidoBartender.para = 'bartender';
@@ -150,12 +150,12 @@ export class PedidosService {
 
         pedidosDelCliente = this.filtrarPedidosPorCliente(todosLosPedidos, cliente);
 
-        let detalleCompleto = new Array<DetalleInterface>();
+        let detalleCompleto: DetalleInterface[] = [];
         // Armo el detalle
         pedidosDelCliente.forEach(ped => {
 
           ped.productos.forEach(prod => {
-            let detalle:DetalleInterface;
+            let detalle = new Object() as DetalleInterface;
 
             detalle.descripcion = prod.nombre;
             detalle.cantidad = prod.cantidad;
