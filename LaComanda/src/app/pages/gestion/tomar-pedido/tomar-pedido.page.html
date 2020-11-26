@@ -1,41 +1,66 @@
-<app-header title="Platos y Bebidas"></app-header>
+<app-header [title]="'Comanda ' + (usuario.perfil.toString() | titlecase)" style="font-size: 0.2rem;"></app-header>
 
 <!-- Inicio Menu -->
 
-<ion-content *ngIf="pedidos">
+<ion-content>
   <ion-list>
-    <ion-list-header class="tipo">Pendiente</ion-list-header>
+    <ion-list-header class="tarea">{{tarea}}</ion-list-header>
   </ion-list>
 
-  <div *ngFor="let item of pedidos">
-    <div *ngIf="item.para == usuario.perfil">
+   
+  <div *ngFor="let pedido of pedidos">
+    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado'">
       <ion-item-group>
         <ion-item>
-          <div class="productoContenido">
-            <ion-label class="platoNombre"> </ion-label>
-            <ion-text class="platoDesc"> </ion-text>
-            <ion-text class="platoPrecio"> </ion-text>
-            <!--  <ion-img class="platoImg"  src="false"> </ion-img> -->
+          <div class="pedidoContenido">
+            <button class="bottonNotificar" (click)="notificar(pedido)" class="botonNotificar">+</button>
+            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="tipo">Sector: {{pedido.para | titlecase}}</ion-text >
+            <ion-text class="productoText">Productos;</ion-text >
+            <div class="productoCont" *ngFor="let prod of pedido.productos">        
+              <ion-text class="prod">. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text class="cant"> X {{prod.cantidad}} un.</ion-text>
+            </div>         
           </div>
         </ion-item>
       </ion-item-group>
     </div>
   </div>
+
+
+  <!-- VISTA MOZO: PEDIDOS PARA ENTREGAR-->
+
+
+  <div *ngIf="usuario.perfil.toString() == 'mozo'">
+
+  <ion-list >
+    <ion-list-header class="tarea entrega">Entregar</ion-list-header>
+  </ion-list>
+
+s
+  <div #var2 *ngFor="let pedido of pedidos">
+    <div *ngIf="pedido.estado == 'preparado'">
+      <ion-item-group>
+        <ion-item>
+          <div class="pedidoContenido">
+            <button class="bottonNotificar" (click)="notificar(pedido)" class="botonNotificar">+</button>
+            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="tipo">Sector: {{pedido.para | titlecase}}</ion-text >
+            <ion-text class="productoText">Productos;</ion-text >
+            <div class="productoCont" *ngFor="let prod of pedido.productos">        
+              <ion-text class="prod">. {{prod.nombre | titlecase}}</ion-text>
+              <ion-text class="cant"> X {{prod.cantidad}} un.</ion-text>
+            </div>
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </div> 
+  </div>
+ 
+</div>
+  <!-- FIN VISTA MOZO: PEDIDOS PARA ENTREGAR -->
+
 </ion-content>
 
-<!-- Fin Menu -->
-
-<!-- <ion-list>
-  <ion-list-header class="tipo"> Delivery Pendientes </ion-list-header>
-</ion-list>
-<ion-item-group >
-  <ion-item  >
-    <div class="productoContenido">
-      <ion-label class="platoNombre"> </ion-label>
-      <ion-text class="platoDesc">  </ion-text>
-      <ion-text class="platoPrecio">  </ion-text>
-      <ion-img class="platoImg"  src=""> </ion-img>  
-      
-    </div>
-  </ion-item> 
-</ion-item-group> -->
+ 
+ 
