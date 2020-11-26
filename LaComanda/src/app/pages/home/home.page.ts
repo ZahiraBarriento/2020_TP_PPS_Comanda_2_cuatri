@@ -8,12 +8,6 @@ import { ToastService } from '../../services/toast.service';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 
-
-
-
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -35,14 +29,14 @@ export class HomePage implements OnInit, OnDestroy {
     private toast: ToastService,
     private db: FirestoreService,
     private alert: FuctionsService) {
-   /*  this.user = localStorage.getItem('userCatch'); // obtengo user */
+    /*  this.user = localStorage.getItem('userCatch'); // obtengo user */
 
-   console.log('-----------------------------------------------------------------------------');
+    console.log('-----------------------------------------------------------------------------');
 
     this.user = JSON.parse(localStorage.getItem('userCatch'));
 
-   this.showCard(this.user.perfil);
-   if (this.user != null) {
+    this.showCard(this.user.perfil);
+    if (this.user != null) {
       this.showCard(this.user.perfil);
     }
     else {
@@ -50,24 +44,24 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.user = JSON.parse(localStorage.getItem('userCatch'));
-    if(this.user != null){
+    if (this.user != null) {
       this.showCard(this.user.perfil);
     }
-    
+
     /* console.log('User');
     console.log(this.user);
     console.log('showView');
     console.log(this.showView); */
     console.log('perfil');
     console.log(this.perfil);
-   /*  console.log('info');
-    console.log(this.info); */
+    /*  console.log('info');
+     console.log(this.info); */
     console.log('cards');
     console.log(this.cards);
-   /*  console.log('alta');
-    console.log(this.alta); */
+    /*  console.log('alta');
+     console.log(this.alta); */
   }
 
   ngOnInit(): void {
@@ -217,31 +211,26 @@ export class HomePage implements OnInit, OnDestroy {
   ActualizarClienteListaEspera() {
     let allUsers = new Array<any>();
 
-    if (this.user.perfil == 'anonimo'){
-      this.user.listaEspera = true;
-      localStorage.setItem('userCatch', JSON.stringify(this.user));
-    }else{
-      this.db.getDataAll('usuarios').subscribe((data) => {
-        let count = 0;
-        if (count = 0) {
-          allUsers.splice(0, allUsers.length);
-        }
-        data.map(item => {
-          const data = item.payload.doc.data();
-          const id = item.payload.doc.id;
-          allUsers.push(data);
-          allUsers[count].id = id;
-          count++;
-        });
-
-        allUsers.forEach(element => {
-          if (element['nombre'] == this.user['nombre'] && element['apellido'] == this.user['apellido'] && element['correo'] == this.user['correo']) {
-            this.db.updateData('usuarios', element["id"], { listaEspera: true });
-          }
-        }
-        );
+    this.db.getDataAll('usuarios').subscribe((data) => {
+      let count = 0;
+      if (count = 0) {
+        allUsers.splice(0, allUsers.length);
+      }
+      data.map(item => {
+        const data = item.payload.doc.data();
+        const id = item.payload.doc.id;
+        allUsers.push(data);
+        allUsers[count].id = id;
+        count++;
       });
-    }
+
+      allUsers.forEach(element => {
+        if (element['nombre'] == this.user['nombre'] && element['apellido'] == this.user['apellido'] && element['correo'] == this.user['correo']) {
+          this.db.updateData('usuarios', element["id"], { listaEspera: true });
+        }
+      }
+      );
+    });
   }
 
   mesaCliente() {
@@ -269,13 +258,13 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.user = null;
     this.perfil = null;
     this.cards = [];
     this.alta = [];
     this.info = null;
   }
-  
+
 }
 

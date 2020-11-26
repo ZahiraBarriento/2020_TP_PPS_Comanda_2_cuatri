@@ -10,14 +10,14 @@
         <h5><strong>Capacidad de comensales: </strong>{{table.capacity}}</h5>
       </ion-label>
     </ion-item>
-    <ion-item *ngIf="emptyTable">
-      <ion-label>
-        <h5>
-          <strong>NO HAY MESAS DISPONIBLES</strong>
-        </h5>
-      </ion-label>
-    </ion-item>
   </ion-list>
+  <ion-item *ngIf="emptyTable">
+    <ion-label>
+      <h5>
+        <strong>NO HAY MESAS DISPONIBLES</strong>
+      </h5>
+    </ion-label>
+  </ion-item>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

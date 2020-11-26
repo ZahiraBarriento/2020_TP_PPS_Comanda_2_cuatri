@@ -14,14 +14,11 @@ export class NologinGuard implements CanActivate {
     this.user = localStorage.getItem('userCatch')
   }
   canActivate() {
-    return this.auth.authState.pipe(map(auth => {
-      if(auth === null || auth === undefined || this.user === null){
-        return true 
-      }else{
-        console.log('log')
-        this.router.navigate(['/home']); //SI ESTA PUES VA A HOME
-        return false
-      }
-    }));
+    if (this.user === null) {
+      return true;
+    } else {
+      this.router.navigate(['/home']); //SI ESTA PUES VA A HOME
+      return false;
+    }
   }
 }

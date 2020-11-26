@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from '../../services/loader.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FuctionsService } from '../../services/fuctions.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-modal',
@@ -27,7 +28,8 @@ export class ModalComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router : Router,
     public loading : LoaderService,
-    private camera: Camera) { }
+    private camera: Camera,
+    private firestore: FirestoreService) { }
 
   ngOnInit() {
     
@@ -43,14 +45,24 @@ export class ModalComponent implements OnInit {
   //#endregion
 
   onSubmit(){
+    const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+
     var json = {
-      name:this.name.value, 
+      id: id,
+      correo: '',
+      activated: true,
+      nombre:this.name.value, 
+      apellido: '',
       foto:this.image, 
       perfil: 'anonimo', 
+      dni: '',
+      pass: '',
       listaEspera: false
     };
 
+
     localStorage.setItem('userCatch', JSON.stringify(json));
+    this.firestore.addData("usuarios", json);
     this.loading.showLoader();
     setTimeout(() =>{
       this.router.navigate(['/home']);
