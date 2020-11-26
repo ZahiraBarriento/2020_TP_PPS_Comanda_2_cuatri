@@ -19,8 +19,6 @@ export class PedidosService {
   constructor(private fr: FirestoreService) {
     this.usuario = JSON.parse(localStorage.getItem('userCatch'));
     this.mesa = JSON.parse(localStorage.getItem('tableCurrent'));
-    console.log(this.mesa);
-    console.log(`Mesa n ${this.mesa.number}`);
   }
 
   ingresarPedido(ordenProductos: ProductoInterface[]) {

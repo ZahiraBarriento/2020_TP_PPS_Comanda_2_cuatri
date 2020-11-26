@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
- 
+
 import { ProductoInterface } from 'src/app/models/producto.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
@@ -34,8 +34,15 @@ export class PedirPlatosBebidasPage implements OnInit {
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.traerPlatos();
+
     this.verificarAcceso('mozo', 'cliente')
-      .catch( rej => rej && this.router.navigateByUrl('/home'));
+      .then( res => {
+        
+      })
+      .catch( rej => {
+         console.log('Usuario no tiene Acceso. Sera redireccionado....');
+         this.router.navigateByUrl('/login');
+      });
   }
 
   ngOnInit() {
@@ -76,7 +83,7 @@ export class PedirPlatosBebidasPage implements OnInit {
 
   incr(index, producto: ProductoInterface){
     const cantHtml = (document.getElementById(index) as HTMLInputElement);
-    
+
     let cantNum = Number(cantHtml.value);
 
     if (cantNum >= 0 && cantNum < 10){
@@ -143,23 +150,27 @@ confirmarPedido(){
 
 verificarAcceso( ...usuario ){
   const usuariosAcces = [...usuario];
+  let access = false;
   return new Promise( (resolve, reject) => {
 
-    usuariosAcces.forEach(us => {
-      if(this.usuario.perfil != us) {
-        reject(false);
-      }
-    });
-  });
+    for (let i = 0; i < usuariosAcces.length; i++){
 
+      if (usuariosAcces[i] === this.usuario.perfil.toString()){
+        access = true;
+        i = usuariosAcces.length;
+      }
+    }
+
+    access ? resolve(access) : reject(access);
+  });
 }
 
 
 //#region Funciones visuales
 
 limpiarCantidad(){
-  let input = document.getElementsByTagName('input');
-  for (let i=0; i < input.length; i++){
+  const input = document.getElementsByTagName('input');
+  for (let i = 0; i < input.length; i++){
     input.namedItem(`${i}`).value = '0';
   }
 }

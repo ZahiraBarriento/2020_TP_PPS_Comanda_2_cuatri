@@ -28,8 +28,7 @@ export class UsuarioService {
       let state = false;
 
       if(snapshot){
-        snapshot.forEach( doc => { 
-          console.log(doc.payload.doc);
+        snapshot.forEach( doc => {
           if(doc.payload.doc.data()['id'] == uid && doc.payload.doc.data()['correo'] == correo) { 
             this.user.id = doc.payload.doc.data()['id'];
             this.user.nombre = doc.payload.doc.data()['nombre'];

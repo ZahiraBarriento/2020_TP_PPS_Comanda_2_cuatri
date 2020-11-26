@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+ 
 
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
@@ -75,12 +74,14 @@ export class TomarPedidoPage implements OnInit {
         
         if (usuariosAcces[i] === this.usuario.perfil.toString()){
           access = true;
+          i = usuariosAcces.length;
         }      
       }
 
       access ? resolve(access) : reject(access);
     });
   }
+
 
 
   asignarTareas(pedido?: PedidoInterface){

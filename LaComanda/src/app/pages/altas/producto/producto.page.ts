@@ -62,7 +62,6 @@ export class ProductoPage implements OnInit {
           : this.userPerfil.perfil.toString() == 'bartender'
           ? 'bebida'
           : 'no permitida';
-          
         this.title = 'ALTA ' + this.tipo;
       })
       .catch( (res: boolean) => {
@@ -98,7 +97,7 @@ export class ProductoPage implements OnInit {
       activated: true,
     };
 
-    this.fr.addData("productos", jsonProducto);
+    this.fr.addData('productos', jsonProducto);
     this.toastCtrl.presentToast(`Se carga ${this.nombre} como ${this.tipo}`, 'success');
 
     this.resetearForm();
@@ -138,18 +137,21 @@ export class ProductoPage implements OnInit {
 
   //#endregion
 
-  verificarAcceso(...usuario) {
+  verificarAcceso( ...usuario ){
     const usuariosAcces = [...usuario];
     let access = false;
+    return new Promise( (resolve, reject) => {
 
-    return new Promise((resolve, reject) => {
-      for (let i = 0; i < usuariosAcces.length; i++) {
-        if (usuariosAcces[i] === this.userPerfil.perfil.toString()) {
+      for (let i = 0; i < usuariosAcces.length; i++){
+        
+        if (usuariosAcces[i] === this.userPerfil.perfil.toString()){
           access = true;
-        }
-        console.log(access);
+          i = usuariosAcces.length;
+        }      
       }
+
       access ? resolve(access) : reject(access);
     });
   }
+
 }

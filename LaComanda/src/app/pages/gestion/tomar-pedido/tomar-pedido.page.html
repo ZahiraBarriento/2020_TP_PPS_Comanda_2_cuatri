@@ -9,12 +9,12 @@
 
    
   <div *ngFor="let pedido of pedidos">
-    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado'">
+    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado' && pedido.actived == true">
       <ion-item-group>
         <ion-item>
           <div class="pedidoContenido">
             <button class="bottonNotificar" (click)="notificar(pedido)" class="botonNotificar">+</button>
-            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="mesa">Mesa {{pedido.mesa}}</ion-text >
             <ion-text class="tipo">Sector: {{pedido.para | titlecase}}</ion-text >
             <ion-text class="productoText">Productos;</ion-text >
             <div class="productoCont" *ngFor="let prod of pedido.productos">        
@@ -27,6 +27,9 @@
     </div>
   </div>
 
+  <div *ngIf="!pedidos">
+   <h1>fdsfd</h1>
+  </div>
 
   <!-- VISTA MOZO: PEDIDOS PARA ENTREGAR-->
 
@@ -39,12 +42,12 @@
 
 s
   <div #var2 *ngFor="let pedido of pedidos">
-    <div *ngIf="pedido.estado == 'preparado'">
+    <div *ngIf="pedido.estado == 'preparado' && pedido.actived == true">
       <ion-item-group>
         <ion-item>
           <div class="pedidoContenido">
             <button class="bottonNotificar" (click)="notificar(pedido)" class="botonNotificar">+</button>
-            <ion-text class="mesa">Mesa #</ion-text >
+            <ion-text class="mesa">Mesa {{pedido.mesa}}</ion-text >
             <ion-text class="tipo">Sector: {{pedido.para | titlecase}}</ion-text >
             <ion-text class="productoText">Productos;</ion-text >
             <div class="productoCont" *ngFor="let prod of pedido.productos">        
@@ -61,6 +64,3 @@ s
   <!-- FIN VISTA MOZO: PEDIDOS PARA ENTREGAR -->
 
 </ion-content>
-
- 
- 
