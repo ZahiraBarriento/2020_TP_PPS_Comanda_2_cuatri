@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cards } from '../../models/cards';
 import { ModalController } from '@ionic/angular';
 import { QrService } from '../../services/qr.service';
-import { LoaderService } from '../../services/loader.service'
-import { ToastService } from '../../services/toast.service'
+import { LoaderService } from '../../services/loader.service';
+import { ToastService } from '../../services/toast.service';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 
@@ -16,7 +16,7 @@ import { FuctionsService } from 'src/app/services/fuctions.service';
 export class HomePage implements OnInit {
 
   user;
-  showView: boolean; //se usa para mostrar altas
+  showView: boolean; // se usa para mostrar altas
   perfil: string;
   info = cards;
   cards: any = [];
@@ -29,13 +29,39 @@ export class HomePage implements OnInit {
     private toast: ToastService,
     private db: FirestoreService,
     private alert: FuctionsService) {
-    this.user = localStorage.getItem('userCatch'); //obtengo user
-    this.user = JSON.parse(this.user);
-    this.showCard(this.user.perfil);
-    if (this.user != null)
+   /*  this.user = localStorage.getItem('userCatch'); // obtengo user */
+
+   console.log('-----------------------------------------------------------------------------');
+
+    this.user = JSON.parse(localStorage.getItem('userCatch'));
+
+   this.showCard(this.user.perfil);
+   if (this.user != null) {
       this.showCard(this.user.perfil);
-    else
+    }
+    else {
       this.router.navigate(['login']);
+    }
+  }
+
+  ionViewDidEnter(){
+    this.user = JSON.parse(localStorage.getItem('userCatch'));
+    if(this.user != null){
+      this.showCard(this.user.perfil);
+    }
+    
+    /* console.log('User');
+    console.log(this.user);
+    console.log('showView');
+    console.log(this.showView); */
+    console.log('perfil');
+    console.log(this.perfil);
+   /*  console.log('info');
+    console.log(this.info); */
+    console.log('cards');
+    console.log(this.cards);
+   /*  console.log('alta');
+    console.log(this.alta); */
   }
 
   ngOnInit(): void {
@@ -47,11 +73,18 @@ export class HomePage implements OnInit {
   }
 
   showCard(perfil) {
+
+    let llave = false;
+
     this.info.forEach(element => {
-      if (element[perfil]) {
+
+      if (element[perfil] && llave == false) {
+        console.log('Funcion ShowCard');
+        console.log(element[perfil]);
         this.cards = element[perfil];
+        llave = true;
       }
-    })
+    });
   }
 
   page(pagina) {
@@ -60,19 +93,19 @@ export class HomePage implements OnInit {
         this.loader.showLoader();
         setTimeout(() => {
           this.router.navigateByUrl('/altas/duenio');
-        }, 1500)
+        }, 1500);
         break;
       case 'altaEmpleado':
         this.loader.showLoader();
         setTimeout(() => {
           this.router.navigateByUrl('/altas/empleado');
-        }, 1500)
+        }, 1500);
         break;
       case 'altaMesa':
         this.loader.showLoader();
         setTimeout(() => {
           this.router.navigateByUrl('/altas/mesa');
-        }, 1500)
+        }, 1500);
         break;
     }
   }
@@ -80,12 +113,12 @@ export class HomePage implements OnInit {
 
   action(param) {
     switch (param) {
-      //CLIENTE
+      // CLIENTE
       case 'qr':
         this.IngresoLocalQR();
         break;
       case 'reserva':
-        //implementar
+        // implementar
         break;
       case 'encuestaCliente':
         this.loader.showLoader();
@@ -97,7 +130,7 @@ export class HomePage implements OnInit {
         this.mesaCliente();
         break;
 
-      //DUEÑO/SUPERVISOR
+      // DUEÑO/SUPERVISOR
       case 'altas':
         this.showView = true;
         break;
@@ -114,7 +147,7 @@ export class HomePage implements OnInit {
         }, 1500);
         break;
 
-      //METRE
+      // METRE
       case 'listaEspera':
         this.router.navigateByUrl('/listado');
         break;
@@ -122,7 +155,7 @@ export class HomePage implements OnInit {
         this.router.navigateByUrl('/altas/cliente');
         break;
 
-      //MOZO
+      // MOZO
       case 'consultas':
         this.loader.showLoader();
         setTimeout(() => {
@@ -130,7 +163,7 @@ export class HomePage implements OnInit {
         }, 1500);
         break;
 
-      //COCINERO
+      // COCINERO
       case 'altaProducto':
         this.router.navigateByUrl('/altas/producto');
         break;
@@ -141,7 +174,7 @@ export class HomePage implements OnInit {
         }, 1500);
         break;
 
-      //EMPLADOS TODOS
+      // EMPLADOS TODOS
       case 'encuestaEmpleado':
         this.loader.showLoader();
         setTimeout(() => {
@@ -149,7 +182,7 @@ export class HomePage implements OnInit {
         }, 1500);
         break;
 
-      //TODOS
+      // TODOS
       case 'perfil':
         this.loader.showLoader();
         setTimeout(() => {
@@ -164,26 +197,26 @@ export class HomePage implements OnInit {
       this.loader.showLoader();
       this.ActualizarClienteListaEspera();
       setTimeout(() => {
-        this.toast.MostrarMensaje("Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!", false);
+        this.toast.MostrarMensaje('Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!', false);
       }, 1500);
 
     }).catch(() => {
       this.loader.showLoader();
       setTimeout(() => {
-        this.toast.MostrarMensaje("Ha ocurrido un error al ingresar al local", true);
+        this.toast.MostrarMensaje('Ha ocurrido un error al ingresar al local', true);
       }, 1500);
     });
   }
 
   ActualizarClienteListaEspera() {
-    var allUsers = new Array<any>();
+    let allUsers = new Array<any>();
 
-    if(this.user.perfil == 'anonimo'){
+    if (this.user.perfil == 'anonimo'){
       this.user.listaEspera = true;
       localStorage.setItem('userCatch', JSON.stringify(this.user));
     }else{
       this.db.getDataAll('usuarios').subscribe((data) => {
-        var count = 0;
+        let count = 0;
         if (count = 0) {
           allUsers.splice(0, allUsers.length);
         }
@@ -194,10 +227,11 @@ export class HomePage implements OnInit {
           allUsers[count].id = id;
           count++;
         });
-  
+
         allUsers.forEach(element => {
-          if (element["nombre"] == this.user["nombre"] && element["apellido"] == this.user["apellido"] && element["correo"] == this.user["correo"])
+          if (element['nombre'] == this.user['nombre'] && element['apellido'] == this.user['apellido'] && element['correo'] == this.user['correo']) {
             this.db.updateData('usuarios', element["id"], { listaEspera: true });
+          }
         }
         );
       });
@@ -226,7 +260,8 @@ export class HomePage implements OnInit {
           this.alert.presentToast('ERROR, el código QR es incorrecto.', 'danger');
           break;
       }
-    })
+    });
   }
+  
 }
 
