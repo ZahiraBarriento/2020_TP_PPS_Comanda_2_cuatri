@@ -23,9 +23,12 @@ export class PushNotificationService {
       this.oneSignal.inFocusDisplaying(
         this.oneSignal.OSInFocusDisplayOption.InAppAlert
       );
+
   
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-        // do something when notification is received
+      this.oneSignal.handleNotificationReceived().subscribe((sus) => {
+
+        alert(JSON.stringify(sus));
+        
       });
   
       this.oneSignal.handleNotificationOpened().subscribe(() => {

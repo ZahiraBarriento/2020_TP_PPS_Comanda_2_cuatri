@@ -84,6 +84,9 @@ export class ProductoPage implements OnInit {
   }
 
   altaProducto() {
+
+    if (this.imagen1 != this.imageEmpty && this.imagen2 != this.imageEmpty && this.imagen3 != this.imageEmpty) {
+
     const jsonProducto: ProductoInterface = {
       id: new Date().valueOf().toString(),
       nombre: this.nombre,
@@ -96,11 +99,14 @@ export class ProductoPage implements OnInit {
       foto3: this.imagen3,
       activated: true,
     };
-
     this.fr.addData('productos', jsonProducto);
     this.toastCtrl.presentToast(`Se carga ${this.nombre} como ${this.tipo}`, 'success');
 
     this.resetearForm();
+
+    }
+
+   
   }
 
   asignarImg(index) {

@@ -9,7 +9,7 @@
 
    
   <div *ngFor="let pedido of pedidos">
-    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado' && pedido.actived == true">
+    <div *ngIf="pedido.estado == asignarTareas(pedido) && estado != 'preparado'">
       <ion-item-group>
         <ion-item>
           <div class="pedidoContenido">
@@ -27,9 +27,6 @@
     </div>
   </div>
 
-  <div *ngIf="!pedidos">
-   <h1>fdsfd</h1>
-  </div>
 
   <!-- VISTA MOZO: PEDIDOS PARA ENTREGAR-->
 
@@ -42,7 +39,7 @@
 
 s
   <div #var2 *ngFor="let pedido of pedidos">
-    <div *ngIf="pedido.estado == 'preparado' && pedido.actived == true">
+    <div *ngIf="pedido.estado == 'preparado'">
       <ion-item-group>
         <ion-item>
           <div class="pedidoContenido">
