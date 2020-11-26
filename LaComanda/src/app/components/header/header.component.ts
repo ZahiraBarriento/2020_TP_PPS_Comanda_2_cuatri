@@ -1,4 +1,6 @@
+import { viewClassName } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -22,6 +24,8 @@ export class HeaderComponent implements OnInit {
   logOut(){
     localStorage.removeItem('userCatch');
     this.auth.signOut();
+    clearInterval();
+    
   }
 
   verificar(){

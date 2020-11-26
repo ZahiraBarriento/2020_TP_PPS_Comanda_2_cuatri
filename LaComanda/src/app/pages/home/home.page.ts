@@ -8,12 +8,18 @@ import { ToastService } from '../../services/toast.service';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 
+
+
+
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
 
   user;
   showView: boolean; // se usa para mostrar altas
@@ -261,6 +267,14 @@ export class HomePage implements OnInit {
           break;
       }
     });
+  }
+
+  ngOnDestroy(){
+    this.user = null;
+    this.perfil = null;
+    this.cards = [];
+    this.alta = [];
+    this.info = null;
   }
   
 }

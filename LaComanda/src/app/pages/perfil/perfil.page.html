@@ -5,17 +5,17 @@
 <ion-content>
   <br><br>
   <div class="circular--portrait">
-    <img [src]="image" alt="">
+    <img [src]="usuario.foto" alt="">
   </div>
   <br><br>
   <ion-card>
     <ion-card-content>
-      <h1><strong>Nombre: </strong>{{usuario.nombre}}</h1>
-      <h1><strong>Apellido: </strong>{{usuario.apellido}}</h1>
+      <h1><strong>Nombre: </strong>{{usuario.nombre | titlecase}}</h1>
+      <h1><strong>Apellido: </strong>{{usuario.apellido | titlecase}}</h1>
       <h1><strong>Correo electrónico: </strong>{{usuario.correo}}</h1>
-      <h1><strong>DNI: </strong>{{usuario.dni}}</h1>
+      <h1><strong>DNI: </strong>{{usuario.dni }}</h1>
       <h1><strong>CUIL: </strong>{{usuario.cuil}}</h1>
-      <h1><strong>Perfil: </strong>{{perfilStr}}</h1>
+      <h1><strong>Perfil: </strong>{{perfil | titlecase}}</h1>
     </ion-card-content>
   </ion-card>
 </ion-content>
