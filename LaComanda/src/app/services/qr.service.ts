@@ -62,15 +62,16 @@ export class QrService implements OnInit {
           resolve();       
         } 
   
+        //PREGUNTAR BIEN SOBRE LAS CONDICIONES
         else if (esQrMesa) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
           if(mesa.cliente == client.id){
             localStorage.setItem('tableCurrent', JSON.stringify(mesa));
             resolve();
-          }else if(mesa.client == ''){
+          }else if(client.listaEspera == true){
             reject('c');
-          }else if(mesa.client != client.id){
+          }else if(client.listaEspera == false && mesa.client != client.id){
             reject('a'); //Mesa incorrecta
-          }else if(!this.pudoIngresarAlLocal){
+          }else if(client.listaEspera == false){
             reject('b'); //Sin registar
           }
         }

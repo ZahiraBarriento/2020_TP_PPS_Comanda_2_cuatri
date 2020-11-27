@@ -53,14 +53,34 @@ html{
     width: 70%;
     height: 60%;
     border-radius: 50px;
- }
-
-
- .alertDanger{
-    --background: #5cb85c;
-    color: black;
-    --min-width: 80%;
 }
+.alertDanger{
+    --background: #5cb85c;
+    --min-width: 80%;
+
+    .alert-message, .alert-button, .alert-title{
+        color: white !important;
+    }
+}
+
+.my-custom{
+    .alert-message{
+        font-family: TCM;
+    }
+    .alert-title{
+        font-family: BlackRoads;
+        align-items: center;
+    }
+}
+
+@font-face{
+    font-family: TCM;
+    src: url(./assets/fonts/AnyConv.com__TCM_____.woff);
+}
+@font-face{
+    font-family: BlackRoads;
+    src: url(./assets/fonts/AnyConv.com__FontsFree-Net-blackwoff2.woff);
+  }
 
 /*@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }*/

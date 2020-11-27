@@ -6,7 +6,7 @@ import { QrService } from '../../../services/qr.service'
 import { Router } from '@angular/router';
 import { DetalleInterface } from 'src/app/models/detalle.interface';
 import { FuctionsService } from 'src/app/services/fuctions.service';
-import { element } from 'protractor';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pedir-cuenta',
@@ -28,12 +28,14 @@ export class PedirCuentaPage implements OnInit {
     private db: FirestoreService,
     private toast: FuctionsService,
     private loader: LoaderService,
+    private alertController: AlertController,
     private router: Router,
     private qr: QrService) {
     this.mesaCurrent = JSON.parse(localStorage.getItem('tableCurrent'));
   }
 
   ngOnInit() {
+    
     //this.qr.qrPropina().then((json) => {
     this.propina = 20;
     var user = JSON.parse(localStorage.getItem('userCatch'));
@@ -112,5 +114,4 @@ export class PedirCuentaPage implements OnInit {
       });
     })
   }
-
 }

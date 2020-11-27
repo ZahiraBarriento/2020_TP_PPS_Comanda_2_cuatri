@@ -70,8 +70,28 @@ export class AdministrarPage implements OnInit {
     this.router.navigateByUrl('/pedir-platos-bebidas');
   }
 
-  pedirCuenta() {
-    this.router.navigateByUrl('/pedir-cuenta');
+  async pedirCuenta() {
+    let mensaje = '';
+    mensaje += `<p align="center"><i>Si estas satisfecho con la atención brindada, le ofrecemos una oferta exclusiva para limpiarse de los males. </p></i><br>
+                <br>A continuación le facilitaremos un lector Qr para que diga su grado de satisfacción el cual dejara una propina, esta será:<br>
+                • Excelente (20%)<br>• Muy Bien (15%)<br>• Bien (10%)<br>• Regular (5%)<br>• Malo (0%)<br>`;
+
+    const alert = await this.alert.create({
+      cssClass: 'my-custom',
+      header: 'El dinero es la raíz del mal Límpiate aquí.',
+      message: mensaje,
+      buttons: [{
+        text: 'OK',
+        handler : () => {
+          this.router.navigateByUrl('/pedir-cuenta');
+        }
+      },
+      {
+        text: 'Cancelar'
+      }]
+    });
+
+    await alert.present();
   }
 
   juegos(){
@@ -114,21 +134,20 @@ export class AdministrarPage implements OnInit {
 
       switch (pedido.estado) {
         case 'informar':
-          mensaje += `<p><strong>.Ticket Nº ${pedido.id} </strong> </p> Pendiente <br>`;
+          mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> Pendiente <br>`;
           break;
         case 'prepararB':
-          mensaje += `<p><strong>.Ticket Nº ${pedido.id} </strong> </p> Trago en preparacion<br>` ;
+          mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> Trago en preparacion<br>` ;
           break;
         case 'prepararC':
-          mensaje += `<p><strong>.Ticket Nº ${pedido.id} </strong> </p> Comida en preparacion<br>`;
+          mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> Comida en preparacion<br>`;
           break;
         case 'preparado':
-          mensaje += `<p><strong>.Ticket Nº ${pedido.id} </strong> </p> Listo para ser entregado` ;
+          mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> Listo para ser entregado` ;
           break;
         default:
           break;
       }
-
     });
 
     const alert = await this.alert.create({

@@ -132,4 +132,19 @@ export class PushNotificationService {
       })
     })
   }
+
+  delivered(){
+    var pedido : any;
+
+    this.firabase.collection('pedidos').snapshotChanges().subscribe(data =>{
+      data.map(item =>{
+        const doc = item.payload.doc.data();
+        pedido = doc;
+
+        if(pedido.para == 'preparado'){
+          this.pushNotification("¡Nueva comanda preparada!", "Ha ingresado una nueva comida para entregar", 6);
+        }
+      })
+    })
+  }
 }

@@ -144,7 +144,6 @@ export class TomarPedidoPage implements OnInit {
             this.jsonAsignar.estado = 'prepararB';
             this.mensaje = 'Bartender notificado con exito';
           }
-
         }
         if (pedido.estado == 'preparado') {
           this.jsonAsignar.estado = 'entregado';
@@ -161,9 +160,6 @@ export class TomarPedidoPage implements OnInit {
       default:
         console.log('Error');
     }
-
-
-
   }
 
   notificar(pedido: PedidoInterface) {
@@ -178,7 +174,6 @@ export class TomarPedidoPage implements OnInit {
           }
         });
     }, 1000);
-
   }
 
 
