@@ -140,7 +140,8 @@ confirmarPedido(){
   this.pedidoService.ingresarPedido(this.ordenProductos)
     .then( res => {
          this.limpiarCantidad();
-         this.toast.presentToast('Su pedido ha sido solicutado, aguarde a ser aprobado.', 'success');
+         // AVECES NO ANDA CREO QUE SE TRABA EN LIMPIAR FIJARSE
+         this.toast.presentToast('Su pedido ha sido solicitado, aguarde a ser aprobado.', 'success');
          this.ordenProductos = [];
          this.importeTotal = 0;
     });

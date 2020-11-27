@@ -36,6 +36,7 @@ export class ChatConsultaComponent implements OnInit {
   ngOnInit() {
     this.table = this.navParams.get('data');
     this.user = JSON.parse(localStorage.getItem('userCatch')); //obtengo user
+    console.log(this.table)
 
     this.chatService.getDataChat(this.table.cliente).subscribe(item => {
       this.chat = item;

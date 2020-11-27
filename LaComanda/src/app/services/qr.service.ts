@@ -63,7 +63,7 @@ export class QrService implements OnInit {
         } 
   
         else if (esQrMesa) { //es qr de mesa, tendria que verificar que le pertenece a este cliente
-          if(mesa.client == client.id){
+          if(mesa.cliente == client.id){
             localStorage.setItem('tableCurrent', JSON.stringify(mesa));
             resolve();
           }else if(mesa.client == ''){

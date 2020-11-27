@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
+import { FuctionsService } from 'src/app/services/fuctions.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class TomarPedidoPage implements OnInit {
   public cont = 0;
   constructor(private pedido: PedidosService,
     private router: Router,
-    private toast: ToastService) {
+    private toast: FuctionsService) {
 
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
@@ -173,7 +174,7 @@ export class TomarPedidoPage implements OnInit {
       this.pedido.notificarComanda(pedido, this.jsonAsignar)
         .then(res => {
           if (res) {
-            this.toast.MostrarMensaje(`${this.mensaje}`, false);
+            this.toast.presentToast(`${this.mensaje}`, 'success');
           }
         });
     }, 1000);

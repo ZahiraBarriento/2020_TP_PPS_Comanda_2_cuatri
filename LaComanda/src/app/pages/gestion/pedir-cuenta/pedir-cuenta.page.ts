@@ -70,18 +70,25 @@ export class PedirCuentaPage implements OnInit {
 
     setTimeout(() => {
       //desactivo y completo los pedidos entregados
-      this.pedidosEntregados.forEach(item => {
-        this.db.updateData('pedidos', item.pedidoId, { "estado": "completado", "actived": false });
-      });
+      console.log(this.pedidosEntregados)
 
+      if(this.pedidosEntregados.length != undefined){
+        this.pedidosEntregados.forEach(item => {
+          this.db.updateData('pedidos', item.pedidoId, { "estado": "completado", "actived": false });
+        });
+      }
       //desactivo y cancelo los pedidos no entregados
-      this.pedidosNoEntregados.forEach(item => {
-        this.db.updateData('pedidos', item.pedidoId, { "estado": "cancelado", "actived": false });
-      });
+      if(this.pedidosNoEntregados != undefined){
+        this.pedidosNoEntregados.forEach(item => {
+          this.db.updateData('pedidos', item.pedidoId, { "estado": "cancelado", "actived": false });
+        });
+      }
 
       this.yaPago = true;
       this.toast.presentToast("¡El pago se ha realizado con éxito!", 'success');
-      this.db.updateData('mesa', this.mesaAux.id, {status : false, client: ''})
+      localStorage.removeItem('tableCurrent');
+      
+      this.db.updateData('mesa', this.mesaAux.id, {status : false, client: ''});
       setTimeout(() => {
         this.router.navigateByUrl('home');
       }, 2000);

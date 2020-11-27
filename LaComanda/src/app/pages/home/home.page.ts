@@ -258,6 +258,9 @@ export class HomePage implements OnInit, OnDestroy {
       case 'mozo':
         this.pushNoti.newQuery();
         break;
+      case 'cocinero':
+        this.pushNoti.newFood();
+        break;
     }
   }
 

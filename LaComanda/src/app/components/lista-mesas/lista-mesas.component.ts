@@ -74,7 +74,7 @@ export class ListaMesasComponent implements OnInit {
       buttons: [{
         text: 'OK',
         handler : () => {
-          this.firestore.updateData('mesa', table.id, {status:true, client: this.client.id});
+          this.firestore.updateData('mesa', table.id, {status:true, cliente: this.client.id});
           this.firestore.updateData('usuarios', this.client.uid, json);
           this.loader.showLoader();
           setTimeout(() => {

@@ -50,12 +50,13 @@ export class PushNotificationService {
 
   }
 
-  pushNotification(titulo: string, mensaje: string, segundos: number) {
+  pushNotification(titulo: string, mensaje: string, id: number) {
     this.notification.schedule({
       title: titulo,
       text: mensaje,
+      vibrate: true,
+      id: id,
       trigger: {
-        in: segundos,
         unit: ELocalNotificationTriggerUnit.SECOND
       }
     });
@@ -71,33 +72,62 @@ export class PushNotificationService {
         console.log(element);
         if (element.activated == false) {
           this.clientes = [];
-          this.pushNotification("¡Nueva solicitud de aprobación!", "Un nuevo cliente se ha registrado.", 1);
+          this.pushNotification("¡Nueva solicitud de aprobación!", "Un nuevo cliente se ha registrado", 1);
         }
       });
     })
   }
 
-  waitingList(){
+  waitingList() {
     this.firabase.collection('usuarios').snapshotChanges().subscribe(data => {
       data.map(item => {
         const doc = item.payload.doc.data();
         this.clientes.push(doc);
       })
       this.clientes.forEach(element => {
-        console.log(element);
         if (element.listaEspera == true) {
           this.clientes = [];
-          this.pushNotification("¡Nueva solicutud de ingreso!", "Un nuevo cliente en la lista de espera.", 1);
+          this.pushNotification("¡Nueva solicutud de ingreso!", "Un nuevo cliente en la lista de espera", 2);
         }
       });
     })
   }
 
-  newQuery(){
-    this.firabase.collection('chat').snapshotChanges().subscribe(data =>{
+  newQuery() {
+    var consultas: any = [];
+    var ultimoMensaje: any;
+
+    this.firabase.collection('chat').snapshotChanges().subscribe(data => {
+      data.map(item => {
+        const doc = item.payload.doc.data();
+        consultas.push(doc);
+
+        consultas.forEach(element => {
+          if (element.messages != '') {
+            ultimoMensaje = element.messages[element.messages.length - 1];
+
+            if (ultimoMensaje.user == 'anonimo' || ultimoMensaje.user == 'cliente') {
+              this.pushNotification("¡Nueva consulta!", "Un cliente ha realizado una consulta", 3);
+              ultimoMensaje = '';
+            }
+          }
+        });
+      })
+    })
+  }
+
+  newFood() {
+    var pedido : any;
+
+    this.firabase.collection('pedidos').snapshotChanges().subscribe(data =>{
       data.map(item =>{
-        if(item.type == 'modified'){
-          
+        const doc = item.payload.doc.data();
+        pedido = doc;
+
+        if(pedido.para == 'cocina' && pedido.estado == 'prepararC'){
+          this.pushNotification("¡Nueva comanda!", "Ha ingresado una nueva comida para preparar", 4);
+        }else if(pedido.para == 'bartender' && pedido.estado == 'prepararB'){
+          this.pushNotification("¡Nueva comanda!", "Ha ingresado una nueva bebida para preparar", 5);
         }
       })
     })

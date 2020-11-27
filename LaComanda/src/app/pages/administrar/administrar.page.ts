@@ -86,7 +86,6 @@ export class AdministrarPage implements OnInit {
     };
 
     this.traerConsultas().then((res: boolean) => {
-      console.log(res);
       if (res != true) {
         this.afs.addDataId('chat', json, this.user.id);
       }
@@ -151,16 +150,18 @@ export class AdministrarPage implements OnInit {
             const doc: any = element.payload.doc.data();
             doc.id = element.payload.doc.id;
             this.mensajes.push(doc);
+            console.log(this.mensajes)
 
             this.mensajes.forEach(element => {
-              console.log('asd');
               if (element.id === this.user.id) {
                 resolve(true);
+              }else{
+                resolve(false);
               }
             });
           });
         }else{
-          resolve(false);
+          reject();
         }
       });
     });

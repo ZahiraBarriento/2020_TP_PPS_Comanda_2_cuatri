@@ -81,7 +81,7 @@ export class MesaPage implements OnInit {
         photo: this.image,
         status: false,
         qr: 'mesa_' + this.number.value,
-        client: '',
+        cliente: '',
       }
       this.table.forEach((element: any) => {
         if (element.number == json.number) { //valido que la mesa no este cargada

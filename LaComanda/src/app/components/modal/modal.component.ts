@@ -15,7 +15,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class ModalComponent implements OnInit {
 
   viewPic: string = "../../../../assets/image/default.jpg";
-  image : string = 'asd';
+  image : string;
 
    //#region Get
   get name() {
