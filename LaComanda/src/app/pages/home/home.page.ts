@@ -259,7 +259,6 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.user = null;
     this.perfil = null;
     this.cards = [];
     this.alta = [];

@@ -36,6 +36,7 @@ export class PedidosService {
 
           pedidoCocinero.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoCocinero.importe = importeTotal += Number(producto.precio);
+          pedidoCocinero.idCliente = this.usuario.id;
           pedidoCocinero.estado = 'informar';
           pedidoCocinero.tipo = 'platos';
           pedidoCocinero.mesa = this.mesa.number;
@@ -51,6 +52,7 @@ export class PedidosService {
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoBartender.importe = importeTotal += Number(producto.precio);
           pedidoBartender.mesa = this.mesa.number;
+          pedidoBartender.idCliente = this.usuario.id;
           pedidoBartender.estado = 'informar';
           pedidoBartender.tipo = 'bebidas';
           pedidoBartender.para = 'bartender';
@@ -94,6 +96,7 @@ export class PedidosService {
 
           jsonOrden['productos'] = productos;
           jsonOrden['importe'] = total;
+          jsonOrden['idCliente'] = this.ordenCompra[i].idCliente;
           jsonOrden['estado'] = this.ordenCompra[i].estado;
           jsonOrden['actived'] = this.ordenCompra[i].actived;
 

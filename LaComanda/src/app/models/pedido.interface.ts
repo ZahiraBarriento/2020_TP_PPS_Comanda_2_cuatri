@@ -10,6 +10,7 @@ export interface PedidoInterface{
     estado: string;
     mesa?: number;
     actived?: boolean;
+    idCliente?: string;
 }
 
  

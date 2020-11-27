@@ -12,6 +12,7 @@ export class Pedido implements PedidoInterface{
     public estado: string;
     public actived = true;
     public mesa: number;
+    public idCliente: string;
 
     constructor(){
 
@@ -20,6 +21,7 @@ export class Pedido implements PedidoInterface{
         this.para = '';
         this.importe = 0;
         this.estado = '';
+        this.idCliente = '';
     }
 }
  
