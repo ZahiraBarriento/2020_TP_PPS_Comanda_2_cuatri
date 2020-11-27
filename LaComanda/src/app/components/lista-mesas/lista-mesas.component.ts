@@ -49,8 +49,6 @@ export class ListaMesasComponent implements OnInit {
         this.emptyTable = false;
       else
         this.emptyTable = true;
-
-      console.log(this.emptyTable)
     });
   }
 
@@ -64,6 +62,11 @@ export class ListaMesasComponent implements OnInit {
 
   //PASAR A UN SERVICIO
   async presentAlert(header : string, message : string, table) {
+
+    const json = {
+      listaEspera:false
+    }
+
     const alert = await this.alertController.create({
       cssClass: 'my-custom',
       header: header,
@@ -71,8 +74,8 @@ export class ListaMesasComponent implements OnInit {
       buttons: [{
         text: 'OK',
         handler : () => {
-          this.firestore.updateData('mesa', table.id, {status:true, client: this.client.id})
-          this.firestore.updateData('usuarios', this.client.uid, {listaEspera:false});
+          this.firestore.updateData('mesa', table.id, {status:true, client: this.client.id});
+          this.firestore.updateData('usuarios', this.client.uid, json);
           this.loader.showLoader();
           setTimeout(() => {
             this.close();  

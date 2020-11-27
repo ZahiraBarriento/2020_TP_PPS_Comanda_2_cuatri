@@ -18,10 +18,10 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { PushNotificationService } from './services/push-notification.service';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,9 +40,10 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
     Camera,
     AndroidFullScreen,
     BarcodeScanner,
+    EmailComposer,
     OneSignal,
     PushNotificationService,
-    EmailComposer,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

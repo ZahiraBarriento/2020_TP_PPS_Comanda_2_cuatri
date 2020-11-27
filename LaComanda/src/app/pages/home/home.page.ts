@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cards } from '../../models/cards';
-import { ModalController } from '@ionic/angular';
 import { QrService } from '../../services/qr.service';
 import { LoaderService } from '../../services/loader.service';
 import { ToastService } from '../../services/toast.service';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
+import { PushNotificationService } from '../../services/push-notification.service';
 
 @Component({
   selector: 'app-home',
@@ -26,12 +26,9 @@ export class HomePage implements OnInit, OnDestroy {
     private router: Router,
     private qr: QrService,
     private loader: LoaderService,
-    private toast: ToastService,
     private db: FirestoreService,
-    private alert: FuctionsService) {
-    /*  this.user = localStorage.getItem('userCatch'); // obtengo user */
-
-    console.log('-----------------------------------------------------------------------------');
+    private alert: FuctionsService,
+    private pushNoti : PushNotificationService) {
 
     this.user = JSON.parse(localStorage.getItem('userCatch'));
 
@@ -49,19 +46,6 @@ export class HomePage implements OnInit, OnDestroy {
     if (this.user != null) {
       this.showCard(this.user.perfil);
     }
-
-    /* console.log('User');
-    console.log(this.user);
-    console.log('showView');
-    console.log(this.showView); */
-    console.log('perfil');
-    console.log(this.perfil);
-    /*  console.log('info');
-     console.log(this.info); */
-    console.log('cards');
-    console.log(this.cards);
-    /*  console.log('alta');
-     console.log(this.alta); */
   }
 
   ngOnInit(): void {
@@ -70,6 +54,8 @@ export class HomePage implements OnInit, OnDestroy {
         this.alta.push(item);
       });
     });
+
+    this.notificacionesDuenio();
   }
 
   showCard(perfil) {
@@ -79,8 +65,6 @@ export class HomePage implements OnInit, OnDestroy {
     this.info.forEach(element => {
 
       if (element[perfil] && llave == false) {
-        console.log('Funcion ShowCard');
-        console.log(element[perfil]);
         this.cards = element[perfil];
         llave = true;
       }
@@ -90,22 +74,13 @@ export class HomePage implements OnInit, OnDestroy {
   page(pagina) {
     switch (pagina) {
       case 'altaSupervisor':
-        this.loader.showLoader();
-        setTimeout(() => {
-          this.router.navigateByUrl('/altas/duenio');
-        }, 1500);
+        this.router.navigateByUrl('/altas/duenio');
         break;
       case 'altaEmpleado':
-        this.loader.showLoader();
-        setTimeout(() => {
-          this.router.navigateByUrl('/altas/empleado');
-        }, 1500);
+        this.router.navigateByUrl('/altas/empleado');
         break;
       case 'altaMesa':
-        this.loader.showLoader();
-        setTimeout(() => {
-          this.router.navigateByUrl('/altas/mesa');
-        }, 1500);
+        this.router.navigateByUrl('/altas/mesa');
         break;
     }
   }
@@ -149,7 +124,10 @@ export class HomePage implements OnInit, OnDestroy {
 
       // METRE
       case 'listaEspera':
-        this.router.navigateByUrl('/listado');
+        this.loader.showLoader();
+        setTimeout(() => {
+          this.router.navigateByUrl('/listado');
+        }, 1500);
         break;
       case 'altaCliente':
         this.router.navigateByUrl('/altas/cliente');
@@ -197,13 +175,13 @@ export class HomePage implements OnInit, OnDestroy {
       this.loader.showLoader();
       this.ActualizarClienteListaEspera();
       setTimeout(() => {
-        this.toast.MostrarMensaje('Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!', false);
+        this.alert.presentToast('Has ingresado al local, ¡Tan pronto como podamos te asignaremos una mesa!', 'success');
       }, 1500);
 
     }).catch(() => {
       this.loader.showLoader();
       setTimeout(() => {
-        this.toast.MostrarMensaje('Ha ocurrido un error al ingresar al local', true);
+        this.alert.presentToast('Ha ocurrido un error al ingresar al local', 'danger');
       }, 1500);
     });
   }
@@ -227,6 +205,7 @@ export class HomePage implements OnInit, OnDestroy {
       allUsers.forEach(element => {
         if (element['nombre'] == this.user['nombre'] && element['apellido'] == this.user['apellido'] && element['correo'] == this.user['correo']) {
           this.db.updateData('usuarios', element["id"], { listaEspera: true });
+          console.log('asd');
         }
       }
       );
@@ -263,6 +242,23 @@ export class HomePage implements OnInit, OnDestroy {
     this.cards = [];
     this.alta = [];
     this.info = null;
+  }
+
+  notificacionesDuenio(){
+    switch(this.user.perfil){
+      case 'duenio':
+        this.pushNoti.newUser();
+        break;
+      case 'supervisor':
+        this.pushNoti.newUser();
+        break;
+      case 'metre':
+        this.pushNoti.waitingList();
+        break;
+      case 'mozo':
+        this.pushNoti.newQuery();
+        break;
+    }
   }
 
 }

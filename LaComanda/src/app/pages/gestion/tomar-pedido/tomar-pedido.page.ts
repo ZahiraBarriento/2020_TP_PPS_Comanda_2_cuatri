@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
- 
+
 
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
@@ -27,55 +27,52 @@ export class TomarPedidoPage implements OnInit {
   asignar = '';
   public cont = 0;
   constructor(private pedido: PedidosService,
-              private router: Router,
-              private toast: ToastService) {
+    private router: Router,
+    private toast: ToastService) {
 
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.verificarAcceso('mozo', 'bartender', 'cocinero')
-      .then( res => {
+      .then(res => {
         console.log('Usuario con Acceso.' + this.usuario.perfil);
-        setInterval( () => {
-           this.traerPedidos();
-           this.asignarTareas();
+        setInterval(() => {
+          this.traerPedidos();
+          this.asignarTareas();
         }, 500);
       })
-      .catch( rej => {
-         console.log('Usuario no tiene Acceso. Sera redireccionado....');
-         this.router.navigateByUrl('/login');
+      .catch(rej => {
+        console.log('Usuario no tiene Acceso. Sera redireccionado....');
+        this.router.navigateByUrl('/login');
       })
       /* .catch( rej => rej && this.router.navigateByUrl('/home')) */;
 
-      // tslint:disable-next-line: no-trailing-whitespace
+    // tslint:disable-next-line: no-trailing-whitespace
 
   }
 
   ngOnInit() {
   }
 
+  traerPedidos() {
 
-
-
-   traerPedidos(){
-
-   this.pedido.traerPedidos()
-      .then( (res: PedidoInterface[]) => {
+    this.pedido.traerPedidos()
+      .then((res: PedidoInterface[]) => {
 
         this.pedidos = res;
       });
   }
 
-  verificarAcceso( ...usuario ){
+  verificarAcceso(...usuario) {
     const usuariosAcces = [...usuario];
     let access = false;
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-      for (let i = 0; i < usuariosAcces.length; i++){
-        
-        if (usuariosAcces[i] === this.usuario.perfil.toString()){
+      for (let i = 0; i < usuariosAcces.length; i++) {
+
+        if (usuariosAcces[i] === this.usuario.perfil.toString()) {
           access = true;
           i = usuariosAcces.length;
-        }      
+        }
       }
 
       access ? resolve(access) : reject(access);
@@ -84,105 +81,104 @@ export class TomarPedidoPage implements OnInit {
 
 
 
-  asignarTareas(pedido?: PedidoInterface){
+  asignarTareas(pedido?: PedidoInterface) {
 
-      this.estado = '';
+    this.estado = '';
 
-      switch (this.usuario.perfil.toString()) {
+    switch (this.usuario.perfil.toString()) {
 
-        //////////////// Mozo ///////////////////////////
+      //////////////// Mozo ///////////////////////////
       case 'mozo':
-      if (pedido){
-        if (pedido.estado == 'informar'){
-          this.estado = 'informar';
-          return this.estado;
-        }
-        if (pedido.estado == 'preparado'){
-          this.estado = 'preparado';
-          return this.estado;
-        }
+        if (pedido) {
+          if (pedido.estado == 'informar') {
+            this.estado = 'informar';
+            return this.estado;
+          }
+          if (pedido.estado == 'preparado') {
+            this.estado = 'preparado';
+            return this.estado;
+          }
 
-      }
-      this.tarea = 'Llevar comanda';
+        }
+        this.tarea = 'Llevar comanda';
 
-      break;
+        break;
       //////////////// Bartender ///////////////////////////
       case 'bartender':
-        if (pedido){
+        if (pedido) {
           this.estado = 'prepararB';
           return this.estado;
         }
         this.tarea = 'Tragos a preparar';
         break;
-        //////////////// Cocinero ///////////////////////////
-        case 'cocinero':
-
-        if (pedido){
+      //////////////// Cocinero ///////////////////////////
+      case 'cocinero':
+        if (pedido) {
           this.estado = 'prepararC';
           return this.estado;
         }
         this.tarea = 'Platos a Preparar';
         break;
-        default:
+      default:
         console.log('Error');
     }
 
 
   }
 
-  asignarNotificacion(pedido: PedidoInterface){
+  asignarNotificacion(pedido: PedidoInterface) {
 
     switch (this.usuario.perfil.toString()) {
 
       //////////////// Mozo ///////////////////////////
-    case 'mozo':
+      case 'mozo':
 
-    if (pedido.estado == 'informar'){
-      if (pedido.para == 'cocina'){
-        this.jsonAsignar.estado =  'prepararC';
-        this.mensaje = 'Cocina notificada con exito';
+        if (pedido.estado == 'informar') {
+          if (pedido.para == 'cocina') {
+            this.jsonAsignar.estado = 'prepararC';
+            this.mensaje = 'Cocina notificada con exito';
 
-      }
-      if (pedido.para == 'bartender'){
-        this.jsonAsignar.estado =  'prepararB';
-        this.mensaje = 'Bartender notificado con exito';
-      }
+          }
+          if (pedido.para == 'bartender') {
+            this.jsonAsignar.estado = 'prepararB';
+            this.mensaje = 'Bartender notificado con exito';
+          }
 
+        }
+        if (pedido.estado == 'preparado') {
+          this.jsonAsignar.estado = 'entregado';
+          this.mensaje = `Pedido es entregado a la mesa ${pedido.mesa} con exito`;
+        }
+
+        break;
+      //////////////// Bartender y Cocinero ///////////////////////////
+      case 'bartender':
+      case 'cocinero':
+        this.jsonAsignar.estado = 'preparado';
+        this.mensaje = 'Pedido preparado. Mozo notificado';
+        break;
+      default:
+        console.log('Error');
     }
-    if (pedido.estado == 'preparado'){
-      this.jsonAsignar.estado = 'entregado';
-      this.mensaje = `Pedido es entregado a la mesa ${pedido.mesa} con exito`;
-    }
 
-    break;
-    //////////////// Bartender y Cocinero ///////////////////////////
-    case 'bartender':
-    case 'cocinero':
-    this.jsonAsignar.estado = 'preparado';
-    this.mensaje = 'Pedido preparado. Mozo notificado';
-    break;
-    default:
-    console.log('Error');
+
+
   }
 
-
-  
-  }
-
-  notificar(pedido: PedidoInterface){
+  notificar(pedido: PedidoInterface) {
 
     this.asignarNotificacion(pedido);
-    setTimeout( () => {
+    setTimeout(() => {
 
-    this.pedido.notificarComanda(pedido, this.jsonAsignar)
-      .then( res => {
-        if (res){
-              this.toast.MostrarMensaje(`${this.mensaje}`, false);
-        }
-      });
+      this.pedido.notificarComanda(pedido, this.jsonAsignar)
+        .then(res => {
+          if (res) {
+            this.toast.MostrarMensaje(`${this.mensaje}`, false);
+          }
+        });
     }, 1000);
-    
-    }
+
+  }
 
 
 

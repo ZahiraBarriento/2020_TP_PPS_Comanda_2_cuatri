@@ -42,6 +42,7 @@ export class ListaEsperaComponent implements OnInit {
         if (element.perfil == 'anonimo' || element.perfil == 'cliente') {
           if (element.listaEspera) {
             this.clients.push(element);
+            console.log(this.clients)
           }
         }
       });
@@ -56,9 +57,20 @@ export class ListaEsperaComponent implements OnInit {
   resetClientes(){
     this.clients.splice(0, this.clients.length);
     this.allClients.splice(0, this.allClients.length);
+    console.log(this.clients);
+    console.log(this.allClients)
   }
 
   chooseTable(client) {
     this.modalController.openModal(ListaMesasComponent, 'my-custom-modal-css', client);
+  }
+
+  modificar(cliente){
+    const json = {
+      listaEspera:false
+    }
+
+    
+    this.firestore.updateData('usuarios', cliente.uid, json);
   }
 }
