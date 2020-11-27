@@ -59,6 +59,13 @@
     <ion-icon class="img" slot="end" size="large" name="chevron-forward-outline"></ion-icon>
   </ion-item> -->
 
+  <ion-item [hidden]="!yaHizoUnPedido" class="chat" button (click)="realizarEncuesta()" lines="none">
+    <ion-label class="ion-text-center">
+      Realizar encuesta
+    </ion-label>
+    <ion-icon class="img" slot="end" size="large" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
   <ion-item [hidden]="!yaHizoUnPedido" class="chat" button (click)="pedirCuenta()" lines="none">
     <ion-label class="ion-text-center">
       Pedir la cuenta

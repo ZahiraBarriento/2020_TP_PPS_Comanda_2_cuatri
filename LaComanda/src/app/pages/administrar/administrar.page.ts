@@ -77,6 +77,10 @@ export class AdministrarPage implements OnInit {
     this.router.navigateByUrl('/pedir-cuenta');
   }
 
+  realizarEncuesta(){
+    this.router.navigateByUrl('encuesta/cliente');
+  }
+
   juegos(){
     this.modalCtrl.openModal(ListaJuegosComponent, 'common', this.table);
   }
@@ -180,7 +184,7 @@ export class AdministrarPage implements OnInit {
         todosLosPedidos.push(data);
       });
       todosLosPedidos.forEach(ped => {
-        if (ped["idCliente"] == this.user.id){
+        if (ped["idCliente"] == this.user.id && ped["estado"] != "cancelado" && ped["estado"] != "completado"){
           resolve();
         }
       });
