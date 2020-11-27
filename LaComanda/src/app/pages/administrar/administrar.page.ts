@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { resolve } from 'dns';
 import { Pedido } from 'src/app/classes/pedido.class';
 import { Usuario } from 'src/app/classes/usuario.class';
 import { ChatConsultaComponent } from 'src/app/components/chat-consulta/chat-consulta.component';
@@ -26,6 +27,7 @@ export class AdministrarPage implements OnInit {
   mensajes: any = [];
   pedidos: PedidoInterface[];
   pedidoEspera: PedidoInterface[];
+  yaHizoUnPedido = false;
 
   constructor(
     private modalCtrl: FuctionsService,
@@ -60,6 +62,7 @@ export class AdministrarPage implements OnInit {
         }
       });
     });
+    this.ValidarYaHizoUnPedido().then(() => this.yaHizoUnPedido = true).catch(() => this.yaHizoUnPedido = false);
   }
 
   openChat() {
@@ -92,6 +95,10 @@ export class AdministrarPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  realizarEncuesta(){
+    this.router.navigateByUrl('encuesta/cliente');
   }
 
   juegos(){
@@ -185,4 +192,25 @@ export class AdministrarPage implements OnInit {
       });
     });
   }
+
+  ValidarYaHizoUnPedido(){
+    return new Promise<any>((resolve, reject)=>{
+
+      var todosLosPedidos = [];
+      this.afs.getDataAll('pedidos').subscribe(element => {
+      element.map(item => {
+        const data = item.payload.doc.data();
+        todosLosPedidos.push(data);
+      });
+      todosLosPedidos.forEach(ped => {
+        if (ped["idCliente"] == this.user.id && ped["estado"] != "cancelado" && ped["estado"] != "completado"){
+          resolve();
+        }
+      });
+      reject();
+      });
+    
+    });
+  }  
+
 }

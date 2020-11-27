@@ -203,9 +203,8 @@ export class HomePage implements OnInit, OnDestroy {
       });
 
       allUsers.forEach(element => {
-        if (element['nombre'] == this.user['nombre'] && element['apellido'] == this.user['apellido'] && element['correo'] == this.user['correo']) {
+        if (element['id'] == this.user['id']) {
           this.db.updateData('usuarios', element["id"], { listaEspera: true });
-          console.log('asd');
         }
       }
       );
