@@ -42,7 +42,7 @@ export class AdministrarPage implements OnInit {
     this.user = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
 
     this.traerPedidosInit();
-    /* this.consultaUsuario(); */
+    this.consultaUsuario();
   }
 
   ngOnInit() {
