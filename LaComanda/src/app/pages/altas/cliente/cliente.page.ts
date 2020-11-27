@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular';
 import { LoaderService } from '../../../services/loader.service';
 import { ToastService } from '../../../services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { PushNotificationService } from 'src/app/services/push-notification.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-cliente',
@@ -56,6 +58,7 @@ export class ClientePage implements OnInit {
   ngOnInit() {
     this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
   }
+
 
   tableForm = this.formBuilder.group({
     nombre: ['', [

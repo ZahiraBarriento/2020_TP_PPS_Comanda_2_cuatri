@@ -8,6 +8,7 @@ import { ModalComponent } from "src/app/components/modal/modal.component";
 import { FuctionsService } from "../../services/fuctions.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { LoaderService } from 'src/app/services/loader.service';
+import { PushNotificationService } from 'src/app/services/push-notification.service';
 
 @Component({
   selector: "app-login",
@@ -25,7 +26,8 @@ export class LoginPage {
               private userService: UsuarioService,
               public modalController: FuctionsService,
               private loader: LoaderService,
-              private toast:FuctionsService) {
+              private toast:FuctionsService,
+              private push : PushNotificationService) {
 
     this.crearFormulario();
     this.perfilJso = perfilJson;
