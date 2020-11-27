@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientePage implements OnInit {
 
-  opinion="";
+  opinion:string = "";
+  protocoloCovid:boolean;
   constructor() { }
 
   ngOnInit() {
@@ -15,7 +16,8 @@ export class ClientePage implements OnInit {
 
   enviarEncuesta(){
     var rangoSatisfecho = (<HTMLIonRangeElement>document.getElementById("rango")).value;
-    console.log(this.opinion);
+    var protocoloCovid = (<HTMLIonRadioGroupElement>document.getElementById("grupo")).value == "true";
+    console.log(protocoloCovid);
   }
 
 }
