@@ -61,7 +61,9 @@ export class PedirCuentaPage implements OnInit {
     this.pedidosEntregados.forEach(ped => {
       this.total += ped.importe;
     });
-    this.propina = this.total / (100 / this.propina);
+    var propinaPorcentaje = this.propina;
+    this.propina = 0;
+    this.propina = this.total * (propinaPorcentaje / 100);
     this.total += this.propina;
   }
 
