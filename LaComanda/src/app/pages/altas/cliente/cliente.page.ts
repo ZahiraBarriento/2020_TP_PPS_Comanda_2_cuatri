@@ -23,7 +23,7 @@ export class ClientePage implements OnInit {
   yaSubioFoto = false;
 
     get nombre() {
-      return this.tableForm.get("nombre").value;
+      return this.tableForm.get("nombre");
     }
   
     get apellido() {
