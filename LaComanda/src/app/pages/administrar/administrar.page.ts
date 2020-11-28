@@ -145,6 +145,9 @@ export class AdministrarPage implements OnInit {
         case 'preparado':
           mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> Listo para ser entregado` ;
           break;
+        case 'entregado':
+            mensaje += `<p><strong>• Ticket Nº ${pedido.id} </strong> </p> entregado` ;
+            break;
         default:
           break;
       }
