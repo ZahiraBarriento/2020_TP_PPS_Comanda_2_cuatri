@@ -16,7 +16,7 @@ import { AlertController } from '@ionic/angular';
 export class PedirCuentaPage implements OnInit {
   pedidosDelCliente: Array<DetalleInterface> = [];
   pedidosEntregados: Array<DetalleInterface> = [];
-  pedidosNoEntregados: Array<DetalleInterface>;
+  pedidosNoEntregados: Array<DetalleInterface> = [];
   total = 0;
   yaPago = false;
   propina = 0;
@@ -36,16 +36,16 @@ export class PedirCuentaPage implements OnInit {
 
   ngOnInit() {
     
-    //this.qr.qrPropina().then((json) => {
-    this.propina = 20;
-    var user = JSON.parse(localStorage.getItem('userCatch'));
-    var cliente = user["nombre"] + " " + user["apellido"];
-    this.pedidosService.detallePedidos(cliente).then((pedidos) => {
-      this.pedidosDelCliente = pedidos;
-      this.filtrarPorEntregado();
-      this.calcularTotal();
-    });
-    //});    
+    this.qr.qrPropina().then((json) => {
+      this.propina = json["desc"];
+      var user = JSON.parse(localStorage.getItem('userCatch'));
+      var cliente = user["nombre"] + " " + user["apellido"];
+      this.pedidosService.detallePedidos(cliente).then((pedidos) => {
+        this.pedidosDelCliente = pedidos;
+        this.filtrarPorEntregado();
+        this.calcularTotal();
+      });
+    });    
 
     this.obtenerMesa();
   }
@@ -92,7 +92,7 @@ export class PedirCuentaPage implements OnInit {
       this.toast.presentToast("¡El pago se ha realizado con éxito!", 'success');
       localStorage.removeItem('tableCurrent');
       
-      this.db.updateData('mesa', this.mesaAux.id, {status : false, client: ''});
+      this.db.updateData('mesa', this.mesaAux.id, {status : false, cliente: ''});
       setTimeout(() => {
         this.router.navigateByUrl('home');
       }, 2000);
