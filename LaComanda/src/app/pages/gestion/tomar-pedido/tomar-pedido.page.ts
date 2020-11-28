@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { PedidosService } from 'src/app/services/coleccion/pedidos.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-tomar-pedido',
@@ -29,7 +28,8 @@ export class TomarPedidoPage implements OnInit {
   public cont = 0;
   constructor(private pedido: PedidosService,
     private router: Router,
-    private toast: FuctionsService) {
+    private toast: FuctionsService,
+    private loader: LoaderService) {
 
 
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
@@ -164,16 +164,26 @@ export class TomarPedidoPage implements OnInit {
 
   notificar(pedido: PedidoInterface) {
 
+    const audio = new Audio('../../../../assets/audio/ping4.mp3');
+   
+
     this.asignarNotificacion(pedido);
+<<<<<<< HEAD
+
+
+=======
+    this.loader.showLoader();
+>>>>>>> eff4e86dc71cf4572847dcc063737084d7f69fe9
     setTimeout(() => {
 
       this.pedido.notificarComanda(pedido, this.jsonAsignar)
         .then(res => {
           if (res) {
+            audio.play();
             this.toast.presentToast(`${this.mensaje}`, 'success');
           }
         });
-    }, 1000);
+    }, 500);
   }
 
 

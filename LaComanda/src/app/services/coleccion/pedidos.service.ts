@@ -7,6 +7,7 @@ import { ProductoInterface } from 'src/app/models/producto.interface';
 import { DetalleInterface } from 'src/app/models/detalle.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { Usuario } from 'src/app/classes/usuario.class';
+import { FuctionsService } from '../fuctions.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,14 +17,21 @@ export class PedidosService {
   ordenCompra: PedidoInterface[] = [];
   mesa: any;
 
-  constructor(private fr: FirestoreService) {
+  constructor(private fr: FirestoreService,
+              private toast: FuctionsService) {
     this.usuario = JSON.parse(localStorage.getItem('userCatch'));
-    this.mesa = JSON.parse(localStorage.getItem('tableCurrent'));
+   
+ 
     console.log(this.mesa);
   }
 
   ingresarPedido(ordenProductos: ProductoInterface[]) {
+    
+
     return new Promise((resolve, reject) => {
+    
+      this.mesa = JSON.parse(localStorage.getItem('tableCurrent')).number;
+ 
       let pedidoCocinero: PedidoInterface;
       let pedidoBartender: PedidoInterface;
       this.ordenCompra = [];
@@ -41,7 +49,7 @@ export class PedidosService {
           pedidoCocinero.idCliente = this.usuario.id;
           pedidoCocinero.estado = 'informar';
           pedidoCocinero.tipo = 'platos';
-          pedidoCocinero.mesa = this.mesa.number;
+          pedidoCocinero.mesa = Number(this.mesa);
           pedidoCocinero.para = 'cocina';
           pedidoCocinero.actived = true;
           pedidoCocinero.productos.push(producto);
@@ -53,7 +61,7 @@ export class PedidosService {
 
           pedidoBartender.cliente = `${this.usuario.nombre} ${this.usuario.apellido}`;
           pedidoBartender.importe = importeTotal += Number(producto.precio);
-          pedidoBartender.mesa = this.mesa.number;
+          pedidoBartender.mesa = Number(this.mesa);
           pedidoBartender.idCliente = this.usuario.id;
           pedidoBartender.estado = 'informar';
           pedidoBartender.tipo = 'bebidas';

@@ -139,11 +139,11 @@ confirmarPedido(){
 
   this.pedidoService.ingresarPedido(this.ordenProductos)
     .then( res => {
-         this.limpiarCantidad();
          // AVECES NO ANDA CREO QUE SE TRABA EN LIMPIAR FIJARSE
          this.toast.presentToast('Su pedido ha sido solicitado, aguarde a ser aprobado.', 'success');
          this.ordenProductos = [];
          this.importeTotal = 0;
+         this.router.navigateByUrl('administrar');
     });
 }
 
@@ -167,14 +167,6 @@ verificarAcceso( ...usuario ){
 
 
 //#region Funciones visuales
-
-limpiarCantidad(){
-  const input = document.getElementsByTagName('input');
-  for (let i = 0; i < input.length; i++){
-    input.namedItem(`${i}`).value = '0';
-  }
-}
-
 
 asignarColorCantidad(id, cantNum){
 
