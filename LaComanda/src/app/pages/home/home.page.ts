@@ -194,14 +194,15 @@ export class HomePage implements OnInit {
       }
       data.map(item => {
         const data = item.payload.doc.data();
-        const id = item.payload.doc.id;
+        const id = item.payload.doc.id;        
         allUsers.push(data);
+        allUsers[count].idDocumento = id;
         count++;
       });
 
       allUsers.forEach(element => {
         if (element['id'] == this.user['id']) {
-          this.db.updateData('usuarios', element["id"], { listaEspera: true });
+          this.db.updateData('usuarios', element.idDocumento, { listaEspera: true });
         }
       }
       );
