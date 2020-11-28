@@ -92,7 +92,7 @@ export class PedirCuentaPage implements OnInit {
       this.toast.presentToast("¡El pago se ha realizado con éxito!", 'success');
       localStorage.removeItem('tableCurrent');
       
-      this.db.updateData('mesa', this.mesaAux.id, {status : false, client: ''});
+      this.db.updateData('mesa', this.mesaAux.id, {status : false, cliente: ''});
       setTimeout(() => {
         this.router.navigateByUrl('home');
       }, 2000);
