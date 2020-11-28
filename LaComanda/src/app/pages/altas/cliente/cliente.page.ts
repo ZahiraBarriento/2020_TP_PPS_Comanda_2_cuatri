@@ -11,6 +11,7 @@ import { ToastService } from '../../../services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { PushNotificationService } from 'src/app/services/push-notification.service';
 import { element } from 'protractor';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-cliente',
@@ -18,9 +19,6 @@ import { element } from 'protractor';
   styleUrls: ['./cliente.page.scss'],
 })
 export class ClientePage implements OnInit {
-  viewPic: string = "../../../../assets/image/default.jpg";
-  image;
-  yaSubioFoto = false;
 
     get nombre() {
       return this.tableForm.get("nombre");
@@ -48,22 +46,27 @@ export class ClientePage implements OnInit {
     public formBuilder: FormBuilder,
     private camera: Camera,
     private firestore: FirestoreService,
-    private qr: QrService,
     private loading : LoaderService,
     public toast: ToastService,
     private auth:AuthService,
-    private userService:UsuarioService) {
+    private userService:UsuarioService,
+    private qr: BarcodeScanner) {
   }
+  viewPic: string = "../../../../assets/image/default.jpg";
+  image;
+  yaSubioFoto = false;
 
-  ngOnInit() {
-    this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
-  }
+  inputSetQr =  {
+    nombre : '',
+    apellido : '',
+    dni: '',
+  };
 
 
   tableForm = this.formBuilder.group({
     nombre: ['', [
       Validators.required,
-      Validators.pattern("^([a-zA-Z]+\s)*[a-zA-Z]+$")
+      Validators.pattern('^([a-zA-Z]+\s)*[a-zA-Z]+$')
     ]],
     apellido: ['', [
       Validators.required,
@@ -77,11 +80,14 @@ export class ClientePage implements OnInit {
       Validators.required,
       Validators.pattern("^[A-Za-z0-9_.].{5,}$")
     ]],
-    dni: ['', [
-      Validators.required,
-      Validators.pattern("^[0-9]*$")
-    ]],
+    dni: ['', 
+      Validators.required
+     ],
   });
+
+  ngOnInit() {
+    this.tableForm.setValue({nombre: null, apellido: null, correo: this.userService.mailFromLogin, clave: this.userService.passFromLogin, dni: null});
+  }
 
   SubirFoto(){
     let options: CameraOptions = {
@@ -94,6 +100,7 @@ export class ClientePage implements OnInit {
     .then(imageData => {
         this.yaSubioFoto = true;
         this.image = `data:image/jpeg;base64,${imageData}`;
+        this.viewPic = this.image;
     });
   }
 
@@ -113,22 +120,31 @@ export class ClientePage implements OnInit {
       };
       this.firestore.addData("usuarios", json);
       this.auth.esClienteActivado = false;
-      this.VolverAtrasSpinner();
+     /*  this.loading.showLoader(); */
+      this.VolverAtrasSpinner(); 
+
+      
     });
   }
 
   EscanearQR(){
-   this.qr.getDatosDniQr()
-   .then((json) => this.RellenarCampos(json));
+    const options = { prompt: 'Escaneá el DNI', formats: 'PDF_417' };
+
+    this.qr.scan(options).then(barcodeData => {
+
+    const dniDatos = barcodeData.text.split('@');
+
+    this.inputSetQr.apellido = dniDatos[1];
+    this.inputSetQr.nombre = dniDatos[2];
+    this.inputSetQr.dni = dniDatos[4];
+    }).catch(err => { });
   }
 
-  RellenarCampos(json){
-    this.tableForm.setValue({nombre: json["nombre"], apellido: json["apellido"], correo: null, clave: null, dni: json["dni"]});
-  }  
 
   Cancelar(){
     this.tableForm.setValue({nombre: null, apellido: null, correo: null, clave: null, dni: null});
-    this.VolverAtrasSpinner();
+    
+    this.VolverAtrasSpinner(); 
   }
 
   VolverAtrasSpinner(){
@@ -139,9 +155,11 @@ export class ClientePage implements OnInit {
       this.toast.MostrarMensaje("Cliente registrado con exito, espere a que un encargado lo habilite", false);
       document.getElementById("VntPrincipal").style.opacity = "1";
       if (soyMetre)
-        this.router.navigate(['/home']);
+        this.auth.signOut();
+        /* this.router.navigate(['/home']); */
       else
-        this.router.navigate(['/login']);
+      this.auth.signOut();
+        /* this.router.navigate(['/login']); */
     }, 2000);
   }
 }

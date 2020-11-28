@@ -35,7 +35,7 @@ export class PedirPlatosBebidasPage implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
     this.traerPlatos();
 
-    this.verificarAcceso('cliente', 'mozo')
+    this.verificarAcceso('cliente', 'mozo', 'anonimo')
       .then( res => {
       })
       .catch( rej => {

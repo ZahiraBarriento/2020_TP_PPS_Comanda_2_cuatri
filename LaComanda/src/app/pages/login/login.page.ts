@@ -63,10 +63,6 @@ export class LoginPage {
           case "auth/invalid-email":
             this.toast.presentToast("Correo incorrecta", 'danger');            
             break;
-          case "auth/user-not-found":
-            this.toast.presentToast("Correo y/o contraseña incorrecta", 'danger');            
-            break;
-
           default:
             this.toast.presentToast("Ha ocurrido un problema, vuelva a intentar mas tarde.", 'danger');
         }
