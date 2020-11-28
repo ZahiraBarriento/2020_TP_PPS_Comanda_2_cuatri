@@ -77,7 +77,10 @@ export class ClientePage implements OnInit {
       "mesaConSal": mesaConSal,
       "mesaConEscarvadientes": mesaConEscarbadientes,
       "mesaConServilletas": mesaConServilletas,
-      "mesaConAderezos": mesaConAderezos
+      "mesaConAderezos": mesaConAderezos,
+      "image1": this.image1,
+      "image2": this.image2,
+      "image3": this.image3
     }
     this.db.addData('encuestasCliente', json);
     this.toastCtrl.presentToast("Encuesta enviada con exito, Muchas gracias por tu opinion!!", 'success');
