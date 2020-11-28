@@ -16,7 +16,7 @@ import { AlertController } from '@ionic/angular';
 export class PedirCuentaPage implements OnInit {
   pedidosDelCliente: Array<DetalleInterface> = [];
   pedidosEntregados: Array<DetalleInterface> = [];
-  pedidosNoEntregados: Array<DetalleInterface>;
+  pedidosNoEntregados: Array<DetalleInterface> = [];
   total = 0;
   yaPago = false;
   propina = 0;
