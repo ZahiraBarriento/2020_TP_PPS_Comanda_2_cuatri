@@ -20,11 +20,11 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-range color="light" min="1" max="10" pin="true" class="rango">
+          <ion-range color="light" min="1" max="10" pin="true" class="rango" id="rango">
             <ion-icon range-left name="sad"></ion-icon>
             <ion-icon range-right name="happy"></ion-icon>
           </ion-range>
-          <p align="center" style="color: white;"><small>Ingrese un rango del 1 al 10</small></p>
+          <p align="center" style="color: white;"><ion-label class="lb">INGRESE UN RANGO DEL 1 AL 10</ion-label></p>
         </ion-col>
       </ion-row>
 
@@ -36,7 +36,9 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-textarea placeholder="Escriba su opinión" [(ngModel)]="opinion"></ion-textarea>
+          <ion-item>
+          <ion-input placeholder="Escriba su opinión" [(ngModel)]="opinion"></ion-input>
+        </ion-item>
         </ion-col>
       </ion-row>
 
@@ -71,15 +73,19 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
+          
           <ion-item>
             <ion-label>Elija una opción</ion-label>
+            
             <ion-select id="select">
-              <ion-select-option value="Calidad y temperatura del plato">Calidad y temperatura del plato</ion-select-option>
-              <ion-select-option value="Velocidad del pedido">Velocidad del pedido</ion-select-option>
-              <ion-select-option value="Atención del personal">Atención del personal</ion-select-option>
-              <ion-select-option value="Higiene del local">Higiene del local</ion-select-option>
+              <ion-select-option value="Calidad">Calidad</ion-select-option>
+              <ion-select-option value="Velocidad">Velocidad</ion-select-option>
+              <ion-select-option value="Atención">Atención</ion-select-option>
+              <ion-select-option value="Higiene">Higiene</ion-select-option>
             </ion-select>
+          
           </ion-item>
+        
         </ion-col>
       </ion-row>
 
@@ -97,7 +103,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Escarbadientes</ion-label>
-            <ion-checkbox color="dark" id="chkEscarvadientes"></ion-checkbox>
+            <ion-checkbox color="dark" id="chkEscarbadientes"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>Servilletas</ion-label>
@@ -127,54 +133,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
-  <br><br>
-  <div class="contenidoCharts" *ngIf="probabilidad">
-    <h1 class="realizarEncuesta">Resultados de las encuestas</h1>
-
-    <div class="pregunta1">
-      <h2 class="asd">Pregunta 1, ¿Cuán limpio es el lugar?</h2>
-
-      <div class="canvas">
-        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-
-    <div class="pregunta4">
-      <h2 class="asd">Pregunta 4, ¿Le pagan bien?</h2>
-
-      <div class="canvas">
-        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-
-    <div class="pregunta3">
-      <h2 class="asd">Pregunta 3, ¿Le tratan bien sus jefes?</h2>
-
-      <div class="canvas">
-        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-
-    <div class="pregunta5">
-      <h2 class="asd">Pregunta 5, ¿Dejaría de trabajar acá?</h2>
-
-      <div class="canvas">
-        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-    <button ion-button color="red" style="
-        margin: 0 30px 0 0;
-        width: 70%;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 80px;
-      " (click)="Logout()">
-      Salir
-    </button>
   </div>
 </ion-content>
