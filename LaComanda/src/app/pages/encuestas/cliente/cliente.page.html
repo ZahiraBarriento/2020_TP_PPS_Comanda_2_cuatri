@@ -20,7 +20,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-range color="light" min="1" max="10" pin="true" class="rango">
+          <ion-range color="light" min="1" max="10" pin="true" class="rango" id="rango">
             <ion-icon range-left name="sad"></ion-icon>
             <ion-icon range-right name="happy"></ion-icon>
           </ion-range>
@@ -36,7 +36,9 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-textarea placeholder="Escriba su opinión" [(ngModel)]="opinion"></ion-textarea>
+          <ion-item>
+          <ion-input placeholder="Escriba su opinión" [(ngModel)]="opinion"></ion-input>
+        </ion-item>
         </ion-col>
       </ion-row>
 
@@ -76,10 +78,10 @@
             <ion-label>Elija una opción</ion-label>
             
             <ion-select id="select">
-              <ion-select-option value="Calidad y temperatura del plato">Calidad y temperatura del plato</ion-select-option>
-              <ion-select-option value="Velocidad del pedido">Velocidad del pedido</ion-select-option>
-              <ion-select-option value="Atención del personal">Atención del personal</ion-select-option>
-              <ion-select-option value="Higiene del local">Higiene del local</ion-select-option>
+              <ion-select-option value="Calidad">Calidad</ion-select-option>
+              <ion-select-option value="Velocidad">Velocidad</ion-select-option>
+              <ion-select-option value="Atención">Atención</ion-select-option>
+              <ion-select-option value="Higiene">Higiene</ion-select-option>
             </ion-select>
           
           </ion-item>
@@ -101,7 +103,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Escarbadientes</ion-label>
-            <ion-checkbox color="dark" id="chkEscarvadientes"></ion-checkbox>
+            <ion-checkbox color="dark" id="chkEscarbadientes"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>Servilletas</ion-label>

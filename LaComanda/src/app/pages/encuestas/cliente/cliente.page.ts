@@ -68,7 +68,6 @@ export class ClientePage implements OnInit {
     var mesaConServilletas = (<HTMLIonCheckboxElement>document.getElementById("chkServilletas")).checked;
     var mesaConAderezos = (<HTMLIonCheckboxElement>document.getElementById("chkAderezos")).checked;
     var clienteNombre = localStorage.getItem('userCatch')["nombre"];
-
     var json = {
       "cliente": clienteNombre,
       "rangoSatisfecho": rangoSatisfecho,
@@ -82,6 +81,7 @@ export class ClientePage implements OnInit {
       "image2": this.image2,
       "image3": this.image3
     }
+    console.log(json);
     this.db.addData('encuestasCliente', json);
     this.toastCtrl.presentToast("Encuesta enviada con exito, Muchas gracias por tu opinion!!", 'success');
     setTimeout(() => {
