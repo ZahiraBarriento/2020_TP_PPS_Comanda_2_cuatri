@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-
 import { Usuario } from 'src/app/classes/usuario.class';
 import { PedidoInterface } from 'src/app/models/pedido.interface';
 import { UsuarioModel } from 'src/app/models/usuario.model';
@@ -164,16 +162,22 @@ export class TomarPedidoPage implements OnInit {
 
   notificar(pedido: PedidoInterface) {
 
+    const audio = new Audio('../../../../assets/audio/ping4.mp3');
+   
+
     this.asignarNotificacion(pedido);
+
+
     setTimeout(() => {
 
       this.pedido.notificarComanda(pedido, this.jsonAsignar)
         .then(res => {
           if (res) {
+            audio.play();
             this.toast.presentToast(`${this.mensaje}`, 'success');
           }
         });
-    }, 1000);
+    }, 500);
   }
 
 
