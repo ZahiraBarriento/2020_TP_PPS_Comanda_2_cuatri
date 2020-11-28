@@ -198,7 +198,6 @@ export class HomePage implements OnInit, OnDestroy {
         const data = item.payload.doc.data();
         const id = item.payload.doc.id;
         allUsers.push(data);
-        allUsers[count].id = id;
         count++;
       });
 
