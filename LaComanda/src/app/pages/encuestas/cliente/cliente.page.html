@@ -2,91 +2,73 @@
   <app-header title="ENCUESTA"></app-header>
 </ion-header>
 <ion-content>
-  <form class="form">
-    
-  </form>
-
-  <div>
-    <ion-list-header> </ion-list-header>
-
+  <p align="center" class="titulo">
+    <strong>
+      Nos interesaria mucho saber que piensas de nuestro local.
+      Llena el formulario y hazno saber en que podemos cambiar para poder mejorar.
+    </strong>
+  </p>
+  <div class="formulario">
+    <br>
     <ion-grid>
       <ion-row>
         <ion-col col-12>
           <ion-label class="lb">
-            ¿Del 1 al 10 que tan satisfecho esta con su pedido?
+            ¿QUE TAN SATISFECHO ESTA CON SU PEDIDO?
           </ion-label>
         </ion-col>
       </ion-row>
-
       <ion-row>
         <ion-col col-12>
-          <ion-item>
-            <ion-range min="1" max="10" pin="true" id="rango">
-              <ion-icon range-left name="sad"></ion-icon>
-              <ion-icon range-right name="happy"></ion-icon>
-            </ion-range>
-          </ion-item>
+          <ion-range color="light" min="1" max="10" pin="true" class="rango">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-icon range-right name="happy"></ion-icon>
+          </ion-range>
+          <p align="center" style="color: white;"><small>Ingrese un rango del 1 al 10</small></p>
         </ion-col>
       </ion-row>
 
+      <br>
       <ion-row>
         <ion-col col-12>
-          <ion-label class="lb">¿Como podriamos mejorar?</ion-label>
+          <ion-label class="lb">¿COMO PODRIAMOS MEJORAR?</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-textarea placeholder="Escriba su opinión" [(ngModel)]="opinion"></ion-textarea>
         </ion-col>
       </ion-row>
 
+      <br>
       <ion-row>
         <ion-col col-12>
-          <ion-item>
-            <ion-input placeholder="Escriba su opinión" [(ngModel)]="opinion">
-            </ion-input>
-          </ion-item>
+          <ion-label class="lb">¿EL LOCAL CUENTA CON PROTOCOLO CONTRA EL CORONAVIRUS?</ion-label>
         </ion-col>
       </ion-row>
-
       <ion-row>
-        <ion-col col-12>
-          <ion-label class="lb">¿El local cuenta con protocolo contra el coronavirus?</ion-label>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-list
-          radio-group
-          style="
-            margin: 0 30px 0 0;
-            width: 70%;
-            font-size: 150%;
-            display: block;
-            margin: 0 auto;
-          "
-        >
+        <ion-list radio-group class="radio">
           <ion-col col-6>
-
             <ion-radio-group id="grupo">
               <ion-item>
                 <ion-label>Sí</ion-label>
-                <ion-radio value="true"></ion-radio>
+                <ion-radio color="dark" value="true"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>No</ion-label>
-                <ion-radio value="false"></ion-radio>
+                <ion-radio color="dark" value="false"></ion-radio>
               </ion-item>
-            </ion-radio-group>            
-          </ion-col>
-
-          <ion-col col-6>
-            
+            </ion-radio-group>
           </ion-col>
         </ion-list>
       </ion-row>
 
+      <br>
       <ion-row>
         <ion-col col-12>
-          <ion-label class="lb">¿Que es lo mas destacable de nuestro local?</ion-label>
+          <ion-label class="lb">¿QUE ES LO MAS DESTACABLE DE NUESTRO LOCAL?</ion-label>
         </ion-col>
       </ion-row>
-
       <ion-row>
         <ion-col col-12>
           <ion-item>
@@ -96,52 +78,42 @@
               <ion-select-option value="Velocidad del pedido">Velocidad del pedido</ion-select-option>
               <ion-select-option value="Atención del personal">Atención del personal</ion-select-option>
               <ion-select-option value="Higiene del local">Higiene del local</ion-select-option>
-            </ion-select>          
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <br>
       <ion-row>
         <ion-col col-12>
-          <ion-label class="lb">Tu mesa contaba con: </ion-label>
+          <ion-label class="lb">TU MESA CONTABA CON:</ion-label>
         </ion-col>
       </ion-row>
-
-      <ion-row>
+      <ion-row class="checkBox">
         <ion-col col-6>
           <ion-item>
             <ion-label>Sal</ion-label>
-            <ion-checkbox id="chkSal"></ion-checkbox>            
+            <ion-checkbox color="dark" id="chkSal"></ion-checkbox>
           </ion-item>
           <ion-item>
-            <ion-label>Escarvadientes</ion-label>
-            <ion-checkbox id="chkEscarvadientes"></ion-checkbox>
-          </ion-item> 
+            <ion-label>Escarbadientes</ion-label>
+            <ion-checkbox color="dark" id="chkEscarvadientes"></ion-checkbox>
+          </ion-item>
           <ion-item>
             <ion-label>Servilletas</ion-label>
-            <ion-checkbox id="chkServilletas"></ion-checkbox>
-          </ion-item> 
+            <ion-checkbox color="dark" id="chkServilletas"></ion-checkbox>
+          </ion-item>
           <ion-item>
             <ion-label>Aderezos</ion-label>
-            <ion-checkbox id="chkAderezos"></ion-checkbox>
-          </ion-item> 
+            <ion-checkbox color="dark" id="chkAderezos"></ion-checkbox>
+          </ion-item>
         </ion-col>
       </ion-row>
 
+      <br><br>
       <ion-row>
         <ion-col col-12>
-          <button
-            ion-button
-            outline
-            color="red"
-            style="
-              margin: 0 30px 0 0;
-              width: 70%;
-              font-size: 150%;
-              display: block;
-              margin: 0 auto;
-            "
-            (click)="SacarFoto()" [hidden]="yaSubioTodasLasFotos">Subir foto {{cantFotos}}</button>
+          <ion-button (click)="SacarFoto()" color="light" expand="block" [hidden]="yaSubioTodasLasFotos">Subir foto {{cantFotos}}</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -149,24 +121,14 @@
           <img [src]="foto" alt="" />
         </ion-col>
       </ion-row>
-
       <ion-row>
-        <ion-col col-12 style="padding-bottom: 50px">
-          <button
-            ion-button
-            color="red"
-            style="
-              margin: 0 30px 0 0;
-              width: 70%;
-              display: block;
-              margin: 0 auto;
-            "
-            (click)="enviarEncuesta()">Enviar</button>
+        <ion-col col-12>
+          <ion-button (click)="enviarEncuesta()" color="light" expand="block">Enviar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
+  <br><br>
   <div class="contenidoCharts" *ngIf="probabilidad">
     <h1 class="realizarEncuesta">Resultados de las encuestas</h1>
 
@@ -174,12 +136,8 @@
       <h2 class="asd">Pregunta 1, ¿Cuán limpio es el lugar?</h2>
 
       <div class="canvas">
-        <canvas
-          baseChart
-          class="altoCanvas"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"
-        ></canvas>
+        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
 
@@ -187,12 +145,8 @@
       <h2 class="asd">Pregunta 4, ¿Le pagan bien?</h2>
 
       <div class="canvas">
-        <canvas
-          baseChart
-          class="altoCanvas"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"
-        ></canvas>
+        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
 
@@ -200,39 +154,26 @@
       <h2 class="asd">Pregunta 3, ¿Le tratan bien sus jefes?</h2>
 
       <div class="canvas">
-        <canvas
-          baseChart
-          class="altoCanvas"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"
-        ></canvas>
+        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
-    
+
     <div class="pregunta5">
       <h2 class="asd">Pregunta 5, ¿Dejaría de trabajar acá?</h2>
 
       <div class="canvas">
-        <canvas
-          baseChart
-          class="altoCanvas"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"
-        ></canvas>
+        <canvas baseChart class="altoCanvas" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
-    <button
-      ion-button
-      color="red"
-      style="
+    <button ion-button color="red" style="
         margin: 0 30px 0 0;
         width: 70%;
         display: block;
         margin: 0 auto;
         margin-bottom: 80px;
-      "
-      (click)="Logout()"
-    >
+      " (click)="Logout()">
       Salir
     </button>
   </div>
