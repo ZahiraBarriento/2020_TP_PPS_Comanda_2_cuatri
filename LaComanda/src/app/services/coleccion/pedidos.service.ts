@@ -19,6 +19,7 @@ export class PedidosService {
   constructor(private fr: FirestoreService) {
     this.usuario = JSON.parse(localStorage.getItem('userCatch'));
     this.mesa = JSON.parse(localStorage.getItem('tableCurrent'));
+    console.log(this.mesa);
   }
 
   ingresarPedido(ordenProductos: ProductoInterface[]) {
@@ -28,6 +29,7 @@ export class PedidosService {
       this.ordenCompra = [];
       let importeTotal = 0;
 
+      console.log(this.mesa);
       ordenProductos.forEach((producto) => {
         if (producto.tipo === 'plato') {
           if (!pedidoCocinero) {

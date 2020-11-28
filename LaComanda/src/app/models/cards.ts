@@ -7,7 +7,6 @@ export const cards = [{
         { title: 'TU MESA', photo: '../../../assets/image/menu.png', message: 'Escanea el código QR de tu mesa para acceder al menu.', action: 'mesa'},
         { title: 'RESERVA', photo: '../../../assets/image/calendario.png', message: 'Reserva una mesa cuando quieras.', action: 'reserva' },
         { title: 'DELIVERY', photo: '../../../assets/image/delivery.png', message: 'Pedí tu comida de donde quieras que estes.', action: 'reserva' },
-        { title: 'ENCUESTA', photo: '../../../assets/image/encuesta.png', message: 'Nos interesa tu opinion.', action: 'encuestaCliente' },
         { title: 'MI PERFIL', photo: '../../../assets/image/user.png', message: '', action: 'perfil' }
     ],
     anonimo: [
