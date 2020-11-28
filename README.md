@@ -279,3 +279,19 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 - <strong> Qr propina:heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 19/11</i><br>
 
+<br><br>
+<h3 style="text-align: center;">:calendar: Semana del 14/11 al 27/11</h3>
+<p>Se actualizaron funcionalidades, arreglos, agregación de push y correo automatico, diseños, ultimos retoques. Se realizo reuniones en meet </p>
+
+:girl: <strong>Zahira Barriento</strong><br>
+- <strong> Consulta al mozo :heavy_check_mark:</strong><br>
+<i>&nbsp;• Se detectaron problemas al leer la base de datos y fue corregido.</i><br>
+<i>&nbsp;• Finalización: 26/11</i><br>
+- <strong> Notificaciones push :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 27/11</i><br>
+- <strong> Correo automatico :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 26/11</i><br>
+- <strong> Diseño en general :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 27/11</i><br><br>
+
+
