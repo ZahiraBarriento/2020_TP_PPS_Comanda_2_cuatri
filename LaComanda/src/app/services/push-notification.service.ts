@@ -126,7 +126,7 @@ export class PushNotificationService {
 
         if(pedido.para == 'cocina' && pedido.estado == 'prepararC'){
           this.pushNotification("¡Nueva comanda!", "Ha ingresado una nueva comida para preparar", 4);
-        }else if(pedido.para == 'bartender' && pedido.estado == 'prepararB'){
+        }if(pedido.para == 'bartender' && pedido.estado == 'prepararB'){
           this.pushNotification("¡Nueva comanda!", "Ha ingresado una nueva bebida para preparar", 5);
         }
       })

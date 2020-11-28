@@ -253,6 +253,9 @@ export class HomePage implements OnInit {
       case 'cocinero':
         this.pushNoti.newFood();
         break;
+      case 'bartender':
+        this.pushNoti.newFood();
+        break;
     }
   }
 }
