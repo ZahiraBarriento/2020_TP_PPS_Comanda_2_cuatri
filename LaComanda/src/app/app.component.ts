@@ -12,7 +12,7 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx';
 })
 export class AppComponent {
 
-  splash = false;
+  splash = true;
 
   constructor(
     private platform: Platform,

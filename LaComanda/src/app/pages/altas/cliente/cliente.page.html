@@ -28,7 +28,7 @@
           <ion-col size="12">
             <ion-item class="input">
               <ion-label position="floating">Nombre</ion-label>
-              <ion-input formControlName="nombre" type="inputText"></ion-input>
+              <ion-input formControlName="nombre" [(ngModel)]="inputSetQr.nombre"  type="inputText"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -37,7 +37,7 @@
           <ion-col size="12">
             <ion-item class="input">
               <ion-label position="floating">Apellido</ion-label>
-              <ion-input formControlName="apellido" type="inputText"></ion-input>
+              <ion-input formControlName="apellido"   [(ngModel)]="inputSetQr.apellido" type="inputText"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -64,7 +64,7 @@
           <ion-col size="12">
             <ion-item class="input">
               <ion-label position="floating">DNI</ion-label>
-              <ion-input formControlName="dni" type="number"></ion-input>
+              <ion-input formControlName="dni" [(ngModel)]="inputSetQr.dni" type="number"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -80,7 +80,7 @@
         <ion-row>          
           <ion-col size="12">
             <p align="center">
-              <ion-button [disabled]="(!tableForm.valid || !image)" type="submit">Aceptar</ion-button>
+              <ion-button [disabled]="(!tableForm.valid)" type="submit">Aceptar</ion-button>
             </p>
           </ion-col>
         </ion-row>
