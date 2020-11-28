@@ -17,9 +17,7 @@ export class AuthGuard implements CanActivate {
  
    }
 
-   ionViewDidEnter() {
-    this.user = JSON.parse(localStorage.getItem('userCatch'));
-  }
+  
 
    canActivate() {
     if(this.user == null){

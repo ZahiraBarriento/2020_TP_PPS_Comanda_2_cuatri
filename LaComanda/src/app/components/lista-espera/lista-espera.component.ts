@@ -65,12 +65,7 @@ export class ListaEsperaComponent implements OnInit {
     this.modalController.openModal(ListaMesasComponent, 'my-custom-modal-css', client);
   }
 
-  modificar(cliente){
-    const json = {
-      listaEspera:false
-    }
+  
 
-    
-    this.firestore.updateData('pedidos', cliente.uid, json);
-  }
+ 
 }
