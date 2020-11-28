@@ -1,6 +1,7 @@
 import { viewClassName } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { url } from 'inspector';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
@@ -23,14 +24,15 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
+
+    const audio = new Audio('../../../assets/audio/inicio-sesion.mp3');
     localStorage.removeItem('userCatch');
     
     this.loader.showLoader();
     setTimeout(() => {
+      audio.play();
       this.auth.signOut();
     }, 1500);
-     
-    
   }
 
   verificar(){

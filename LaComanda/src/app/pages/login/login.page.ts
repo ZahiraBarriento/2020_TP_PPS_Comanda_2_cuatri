@@ -44,11 +44,13 @@ export class LoginPage {
           .traerUsuario(resAuth.user.uid, this.credencial.email)
           .then((resDb: UsuarioModel) => {
             if (resDb.activated) {
+              const audio = new Audio('../../../assets/audio/inicio-sesion.mp3');
               // Guardo en un local storage el usuario de la Base de Datos
               this.mensajesAcceso(resDb);
               localStorage.setItem("userCatch", JSON.stringify(resDb));
               this.loader.showLoader();
               setTimeout(() => {
+                audio.play();
                 this.router.navigateByUrl("home");
               }, 1500);
             } else {

@@ -168,12 +168,7 @@ export class TomarPedidoPage implements OnInit {
    
 
     this.asignarNotificacion(pedido);
-<<<<<<< HEAD
-
-
-=======
     this.loader.showLoader();
->>>>>>> eff4e86dc71cf4572847dcc063737084d7f69fe9
     setTimeout(() => {
 
       this.pedido.notificarComanda(pedido, this.jsonAsignar)
