@@ -294,4 +294,9 @@ pero no fue subida, las encuentas se aplazaran para la proxima semana.</p>
 - <strong> Diseño en general :heavy_check_mark:</strong><br>
 <i>&nbsp;• Finalización: 27/11</i><br><br>
 
+:boy: <strong>Lucas Marino</strong><br>
+- <strong> Corrección de errores varios :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 27/11</i><br>
+- <strong> Encuesta de cliente :heavy_check_mark:</strong><br>
+<i>&nbsp;• Finalización: 27/11</i><br><br>
 
