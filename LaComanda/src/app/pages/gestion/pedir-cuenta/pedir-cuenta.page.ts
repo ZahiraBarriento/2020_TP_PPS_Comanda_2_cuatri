@@ -36,16 +36,16 @@ export class PedirCuentaPage implements OnInit {
 
   ngOnInit() {
     
-    //this.qr.qrPropina().then((json) => {
-    this.propina = 20;
-    var user = JSON.parse(localStorage.getItem('userCatch'));
-    var cliente = user["nombre"] + " " + user["apellido"];
-    this.pedidosService.detallePedidos(cliente).then((pedidos) => {
-      this.pedidosDelCliente = pedidos;
-      this.filtrarPorEntregado();
-      this.calcularTotal();
-    });
-    //});    
+    this.qr.qrPropina().then((json) => {
+      this.propina = json["desc"];
+      var user = JSON.parse(localStorage.getItem('userCatch'));
+      var cliente = user["nombre"] + " " + user["apellido"];
+      this.pedidosService.detallePedidos(cliente).then((pedidos) => {
+        this.pedidosDelCliente = pedidos;
+        this.filtrarPorEntregado();
+        this.calcularTotal();
+      });
+    });    
 
     this.obtenerMesa();
   }
