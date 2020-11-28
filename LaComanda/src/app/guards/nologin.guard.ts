@@ -17,10 +17,6 @@ export class NologinGuard implements CanActivate {
  
   }
 
-  ionViewDidEnter() {
-    this.user = JSON.parse(localStorage.getItem('userCatch'));
-  }
-
   canActivate() {
     if (this.user == null) {
       return true;
