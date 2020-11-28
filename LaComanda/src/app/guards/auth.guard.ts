@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UsuarioModel } from '../models/usuario.model';
+import { Usuario } from '../classes/usuario.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  user: any;
+  user: UsuarioModel;
 
   constructor(private auth: AngularFireAuth, private router: Router) {
-    this.user = JSON.parse(localStorage.getItem('userCatch'));
+    this.user = new Usuario();
+    this.user =  JSON.parse(localStorage.getItem('userCatch')) as UsuarioModel;
+ 
    }
 
+   ionViewDidEnter() {
+    this.user = JSON.parse(localStorage.getItem('userCatch'));
+  }
+
    canActivate() {
-    if(this.user === null){
+    if(this.user == null){
       this.router.navigate(['/login']); //SI NO ESTA PUES VA AL LOGIN
       return false;
     }else{
+
+    
       return true;
     }
 }

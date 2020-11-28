@@ -24,11 +24,12 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     localStorage.removeItem('userCatch');
+    
     this.loader.showLoader();
     setTimeout(() => {
       this.auth.signOut();
     }, 1500);
-    clearInterval();
+     
     
   }
 

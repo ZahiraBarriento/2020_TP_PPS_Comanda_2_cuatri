@@ -99,8 +99,11 @@ export class LoginPage {
   //#endregion
 
   logPerfil(perfilTipo) {
+
+    let llave = false;
+
     this.perfilJso.forEach((perfil) => {
-      if (perfilTipo === perfil.perfil) {
+      if (perfilTipo === perfil.perfil && !llave) {
         console.log(perfil);
         this.credencial.email = perfil.correo;
         this.credencial.pass = perfil.clave;
@@ -108,7 +111,8 @@ export class LoginPage {
           "https://loremflickr.com/320/240/picture,face?random=2";
         console.log("Credencial " + this.credencial.email);
         this.SignIn();
-
+        console.log('logPerfil', perfil);
+        llave = true;
         return;
       }
     });

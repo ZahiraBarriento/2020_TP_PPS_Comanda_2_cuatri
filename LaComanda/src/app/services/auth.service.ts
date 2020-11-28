@@ -32,6 +32,7 @@ export class AuthService {
 
   public async signOut() {
     this.auth.signOut().then(() =>{
+      console.log('login del orto');
       this.router.navigate(['/login']);
     })
   }

@@ -69,7 +69,7 @@ export class PushNotificationService {
         this.clientes.push(doc);
       })
       this.clientes.forEach(element => {
-        console.log(element);
+         
         if (element.activated == false) {
           this.clientes = [];
           this.pushNotification("¡Nueva solicitud de aprobación!", "Un nuevo cliente se ha registrado", 1);

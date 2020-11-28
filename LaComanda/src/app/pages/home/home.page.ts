@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cards } from '../../models/cards';
 import { QrService } from '../../services/qr.service';
 import { LoaderService } from '../../services/loader.service';
-import { ToastService } from '../../services/toast.service';
 import { FirestoreService } from '../../services/firestore.service';
 import { FuctionsService } from 'src/app/services/fuctions.service';
 import { PushNotificationService } from '../../services/push-notification.service';
@@ -13,7 +12,7 @@ import { PushNotificationService } from '../../services/push-notification.servic
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit {
 
   user;
   showView: boolean; // se usa para mostrar altas
@@ -188,7 +187,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   ActualizarClienteListaEspera() {
     let allUsers = new Array<any>();
-
     this.db.getDataAll('usuarios').subscribe((data) => {
       let count = 0;
       if (count = 0) {
@@ -236,12 +234,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.perfil = null;
-    this.cards = [];
-    this.alta = [];
-    this.info = null;
-  }
+  
 
   notificacionesDuenio(){
     switch(this.user.perfil){
