@@ -53,7 +53,7 @@ export class ClientePage implements OnInit {
     private qr: BarcodeScanner) {
   }
   viewPic: string = "../../../../assets/image/default.jpg";
-  image;
+  image = '';
   yaSubioFoto = false;
 
   inputSetQr =  {
@@ -116,6 +116,7 @@ export class ClientePage implements OnInit {
         "activated": false,
         "listaEspera" : false
       };
+      console.log(json);
       this.firestore.addData("usuarios", json);
       this.auth.esClienteActivado = false;
      /*  this.loading.showLoader(); */
