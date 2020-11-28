@@ -91,11 +91,11 @@
         <ion-col col-12>
           <ion-item>
             <ion-label>Elija una opción</ion-label>
-            <ion-select value="hola">
-              <ion-select-option value="1">Calidad y temperatura del plato</ion-select-option>
-              <ion-select-option value="2">Velocidad del pedido</ion-select-option>
-              <ion-select-option value="3">Atención del personal</ion-select-option>
-              <ion-select-option value="4">Higiene del local</ion-select-option>
+            <ion-select id="select">
+              <ion-select-option value="Calidad y temperatura del plato">Calidad y temperatura del plato</ion-select-option>
+              <ion-select-option value="Velocidad del pedido">Velocidad del pedido</ion-select-option>
+              <ion-select-option value="Atención del personal">Atención del personal</ion-select-option>
+              <ion-select-option value="Higiene del local">Higiene del local</ion-select-option>
             </ion-select>          
           </ion-item>
         </ion-col>
@@ -141,7 +141,7 @@
               display: block;
               margin: 0 auto;
             "
-            (click)="SacarFoto()">Tomar Foto</button>
+            (click)="SacarFoto()" [hidden]="yaSubioTodasLasFotos">Subir foto {{cantFotos}}</button>
         </ion-col>
       </ion-row>
       <ion-row>
