@@ -21,7 +21,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 export class ClientePage implements OnInit {
 
     get nombre() {
-      return this.tableForm.get("nombre");
+      return this.tableForm.get("nombre").value;
     }
   
     get apellido() {
@@ -65,12 +65,10 @@ export class ClientePage implements OnInit {
 
   tableForm = this.formBuilder.group({
     nombre: ['', [
-      Validators.required,
-      Validators.pattern('^([a-zA-Z]+\s)*[a-zA-Z]+$')
+      Validators.required
     ]],
     apellido: ['', [
-      Validators.required,
-      Validators.pattern("^([a-zA-Z]+\s)*[a-zA-Z]+$")
+      Validators.required
     ]],
     correo: ['', [
       Validators.required,
