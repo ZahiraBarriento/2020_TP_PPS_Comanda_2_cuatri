@@ -11,8 +11,8 @@ import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx'
 export class CustomPage implements OnInit {
 
 
-  fontFamily: any[] = ['Verdana', 'Geneva', 'Tahoma', 'sans-serif'];
-  colors: any[] = ['red','blue','tertiary','success','warning','danger','light','medium','dark']
+  fontFamily: any[] = [];
+  colors: any[] = [];
 
   
   titulo = {
@@ -44,9 +44,10 @@ export class CustomPage implements OnInit {
   @Input() objeto: string;
 
 
- 
-
   constructor(public modalController: ModalController, private imagePicker: ImagePicker) { 
+    
+    this.fontFamily =  ['Verdana', 'Geneva', 'Tahoma', 'sans-serif'];
+    this.colors = ['red','blue','tertiary','success','warning','danger','light','medium','dark'];
 
     if(JSON.parse(localStorage.getItem('titulo'))){
       this.titulo = JSON.parse(localStorage.getItem('titulo'));

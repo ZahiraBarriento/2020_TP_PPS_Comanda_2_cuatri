@@ -4,14 +4,13 @@ ion-content{
 
 .contenido{
     display: grid;
-
     grid-template-columns: 50% 50%;
-    grid-template-rows: 40% 60%;
+    grid-template-rows: 40% 50%;
     grid-template-areas: "contornoTit contornoDesc"
-                         "contornoBot contornoBot";
-    grid-gap: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+                         "contornoBot contornoFotos";
+    border: 1px solid black;
+    height: 100vh;
+    width: 100vw;
 }
 
 
@@ -28,6 +27,12 @@ ion-content{
 .contornoBot{
     grid-area: contornoBot;
     border: .1rem solid black;
+    height: 100%;
+}  
+
+.contornoFotos{
+    grid-area: contornoFotos;
+    border: 1px solid black;
 }
  
 .value{
@@ -42,3 +47,8 @@ ion-content{
     font-size: 1.3rem;
     padding-top: 0.2rem;
 }
+
+
+
+ 
+ 
