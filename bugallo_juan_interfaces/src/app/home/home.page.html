@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar [class]="cabezera">
+    <ion-title [class]="titulo">
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class]="contenidoGeneral">
+ 
+  <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list>
+      <ion-fab-button color="light" (click)="elegirTema('argentina')">
+        <ion-icon name="logo-facebook">A</ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="elegirTema('profecional')">
+        <ion-icon name="logo-twitter">P</ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="elegirTema('naif')">
+        <ion-icon name="logo-vimeo">N</ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="elegirTema('custom')">
+        <ion-icon name="logo-vimeo">N</ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <div class="content" *ngFor="let new of news">
+    <div [class]="new.cssContenidoNews" *ngIf="new.tema == tema">
+      <img [class]="new.cssImagen" [src]="new.imagen" alt="">
+      <button [class]="new.cssBtnLike" [ngClass]="new.tema =='custom' && formaBoton" [ngStyle]="new.tema == 'custom' && dataTitulo[2] != undefined && {'color': dataTitulo[2].color, 'font-size': dataTitulo[2].font_size+'rm', 'border': dataTitulo[2].border + 'px solid', 'border-color': dataTitulo[2].border_color}"><ion-icon name="heart-outline"></ion-icon></button>
+      <h3 [class]="new.cssArticle"  [ngStyle]="new.tema == 'custom' && dataTitulo[0] != undefined && {'color': dataTitulo[0].color, 'font-size': dataTitulo[0].font_size+'rm', 'font-family': dataTitulo[0].font_family}">{{new.article}}</h3>
+      <p [class]="new.cssDescripcion" [ngStyle]="new.tema == 'custom' && dataTitulo[1] != undefined && {'color': dataTitulo[1].color, 'font-size': dataTitulo[1].font_size+'rm', 'font-family': dataTitulo[1].font_family}">{{new.descripcion}}</p>
+    </div> 
+  </div>
+  
+</ion-content>

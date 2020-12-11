@@ -1,0 +1,44 @@
+ion-content{
+    --background: none;
+}
+
+.contenido{
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40% 60%;
+    grid-template-areas: "contornoTit contornoDesc"
+                         "contornoBot contornoBot";
+    grid-gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.contornoTit{
+    grid-area: contornoTit;
+    border: .1rem solid black;
+}
+
+.contornoDesc{
+    grid-area: contornoDesc;
+    border: .1rem solid black;
+}
+
+.contornoBot{
+    grid-area: contornoBot;
+    border: .1rem solid black;
+}
+ 
+.value{
+   position: absolute;
+   margin-bottom: 2rem;
+}
+
+.radOpt{
+    display: block;
+    padding-left: 2.3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    padding-top: 0.2rem;
+}

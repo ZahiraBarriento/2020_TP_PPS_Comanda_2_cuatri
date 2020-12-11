@@ -1,0 +1,7 @@
+{
+  "name": "bugallo_juan_interfaces",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,343 @@
+.cabeceraArg{
+  --background: none;
+  --background: url(../../assets/headerSol.png) no-repeat center / 15%   ;
+}
+
+.contenidoGeneralArg{
+  --background: none;
+  background-size: 100% 100%;
+  background-image: url(../../assets/fondoArg.png);
+}
+
+.newsArg{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 25% 25% 12% 30%;
+  grid-template-areas: "imagenArg btnLikeArg"
+                        "imagenArg btnLikeArg"
+                        "articleArg articleArg"
+                        "descripcionArg descripcionArg";
+  background-color: rgba(255, 255, 255, 0.349);
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 0.1rem solid rgb(255, 255, 255);
+  width: 80vw;
+  height: 39vh;
+   
+}
+
+.imagenArg{
+  grid-area: imagenArg;
+  height: 100%;
+  margin-top: 0px;
+  margin-left: 0px;
+  border-top-left-radius: 1rem;
+}
+
+.articleArg{
+  grid-area: articleArg;
+  margin-top: 0px;
+  font-size: 2rem; 
+  height: 100%;
+  overflow: hidden;
+}
+
+.descripcionArg{
+  grid-area: descripcionArg;
+  margin-top: .5rem;
+  font-size: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.btnLikeArg{
+  grid-area: btnLikeArg;
+  position: relative;
+  top: 25%;
+  border-radius: 100%;
+  background-color: rgb(24, 144, 224);
+  height: 50%;
+  left: 1rem;
+}
+
+.btnShareArg{
+  grid-area: btnShareArg;
+  position: relative;
+  border-radius: 50%;
+  margin-top: 1rem;
+  background-color: rgb(24, 144, 224);
+  width: 100%;
+  height: 80%;
+
+  left: 1rem;
+}
+
+
+// Profecional
+
+
+ 
+.cabeceraProf{
+  --background: none;
+  --background: url(../../assets/headerProf.png) no-repeat left / 100%   ;
+ 
+}
+
+
+.contenidoGeneralProf{
+  --background: none;
+  background-size: 100% 100%;
+  background-image: url(../../assets/fondoProf.png);
+}
+
+
+
+.newsProf{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 15% 65% 20%;
+  grid-template-areas:  "imagenProf articleProf"
+                        "imagenProf descripcionProf"        
+                        "btnLikeProf btnLikeProf";
+  background-color: rgba(255, 255, 255, 0.349);
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 0.1rem solid rgb(71, 66, 112);
+  width: 90%; 
+  height: 29vh;  
+}
+
+.imagenProf{
+  grid-area: imagenProf;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-size: cover;
+  width: 80%;   
+  height: 90%;
+}
+
+
+.articleProf{
+  grid-area: articleProf;
+  margin-top: 0px;
+  font-size: 2rem;
+   
+}
+
+.descripcionProf{
+  grid-area: descripcionProf;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.btnLikeProf{
+  grid-area: btnLikeProf;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 25%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: rgb(80, 70, 160);
+}
+
+.btnShareProf{
+  grid-area: btnShareProf;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 50%;
+  border-radius: 1rem;
+  background-color: rgb(80, 70, 160);
+}
+
+// NAIF
+
+.cabeceraNaif{
+  --background: none;
+  --background: url(../../assets/headerNaif.png) no-repeat left / 100%;
+ 
+}
+
+.tituloNaif{
+  font-size: 3rem;
+  color: black;
+}
+
+.contenidoGeneralNaif{
+  --background: none;
+  background-size: 100% 100%;
+  background-image: url(../../assets/fondoNaif.png);
+}
+
+
+
+.newsNaif{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 15% 65% 20%;
+  grid-template-areas:  "imagenNaif articleNaif"
+                        "imagenNaif descripcionNaif"        
+                        "btnLikeNaif btnLikeNaif";
+  background-color: rgba(255, 255, 255, 0.349);
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 0.6rem solid rgb(255, 122, 13);
+  width: 70vw; 
+  height: 29vh;  
+}
+
+.imagenNaif{
+  grid-area: imagenNaif;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-size: cover;
+  width: 80%;   
+  height: 90%;
+}
+
+
+.articleNaif{
+  grid-area: articleNaif;
+  margin-top: 0px;
+  font-size: 2rem;
+   
+}
+
+.descripcionNaif{
+  grid-area: descripcionNaif;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.btnLikeNaif{
+  grid-area: btnLikeNaif;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 50%;
+   
+
+  
+   
+  background-color: rgb(255, 196, 0);
+   
+}
+
+.btnShareNaif{
+  grid-area: btnShareProf;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 50%;
+  border-bottom-right-radius: 4rem;
+  border-top-right-radius: 4rem;
+  background-color: rgb(255, 196, 0);
+}
+
+// custom
+
+.cabeceraCust{
+  --background: none;
+  /* --background: url(../../assets/headerNaif.png) no-repeat left / 100%; */
+ 
+}
+
+.tituloCust{
+  font-size: 3rem;
+  /* color: black; */
+}
+
+.contenidoGeneralCust{
+  --background: none;
+  background-size: 100% 100%;
+  /* background-image: url(../../assets/fondoNaif.png); */
+}
+
+
+
+.newsCust{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 15% 65% 20%;
+  grid-template-areas:  "imagenCust articleCust"
+                        "imagenCust descripcionCust"        
+                        "btnLikeCust btnLikeCust";
+  /* background-color: rgba(255, 255, 255, 0.349); */
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 0.1rem solid rgb(0, 0, 0);
+  width: 70vw; 
+  height: 29vh;  
+}
+
+.imagenCust{
+  grid-area: imagenCust;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-size: cover;
+  width: 80%;   
+  height: 90%;
+}
+
+
+.articleCust{
+  grid-area: articleCust;
+  margin-top: 0px;
+  font-size: 2rem;
+   
+}
+
+.descripcionCust{
+  grid-area: descripcionCust;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.btnLikeCust{
+  grid-area: btnLikeCust;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 50%;
+  background-color: rgb(255, 255, 255);  
+   
+}
+
+.btnShareCust{
+  grid-area: btnShareCust;
+  position: relative;
+  margin: 0 auto;
+  top: 1rem;
+  width: 50%;
+  border-bottom-right-radius: 4rem;
+  border-top-right-radius: 4rem;
+  background-color: rgb(255, 255, 255);  
+}
+ 
+
+/*-----------------------------------------*/
+
+.redondo{
+  width: 24%;
+  border-radius: 100%;
+  background-color: red;
+}
+
+.cuadrado{
+  width: 25%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+.rectangulo{
+  width: 50%;
+}

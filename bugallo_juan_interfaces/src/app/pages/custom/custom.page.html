@@ -1,0 +1,254 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{objeto}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <!-- Titulo --------------------------------------------------------------------------------------------------->
+
+<div class="contenido">
+  <div class="contornoTit">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label class="objeto">
+            Titulo
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Tamaño fuente
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-range color="light" min="1" max="3" pin="true" [(ngModel)]="titulo.font_size"> </ion-range>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Tipo de letra
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-select id="select" [(ngModel)]="titulo.font_family">
+            <ion-select-option *ngFor="let font of fontFamily" [value]="font">{{font}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Color letra
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-select id="select" [(ngModel)]="titulo.color">
+            <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+
+  <!-- Descripcion --------------------------------------------------------------------------------------------------->
+  
+  <div class="contornoDesc">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label class="objeto">
+            Descripcion
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Tamaño fuente
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-range color="light" min="1" max="3" pin="true" [(ngModel)]="descripcion.font_size"> </ion-range>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Tipo de letra
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-select [(ngModel)]="descripcion.font_family">
+            <ion-select-option *ngFor="let font of fontFamily" [value]="font">{{font}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="opciones">
+            Color letra
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-select [(ngModel)]="descripcion.color">
+            <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+
+  <!-- Botones --------------------------------------------------------------------------------------------------->
+  
+  
+  <div class="contornoBot">
+
+    <ion-grid>
+       <ion-row>
+        <ion-col>
+          <ion-label class="objeto">
+            BOTONES
+          </ion-label>
+           </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-label class="opciones">
+            Tamaño icono
+          </ion-label>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-range class="range" color="light" min="1" max="3" pin="true" [(ngModel)]="botones.font_size"> </ion-range>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-label class="opciones">
+            Color Icono
+          </ion-label>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-select class="select" [(ngModel)]="botones.color">
+            <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-label class="opciones">
+            Bordes
+          </ion-label>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-range class="range" color="light" min="0" max="3" pin="true" [(ngModel)]="botones.border"> </ion-range>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-label class="opciones">
+            Color borde
+          </ion-label>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-select class="select" [(ngModel)]="botones.border_color">
+            <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+          <ion-label class="opciones">
+            Forma boton
+          </ion-label>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-radio-group class="radio" [(ngModel)]="botones.forma">
+            <ion-radio class="value" value="redondo"></ion-radio>
+            <ion-label class="radOpt">Redondo</ion-label>
+
+            <ion-radio class="value" value="cuadrado"></ion-radio>
+            <ion-label class="radOpt">Cuadrado</ion-label>
+
+            <ion-radio class="value" value="rectangulo"></ion-radio>
+            <ion-label class="radOpt">Rectangulo</ion-label>
+          </ion-radio-group>
+        </ion-row>
+
+      </ion-grid>
+  </div>
+</div>
+
+
+<ion-grid>
+ <ion-row>
+   <ion-col>
+      <button (click)="closeModal(false)">Cancelar</button>
+    </ion-col>
+
+    <ion-col>
+      <button (click)="closeModal(true)">Aceptar</button>
+    </ion-col> 
+
+    <ion-col>
+      <button (click)="cargarFoto()">foto</button>
+    </ion-col>
+</ion-row>
+  </ion-grid>
+
+</ion-content>
