@@ -77,6 +77,12 @@ export class HomePage {
         this.cabezera = 'cabeceraCust';
         this.contenidoGeneral = 'contenidoGeneralCust';
         this.titulo = 'tituloCust';
+        if(localStorage.getItem('config')){
+          this.dataTitulo = JSON.parse(localStorage.getItem('config')) ;
+        }
+         if(this.dataTitulo[2].forma != ''){
+          this.formaBoton = this.dataTitulo[2].forma;
+         }
         this.presentModal();
         break;  
       default:
