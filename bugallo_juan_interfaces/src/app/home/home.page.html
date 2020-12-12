@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
-  <ion-toolbar [class]="cabezera">
+  <ion-toolbar [class]="cabezera" >
     <ion-title [class]="titulo">
       
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class]="contenidoGeneral">
+<ion-content [class]="contenidoGeneral" [ngClass]=" tema == 'custom' && fondo != '' && fondo">
  
   <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
     <ion-fab-button>

@@ -13,6 +13,9 @@ export class HomePage {
 
   tema = 'custom';
   dataTitulo = new Array();
+
+  fondo = '';
+
   formaBoton: string;
   titulo: string;
   cabezera: string;
@@ -22,11 +25,13 @@ export class HomePage {
 
   constructor(public modalController: ModalController) {
     this.news = newsApi;
-    if(localStorage.getItem('config')){
+
+    if (localStorage.getItem('config')){
       this.dataTitulo = JSON.parse(localStorage.getItem('config')) ;
+      this.fondo = this.dataTitulo[3].fondo;
     }
     this.elegirTema(this.tema);
-    
+
   }
 
 
@@ -35,60 +40,57 @@ export class HomePage {
       component: CustomPage,
     });
 
-     await modal.present();
+    await modal.present();
 
-     const { data } = await modal.onDidDismiss();
-     this.dataTitulo = data;
+    const { data } = await modal.onDidDismiss();
+    this.dataTitulo = data;
 
-     if(localStorage.getItem('config')){
+    if (localStorage.getItem('config')){
       this.dataTitulo = JSON.parse(localStorage.getItem('config')) ;
-
-      if(this.dataTitulo[2].forma != ''){
+      this.fondo = this.dataTitulo[3].fondo;
+      console.log(this.fondo);
+      if (this.dataTitulo[2].forma != ''){
         this.formaBoton = this.dataTitulo[2].forma;
        }
     }
-     
-     
-    
-     
-    
+
+
+
+
+
   }
-
-
-  
-
 
   elegirTema(tema: string){
     this.tema = tema;
-    
+
     switch (tema) {
       case 'argentina':
         this.cabezera = 'cabeceraArg';
-        this.contenidoGeneral = 'contenidoGeneralArg'
+        this.contenidoGeneral = 'contenidoGeneralArg';
         break;
       case 'naif':
         this.cabezera = 'cabeceraNaif';
         this.contenidoGeneral = 'contenidoGeneralNaif';
         this.titulo = 'tituloNaif';
-        break;  
+        break;
       case 'profecional':
         this.cabezera = 'cabeceraProf';
-        this.contenidoGeneral = 'contenidoGeneralProf'
+        this.contenidoGeneral = 'contenidoGeneralProf';
         break;
       case 'custom':
         this.cabezera = 'cabeceraCust';
         this.contenidoGeneral = 'contenidoGeneralCust';
         this.titulo = 'tituloCust';
 
-        if(localStorage.getItem('config')){
+        if (localStorage.getItem('config')){
           this.dataTitulo = JSON.parse(localStorage.getItem('config')) ;
-          if(this.dataTitulo[2].forma != ''){
+          if (this.dataTitulo[2].forma != ''){
             this.formaBoton = this.dataTitulo[2].forma;
            }
         }
-          
+
         this.presentModal();
-        break;  
+        break;
       default:
         break;
     }

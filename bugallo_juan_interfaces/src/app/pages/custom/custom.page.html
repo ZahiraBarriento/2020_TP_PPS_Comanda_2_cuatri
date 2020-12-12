@@ -1,11 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{objeto}}</ion-title>
+    <ion-title>Configuracion Temas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
 
 
   <!-- Titulo --------------------------------------------------------------------------------------------------->
@@ -15,9 +14,11 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+        
             <ion-label class="objeto">
-              Titulo
+              TITULO
             </ion-label>
+         
           </ion-col>
         </ion-row>
 
@@ -32,7 +33,11 @@
 
         <ion-row>
           <ion-col>
-            <ion-range color="light" min="1" max="3" pin="true" [(ngModel)]="titulo.font_size"> </ion-range>
+          
+            <ion-range min="1" max="3" pin color="danger" [(ngModel)]="titulo.font_size">
+              <ion-icon slot="start" size="small" name="logo-angular"></ion-icon>
+              <ion-icon slot="end" name="logo-angular"></ion-icon>
+            </ion-range>
           </ion-col>
         </ion-row>
 
@@ -44,10 +49,11 @@
           </ion-col>
         </ion-row>
 
+
         <ion-row>
           <ion-col>
-            <ion-select id="select" [(ngModel)]="titulo.font_family">
-              <ion-select-option *ngFor="let font of fontFamily" [value]="font">{{font}}</ion-select-option>
+            <ion-select class="select" [(ngModel)]="titulo.font_family">
+              <ion-select-option *ngFor="let font of fontFamily" [value]="font">{{font | titlecase}}</ion-select-option>
             </ion-select>
           </ion-col>
         </ion-row>
@@ -62,7 +68,7 @@
 
         <ion-row>
           <ion-col>
-            <ion-select id="select" [(ngModel)]="titulo.color">
+            <ion-select class="select" [(ngModel)]="titulo.color">
               <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
             </ion-select>
           </ion-col>
@@ -78,7 +84,7 @@
         <ion-row>
           <ion-col>
             <ion-label class="objeto">
-              Descripcion
+              DESCRIPCION
             </ion-label>
           </ion-col>
         </ion-row>
@@ -96,7 +102,10 @@
 
         <ion-row>
           <ion-col>
-            <ion-range color="light" min="1" max="3" pin="true" [(ngModel)]="descripcion.font_size"> </ion-range>
+            <ion-range min="1" max="3" pin color="danger" [(ngModel)]="descripcion.font_size">
+              <ion-icon slot="start" size="small" name="logo-angular"></ion-icon>
+              <ion-icon slot="end" name="logo-angular"></ion-icon>
+            </ion-range>
           </ion-col>
         </ion-row>
 
@@ -110,7 +119,7 @@
 
         <ion-row>
           <ion-col>
-            <ion-select [(ngModel)]="descripcion.font_family">
+            <ion-select class="select" [(ngModel)]="descripcion.font_family">
               <ion-select-option *ngFor="let font of fontFamily" [value]="font">{{font}}</ion-select-option>
             </ion-select>
           </ion-col>
@@ -126,7 +135,7 @@
 
         <ion-row>
           <ion-col>
-            <ion-select [(ngModel)]="descripcion.color">
+            <ion-select class="select" [(ngModel)]="descripcion.color">
               <ion-select-option *ngFor="let color of colors" [value]="color">{{color | titlecase}}</ion-select-option>
             </ion-select>
           </ion-col>
@@ -159,8 +168,12 @@
 
         <ion-row>
           <ion-col>
-            <ion-range class="range" color="light" min="1" max="3" pin="true" [(ngModel)]="botones.font_size">
+            <ion-range min="1" max="3" pin color="danger" [(ngModel)]="botones.font_size">
+              <ion-icon slot="start" size="small" name="brush"></ion-icon>
+              <ion-icon slot="end" name="brush"></ion-icon>
             </ion-range>
+    
+            
           </ion-col>
         </ion-row>
 
@@ -190,7 +203,10 @@
 
         <ion-row>
           <ion-col>
-            <ion-range class="range" color="light" min="0" max="3" pin="true" [(ngModel)]="botones.border"> </ion-range>
+            <ion-range min="1" max="3" pin color="danger" [(ngModel)]="botones.border">
+              <ion-icon slot="start" size="small" name="contrast"></ion-icon>
+              <ion-icon slot="end" name="contrast"></ion-icon>
+            </ion-range>
           </ion-col>
         </ion-row>
 
@@ -236,22 +252,17 @@
 
 
     <div class="contenidoFotos">
-      <ion-button class="btn" (click)="cargarFoto()">Cargar Fondo</ion-button>
+      <ion-button class="btn" (click)="cargarFoto('fondo')">Cargar Fondo</ion-button>
 
-      <ion-button class="btn" (click)="cargarFoto()">Cargar Header</ion-button>
+      <ion-button class="btn" (click)="cargarFoto('header')">Cargar Header</ion-button>
+
+      <ion-button class="btn" (click)="closeModal(false)">Cancelar</ion-button>
+
+      <ion-button class="btn" (click)="closeModal(true)">Aceptar</ion-button>
    
 </div>
   </div>
 
 
-
-
-
- <!--  <ion-col>
-    <button  (click)="closeModal(false)">Cancelar</button>
-  </ion-col>
-
-  <ion-col>
-    <button (click)="closeModal(true)">Aceptar</button>
-  </ion-col> -->
+ 
 </ion-content>

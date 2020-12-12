@@ -1,40 +1,54 @@
 ion-content{
     --background: none;
+    
 }
 
 .contenido{
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 40% 50%;
+    grid-template-rows: 40% 65%;
+    grid-gap: 2px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     grid-template-areas: "contornoTit contornoDesc"
                          "contornoBot contornoFotos";
-    border: 1px solid black;
-    height: 100vh;
     width: 100vw;
 }
 
 
 .contornoTit{
     grid-area: contornoTit;
-    border: .1rem solid black;
+    background-color: antiquewhite;
+   
+    margin-left: 0.5rem;
 }
 
 .contornoDesc{
     grid-area: contornoDesc;
-    border: .1rem solid black;
+    background-color: antiquewhite;
+    margin-right: 0.5rem;
 }
 
 .contornoBot{
     grid-area: contornoBot;
-    border: .1rem solid black;
-    height: 100%;
+    background-color: antiquewhite;
+    margin-left: 0.5rem;
 }  
 
 .contornoFotos{
     grid-area: contornoFotos;
-    border: 1px solid black;
+    background-color: antiquewhite;
+    margin-right: 0.5rem;
+}
+
+.objeto{
+    font-size: 2rem;
 }
  
+.opciones{
+    font-size: 1.5rem;
+}
 .value{
    position: absolute;
    margin-bottom: 2rem;
@@ -48,7 +62,22 @@ ion-content{
     padding-top: 0.2rem;
 }
 
+.btn{
+    height: 24%;
+    width: 95%;
+}
 
+.select{
+    font-size: 1.5rem;
+}
 
+.range{
+    color: red;
+}
+
+ion-row{
+    margin-top: 1.5rem;
+}
+ 
  
  
